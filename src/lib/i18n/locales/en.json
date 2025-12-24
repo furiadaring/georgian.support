@@ -1,0 +1,659 @@
+{
+  "meta": {
+    "title": "Visit Georgia | Insurance for Every Need Foreigners Have in Georgia",
+    "description": "Health, travel & auto insurance for tourists and expats in Georgia. Fast online processing, coverage up to $50,000, 24/7 support."
+  },  "autoInsurancePage": {
+    "meta": {
+      "title": "MTPL Auto Insurance | Visit Georgia",
+      "description": "Mandatory third-party liability insurance (MTPL) for foreign vehicles in Georgia. Quick online processing, affordable prices."
+    },
+    "badge": "MANDATORY INSURANCE",
+    "title": "Auto Insurance",
+    "titleHighlight": "MTPL",
+    "subtitle": "Mandatory third-party liability insurance for foreign vehicles entering Georgia",
+    "ctaButton": "Get MTPL",
+    "seePrices": "See Prices",
+    "pricingTitle": "Rates by Vehicle Category",
+    "pricingSubtitle": "Choose the insurance period based on your trip duration",
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "Answers to common questions about auto insurance in Georgia",
+    "faq": [
+      { "q": "Is MTPL mandatory when entering Georgia?", "a": "Yes, third-party liability insurance is mandatory for all foreign vehicles entering Georgia." },
+      { "q": "Where can I get MTPL insurance?", "a": "You can get the policy at the border or in advance online. We'll help you get insurance quickly without queues." },
+      { "q": "What does MTPL insurance cover?", "a": "The insurance covers damage to third parties: up to 300,000 GEL for health damage and up to 50,000 GEL for property damage." },
+      { "q": "For how long can I get insurance?", "a": "Available periods: 15 days, 30 days, 90 days, or 1 year. Choose based on your trip duration." },
+      { "q": "What happens if I don't get MTPL?", "a": "Without a valid MTPL policy, you cannot enter Georgia by car. You will be turned away at the border." }
+    ],
+    "contactTitle": "Ready to get insured?",
+    "contactSubtitle": "Contact us and get your policy in minutes"
+  },  "header": {
+    "about": "About",
+    "insurance": "Insurance",
+    "referral": "Referrals",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "contacts": "Contacts",
+    "insuranceDropdown": {
+      "borderEntry": "Travel Insurance",
+      "fullMedical": "Medical Insurance",
+      "autoEntry": "Auto Insurance"
+    }
+  },
+  "hero": {
+    "badge": "Insurance for Every Need Foreigners Have in Georgia",
+    "title": "Insurance",
+    "titleHighlight": "in Georgia",
+    "subtitle": "Coverage up to $50,000 for tourists and expats. Online processing in 15 minutes.",
+    "cta": "Get Insurance",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "clients": "Clients",
+    "support": "Support",
+    "coverage": "Coverage",
+    "recommend": "Recommended",
+    "perYear": "GEL /year",
+    "perDay": "GEL/day",
+    "perMonth": "GEL/mo",
+    "forTourists": "For tourists and expats for 1 year",
+    "orderNow": "Order Now",
+    "shortTerm": "Short Term",
+    "forTouristsShort": "For tourists",
+    "referralBadge": "Refer a Friend — Get Discount!",
+    "referralNew": "NEW",
+    "referralTeaser": "Up to 300 GEL off or free insurance for referrals"
+  },
+  "advantages": {
+    "label": "WHY US",
+    "title": "Advantages",
+    "titleHighlight": "of working with us",
+    "description": "We make the insurance process simple and fast",
+    "items": [
+      {
+        "title": "Fast Processing",
+        "description": "Get your policy in 15 minutes online without paperwork"
+      },
+      {
+        "title": "Wide Coverage",
+        "description": "Medical expenses up to $50,000, including hospitalization"
+      },
+      {
+        "title": "24/7 Support",
+        "description": "Round-the-clock support in any situation"
+      },
+      {
+        "title": "Direct Billing",
+        "description": "We pay clinics directly — no out-of-pocket expenses for you"
+      }
+    ]
+  },
+  "insurance": {
+    "label": "INSURANCE PLANS",
+    "title": "Choose",
+    "titleHighlight": "your insurance",
+    "description": "Five types of insurance for different needs. All plans include 24/7 support.",
+    "recommend": "⭐ Recommended",
+    "order": "Order",
+    "needHelp": "Need help?",
+    "writeUs": "Write to us",
+    "seeAll": "See All Insurance Plans",
+    "day": "day",
+    "month": "month",
+    "months3": "3 months",
+    "months6": "6 months",
+    "year": "year",
+    "plans": {
+      "visitor": {
+        "name": "VISITOR",
+        "description": "For tourists on a short stay"
+      },
+      "standard": {
+        "name": "STANDARD",
+        "description": "For tourists and expats for 3 months"
+      },
+      "optimum": {
+        "name": "OPTIMUM",
+        "description": "For tourists and expats for 6 months"
+      },
+      "premium": {
+        "name": "PREMIUM",
+        "description": "Extended insurance for tourists and expats for 1 year"
+      },
+      "uno-active": {
+        "name": "UNO ACTIVE",
+        "description": "Full coverage for long-term stay"
+      },
+      "uno-active-plus": {
+        "name": "UNO ACTIVE +",
+        "description": "Extended coverage for long-term stay"
+      }
+    },
+    "coverage": {
+      "emergency": "Emergency medical care",
+      "hospitalization": "Hospitalization",
+      "outpatient": "Outpatient treatment",
+      "support247": "24/7 support",
+      "medications": "Medications",
+      "dentalEmergency": "Emergency dental",
+      "dental": "Dental care",
+      "extendedCoverage": "Extended coverage",
+      "plannedHospitalization": "Planned hospitalization",
+      "preventive": "Preventive checkups"
+    },
+    "moreDetails": "More details",
+    "modalLabels": {
+      "covers": "INSURANCE COVERS",
+      "faq": "FREQUENTLY ASKED QUESTIONS",
+      "close": "Close"
+    },
+    "planDetails": {
+      "visitor": {
+        "description": "Enjoy peace of mind during your visit to Georgia. Visitor insurance will cover the unexpected health-related expenses that can arise during your stay. Imedi L's expert team will provide you with comprehensive insurance consultations, guaranteeing top-quality service. Buy visitor health insurance online and receive your policy via email within minutes.",
+        "coverage": [
+          { "icon": "phone", "title": "24/7 Phone Support", "limit": "Unlimited" },
+          { "icon": "emergency", "title": "Emergency Medical Assistance", "limit": "Unlimited" },
+          { "icon": "outpatient", "title": "Emergency Outpatient Services", "limit": "10,000 ₾" },
+          { "icon": "dental", "title": "Emergency Dental Care", "limit": "10,000 ₾" },
+          { "icon": "hospital", "title": "Emergency Hospitalization due to Illness", "limit": "6,500 ₾" },
+          { "icon": "repatriation", "title": "Repatriation", "limit": "3,500 ₾" },
+          { "icon": "hospital", "title": "Emergency Hospitalization due to Accident", "limit": "6,500 ₾" },
+          { "icon": "death", "title": "Accidental Death Coverage", "limit": "1,000 ₾" },
+          { "icon": "aggregate", "title": "Aggregate Insurance Limit", "limit": "30,000 ₾" }
+        ],
+        "faq": [
+          { "question": "Who is eligible to purchase this insurance?", "answer": "The insurance is intended for foreign citizens and stateless tourists under the age of 70 staying in Georgia." },
+          { "question": "What does the insurance cover?", "answer": "The insurance covers emergency medical expenses and accidental death occurring during the individual insurance period." },
+          { "question": "What is a deductible and how does it work?", "answer": "A deductible is the amount deducted from the insurance reimbursement and paid by the insured person. The deductible is 100 GEL per case and applies to all services covered by the insurance card (except the 24/7 hotline, repatriation, and emergency medical assistance)." },
+          { "question": "What should you do in case of an insurance event?", "answer": "You must immediately contact the appropriate medical provider and the 24/7 hotline 032 292 22 22. To receive the service please present your insurance policy." },
+          { "question": "How to receive discounts on medical services?", "answer": "To receive discounts, the insured person must contact the 24-hour call center, schedule a visit with a general practitioner, who will identify the issue and issue a discount voucher for the designated provider clinic specified by the insurer." }
+        ]
+      },
+      "standard": {
+        "description": "STANDARD insurance program for foreign citizens staying in Georgia for up to 3 months. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
+        "coverage": [
+          { "icon": "phone", "title": "24-hour phone consultation", "limit": "Unlimited" },
+          { "icon": "emergency", "title": "Ambulance medical service", "limit": "Unlimited" },
+          { "icon": "doctor", "title": "Personal doctor service", "limit": "Unlimited" },
+          { "icon": "hospital", "title": "Urgent hospital service (accident)", "limit": "5,000 ₾ (60%)" },
+          { "icon": "outpatient", "title": "Urgent outpatient service", "limit": "300 ₾ (50%)" },
+          { "icon": "dental", "title": "Emergency Dental Care", "limit": "10,000 ₾" }
+        ],
+        "faq": [
+          { "question": "Who can be insured?", "answer": "Only citizens of foreign countries aged 1 to 69 can be insured under this agreement." },
+          { "question": "What territory does the insurance cover?", "answer": "The insurance is valid in the territory of Georgia (except occupied territories)." },
+          { "question": "What is the waiting period?", "answer": "The waiting period is counted from the start date of insurance, during which expenses will not be reimbursed." },
+          { "question": "How to submit a reimbursement claim?", "answer": "The deadline for submitting reimbursement documents is 15 days from payment of medical services. Reimbursement is made via non-cash payment." },
+          { "question": "What is not covered by insurance?", "answer": "Not covered: events before insurance start, treatment without call center notification, psychiatric illnesses, alternative medicine, prostheses and implants, alcohol/drug abuse consequences." }
+        ]
+      },
+      "optimum": {
+        "description": "OPTIMUM insurance program for foreign citizens staying in Georgia for up to 6 months. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
+        "coverage": [
+          { "icon": "phone", "title": "24-hour phone consultation", "limit": "Unlimited" },
+          { "icon": "emergency", "title": "Ambulance medical service", "limit": "Unlimited" },
+          { "icon": "doctor", "title": "Personal doctor service", "limit": "Unlimited" },
+          { "icon": "hospital", "title": "Urgent hospital service (accident)", "limit": "5,000 ₾ (60%)" },
+          { "icon": "outpatient", "title": "Urgent outpatient service", "limit": "300 ₾ (50%)" },
+          { "icon": "dental", "title": "Emergency Dental Care", "limit": "10,000 ₾" }
+        ],
+        "faq": [
+          { "question": "Who can be insured?", "answer": "Only citizens of foreign countries aged 1 to 69 can be insured under this agreement." },
+          { "question": "What territory does the insurance cover?", "answer": "The insurance is valid in the territory of Georgia (except occupied territories)." },
+          { "question": "What is the waiting period?", "answer": "The waiting period is counted from the start date of insurance, during which expenses will not be reimbursed." },
+          { "question": "How to submit a reimbursement claim?", "answer": "The deadline for submitting reimbursement documents is 15 days from payment of medical services. Reimbursement is made via non-cash payment." },
+          { "question": "What is not covered by insurance?", "answer": "Not covered: events before insurance start, treatment without call center notification, psychiatric illnesses, alternative medicine, prostheses and implants, alcohol/drug abuse consequences." }
+        ]
+      },
+      "premium": {
+        "description": "PREMIUM insurance program for foreign citizens staying in Georgia for up to 1 year. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
+        "coverage": [
+          { "icon": "phone", "title": "24-hour phone consultation", "limit": "Unlimited" },
+          { "icon": "emergency", "title": "Ambulance medical service", "limit": "Unlimited" },
+          { "icon": "doctor", "title": "Personal doctor service", "limit": "Unlimited" },
+          { "icon": "hospital", "title": "Urgent hospital service (accident)", "limit": "5,000 ₾ (60%)" },
+          { "icon": "outpatient", "title": "Urgent outpatient service", "limit": "300 ₾ (50%)" },
+          { "icon": "dental", "title": "Emergency Dental Care", "limit": "10,000 ₾" }
+        ],
+        "faq": [
+          { "question": "Who can be insured?", "answer": "Only citizens of foreign countries aged 1 to 69 can be insured under this agreement." },
+          { "question": "What territory does the insurance cover?", "answer": "The insurance is valid in the territory of Georgia (except occupied territories)." },
+          { "question": "What is the waiting period?", "answer": "The waiting period is counted from the start date of insurance, during which expenses will not be reimbursed." },
+          { "question": "How to submit a reimbursement claim?", "answer": "The deadline for submitting reimbursement documents is 15 days from payment of medical services. Reimbursement is made via non-cash payment." },
+          { "question": "What is not covered by insurance?", "answer": "Not covered: events before insurance start, treatment without call center notification, psychiatric illnesses, alternative medicine, prostheses and implants, alcohol/drug abuse consequences." }
+        ]
+      },
+      "uno-active": {
+        "description": "UNO ACTIVE medical insurance for long-term stay in Georgia. Comprehensive coverage including family doctor services, emergency and planned hospital care, outpatient services and dental care.",
+        "coverage": [
+          { "icon": "phone", "title": "24/7 phone consultation", "limit": "100% — Unlimited" },
+          { "icon": "doctor", "title": "Family doctor services", "limit": "100% — Unlimited" },
+          { "icon": "emergency", "title": "Emergency medical care", "limit": "100% — Unlimited" },
+          { "icon": "hospital", "title": "Emergency hospital care", "limit": "100% — 5,000 GEL" },
+          { "icon": "hospital", "title": "Planned hospital care (12 mo. wait)", "limit": "80% — 4,000 GEL" },
+          { "icon": "hospital", "title": "Day hospital at partner clinics (12 mo. wait)", "limit": "50% — 4,000 GEL" },
+          { "icon": "maternity", "title": "Pregnancy care at partner clinic", "limit": "50% — 500 GEL" },
+          { "icon": "outpatient", "title": "Emergency outpatient care", "limit": "100% — Unlimited" },
+          { "icon": "outpatient", "title": "Planned outpatient (specific clinic)", "limit": "60% — 800 GEL" },
+          { "icon": "outpatient", "title": "Planned outpatient (partner clinics)", "limit": "50% — 800 GEL" },
+          { "icon": "medications", "title": "Medications at GPC-Pharmadepot", "limit": "50% — 800 GEL" },
+          { "icon": "preventive", "title": "Preventive examinations", "limit": "100% — 1x per period" },
+          { "icon": "dental", "title": "Emergency dental care", "limit": "100% — 500 GEL" },
+          { "icon": "dental", "title": "Planned dental (main clinics)", "limit": "30% — 300 GEL" },
+          { "icon": "dental", "title": "Implants (SGS, Switzerland)", "limit": "60% — 1,500 GEL" },
+          { "icon": "dental", "title": "Planned dental (additional clinics)", "limit": "50% — Unlimited" },
+          { "icon": "dental", "title": "Dental CT, orthopantomogram", "limit": "40% — 500 GEL" },
+          { "icon": "dental", "title": "Orthopedic & orthodontic services", "limit": "10-60% discount" }
+        ],
+        "faq": [
+          { "question": "Who can purchase UNO ACTIVE?", "answer": "UNO ACTIVE is suitable for tourists, expats, and anyone planning a long-term stay in Georgia, aged 0 to 64 years." },
+          { "question": "What is the waiting period?", "answer": "For planned hospitalization and day hospital — 12 months. For emergency services — no waiting period." },
+          { "question": "Is pregnancy covered?", "answer": "Yes, pregnancy care is covered at 50% with 500 GEL limit at partner clinics by personal doctor referral." },
+          { "question": "What dental services are included?", "answer": "Emergency dental 100% (500 GEL), planned 30% (300 GEL), SGS implants 60% (1500 GEL), dental CT 40% (500 GEL)." },
+          { "question": "Is medication covered?", "answer": "Yes, medications at GPC-Pharmadepot pharmacy network are covered at 50% with 800 GEL limit." }
+        ]
+      },
+      "uno-active-plus": {
+        "description": "UNO ACTIVE+ enhanced medical insurance for long-term stay in Georgia. Extended coverage with higher limits for hospital care, expanded dental services and additional benefits.",
+        "coverage": [
+          { "icon": "phone", "title": "24/7 phone consultation", "limit": "100% — Unlimited" },
+          { "icon": "doctor", "title": "Family doctor services", "limit": "100% — Unlimited" },
+          { "icon": "emergency", "title": "Emergency medical care", "limit": "100% — Unlimited" },
+          { "icon": "hospital", "title": "Emergency hospital care", "limit": "100% — 10,000 GEL" },
+          { "icon": "hospital", "title": "Planned hospital care (12 mo. wait)", "limit": "100% — 8,000 GEL" },
+          { "icon": "hospital", "title": "Day hospital at partner clinics (12 mo. wait)", "limit": "60% — 8,000 GEL" },
+          { "icon": "maternity", "title": "Pregnancy care at partner clinic", "limit": "50% — 800 GEL" },
+          { "icon": "outpatient", "title": "Emergency outpatient care", "limit": "100% — Unlimited" },
+          { "icon": "outpatient", "title": "Planned outpatient (specific clinic)", "limit": "70% — 1,500 GEL" },
+          { "icon": "outpatient", "title": "Planned outpatient (partner clinics)", "limit": "60% — 1,500 GEL" },
+          { "icon": "medications", "title": "Medications at GPC-Pharmadepot", "limit": "55% — 1,500 GEL" },
+          { "icon": "preventive", "title": "Preventive examinations", "limit": "100% — 1x per period" },
+          { "icon": "dental", "title": "Emergency dental care", "limit": "100% — Unlimited" },
+          { "icon": "dental", "title": "Planned dental (main clinics)", "limit": "60% — 1,500 GEL" },
+          { "icon": "dental", "title": "Implants (SGS, Switzerland)", "limit": "60% — 1,500 GEL" },
+          { "icon": "dental", "title": "Planned dental (additional clinics)", "limit": "50% — Unlimited" },
+          { "icon": "dental", "title": "Dental CT, orthopantomogram", "limit": "40% — 500 GEL" },
+          { "icon": "dental", "title": "Orthopedic & orthodontic services", "limit": "10-60% discount" }
+        ],
+        "faq": [
+          { "question": "What is the difference from UNO ACTIVE?", "answer": "UNO ACTIVE+ has higher limits: hospital up to 10,000 GEL (vs 5,000), planned hospital 100%/8,000 GEL (vs 80%/4,000), outpatient up to 1,500 GEL." },
+          { "question": "What is the waiting period?", "answer": "For planned hospitalization and day hospital — 12 months. For emergency services — no waiting period." },
+          { "question": "Is pregnancy covered?", "answer": "Yes, pregnancy care is covered at 50% with 800 GEL limit at partner clinics by personal doctor referral." },
+          { "question": "What dental services are included?", "answer": "Emergency dental 100% unlimited, planned 60% (1500 GEL), SGS implants 60% (1500 GEL), dental CT 40% (500 GEL)." },
+          { "question": "Is medication covered?", "answer": "Yes, medications at GPC-Pharmadepot pharmacy network are covered at 55% with 1500 GEL limit." }
+        ]
+      }
+    }
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Frequently",
+    "titleHighlight": "Asked Questions",
+    "description": "Answers to popular questions about medical insurance in Georgia",
+    "items": [
+      {
+        "question": "What documents are needed to get insurance?",
+        "answer": "You only need your passport to get insurance. The whole process takes 10-15 minutes, and you receive your policy by email immediately after payment."
+      },
+      {
+        "question": "When does the insurance start?",
+        "answer": "The insurance starts from the date specified in the policy. You can choose the start date when applying."
+      },
+      {
+        "question": "What does the insurance cover?",
+        "answer": "The insurance covers emergency medical care, hospitalization, outpatient treatment, prescription medications, emergency dental care, and repatriation."
+      },
+      {
+        "question": "How do I use the insurance if needed?",
+        "answer": "Call the 24/7 hotline listed in your policy. The operator will arrange medical care and coordinate everything with the clinic directly."
+      },
+      {
+        "question": "Can I extend my insurance?",
+        "answer": "Yes, you can extend your insurance at any time before your current policy expires. Just contact us."
+      },
+      {
+        "question": "Are there age restrictions?",
+        "answer": "Insurance is available for people aged 0 to 70. For those over 70, terms are discussed individually."
+      }
+    ],
+    "sidebar": {
+      "title": "Still have questions?",
+      "description": "Our specialists will answer any questions about insurance within 15 minutes",
+      "button": "Message on WhatsApp"
+    }
+  },
+  "contact": {
+    "label": "CONTACTS",
+    "title": "Get",
+    "titleHighlight": "insurance",
+    "titleEnd": "today",
+    "description": "Fill out the form and we'll contact you via WhatsApp to complete the process. It takes 15-20 minutes.",
+    "contactUs": "Contact Us",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "email": "Email",
+    "workHours": "Working Hours",
+    "workHoursValue": "Mon-Sat: 10:00 - 19:00",
+    "clientsBadge": "Over",
+    "clientsBadgeEnd": "satisfied clients",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "John Smith",
+      "phone": "Phone / WhatsApp",
+      "phonePlaceholder": "+995 599 123 456",
+      "plan": "Insurance Type",
+      "message": "Additional information",
+      "messagePlaceholder": "Specify number of people, special requests...",
+      "optional": "optional",
+      "submit": "Send via WhatsApp",
+      "privacyNote": "By clicking the button, you agree to the processing of personal data",
+      "submitting": "Submitting..."
+    },
+    "success": {
+      "title": "Thank you for your request!",
+      "message": "WhatsApp should have opened. If not, write to us directly.",
+      "openWhatsapp": "Open WhatsApp"
+    }
+  },
+  "testimonials": {
+    "label": "TESTIMONIALS",
+    "title": "What our",
+    "titleHighlight": "clients say",
+    "description": "Real reviews from tourists and expats who have already got insurance",
+    "stats": {
+      "clients": "Happy clients",
+      "rating": "Average rating",
+      "processing": "Processing",
+      "processingTime": "15 min",
+      "support": "Support"
+    }
+  },  "referral": {
+    "label": "LOYALTY PROGRAM",
+    "title": "Invite friends —",
+    "titleHighlight": "get a discount!",
+    "description": "Bring friends and get a discount on your insurance. Bring enough friends — get insurance for free!",
+    "steps": [
+      { "title": "Invite a friend", "description": "Tell your friends about our insurance and mention your name when they apply" },
+      { "title": "They purchase insurance", "description": "When your friend buys insurance, we'll record the referral" },
+      { "title": "Get your discount", "description": "Use your discount immediately when signing up together or save it for future renewals/upgrades" }
+    ],
+    "planPrice": "Price",
+    "discountPerReferral": "Discount per referral",
+    "maxReferrals": "Maximum referrals",
+    "people": "people",
+    "yourDiscount": "Your discount",
+    "freeInsurance": "Free insurance!",
+    "example": "Example",
+    "exampleText": "Bring {max} friends and get {discount} GEL discount — your insurance will be free!",
+    "cta": "Want to learn more about our loyalty program?",
+    "contactUs": "Contact us",
+    "shareTitle": "Share with friends",
+    "shareText": "Get up to 300 GEL discount on insurance in Georgia! Visit Georgia referral program."
+  },  "footer": {
+    "description": "Medical insurance for tourists and expats in Georgia. Reliable protection at affordable prices.",
+    "navigation": "Navigation",
+    "insurancePlans": "Insurance Plans",
+    "contacts": "Contacts",
+    "phoneWhatsapp": "Phone / WhatsApp",
+    "workHours": "Working Hours",
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms and Conditions"
+  },
+  "cookie": {
+    "title": "🍪 We use cookies",
+    "message": "This site uses cookies to improve user experience.",
+    "learnMore": "Learn more",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "Learn how we collect, use and protect your personal information when applying for insurance.",
+    "lastUpdated": "Last updated: December 21, 2025",
+    "section1": {
+      "title": "1. General Provisions",
+      "p1": "This Privacy Policy defines the procedure for processing and protecting personal data collected through the visitgeorgia.online website, which provides medical insurance services for tourists and expats in Georgia.",
+      "p2": "By using the Site, you confirm your agreement with the terms of this Policy."
+    },
+    "section2": {
+      "title": "2. What Data We Collect",
+      "intro": "We may collect the following categories of users' personal data:",
+      "items": [
+        "Name and contact details (phone, email) provided in contact forms;",
+        "Information provided in messages when contacting through the Site or messengers;",
+        "Technical data: IP address, browser and device data, cookies, site page visit information;",
+        "Additional information that the user voluntarily provides when applying for insurance."
+      ]
+    },
+    "section3": {
+      "title": "3. Purposes of Personal Data Processing",
+      "intro": "Personal data is processed exclusively for the following purposes:",
+      "items": [
+        "Contacting the user and providing consultation on insurance products;",
+        "Preparation and processing of insurance policies;",
+        "Improving the quality of the Site and company services;",
+        "Compliance with Georgian legislation requirements;",
+        "Ensuring security and preventing abuse."
+      ],
+      "noSpam": "We do not use your data for advertising without your consent."
+    },
+    "section4": {
+      "title": "4. Data Transfer to Third Parties",
+      "intro": "We do not transfer your data to third parties, except in cases:",
+      "items": [
+        "If required by Georgian legislation;",
+        "If necessary for processing the insurance policy (transfer of data to the partner insurance company);",
+        "If you have given direct consent to the data transfer."
+      ],
+      "noSale": "We do not sell or distribute your data for commercial purposes."
+    },
+    "section5": {
+      "title": "5. Data Storage and Protection",
+      "p1": "We apply technical and organizational measures to protect personal data from unauthorized access, modification or deletion.",
+      "p2": "Only authorized employees working within their official duties have access to the data."
+    },
+    "section6": {
+      "title": "6. Use of Cookies",
+      "p1": "The Site uses cookies for proper operation and analysis of user interaction with the Site.",
+      "p2": "You can disable cookies in your browser settings, but this may affect the functionality of the Site."
+    },
+    "section7": {
+      "title": "7. User Rights",
+      "intro": "You have the right to:",
+      "items": [
+        "Request information about your personal data;",
+        "Require their correction or update;",
+        "Request data deletion if it does not contradict legislation;",
+        "Withdraw consent to data processing."
+      ],
+      "contact": "To exercise your rights, you can contact us using the contacts provided below."
+    },
+    "section8": {
+      "title": "8. Links to Third-Party Resources",
+      "text": "The Site may contain links to third-party websites. We are not responsible for their privacy policies and content. We recommend reviewing the rules of these sites separately."
+    },
+    "section9": {
+      "title": "9. Policy Changes",
+      "text": "We reserve the right to update this Policy at any time. The updated version takes effect from the moment of its posting on the Site."
+    },
+    "section10": {
+      "title": "10. Contacts",
+      "text": "For questions related to privacy policy and personal data processing, please contact:"
+    }
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "description": "Review the terms and conditions for medical insurance services.",
+    "lastUpdated": "Last updated: December 21, 2025",
+    "section1": {
+      "title": "1. General Provisions",
+      "p1": "These terms and conditions govern the use of the visitgeorgia.online website, which provides medical insurance services for tourists and expats in Georgia.",
+      "p2": "By using the Site, you confirm your agreement with these Terms. If you do not agree with them, please stop using the Site."
+    },
+    "section2": {
+      "title": "2. Purpose of the Site",
+      "p1": "The Site is intended to provide information about medical insurance services for tourists, expats, and residents of Georgia.",
+      "p2": "All information posted on the Site is for reference purposes and does not constitute a public offer or insurance contract. Specific insurance terms are determined by the partner insurance company."
+    },
+    "section3": {
+      "title": "3. Services",
+      "p1": "Actual insurance policy processing is carried out only after agreeing on details with a manager and confirming the application by the client.",
+      "p2": "We act as an intermediary between the client and the insurance company, helping to select the optimal insurance product and supporting the processing."
+    },
+    "section4": {
+      "title": "4. Liability",
+      "intro": "We are not responsible for:",
+      "items": [
+        "Use of information from the Site without consulting a specialist;",
+        "Possible technical failures or unavailability of the Site;",
+        "Actions of third parties affecting the operation of the Site;",
+        "Decisions of the insurance company on insurance claims;",
+        "Losses arising from the user's incorrect interpretation of information from the Site."
+      ],
+      "note": "The company reserves the right to change the content of the Site without prior notice."
+    },
+    "section5": {
+      "title": "5. Data Confidentiality",
+      "p1": "Personal data transmitted through contact forms or messengers is used only for communication with the user and processing of the insurance policy.",
+      "p2": "We do not transfer personal data to third parties, except for the partner insurance company and cases provided by Georgian legislation.",
+      "seePrivacy": "See more"
+    },
+    "section6": {
+      "title": "6. Intellectual Property",
+      "p1": "All text materials, logos, images, Site structure and design elements are the intellectual property of the company.",
+      "p2": "Any copying, distribution or reproduction of materials is prohibited without written permission from the company."
+    },
+    "section7": {
+      "title": "7. Prohibited Actions",
+      "intro": "The user is prohibited from:",
+      "items": [
+        "Using the Site for purposes that violate Georgian legislation;",
+        "Placing malicious software or performing actions that disrupt the operation of the Site;",
+        "Copying Site materials without the consent of the copyright holder;",
+        "Providing knowingly false information when applying for insurance."
+      ]
+    },
+    "section8": {
+      "title": "8. Amendments",
+      "text": "We reserve the right to update the Terms at any time. The updated version takes effect from the moment of publication on the Site."
+    },
+    "section9": {
+      "title": "9. Contacts",
+      "text": "For questions related to the terms and conditions of use of the site, please contact:"
+    }
+  },
+  "common": {
+    "backToHome": "Back to Home"
+  },
+  "insurancePage": {
+    "meta": {
+      "title": "Health Insurance Plans | Visit Georgia",
+      "description": "Medical insurance for tourists and expats in Georgia. Coverage up to $50,000, online processing in 15 minutes, 24/7 support."
+    },
+    "title": "All Insurance Plans",
+    "subtitle": "Choose the perfect insurance for your stay in Georgia. Coverage up to $50,000 for tourists and expats.",
+    "categories": {
+      "all": "All Plans",
+      "main": "Travel Insurance",
+      "longterm": "Medical Insurance",
+      "auto": "Auto Insurance"
+    },
+    "help": {
+      "title": "Can't decide?",
+      "description": "Our specialists will help you choose the optimal insurance plan for your needs.",
+      "button": "Message on WhatsApp"
+    },
+    "autoInsurance": {
+      "label": "AUTO INSURANCE",
+      "title": "Mandatory",
+      "titleHighlight": "MTPL Insurance",
+      "description": "Mandatory third-party liability insurance for foreign-registered vehicles in Georgia. Required upon entry to the country.",
+      "features": {
+        "mandatory": "Mandatory",
+        "mandatoryDesc": "Required for all foreign vehicles entering Georgia",
+        "coverage": "Damage Coverage",
+        "coverageDesc": "Up to 300,000 GEL for health, up to 50,000 GEL for property",
+        "periods": "Flexible Periods",
+        "periodsDesc": "15 days, 30 days, 90 days, or 1 year"
+      },
+      "pricingTitle": "MTPL Rates by Vehicle Category",
+      "table": {
+        "vehicle": "Vehicle",
+        "days": "days",
+        "year": "year"
+      },
+      "vehicles": {
+        "motorcycle": "Motorcycle",
+        "motorcycleDesc": "engine > 50 cc",
+        "car": "Passenger Car",
+        "carDesc": "up to 3500 kg, max 8 passengers",
+        "bus": "Bus",
+        "busDesc": "more than 8 passengers",
+        "truck": "Truck",
+        "truckDesc": "over 3500 kg",
+        "trailer": "Trailer",
+        "trailerDesc": "any type",
+        "agricultural": "Special Vehicles",
+        "agriculturalDesc": "agricultural & special machinery"
+      },
+      "limits": {
+        "health": "Health & Life",
+        "healthPerPerson": "Per injured person",
+        "healthTotal": "Total limit per incident",
+        "property": "Property",
+        "propertyPerPerson": "Per injured party",
+        "propertyTotal": "Total limit per incident"
+      },
+      "cta": "Need help with auto insurance?",
+      "ctaButton": "Get MTPL Insurance"
+    }
+  },
+  "insuranceOrder": {
+    "title": "Insurance Order",
+    "policyDetails": "Policy Details",
+    "customerDetails": "Customer Details",
+    "coverageType": "Insurance Package",
+    "policyType": "Policy Period",
+    "periodStart": "Start Date",
+    "periodEnd": "End Date",
+    "policyPrice": "Policy Price",
+    "citizenship": "Citizenship",
+    "firstNameEng": "First Name (ENG)",
+    "lastNameEng": "Last Name (ENG)",
+    "birthDate": "Birth Date",
+    "passportNumber": "Passport Number",
+    "cityInGeorgia": "City in Georgia (Location)",
+    "mobileNumber": "Mobile Number",
+    "email": "Email",
+    "submit": "Submit Order",
+    "submitting": "Submitting...",
+    "success": "Order submitted successfully! We will contact you soon.",
+    "error": "Something went wrong. Please try again.",
+    "required": "Required field",
+    "selectOption": "Select...",
+    "passportPhoto": "Passport Photo",
+    "uploadPassport": "Click to upload passport photo",
+    "scanPassport": "Scan & Auto-fill Details",
+    "scanning": "Scanning...",
+    "removePhoto": "Remove photo",
+    "scanSuccess": "Passport data extracted successfully!",
+    "scanFailed": "Could not auto-read passport. Please fill in details manually.",
+    "countries": {
+      "georgia": "Georgia",
+      "russia": "Russia",
+      "ukraine": "Ukraine",
+      "turkey": "Turkey",
+      "israel": "Israel",
+      "other": "Other"
+    },
+    "periods": {
+      "daily": "Daily Policy",
+      "months3": "3 Months",
+      "months6": "6 Months",
+      "year": "1 Year",
+      "month": "1 Month"
+    },
+    "paymentOption": "Payment Option",
+    "paymentQuarterly": "Every 3 mo.",
+    "paymentYearly": "Payment Yearly"
+  }
+}

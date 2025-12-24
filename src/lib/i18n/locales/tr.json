@@ -1,0 +1,662 @@
+{
+  "meta": {
+    "title": "Visit Georgia | Gürcistan'daki Yabancıların Her İhtiyacı İçin Sigorta",
+    "description": "Gürcistan'da turistler ve göçmenler için sağlık, seyahat ve araç sigortası. Hızlı online işlem, 50.000$'a kadar teminat, 7/24 destek."
+  },
+  "autoInsurancePage": {
+    "meta": {
+      "title": "Trafik Sigortası | Visit Georgia",
+      "description": "Gürcistan'a giren yabancı araçlar için zorunlu mali sorumluluk sigortası (Trafik). Hızlı online işlem, uygun fiyatlar."
+    },
+    "badge": "ZORUNLU SİGORTA",
+    "title": "Araç Sigortası",
+    "titleHighlight": "Trafik",
+    "subtitle": "Gürcistan'a giriş yapan yabancı araçlar için zorunlu mali sorumluluk sigortası",
+    "ctaButton": "Trafik Sigortası Al",
+    "seePrices": "Tarifeleri Gör",
+    "pricingTitle": "Araç Kategorisine Göre Tarifeler",
+    "pricingSubtitle": "Seyahat sürenize göre sigorta dönemini seçin",
+    "faqTitle": "Sıkça Sorulan Sorular",
+    "faqSubtitle": "Gürcistan'da araç sigortası hakkında sık sorulan sorulara cevaplar",
+    "faq": [
+      { "q": "Gürcistan'a girerken trafik sigortası zorunlu mu?", "a": "Evet, mali sorumluluk sigortası Gürcistan'a giren tüm yabancı araçlar için zorunludur." },
+      { "q": "Trafik sigortası nereden alınır?", "a": "Poliçe sınırda veya önceden online alınabilir. Size hızlı ve kuyruğa girmeden yardımcı olacağız." },
+      { "q": "Trafik sigortası neyi kapsar?", "a": "Sigorta üçüncü şahıslara verilen zararı kapsar: sağlık için 300.000 GEL'e, mal için 50.000 GEL'e kadar." },
+      { "q": "Ne kadar süreyle sigorta yaptırabilirim?", "a": "Mevcut dönemler: 15 gün, 30 gün, 90 gün veya 1 yıl. Seyahat sürenize göre seçin." },
+      { "q": "Trafik sigortası yaptırmazsam ne olur?", "a": "Geçerli trafik sigortası olmadan Gürcistan'a araçla giriş yapılamaz. Sınırda geri çevrilirsiniz." }
+    ],
+    "contactTitle": "Sigorta yaptırmaya hazır mısınız?",
+    "contactSubtitle": "Bizimle iletişime geçin ve poliçenizi dakikalar içinde alın"
+  },
+  "header": {
+    "about": "Hakkımızda",
+    "insurance": "Sigorta",
+    "referral": "Referanslar",
+    "pricing": "Fiyatlar",
+    "faq": "SSS",
+    "contacts": "İletişim",
+    "insuranceDropdown": {
+      "borderEntry": "Seyahat Sigortası",
+      "fullMedical": "Sağlık Sigortası",
+      "autoEntry": "Araç Sigortası"
+    }
+  },
+  "hero": {
+    "badge": "Gürcistan'daki Yabancıların Her İhtiyacı İçin Sigorta",
+    "title": "Gürcistan'da",
+    "titleHighlight": "Sigorta",
+    "subtitle": "Turistler ve göçmenler için 50.000$'a kadar teminat. 15 dakikada online işlem.",
+    "cta": "Sigorta Yaptır",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "clients": "Müşteri",
+    "support": "Destek",
+    "coverage": "Teminat",
+    "recommend": "Önerilen",
+    "perYear": "GEL /yıl",
+    "perDay": "GEL/gün",
+    "perMonth": "GEL/ay",
+    "forTourists": "Turistler ve göçmenler için 1 yıllık",
+    "orderNow": "Sipariş Ver",
+    "shortTerm": "Kısa Dönem",
+    "forTouristsShort": "Turistler için",
+    "referralBadge": "Arkadaş Davet Et — İndirim Kazan!",
+    "referralNew": "YENİ",
+    "referralTeaser": "Referanslar için 300 GEL'e kadar indirim veya ücretsiz sigorta"
+  },
+  "advantages": {
+    "label": "NEDEN BİZ",
+    "title": "Bizimle çalışmanın",
+    "titleHighlight": "avantajları",
+    "description": "Sigorta sürecini basit ve hızlı hale getiriyoruz",
+    "items": [
+      {
+        "title": "Hızlı İşlem",
+        "description": "15 dakikada online, evrak işi olmadan poliçenizi alın"
+      },
+      {
+        "title": "Geniş Teminat",
+        "description": "Hastane yatışı dahil 50.000$'a kadar tıbbi masraflar"
+      },
+      {
+        "title": "7/24 Destek",
+        "description": "Her durumda kesintisiz destek"
+      },
+      {
+        "title": "Doğrudan Ödeme",
+        "description": "Kliniklere doğrudan ödeme yapıyoruz — cebinizden para çıkmaz"
+      }
+    ]
+  },
+  "insurance": {
+    "label": "SİGORTA PLANLARI",
+    "title": "Sigortanızı",
+    "titleHighlight": "seçin",
+    "description": "Farklı ihtiyaçlar için beş sigorta türü. Tüm planlar 7/24 destek içerir.",
+    "recommend": "⭐ Önerilen",
+    "order": "Sipariş",
+    "needHelp": "Yardıma mı ihtiyacınız var?",
+    "writeUs": "Bize yazın",
+    "seeAll": "Tüm Sigorta Planlarını Gör",
+    "day": "gün",
+    "month": "ay",
+    "months3": "3 ay",
+    "months6": "6 ay",
+    "year": "yıl",
+    "plans": {
+      "visitor": {
+        "name": "VISITOR",
+        "description": "Kısa süreli konaklamalar için"
+      },
+      "standard": {
+        "name": "STANDARD",
+        "description": "Turistler ve göçmenler için 3 aylık"
+      },
+      "optimum": {
+        "name": "OPTIMUM",
+        "description": "Turistler ve göçmenler için 6 aylık"
+      },
+      "premium": {
+        "name": "PREMIUM",
+        "description": "Turistler ve göçmenler için 1 yıllık genişletilmiş sigorta"
+      },
+      "uno-active": {
+        "name": "UNO ACTIVE",
+        "description": "Uzun süreli konaklama için tam teminat"
+      },
+      "uno-active-plus": {
+        "name": "UNO ACTIVE +",
+        "description": "Uzun süreli konaklama için genişletilmiş teminat"
+      }
+    },
+    "coverage": {
+      "emergency": "Acil tıbbi yardım",
+      "hospitalization": "Hastaneye yatış",
+      "outpatient": "Ayakta tedavi",
+      "support247": "7/24 destek",
+      "medications": "İlaçlar",
+      "dentalEmergency": "Acil diş",
+      "dental": "Diş tedavisi",
+      "extendedCoverage": "Genişletilmiş teminat",
+      "plannedHospitalization": "Planlı hastaneye yatış",
+      "preventive": "Önleyici kontroller"
+    },
+    "moreDetails": "Detaylar",
+    "modalLabels": {
+      "covers": "SİGORTA TEMİNATLARI",
+      "faq": "SIK SORULAN SORULAR",
+      "close": "Kapat"
+    },
+    "planDetails": {
+      "visitor": {
+        "description": "Gürcistan ziyaretiniz sırasında gönül rahatlığının tadını çıkarın. Ziyaretçi sigortası, konaklamanız sırasında ortaya çıkabilecek beklenmedik sağlık giderlerini karşılayacaktır. Imedi L'nin uzman ekibi size kapsamlı sigorta danışmanlığı sunarak en kaliteli hizmeti garanti edecektir. Ziyaretçi sağlık sigortasını çevrimiçi satın alın ve poliçenizi dakikalar içinde e-posta ile alın.",
+        "coverage": [
+          { "icon": "phone", "title": "7/24 Telefon Desteği", "limit": "Sınırsız" },
+          { "icon": "emergency", "title": "Acil Tıbbi Yardım", "limit": "Sınırsız" },
+          { "icon": "outpatient", "title": "Acil Ayakta Tedavi Hizmetleri", "limit": "10.000 ₾" },
+          { "icon": "dental", "title": "Acil Diş Bakımı", "limit": "10.000 ₾" },
+          { "icon": "hospital", "title": "Hastalık Nedeniyle Acil Hastaneye Yatış", "limit": "6.500 ₾" },
+          { "icon": "repatriation", "title": "Geri Dönüş", "limit": "3.500 ₾" },
+          { "icon": "hospital", "title": "Kaza Nedeniyle Acil Hastaneye Yatış", "limit": "6.500 ₾" },
+          { "icon": "death", "title": "Kaza Sonucu Ölüm Teminatı", "limit": "1.000 ₾" },
+          { "icon": "aggregate", "title": "Toplam Sigorta Limiti", "limit": "30.000 ₾" }
+        ],
+        "faq": [
+          { "question": "Bu sigortayı kimler satın alabilir?", "answer": "Sigorta, 70 yaşın altında Gürcistan'da bulunan yabancı uyruklu ve vatansız turistler için tasarlanmıştır." },
+          { "question": "Sigorta neyi kapsar?", "answer": "Sigorta, bireysel sigorta dönemi boyunca acil tıbbi masrafları ve kaza sonucu ölümü kapsar." },
+          { "question": "Muafiyet nedir ve nasıl çalışır?", "answer": "Muafiyet, sigorta tazminatından düşülen ve sigortalı tarafından ödenen miktardır. Muafiyet vaka başına 100 GEL'dir ve sigorta kartı kapsamındaki tüm hizmetlere uygulanır (7/24 yardım hattı, geri dönüş ve acil tıbbi yardım hariç)." },
+          { "question": "Sigorta olayı durumunda ne yapmalısınız?", "answer": "Derhal uygun sağlık kuruluşuyla ve 7/24 yardım hattı 032 292 22 22 ile iletişime geçmelisiniz. Hizmet almak için lütfen sigorta poliçenizi ibraz edin." },
+          { "question": "Tıbbi hizmetlerde indirimler nasıl alınır?", "answer": "İndirim almak için sigortalının 24 saat çağrı merkezini araması, genel pratisyen hekim randevusu alması gerekir; hekim sorunu belirleyecek ve sigortacı tarafından belirlenen klinik için indirim kuponu düzenleyecektir." }
+        ]
+      },
+      "standard": {
+        "description": "3 aya kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için STANDARD sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
+        "coverage": [
+          { "icon": "phone", "title": "24 saat telefon danışmanlığı", "limit": "Sınırsız" },
+          { "icon": "emergency", "title": "Ambulans hizmeti", "limit": "Sınırsız" },
+          { "icon": "doctor", "title": "Kişisel doktor hizmeti", "limit": "Sınırsız" },
+          { "icon": "hospital", "title": "Acil hastaneye yatış (kaza)", "limit": "5.000 ₾ (%60)" },
+          { "icon": "outpatient", "title": "Acil ayakta tedavi hizmeti", "limit": "300 ₾ (%50)" },
+          { "icon": "dental", "title": "Acil Diş Bakımı", "limit": "10.000 ₾" }
+        ],
+        "faq": [
+          { "question": "Kimler sigortalanabilir?", "answer": "Yalnızca 1-69 yaş arası yabancı uyruklu vatandaşlar bu sözleşme kapsamında sigortalanabilir." },
+          { "question": "Sigorta hangi bölgede geçerli?", "answer": "Sigorta Gürcistan topraklarında geçerlidir (işgal altındaki bölgeler hariç)." },
+          { "question": "Bekleme süresi nedir?", "answer": "Bekleme süresi, sigorta başlangıç tarihinden itibaren hesaplanan ve bu süre zarfında masrafların karşılanmadığı dönemdir." },
+          { "question": "Geri ödeme başvurusu nasıl yapılır?", "answer": "Geri ödeme belgelerinin sunulması için son tarih, tıbbi hizmet ödemesinden itibaren 15 gündür. Geri ödeme nakit olmayan ödeme ile yapılır." },
+          { "question": "Sigorta neyi kapsamaz?", "answer": "Kapsanmayanlar: sigorta başlamadan önceki olaylar, çağrı merkezi bildirimi olmadan tedavi, psikiyatrik hastalıklar, alternatif tıp, protez ve implantlar, alkol/uyuşturucu kullanımı sonuçları." }
+        ]
+      },
+      "optimum": {
+        "description": "6 aya kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için OPTIMUM sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
+        "coverage": [
+          { "icon": "phone", "title": "24 saat telefon danışmanlığı", "limit": "Sınırsız" },
+          { "icon": "emergency", "title": "Ambulans hizmeti", "limit": "Sınırsız" },
+          { "icon": "doctor", "title": "Kişisel doktor hizmeti", "limit": "Sınırsız" },
+          { "icon": "hospital", "title": "Acil hastaneye yatış (kaza)", "limit": "5.000 ₾ (%60)" },
+          { "icon": "outpatient", "title": "Acil ayakta tedavi hizmeti", "limit": "300 ₾ (%50)" },
+          { "icon": "dental", "title": "Acil Diş Bakımı", "limit": "10.000 ₾" }
+        ],
+        "faq": [
+          { "question": "Kimler sigortalanabilir?", "answer": "Yalnızca 1-69 yaş arası yabancı uyruklu vatandaşlar bu sözleşme kapsamında sigortalanabilir." },
+          { "question": "Sigorta hangi bölgede geçerli?", "answer": "Sigorta Gürcistan topraklarında geçerlidir (işgal altındaki bölgeler hariç)." },
+          { "question": "Bekleme süresi nedir?", "answer": "Bekleme süresi, sigorta başlangıç tarihinden itibaren hesaplanan ve bu süre zarfında masrafların karşılanmadığı dönemdir." },
+          { "question": "Geri ödeme başvurusu nasıl yapılır?", "answer": "Geri ödeme belgelerinin sunulması için son tarih, tıbbi hizmet ödemesinden itibaren 15 gündür. Geri ödeme nakit olmayan ödeme ile yapılır." },
+          { "question": "Sigorta neyi kapsamaz?", "answer": "Kapsanmayanlar: sigorta başlamadan önceki olaylar, çağrı merkezi bildirimi olmadan tedavi, psikiyatrik hastalıklar, alternatif tıp, protez ve implantlar, alkol/uyuşturucu kullanımı sonuçları." }
+        ]
+      },
+      "premium": {
+        "description": "1 yıla kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için PREMIUM sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
+        "coverage": [
+          { "icon": "phone", "title": "24 saat telefon danışmanlığı", "limit": "Sınırsız" },
+          { "icon": "emergency", "title": "Ambulans hizmeti", "limit": "Sınırsız" },
+          { "icon": "doctor", "title": "Kişisel doktor hizmeti", "limit": "Sınırsız" },
+          { "icon": "hospital", "title": "Acil hastaneye yatış (kaza)", "limit": "5.000 ₾ (%60)" },
+          { "icon": "outpatient", "title": "Acil ayakta tedavi hizmeti", "limit": "300 ₾ (%50)" },
+          { "icon": "dental", "title": "Acil Diş Bakımı", "limit": "10.000 ₾" }
+        ],
+        "faq": [
+          { "question": "Kimler sigortalanabilir?", "answer": "Yalnızca 1-69 yaş arası yabancı uyruklu vatandaşlar bu sözleşme kapsamında sigortalanabilir." },
+          { "question": "Sigorta hangi bölgede geçerli?", "answer": "Sigorta Gürcistan topraklarında geçerlidir (işgal altındaki bölgeler hariç)." },
+          { "question": "Bekleme süresi nedir?", "answer": "Bekleme süresi, sigorta başlangıç tarihinden itibaren hesaplanan ve bu süre zarfında masrafların karşılanmadığı dönemdir." },
+          { "question": "Geri ödeme başvurusu nasıl yapılır?", "answer": "Geri ödeme belgelerinin sunulması için son tarih, tıbbi hizmet ödemesinden itibaren 15 gündür. Geri ödeme nakit olmayan ödeme ile yapılır." },
+          { "question": "Sigorta neyi kapsamaz?", "answer": "Kapsanmayanlar: sigorta başlamadan önceki olaylar, çağrı merkezi bildirimi olmadan tedavi, psikiyatrik hastalıklar, alternatif tıp, protez ve implantlar, alkol/uyuşturucu kullanımı sonuçları." }
+        ]
+      },
+      "uno-active": {
+        "description": "Gürcistan'da uzun süreli konaklama için UNO ACTIVE sağlık sigortası. Aile hekimi hizmetleri, acil ve planlı hastane yatışı, ayakta tedavi ve diş hizmetlerini kapsayan kapsamlı teminat.",
+        "coverage": [
+          { "icon": "phone", "title": "7/24 telefon danışmanlığı", "limit": "%100 — Limitsiz" },
+          { "icon": "doctor", "title": "Aile hekimi hizmetleri", "limit": "%100 — Limitsiz" },
+          { "icon": "emergency", "title": "Acil tıbbi yardım", "limit": "%100 — Limitsiz" },
+          { "icon": "hospital", "title": "Acil hastane yatışı", "limit": "%100 — 5.000 GEL" },
+          { "icon": "hospital", "title": "Planlı hastane yatışı (12 ay bekleme)", "limit": "%80 — 4.000 GEL" },
+          { "icon": "hospital", "title": "Partner kliniklerde gündüz hastanesi (12 ay)", "limit": "%50 — 4.000 GEL" },
+          { "icon": "maternity", "title": "Partner klinikte gebelik takibi", "limit": "%50 — 500 GEL" },
+          { "icon": "outpatient", "title": "Acil ayakta tedavi", "limit": "%100 — Limitsiz" },
+          { "icon": "outpatient", "title": "Planlı ayakta tedavi (belirli klinik)", "limit": "%60 — 800 GEL" },
+          { "icon": "outpatient", "title": "Planlı ayakta tedavi (partner klinikler)", "limit": "%50 — 800 GEL" },
+          { "icon": "medications", "title": "GPC-Pharmadepot'ta ilaçlar", "limit": "%50 — 800 GEL" },
+          { "icon": "preventive", "title": "Koruyucu sağlık taramaları", "limit": "%100 — Dönem başına 1x" },
+          { "icon": "dental", "title": "Acil diş hizmetleri", "limit": "%100 — 500 GEL" },
+          { "icon": "dental", "title": "Planlı diş (ana klinikler)", "limit": "%30 — 300 GEL" },
+          { "icon": "dental", "title": "İmplant (SGS, İsviçre)", "limit": "%60 — 1.500 GEL" },
+          { "icon": "dental", "title": "Planlı diş (ek klinikler)", "limit": "%50 — Limitsiz" },
+          { "icon": "dental", "title": "Dental BT, ortopantomogram", "limit": "%40 — 500 GEL" },
+          { "icon": "dental", "title": "Ortopedi ve ortodonti", "limit": "%10-60 indirim" }
+        ],
+        "faq": [
+          { "question": "UNO ACTIVE'i kimler satın alabilir?", "answer": "UNO ACTIVE, Gürcistan'da uzun süreli kalmayı planlayan turistler, göçmenler ve herkes için uygundur, 0-64 yaş arası." },
+          { "question": "Bekleme süresi nedir?", "answer": "Planlı hastane yatışı ve gündüz hastanesi için — 12 ay. Acil hizmetler için — bekleme süresi yoktur." },
+          { "question": "Gebelik kapsanıyor mu?", "answer": "Evet, gebelik takibi partner kliniklerde doktor yönlendirmesiyle %50 oranında 500 GEL limite kadar kapsanır." },
+          { "question": "Hangi diş hizmetleri dahil?", "answer": "Acil diş %100 (500 GEL), planlı %30 (300 GEL), SGS implant %60 (1500 GEL), BT %40 (500 GEL)." },
+          { "question": "İlaçlar kapsanıyor mu?", "answer": "Evet, GPC-Pharmadepot eczane ağında ilaçlar %50 oranında 800 GEL limite kadar kapsanır." }
+        ]
+      },
+      "uno-active-plus": {
+        "description": "Gürcistan'da uzun süreli konaklama için UNO ACTIVE+ genişletilmiş sağlık sigortası. Hastane yatışı için artırılmış limitler, genişletilmiş diş hizmetleri ve ek avantajlar.",
+        "coverage": [
+          { "icon": "phone", "title": "7/24 telefon danışmanlığı", "limit": "%100 — Limitsiz" },
+          { "icon": "doctor", "title": "Aile hekimi hizmetleri", "limit": "%100 — Limitsiz" },
+          { "icon": "emergency", "title": "Acil tıbbi yardım", "limit": "%100 — Limitsiz" },
+          { "icon": "hospital", "title": "Acil hastane yatışı", "limit": "%100 — 10.000 GEL" },
+          { "icon": "hospital", "title": "Planlı hastane yatışı (12 ay bekleme)", "limit": "%100 — 8.000 GEL" },
+          { "icon": "hospital", "title": "Partner kliniklerde gündüz hastanesi (12 ay)", "limit": "%60 — 8.000 GEL" },
+          { "icon": "maternity", "title": "Partner klinikte gebelik takibi", "limit": "%50 — 800 GEL" },
+          { "icon": "outpatient", "title": "Acil ayakta tedavi", "limit": "%100 — Limitsiz" },
+          { "icon": "outpatient", "title": "Planlı ayakta tedavi (belirli klinik)", "limit": "%70 — 1.500 GEL" },
+          { "icon": "outpatient", "title": "Planlı ayakta tedavi (partner klinikler)", "limit": "%60 — 1.500 GEL" },
+          { "icon": "medications", "title": "GPC-Pharmadepot'ta ilaçlar", "limit": "%55 — 1.500 GEL" },
+          { "icon": "preventive", "title": "Koruyucu sağlık taramaları", "limit": "%100 — Dönem başına 1x" },
+          { "icon": "dental", "title": "Acil diş hizmetleri", "limit": "%100 — Limitsiz" },
+          { "icon": "dental", "title": "Planlı diş (ana klinikler)", "limit": "%60 — 1.500 GEL" },
+          { "icon": "dental", "title": "İmplant (SGS, İsviçre)", "limit": "%60 — 1.500 GEL" },
+          { "icon": "dental", "title": "Planlı diş (ek klinikler)", "limit": "%50 — Limitsiz" },
+          { "icon": "dental", "title": "Dental BT, ortopantomogram", "limit": "%40 — 500 GEL" },
+          { "icon": "dental", "title": "Ortopedi ve ortodonti", "limit": "%10-60 indirim" }
+        ],
+        "faq": [
+          { "question": "UNO ACTIVE'den farkı nedir?", "answer": "UNO ACTIVE+ daha yüksek limitlere sahip: hastane 10.000 GEL'e kadar (5.000 yerine), planlı %100/8.000 GEL (%80/4.000 yerine), ayakta tedavi 1.500 GEL'e kadar." },
+          { "question": "Bekleme süresi nedir?", "answer": "Planlı hastane yatışı ve gündüz hastanesi için — 12 ay. Acil hizmetler için — bekleme süresi yoktur." },
+          { "question": "Gebelik kapsanıyor mu?", "answer": "Evet, gebelik takibi partner kliniklerde doktor yönlendirmesiyle %50 oranında 800 GEL limite kadar kapsanır." },
+          { "question": "Hangi diş hizmetleri dahil?", "answer": "Acil diş %100 limitsiz, planlı %60 (1500 GEL), SGS implant %60 (1500 GEL), BT %40 (500 GEL)." },
+          { "question": "İlaçlar kapsanıyor mu?", "answer": "Evet, GPC-Pharmadepot eczane ağında ilaçlar %55 oranında 1500 GEL limite kadar kapsanır." }
+        ]
+      }
+    }
+  },
+  "faq": {
+    "label": "SSS",
+    "title": "Sıkça Sorulan",
+    "titleHighlight": "Sorular",
+    "description": "Gürcistan'da sağlık sigortası hakkında popüler sorulara cevaplar",
+    "items": [
+      {
+        "question": "Sigorta için hangi belgeler gerekli?",
+        "answer": "Sigorta için sadece pasaport gereklidir. Tüm süreç 10-15 dakika sürer ve poliçe ödeme sonrası hemen e-posta ile gönderilir."
+      },
+      {
+        "question": "Sigorta ne zaman başlar?",
+        "answer": "Sigorta, poliçede belirtilen tarihten itibaren başlar. Başlangıç tarihini başvuru sırasında seçebilirsiniz."
+      },
+      {
+        "question": "Sigorta neleri kapsar?",
+        "answer": "Sigorta acil tıbbi yardım, hastaneye yatış, ayakta tedavi, reçeteli ilaçlar, acil diş tedavisi ve geri dönüş masraflarını kapsar."
+      },
+      {
+        "question": "İhtiyaç halinde sigortayı nasıl kullanırım?",
+        "answer": "Poliçenizde yazan 7/24 yardım hattını arayın. Operatör tıbbi yardımı organize eder ve klinikle her şeyi doğrudan koordine eder."
+      },
+      {
+        "question": "Sigortamı uzatabilir miyim?",
+        "answer": "Evet, mevcut poliçenizin süresi dolmadan önce istediğiniz zaman sigortanızı uzatabilirsiniz. Sadece bizimle iletişime geçin."
+      },
+      {
+        "question": "Yaş sınırlaması var mı?",
+        "answer": "Sigorta 0-70 yaş arası kişiler için geçerlidir. 70 yaş üstü için koşullar bireysel olarak değerlendirilir."
+      }
+    ],
+    "sidebar": {
+      "title": "Sorularınız mı var?",
+      "description": "Uzmanlarımız sigorta hakkındaki tüm sorularınızı 15 dakika içinde yanıtlayacak",
+      "button": "WhatsApp'tan yazın"
+    }
+  },
+  "contact": {
+    "label": "İLETİŞİM",
+    "title": "Bugün",
+    "titleHighlight": "sigorta",
+    "titleEnd": "yaptırın",
+    "description": "Formu doldurun, işlemi tamamlamak için WhatsApp üzerinden sizinle iletişime geçelim. 15-20 dakika sürer.",
+    "contactUs": "Bize Ulaşın",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "email": "E-posta",
+    "workHours": "Çalışma Saatleri",
+    "workHoursValue": "Pzt-Cmt: 10:00 - 19:00",
+    "clientsBadge": "",
+    "clientsBadgeEnd": "memnun müşteri",
+    "form": {
+      "name": "Adınız",
+      "namePlaceholder": "Ahmet Yılmaz",
+      "phone": "Telefon / WhatsApp",
+      "phonePlaceholder": "+995 599 123 456",
+      "plan": "Sigorta Türü",
+      "message": "Ek bilgi",
+      "messagePlaceholder": "Kişi sayısını, özel istekleri belirtin...",
+      "optional": "isteğe bağlı",
+      "submit": "WhatsApp'tan gönder",
+      "privacyNote": "Butona tıklayarak kişisel verilerin işlenmesini kabul ediyorsunuz",
+      "submitting": "Gönderiliyor..."
+    },
+    "success": {
+      "title": "Başvurunuz için teşekkürler!",
+      "message": "WhatsApp açılmış olmalı. Açılmadıysa bize doğrudan yazın.",
+      "openWhatsapp": "WhatsApp'ı Aç"
+    }
+  },
+  "testimonials": {
+    "label": "YORUMLAR",
+    "title": "Müşterilerimiz",
+    "titleHighlight": "ne diyor",
+    "description": "Sigorta yaptırmış turistler ve göçmenlerden gerçek yorumlar",
+    "stats": {
+      "clients": "Mutlu müşteri",
+      "rating": "Ortalama puan",
+      "processing": "İşlem",
+      "processingTime": "15 dk",
+      "support": "Destek"
+    }
+  },
+  "referral": {
+    "label": "Sadakat Programı",
+    "title": "Arkadaş Davet Et —",
+    "titleHighlight": "İndirim Kazan!",
+    "description": "Arkadaşlarınızı getirin ve sigortanızda indirim kazanın. Yeterince arkadaş getirin — sigortanız ücretsiz olsun!",
+    "steps": [
+      { "title": "Arkadaş Davet Et", "description": "Arkadaşlarınıza sigortamızdan bahsedin, başvuru sırasında adınızı belirtsinler" },
+      { "title": "Sigorta Satın Alırlar", "description": "Arkadaşınız sigorta satın aldığında, referansı kayıt altına alırız" },
+      { "title": "İndirim Kazan", "description": "İndirimi arkadaşlarla birlikte kayıt olurken hemen kullanın veya gelecekte yenileme/yükseltme için saklayın" }
+    ],
+    "planPrice": "Fiyat",
+    "discountPerReferral": "Referans başına indirim",
+    "maxReferrals": "Maksimum referans",
+    "people": "kişi",
+    "yourDiscount": "İndiriminiz",
+    "freeInsurance": "Ücretsiz sigorta!",
+    "example": "Örnek",
+    "exampleText": "{max} arkadaş getirin ve {discount} GEL indirim kazanın — sigortanız ücretsiz!",
+    "cta": "Sadakat programı hakkında daha fazla bilgi mi istiyorsunuz?",
+    "contactUs": "Bize Ulaşın",
+    "shareTitle": "Arkadaşlarınızla paylaşın",
+    "shareText": "Gürcistan'da sigortada 300 GEL'e kadar indirim! Visit Georgia yönlendirme programı."
+  },
+  "footer": {
+    "description": "Gürcistan'da turistler ve göçmenler için sağlık sigortası. Uygun fiyatlarla güvenilir koruma.",
+    "navigation": "Navigasyon",
+    "insurancePlans": "Sigorta Planları",
+    "contacts": "İletişim",
+    "phoneWhatsapp": "Telefon / WhatsApp",
+    "workHours": "Çalışma Saatleri",
+    "copyright": "Tüm hakları saklıdır.",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Koşulları"
+  },
+  "cookie": {
+    "title": "🍪 Çerezler kullanıyoruz",
+    "message": "Bu site kullanıcı deneyimini iyileştirmek için çerezler kullanır.",
+    "learnMore": "Daha fazla bilgi",
+    "accept": "Kabul Et",
+    "decline": "Reddet"
+  },
+  "privacy": {
+    "title": "Gizlilik Politikası",
+    "description": "Sigorta başvurusu yaparken kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu öğrenin.",
+    "lastUpdated": "Son güncelleme: 21 Aralık 2025",
+    "section1": {
+      "title": "1. Genel Hükümler",
+      "p1": "Bu Gizlilik Politikası, Gürcistan'daki turistler ve göçmenler için sağlık sigortası hizmetleri sunan visitgeorgia.online web sitesi aracılığıyla toplanan kişisel verilerin işlenmesi ve korunması prosedürünü tanımlar.",
+      "p2": "Siteyi kullanarak bu Politikanın şartlarını kabul etmiş olursunuz."
+    },
+    "section2": {
+      "title": "2. Hangi Verileri Topluyoruz",
+      "intro": "Kullanıcıların kişisel verilerinin aşağıdaki kategorilerini toplayabiliriz:",
+      "items": [
+        "İletişim formlarında belirtilen ad ve iletişim bilgileri (telefon, e-posta);",
+        "Site veya mesajlaşma uygulamaları aracılığıyla iletişim kurarken mesajlarda sağlanan bilgiler;",
+        "Teknik veriler: IP adresi, tarayıcı ve cihaz verileri, çerezler, site sayfa ziyaret bilgileri;",
+        "Kullanıcının sigorta başvurusu yaparken gönüllü olarak sağladığı ek bilgiler."
+      ]
+    },
+    "section3": {
+      "title": "3. Kişisel Verilerin İşlenme Amaçları",
+      "intro": "Kişisel veriler yalnızca aşağıdaki amaçlarla işlenir:",
+      "items": [
+        "Kullanıcıyla iletişim kurmak ve sigorta ürünleri hakkında danışmanlık sağlamak;",
+        "Sigorta poliçelerinin hazırlanması ve işlenmesi;",
+        "Site ve şirket hizmetlerinin kalitesini iyileştirmek;",
+        "Gürcistan mevzuatı gerekliliklerine uyum;",
+        "Güvenliği sağlamak ve kötüye kullanımı önlemek."
+      ],
+      "noSpam": "Verilerinizi izniniz olmadan reklam için kullanmıyoruz."
+    },
+    "section4": {
+      "title": "4. Verilerin Üçüncü Taraflara Aktarılması",
+      "intro": "Verilerinizi aşağıdaki durumlar dışında üçüncü taraflara aktarmıyoruz:",
+      "items": [
+        "Gürcistan mevzuatının gerektirdiği durumlarda;",
+        "Sigorta poliçesinin işlenmesi için gerekli olduğunda (verilerin ortak sigorta şirketine aktarılması);",
+        "Veri aktarımına doğrudan onay verdiğinizde."
+      ],
+      "noSale": "Verilerinizi ticari amaçlarla satmıyor veya dağıtmıyoruz."
+    },
+    "section5": {
+      "title": "5. Veri Saklama ve Koruma",
+      "p1": "Kişisel verileri yetkisiz erişim, değişiklik veya silmeye karşı korumak için teknik ve organizasyonel önlemler uyguluyoruz.",
+      "p2": "Verilere yalnızca resmi görevleri çerçevesinde çalışan yetkili çalışanlar erişebilir."
+    },
+    "section6": {
+      "title": "6. Çerez Kullanımı",
+      "p1": "Site, düzgün çalışma ve kullanıcının siteyle etkileşimini analiz etmek için çerezler kullanır.",
+      "p2": "Tarayıcı ayarlarınızda çerezleri devre dışı bırakabilirsiniz, ancak bu Sitenin işlevselliğini etkileyebilir."
+    },
+    "section7": {
+      "title": "7. Kullanıcı Hakları",
+      "intro": "Aşağıdaki haklara sahipsiniz:",
+      "items": [
+        "Kişisel verileriniz hakkında bilgi talep etmek;",
+        "Bunların düzeltilmesini veya güncellenmesini istemek;",
+        "Mevzuata aykırı olmadığı sürece verilerin silinmesini talep etmek;",
+        "Veri işleme onayını geri çekmek."
+      ],
+      "contact": "Haklarınızı kullanmak için aşağıda verilen iletişim bilgilerinden bizimle iletişime geçebilirsiniz."
+    },
+    "section8": {
+      "title": "8. Üçüncü Taraf Kaynaklara Bağlantılar",
+      "text": "Site, üçüncü taraf web sitelerine bağlantılar içerebilir. Bunların gizlilik politikalarından ve içeriklerinden sorumlu değiliz. Bu sitelerin kurallarını ayrıca incelemenizi öneririz."
+    },
+    "section9": {
+      "title": "9. Politika Değişiklikleri",
+      "text": "Bu Politikayı istediğimiz zaman güncelleme hakkını saklı tutuyoruz. Güncellenen sürüm, Sitede yayınlandığı andan itibaren yürürlüğe girer."
+    },
+    "section10": {
+      "title": "10. İletişim",
+      "text": "Gizlilik politikası ve kişisel veri işleme ile ilgili sorularınız için lütfen iletişime geçin:"
+    }
+  },
+  "terms": {
+    "title": "Kullanım Koşulları",
+    "description": "Sağlık sigortası hizmetleri için kullanım koşullarını inceleyin.",
+    "lastUpdated": "Son güncelleme: 21 Aralık 2025",
+    "section1": {
+      "title": "1. Genel Hükümler",
+      "p1": "Bu kullanım koşulları, Gürcistan'daki turistler ve göçmenler için sağlık sigortası hizmetleri sunan visitgeorgia.online web sitesinin kullanımını düzenler.",
+      "p2": "Siteyi kullanarak bu Koşulları kabul ettiğinizi onaylarsınız. Kabul etmiyorsanız, lütfen Siteyi kullanmayı bırakın."
+    },
+    "section2": {
+      "title": "2. Sitenin Amacı",
+      "p1": "Site, turistler, göçmenler ve Gürcistan sakinleri için sağlık sigortası hizmetleri hakkında bilgi sağlamak amacıyla tasarlanmıştır.",
+      "p2": "Sitede yayınlanan tüm bilgiler referans amaçlıdır ve kamuya açık teklif veya sigorta sözleşmesi niteliği taşımaz. Belirli sigorta koşulları ortak sigorta şirketi tarafından belirlenir."
+    },
+    "section3": {
+      "title": "3. Hizmetler",
+      "p1": "Gerçek sigorta poliçesi işlemleri yalnızca bir yöneticiyle ayrıntılar üzerinde anlaştıktan ve başvuru müşteri tarafından onaylandıktan sonra gerçekleştirilir.",
+      "p2": "Müşteri ile sigorta şirketi arasında aracı olarak hareket ediyor, en uygun sigorta ürününü seçmeye yardımcı oluyor ve işlem sürecini destekliyoruz."
+    },
+    "section4": {
+      "title": "4. Sorumluluk",
+      "intro": "Aşağıdakilerden sorumlu değiliz:",
+      "items": [
+        "Bir uzmanla danışmadan Siteden bilgi kullanımı;",
+        "Olası teknik arızalar veya Sitenin erişilememesi;",
+        "Sitenin çalışmasını etkileyen üçüncü taraf eylemleri;",
+        "Sigorta talepleri hakkında sigorta şirketinin kararları;",
+        "Kullanıcının Siteden bilgileri yanlış yorumlamasından kaynaklanan kayıplar."
+      ],
+      "note": "Şirket, önceden haber vermeksizin Site içeriğini değiştirme hakkını saklı tutar."
+    },
+    "section5": {
+      "title": "5. Veri Gizliliği",
+      "p1": "İletişim formları veya mesajlaşma uygulamaları aracılığıyla iletilen kişisel veriler yalnızca kullanıcıyla iletişim ve sigorta poliçesi işlemleri için kullanılır.",
+      "p2": "Kişisel verileri, ortak sigorta şirketi ve Gürcistan mevzuatı tarafından öngörülen durumlar dışında üçüncü taraflara aktarmıyoruz.",
+      "seePrivacy": "Daha fazla gör"
+    },
+    "section6": {
+      "title": "6. Fikri Mülkiyet",
+      "p1": "Tüm metin materyalleri, logolar, görseller, Site yapısı ve tasarım öğeleri şirketin fikri mülkiyetidir.",
+      "p2": "Materyallerin herhangi bir şekilde kopyalanması, dağıtılması veya çoğaltılması şirketin yazılı izni olmadan yasaktır."
+    },
+    "section7": {
+      "title": "7. Yasaklanan Eylemler",
+      "intro": "Kullanıcının aşağıdakileri yapması yasaktır:",
+      "items": [
+        "Siteyi Gürcistan mevzuatını ihlal eden amaçlarla kullanmak;",
+        "Kötü amaçlı yazılım yerleştirmek veya Sitenin çalışmasını bozan eylemler gerçekleştirmek;",
+        "Telif hakkı sahibinin izni olmadan Site materyallerini kopyalamak;",
+        "Sigorta başvurusunda bilerek yanlış bilgi vermek."
+      ]
+    },
+    "section8": {
+      "title": "8. Değişiklikler",
+      "text": "Koşulları istediğimiz zaman güncelleme hakkını saklı tutuyoruz. Güncellenen sürüm, Sitede yayınlandığı andan itibaren yürürlüğe girer."
+    },
+    "section9": {
+      "title": "9. İletişim",
+      "text": "Site kullanım koşulları ile ilgili sorularınız için lütfen iletişime geçin:"
+    }
+  },
+  "common": {
+    "backToHome": "Ana Sayfaya Dön"
+  },
+  "insurancePage": {
+    "meta": {
+      "title": "Sağlık Sigortası Planları | Visit Georgia",
+      "description": "Gürcistan'da turistler ve göçmenler için sağlık sigortası. 50.000$'a kadar teminat, 15 dakikada online işlem, 7/24 destek."
+    },
+    "title": "Tüm Sigorta Planları",
+    "subtitle": "Gürcistan'daki konaklamanız için mükemmel sigortayı seçin. Turistler ve göçmenler için $50,000'a kadar kapsam.",
+    "categories": {
+      "all": "Tüm Planlar",
+      "main": "Seyahat Sigortası",
+      "longterm": "Sağlık Sigortası",
+      "auto": "Araç Sigortası"
+    },
+    "help": {
+      "title": "Karar veremiyor musunuz?",
+      "description": "Uzmanlarımız ihtiyaçlarınıza en uygun sigorta planını seçmenize yardımcı olacaktır.",
+      "button": "WhatsApp'tan Yazın"    },
+    "autoInsurance": {
+      "label": "OTO SİGORTA",
+      "title": "Zorunlu",
+      "titleHighlight": "Trafik Sigortası",
+      "description": "Gürcistan'da yabancı plakalı araçlar için zorunlu mali sorumluluk sigortası. Ülkeye girişte gereklidir.",
+      "features": {
+        "mandatory": "Zorunlu",
+        "mandatoryDesc": "Gürcistan'a giren tüm yabancı araçlar için zorunludur",
+        "coverage": "Hasar Kapsamı",
+        "coverageDesc": "Sağlık için 300,000 GEL'e, mal için 50,000 GEL'e kadar",
+        "periods": "Esnek Süreler",
+        "periodsDesc": "15 gün, 30 gün, 90 gün veya 1 yıl"
+      },
+      "pricingTitle": "Araç Kategorisine Göre Trafik Sigortası Tarifeleri",
+      "table": {
+        "vehicle": "Araç",
+        "days": "gün",
+        "year": "yıl"
+      },
+      "vehicles": {
+        "motorcycle": "Motosiklet",
+        "motorcycleDesc": "motor > 50 cc",
+        "car": "Binek Otomobil",
+        "carDesc": "3500 kg'a kadar, maks. 8 yolcu",
+        "bus": "Otobüs",
+        "busDesc": "8'den fazla yolcu",
+        "truck": "Kamyon",
+        "truckDesc": "3500 kg üzeri",
+        "trailer": "Römork",
+        "trailerDesc": "her tür",
+        "agricultural": "Özel Araçlar",
+        "agriculturalDesc": "tarım ve özel makineler"
+      },
+      "limits": {
+        "health": "Sağlık ve Yaşam",
+        "healthPerPerson": "Kişi başına",
+        "healthTotal": "Olay başına toplam limit",
+        "property": "Mal",
+        "propertyPerPerson": "Mağdur başına",
+        "propertyTotal": "Olay başına toplam limit"
+      },
+      "cta": "Oto sigortası konusunda yardıma mı ihtiyacınız var?",
+      "ctaButton": "Trafik Sigortası Al"
+    }
+  },
+  "insuranceOrder": {
+    "title": "Sigorta Başvurusu",
+    "policyDetails": "Poliçe Detayları",
+    "customerDetails": "Müşteri Bilgileri",
+    "coverageType": "Sigorta Paketi",
+    "policyType": "Poliçe Süresi",
+    "periodStart": "Başlangıç Tarihi",
+    "periodEnd": "Bitiş Tarihi",
+    "policyPrice": "Poliçe Fiyatı",
+    "citizenship": "Vatandaşlık",
+    "firstNameEng": "Ad (ENG)",
+    "lastNameEng": "Soyad (ENG)",
+    "birthDate": "Doğum Tarihi",
+    "passportNumber": "Pasaport Numarası",
+    "cityInGeorgia": "Gürcistan'daki Şehir (Konum)",
+    "mobileNumber": "Cep Telefonu",
+    "email": "E-posta",
+    "submit": "Başvuruyu Gönder",
+    "submitting": "Gönderiliyor...",
+    "success": "Başvurunuz başarıyla gönderildi! En kısa sürede sizinle iletişime geçeceğiz.",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "required": "Zorunlu alan",
+    "selectOption": "Seçiniz...",
+    "passportPhoto": "Pasaport Fotoğrafı",
+    "uploadPassport": "Pasaport fotoğrafı yüklemek için tıklayın",
+    "scanPassport": "Tara ve Bilgileri Doldur",
+    "scanning": "Taranıyor...",
+    "removePhoto": "Fotoğrafı Sil",
+    "scanSuccess": "Pasaport bilgileri başarıyla alındı!",
+    "scanFailed": "Pasaport okunamadı. Lütfen bilgileri manuel olarak girin.",
+    "countries": {
+      "georgia": "Gürcistan",
+      "russia": "Rusya",
+      "ukraine": "Ukrayna",
+      "turkey": "Türkiye",
+      "israel": "İsrail",
+      "other": "Diğer"
+    },
+    "periods": {
+      "daily": "Günlük Poliçe",
+      "months3": "3 Ay",
+      "months6": "6 Ay",
+      "year": "1 Yıl",
+      "month": "1 Ay"
+    },
+    "paymentOption": "Ödeme Seçeneği",
+    "paymentQuarterly": "Her 3 ay",
+    "paymentYearly": "Yıllık ödeme"
+  }
+}

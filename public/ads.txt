@@ -1,0 +1,3 @@
+# Google AdSense / Google Ads
+# Format: <ad network domain>, <publisher ID>, <relationship type>, <certification authority ID>
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

@@ -1,0 +1,8 @@
+# Visit Georgia Insurance Security Contact
+# https://securitytxt.org/
+
+Contact: mailto:info@visitgeorgia.online
+Contact: https://wa.me/995591196300
+Preferred-Languages: en, ru, ka
+Canonical: https://visitgeorgia.online/.well-known/security.txt
+Expires: 2026-12-31T23:59:59.000Z

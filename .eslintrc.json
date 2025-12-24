@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc.json",
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
+  "rules": {
+    // TypeScript
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/prefer-as-const": "error",
+    
+    // React
+    "react/jsx-no-target-blank": "error",
+    "react/self-closing-comp": "error",
+    "react/jsx-curly-brace-presence": ["error", { "props": "never", "children": "never" }],
+    
+    // General
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "prefer-const": "error",
+    "no-var": "error",
+    "eqeqeq": ["error", "always"],
+    
+    // Import
+    "import/no-duplicates": "error",
+    "import/order": ["error", {
+      "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+      "newlines-between": "never",
+      "alphabetize": { "order": "asc" }
+    }]
+  },
+  "ignorePatterns": ["node_modules/", ".next/", "out/", "public/"]
+}
