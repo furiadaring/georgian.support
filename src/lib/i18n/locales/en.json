@@ -40,16 +40,16 @@
     }
   },
   "hero": {
-    "badge": "Insurance for Every Need Foreigners Have in Georgia",
-    "title": "Insurance",
-    "titleHighlight": "in Georgia",
-    "subtitle": "Coverage up to $50,000 for tourists and expats. Online processing in 15 minutes.",
-    "cta": "Get Insurance",
+    "badge": "Your trusted partner in Georgia",
+    "title": "Medical Insurance",
+    "titleHighlight": "for your stay in Georgia",
+    "subtitle": "Insurance policies for tourists and residents",
+    "cta": "Get Started",
     "whatsapp": "WhatsApp",
     "telegram": "Telegram",
-    "clients": "Clients",
-    "support": "Support",
-    "coverage": "Coverage",
+    "clients": "Happy clients",
+    "support": "Always available",
+    "coverage": "Maximum protection",
     "recommend": "Recommended",
     "perYear": "GEL /year",
     "perDay": "GEL/day",
@@ -63,22 +63,22 @@
     "referralTeaser": "Up to 300 GEL off or free insurance for referrals"
   },
   "advantages": {
-    "label": "WHY US",
-    "title": "Advantages",
-    "titleHighlight": "of working with us",
-    "description": "We make the insurance process simple and fast",
+    "label": "OUR ADVANTAGES",
+    "title": "Why choose",
+    "titleHighlight": "us",
+    "description": "We process insurance policies quickly, simply and without unnecessary formalities",
     "items": [
       {
         "title": "Fast Processing",
-        "description": "Get your policy in 15 minutes online without paperwork"
+        "description": "Policy ready in 15 minutes — no office visit or paperwork needed"
       },
       {
-        "title": "Wide Coverage",
-        "description": "Medical expenses up to $50,000, including hospitalization"
+        "title": "Coverage up to $50,000",
+        "description": "Hospitalization, surgeries, tests and consultations — all included"
       },
       {
         "title": "24/7 Support",
-        "description": "Round-the-clock support in any situation"
+        "description": "Our consultants are available around the clock in any situation"
       },
       {
         "title": "Direct Billing",
@@ -87,10 +87,10 @@
     ]
   },
   "insurance": {
-    "label": "INSURANCE PLANS",
-    "title": "Choose",
-    "titleHighlight": "your insurance",
-    "description": "Five types of insurance for different needs. All plans include 24/7 support.",
+    "label": "INSURANCE PROGRAMS",
+    "title": "Find your",
+    "titleHighlight": "perfect plan",
+    "description": "From short-term tourist coverage to full annual protection — we have a solution for everyone",
     "recommend": "⭐ Recommended",
     "order": "Order",
     "needHelp": "Need help?",
@@ -103,27 +103,27 @@
     "year": "year",
     "plans": {
       "visitor": {
-        "name": "VISITOR",
+        "name": "DAILY INSURANCE",
         "description": "For tourists on a short stay"
       },
       "standard": {
-        "name": "STANDARD",
+        "name": "EMERGENCY STANDARD",
         "description": "For tourists and expats for 3 months"
       },
       "optimum": {
-        "name": "OPTIMUM",
+        "name": "EMERGENCY EXTENDED",
         "description": "For tourists and expats for 6 months"
       },
       "premium": {
-        "name": "PREMIUM",
+        "name": "EMERGENCY FLEXI",
         "description": "Extended insurance for tourists and expats for 1 year"
       },
       "uno-active": {
-        "name": "UNO ACTIVE",
+        "name": "MEDICAL STANDARD",
         "description": "Full coverage for long-term stay"
       },
       "uno-active-plus": {
-        "name": "UNO ACTIVE +",
+        "name": "MEDICAL FLEXI",
         "description": "Extended coverage for long-term stay"
       }
     },
@@ -147,7 +147,7 @@
     },
     "planDetails": {
       "visitor": {
-        "description": "Enjoy peace of mind during your visit to Georgia. Visitor insurance will cover the unexpected health-related expenses that can arise during your stay. Imedi L's expert team will provide you with comprehensive insurance consultations, guaranteeing top-quality service. Buy visitor health insurance online and receive your policy via email within minutes.",
+        "description": "DAILY INSURANCE - Enjoy peace of mind during your visit to Georgia. This insurance covers unexpected health-related expenses that can arise during your stay. Our expert team provides comprehensive insurance consultations, guaranteeing top-quality service. Buy health insurance online and receive your policy via email within minutes.",
         "coverage": [
           { "icon": "phone", "title": "24/7 Phone Support", "limit": "Unlimited" },
           { "icon": "emergency", "title": "Emergency Medical Assistance", "limit": "Unlimited" },
@@ -168,7 +168,7 @@
         ]
       },
       "standard": {
-        "description": "STANDARD insurance program for foreign citizens staying in Georgia for up to 3 months. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
+        "description": "EMERGENCY STANDARD insurance program for foreign citizens staying in Georgia for up to 3 months. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
         "coverage": [
           { "icon": "phone", "title": "24-hour phone consultation", "limit": "Unlimited" },
           { "icon": "emergency", "title": "Ambulance medical service", "limit": "Unlimited" },
@@ -186,7 +186,7 @@
         ]
       },
       "optimum": {
-        "description": "OPTIMUM insurance program for foreign citizens staying in Georgia for up to 6 months. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
+        "description": "EMERGENCY EXTENDED insurance program for foreign citizens staying in Georgia for up to 6 months. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
         "coverage": [
           { "icon": "phone", "title": "24-hour phone consultation", "limit": "Unlimited" },
           { "icon": "emergency", "title": "Ambulance medical service", "limit": "Unlimited" },
@@ -204,7 +204,7 @@
         ]
       },
       "premium": {
-        "description": "PREMIUM insurance program for foreign citizens staying in Georgia for up to 1 year. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
+        "description": "EMERGENCY FLEXI insurance program for foreign citizens staying in Georgia for up to 1 year. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
         "coverage": [
           { "icon": "phone", "title": "24-hour phone consultation", "limit": "Unlimited" },
           { "icon": "emergency", "title": "Ambulance medical service", "limit": "Unlimited" },
@@ -222,7 +222,7 @@
         ]
       },
       "uno-active": {
-        "description": "UNO ACTIVE medical insurance for long-term stay in Georgia. Comprehensive coverage including family doctor services, emergency and planned hospital care, outpatient services and dental care.",
+        "description": "MEDICAL STANDARD insurance for long-term stay in Georgia. Comprehensive coverage including family doctor services, emergency and planned hospital care, outpatient services and dental care.",
         "coverage": [
           { "icon": "phone", "title": "24/7 phone consultation", "limit": "100% — Unlimited" },
           { "icon": "doctor", "title": "Family doctor services", "limit": "100% — Unlimited" },
@@ -244,7 +244,7 @@
           { "icon": "dental", "title": "Orthopedic & orthodontic services", "limit": "10-60% discount" }
         ],
         "faq": [
-          { "question": "Who can purchase UNO ACTIVE?", "answer": "UNO ACTIVE is suitable for tourists, expats, and anyone planning a long-term stay in Georgia, aged 0 to 64 years." },
+          { "question": "Who can purchase MEDICAL STANDARD?", "answer": "MEDICAL STANDARD is suitable for tourists, expats, and anyone planning a long-term stay in Georgia, aged 0 to 64 years." },
           { "question": "What is the waiting period?", "answer": "For planned hospitalization and day hospital — 12 months. For emergency services — no waiting period." },
           { "question": "Is pregnancy covered?", "answer": "Yes, pregnancy care is covered at 50% with 500 GEL limit at partner clinics by personal doctor referral." },
           { "question": "What dental services are included?", "answer": "Emergency dental 100% (500 GEL), planned 30% (300 GEL), SGS implants 60% (1500 GEL), dental CT 40% (500 GEL)." },
@@ -252,7 +252,7 @@
         ]
       },
       "uno-active-plus": {
-        "description": "UNO ACTIVE+ enhanced medical insurance for long-term stay in Georgia. Extended coverage with higher limits for hospital care, expanded dental services and additional benefits.",
+        "description": "MEDICAL FLEXI enhanced medical insurance for long-term stay in Georgia. Extended coverage with higher limits for hospital care, expanded dental services and additional benefits.",
         "coverage": [
           { "icon": "phone", "title": "24/7 phone consultation", "limit": "100% — Unlimited" },
           { "icon": "doctor", "title": "Family doctor services", "limit": "100% — Unlimited" },
@@ -274,7 +274,7 @@
           { "icon": "dental", "title": "Orthopedic & orthodontic services", "limit": "10-60% discount" }
         ],
         "faq": [
-          { "question": "What is the difference from UNO ACTIVE?", "answer": "UNO ACTIVE+ has higher limits: hospital up to 10,000 GEL (vs 5,000), planned hospital 100%/8,000 GEL (vs 80%/4,000), outpatient up to 1,500 GEL." },
+          { "question": "What is the difference from MEDICAL STANDARD?", "answer": "MEDICAL FLEXI has higher limits: hospital up to 10,000 GEL (vs 5,000), planned hospital 100%/8,000 GEL (vs 80%/4,000), outpatient up to 1,500 GEL." },
           { "question": "What is the waiting period?", "answer": "For planned hospitalization and day hospital — 12 months. For emergency services — no waiting period." },
           { "question": "Is pregnancy covered?", "answer": "Yes, pregnancy care is covered at 50% with 800 GEL limit at partner clinics by personal doctor referral." },
           { "question": "What dental services are included?", "answer": "Emergency dental 100% unlimited, planned 60% (1500 GEL), SGS implants 60% (1500 GEL), dental CT 40% (500 GEL)." },
@@ -285,9 +285,9 @@
   },
   "faq": {
     "label": "FAQ",
-    "title": "Frequently",
-    "titleHighlight": "Asked Questions",
-    "description": "Answers to popular questions about medical insurance in Georgia",
+    "title": "Crystal",
+    "titleHighlight": "Clear",
+    "description": "Everything you need to know before getting your insurance policy",
     "items": [
       {
         "question": "What documents are needed to get insurance?",
@@ -315,41 +315,49 @@
       }
     ],
     "sidebar": {
-      "title": "Still have questions?",
-      "description": "Our specialists will answer any questions about insurance within 15 minutes",
-      "button": "Message on WhatsApp"
+      "title": "Need guidance?",
+      "description": "We'll help you find the perfect plan for your needs",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram"
     }
   },
   "contact": {
-    "label": "CONTACTS",
-    "title": "Get",
-    "titleHighlight": "insurance",
-    "titleEnd": "today",
-    "description": "Fill out the form and we'll contact you via WhatsApp to complete the process. It takes 15-20 minutes.",
-    "contactUs": "Contact Us",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
+    "label": "GET IN TOUCH",
+    "title": "Ready to start? ",
+    "titleHighlight": "Contact us!",
+    "description": "Processing takes just 15 minutes. Choose your preferred way to reach us and get your policy today.",
+    "quickContact": "Quick Contact",
+    "quickContactDesc": "Choose your messenger — we reply within 5 minutes during working hours",
+    "whatsappBtn": "Message on WhatsApp",
+    "telegramBtn": "Message on Telegram",
+    "phone": "Phone",
     "email": "Email",
     "workHours": "Working Hours",
     "workHoursValue": "Mon-Sat: 10:00 - 19:00",
-    "clientsBadge": "Over",
-    "clientsBadgeEnd": "satisfied clients",
+    "trustBadge": "5000+ happy clients",
+    "trustBadgeDesc": "Operating since 2019, 4.9 rating",
+    "formTitle": "Submit Request",
+    "formDesc": "Fill out the form — we'll call back within 15 minutes",
+    "statMinutes": "minutes to process",
+    "statClients": "clients",
+    "statSupport": "support",
+    "statRating": "rating",
     "form": {
       "name": "Your Name",
-      "namePlaceholder": "John Smith",
+      "namePlaceholder": "What's your name?",
       "phone": "Phone / WhatsApp",
       "phonePlaceholder": "+995 599 123 456",
-      "plan": "Insurance Type",
-      "message": "Additional information",
-      "messagePlaceholder": "Specify number of people, special requests...",
+      "plan": "Which insurance interests you?",
+      "message": "Comment",
+      "messagePlaceholder": "Number of people, dates, questions...",
       "optional": "optional",
-      "submit": "Send via WhatsApp",
-      "privacyNote": "By clicking the button, you agree to the processing of personal data",
-      "submitting": "Submitting..."
+      "submit": "Submit Request",
+      "submitting": "Submitting...",
+      "privacyNote": "By clicking the button, you agree to our privacy policy"
     },
     "success": {
-      "title": "Thank you for your request!",
-      "message": "WhatsApp should have opened. If not, write to us directly.",
+      "title": "Excellent!",
+      "message": "WhatsApp opened with your request. If not — click the button below.",
       "openWhatsapp": "Open WhatsApp"
     }
   },
@@ -411,7 +419,7 @@
     "lastUpdated": "Last updated: December 21, 2025",
     "section1": {
       "title": "1. General Provisions",
-      "p1": "This Privacy Policy defines the procedure for processing and protecting personal data collected through the visitgeorgia.online website, which provides medical insurance services for tourists and expats in Georgia.",
+      "p1": "This Privacy Policy defines the procedure for processing and protecting personal data collected through the georgian.support website, which provides medical insurance services for tourists and expats in Georgia.",
       "p2": "By using the Site, you confirm your agreement with the terms of this Policy."
     },
     "section2": {
@@ -486,7 +494,7 @@
     "lastUpdated": "Last updated: December 21, 2025",
     "section1": {
       "title": "1. General Provisions",
-      "p1": "These terms and conditions govern the use of the visitgeorgia.online website, which provides medical insurance services for tourists and expats in Georgia.",
+      "p1": "These terms and conditions govern the use of the georgian.support website, which provides medical insurance services for tourists and expats in Georgia.",
       "p2": "By using the Site, you confirm your agreement with these Terms. If you do not agree with them, please stop using the Site."
     },
     "section2": {

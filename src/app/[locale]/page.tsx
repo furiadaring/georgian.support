@@ -6,7 +6,6 @@ import InsurancePlans from "@/components/sections/InsurancePlans";
 import FAQ from "@/components/sections/FAQ";
 import ContactForm from "@/components/sections/ContactForm";
 import Testimonials from "@/components/sections/Testimonials";
-import Referral from "@/components/sections/Referral";
 import { getDictionary, type Dictionary } from "@/lib/i18n";
 import { structuredData } from "@/lib/metadata";
 
@@ -22,7 +21,7 @@ export default async function Home({
   const dict = getDictionary(locale);
   
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -35,7 +34,6 @@ export default async function Home({
         <FAQ locale={locale} dict={dict} />
         <ContactForm locale={locale} dict={dict} />
         <Testimonials locale={locale} dict={dict} />
-        <Referral locale={locale} dict={dict} />
       </main>
       <Footer locale={locale} dict={dict} />
     </div>

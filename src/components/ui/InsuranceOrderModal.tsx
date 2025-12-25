@@ -593,8 +593,8 @@ export default function InsuranceOrderModal({
 
   if (!isOpen) return null;
 
-  const inputClass = "w-full px-4 py-3.5 text-base border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white hover:border-gray-300 outline-none";
-  const labelClass = "block text-sm font-semibold text-gray-600 mb-2.5";
+  const inputClass = "w-full px-4 py-3.5 text-base border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500/20 focus:border-red-500 transition-all bg-white hover:border-gray-300 outline-none";
+  const labelClass = "block text-sm font-semibold text-zinc-600 mb-2.5";
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4">
@@ -602,10 +602,10 @@ export default function InsuranceOrderModal({
       
       <div className="relative bg-white w-full sm:max-w-2xl lg:max-w-3xl sm:rounded-3xl rounded-t-3xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden shadow-2xl">
         {/* Header */}
-        <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4 flex items-center justify-between z-10">
+        <div className="sticky top-0 bg-linear-to-r from-red-600 to-red-500 px-6 py-4 flex items-center justify-between z-10">
           <div>
             <h2 className="text-white font-bold text-xl">{t.title || "Order Insurance"}</h2>
-            <p className="text-blue-100 text-sm mt-1">{planName} • {getPeriodText(planPeriod, t)}</p>
+            <p className="text-red-100 text-sm mt-1">{planName} • {getPeriodText(planPeriod, t)}</p>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-white/20 rounded-full transition-colors">
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -617,13 +617,13 @@ export default function InsuranceOrderModal({
         {/* Form */}
         <form onSubmit={handleSubmit} className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-gray-50/50">
           {/* Passport Upload */}
-          <div className="bg-white rounded-2xl p-5 border-2 border-dashed border-gray-200 hover:border-blue-300 transition-colors mb-6">
+          <div className="bg-white rounded-2xl p-5 border-2 border-dashed border-gray-200 hover:border-red-300 transition-colors mb-6">
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" id="passport-upload" />
             
             {!passportPreview ? (
               <label htmlFor="passport-upload" className="flex items-center gap-4 cursor-pointer group">
-                <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center group-hover:bg-blue-200 transition-all group-hover:scale-105">
-                  <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center group-hover:bg-red-200 transition-all group-hover:scale-105">
+                  <svg className="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -635,12 +635,12 @@ export default function InsuranceOrderModal({
               </label>
             ) : (
               <div className="flex items-center gap-4">
-                <div className="relative w-20 h-14 rounded-xl overflow-hidden bg-gray-200 flex-shrink-0 shadow-sm">
+                <div className="relative w-20 h-14 rounded-xl overflow-hidden bg-gray-200 shrink-0 shadow-sm">
                   <Image src={passportPreview} alt="Passport" fill className="object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   {isScanning ? (
-                    <div className="flex items-center gap-2 text-blue-600">
+                    <div className="flex items-center gap-2 text-red-600">
                       <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -664,8 +664,8 @@ export default function InsuranceOrderModal({
 
           {/* Period Section */}
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-5">
-            <h3 className="text-sm font-bold text-gray-800 mb-4 flex items-center gap-2">
-              <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-xs">1</span>
+            <h3 className="text-sm font-bold text-zinc-800 mb-4 flex items-center gap-2">
+              <span className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center text-red-600 text-xs">1</span>
               {t.policyDetails || "Coverage Period"}
             </h3>
             
@@ -701,24 +701,24 @@ export default function InsuranceOrderModal({
                       onClick={() => setPaymentOption("quarterly")}
                       className={`px-4 py-2.5 rounded-xl border-2 transition-all text-center whitespace-nowrap flex-1 ${
                         paymentOption === "quarterly" 
-                          ? "border-blue-500 bg-blue-50 ring-2 ring-blue-500/20" 
+                          ? "border-red-500 bg-red-50 ring-2 ring-red-500/20" 
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
                       <div className="text-xs font-medium text-gray-600">{(t as Record<string, string>).paymentQuarterly || "Every 3 mo."}</div>
-                      <div className="text-lg font-bold text-blue-600">{planPrice * 3} GEL</div>
+                      <div className="text-lg font-bold text-red-600">{planPrice * 3} GEL</div>
                     </button>
                     <button
                       type="button"
                       onClick={() => setPaymentOption("yearly")}
                       className={`px-4 py-2.5 rounded-xl border-2 transition-all text-center whitespace-nowrap flex-1 ${
                         paymentOption === "yearly" 
-                          ? "border-blue-500 bg-blue-50 ring-2 ring-blue-500/20" 
+                          ? "border-red-500 bg-red-50 ring-2 ring-red-500/20" 
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
                       <div className="text-xs font-medium text-gray-600">{(t as Record<string, string>).paymentYearly || "Yearly"}</div>
-                      <div className="text-lg font-bold text-blue-600">{planPrice * 12} GEL</div>
+                      <div className="text-lg font-bold text-red-600">{planPrice * 12} GEL</div>
                     </button>
                   </div>
                 </div>
@@ -770,7 +770,7 @@ export default function InsuranceOrderModal({
           </div>
 
           {/* Price Display */}
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl px-5 py-4 flex items-center justify-between mb-5 shadow-lg">
+          <div className="bg-linear-to-r from-red-600 to-red-500 rounded-2xl px-5 py-4 flex items-center justify-between mb-5 shadow-lg shadow-red-500/20">
             <span className="text-base font-medium text-white/90">{t.policyPrice || "Total Price"}</span>
             <span className="font-bold text-2xl text-white">
               {calculatedPrice} GEL
@@ -781,8 +781,8 @@ export default function InsuranceOrderModal({
 
           {/* Customer Details */}
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-5">
-            <h3 className="text-sm font-bold text-gray-800 mb-5 flex items-center gap-2">
-              <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-xs">2</span>
+            <h3 className="text-sm font-bold text-zinc-800 mb-5 flex items-center gap-2">
+              <span className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center text-red-600 text-xs">2</span>
               {t.customerDetails || "Personal Information"}
             </h3>
           <div className="space-y-5">
@@ -838,7 +838,7 @@ export default function InsuranceOrderModal({
                     control: () => "!min-h-[52px] !border-2 !border-gray-200 !rounded-xl hover:!border-gray-300 !shadow-none",
                     menu: () => "!rounded-xl !shadow-xl !border-2 !border-gray-200 !z-50",
                     option: ({ isFocused, isSelected }) => 
-                      `!py-2.5 !px-3 ${isSelected ? "!bg-blue-500 !text-white" : isFocused ? "!bg-blue-50" : ""}`,
+                      `!py-2.5 !px-3 ${isSelected ? "!bg-red-500 !text-white" : isFocused ? "!bg-red-50" : ""}`,
                     placeholder: () => "!text-gray-400",
                     input: () => "!text-base",
                     singleValue: () => "!text-base",
@@ -862,7 +862,7 @@ export default function InsuranceOrderModal({
                     control: () => "!min-h-[52px] !border-2 !border-gray-200 !rounded-xl hover:!border-gray-300 !shadow-none",
                     menu: () => "!rounded-xl !shadow-xl !border-2 !border-gray-200 !z-50",
                     option: ({ isFocused, isSelected }) => 
-                      `!py-2.5 !px-3 ${isSelected ? "!bg-blue-500 !text-white" : isFocused ? "!bg-blue-50" : ""}`,
+                      `!py-2.5 !px-3 ${isSelected ? "!bg-red-500 !text-white" : isFocused ? "!bg-red-50" : ""}`,
                     placeholder: () => "!text-gray-400",
                     input: () => "!text-base",
                     singleValue: () => "!text-base",
@@ -882,7 +882,7 @@ export default function InsuranceOrderModal({
                   country="ge"
                   value={formData.phone}
                   onChange={(phone) => setFormData(prev => ({ ...prev, phone }))}
-                  inputClass="!w-full !h-[52px] !text-base !border-2 !border-gray-200 !rounded-xl !pl-14 focus:!ring-2 focus:!ring-blue-500/20 focus:!border-blue-500"
+                  inputClass="!w-full !h-[52px] !text-base !border-2 !border-gray-200 !rounded-xl !pl-14 focus:!ring-2 focus:!ring-red-500/20 focus:!border-red-500"
                   buttonClass="!border-2 !border-gray-200 !rounded-l-xl !bg-gray-50 hover:!bg-gray-100 !h-[52px] !w-12"
                   containerClass="!w-full"
                   dropdownClass="!rounded-xl !shadow-xl !border-2 !border-gray-200 !bottom-full !top-auto !mb-1"
@@ -921,7 +921,7 @@ export default function InsuranceOrderModal({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg rounded-2xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 active:scale-[0.98] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-4 bg-linear-to-r from-red-600 to-red-500 text-white font-bold text-lg rounded-2xl shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/40 active:scale-[0.98] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <>

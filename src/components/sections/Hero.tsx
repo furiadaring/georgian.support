@@ -1,10 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { CONTACT } from "@/lib/constants";
 import { type Locale, type Dictionary, isRtlLocale } from "@/lib/i18n";
-import InsuranceOrderModal from "@/components/ui/InsuranceOrderModal";
 
 interface HeroProps {
   locale: Locale;
@@ -14,233 +12,144 @@ interface HeroProps {
 export default function Hero({ locale, dict }: HeroProps) {
   const t = dict.hero;
   const isRtl = isRtlLocale(locale);
-  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
-  
-  // Features for PREMIUM plan (matching planDetails coverage: phone, emergency, doctor, hospital, outpatient)
-  const features = [
-    dict.insurance.coverage.support247,
-    dict.insurance.coverage.emergency,
-    dict.insurance.coverage.hospitalization,
-    dict.insurance.coverage.outpatient
-  ];
 
   return (
-    <section className="relative min-h-screen bg-linear-to-br from-purple-800 via-violet-900 to-slate-900 overflow-hidden w-full" style={{ paddingTop: '80px' }}>
-      {/* Decorative gradient orbs */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-500/15 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-fuchsia-500/10 rounded-full blur-2xl pointer-events-none"></div>
+    <section className="relative min-h-[100svh] w-full bg-white overflow-hidden">
+      {/* Subtle gradient blobs - Georgian flag red */}
+      <div className="absolute -top-[20%] -right-[30%] md:-top-[40%] md:-right-[20%] w-[100vw] md:w-[80vw] h-[100vw] md:h-[80vw] rounded-full bg-gradient-to-br from-red-100 via-red-50 to-red-100 opacity-70 blur-[80px] md:blur-[120px] animate-[pulse_8s_ease-in-out_infinite]" />
+      <div className="absolute -bottom-[10%] -left-[30%] md:-bottom-[30%] md:-left-[20%] w-[80vw] md:w-[60vw] h-[80vw] md:h-[60vw] rounded-full bg-gradient-to-tr from-red-50 via-red-100 to-red-50 opacity-60 blur-[60px] md:blur-[100px] animate-[pulse_10s_ease-in-out_infinite_1s]" />
       
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-[10%] w-72 h-72 bg-purple-400/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-40 right-[15%] w-96 h-96 bg-violet-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-20 left-[20%] w-80 h-80 bg-fuchsia-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[50px_50px]" />
-      </div>
+      {/* Floating particles - Georgian red */}
+      <div className="absolute top-1/4 left-1/5 w-2 h-2 bg-red-500 rounded-full animate-[float_6s_ease-in-out_infinite] opacity-40" />
+      <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-red-600 rounded-full animate-[float_8s_ease-in-out_infinite_1s] opacity-30" />
+      <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-red-400 rounded-full animate-[float_7s_ease-in-out_infinite_2s] opacity-40" />
+      <div className="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-red-500 rounded-full animate-[float_5s_ease-in-out_infinite_0.5s] opacity-50" />
+      <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-red-400 rounded-full animate-[float_9s_ease-in-out_infinite_3s] opacity-30" />
 
       {/* Content */}
-      <div className="relative z-10 w-full min-h-screen flex items-center" style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '2rem', paddingRight: '2rem' }}>
-        <div className="w-full" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
+      <div className="relative z-10 min-h-[100svh] flex flex-col justify-center items-center text-center px-6 py-32">
+        
+        {/* Animated badge */}
+        <div className="inline-flex items-center gap-2 bg-red-50 backdrop-blur-sm border border-red-200 rounded-full px-4 py-2 mb-8 animate-[fadeInUp_0.6s_ease-out]">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+          </span>
+          <span className="text-zinc-600 text-sm">{t.badge}</span>
+        </div>
+
+        {/* Oversized headline with stagger animation */}
+        <h1 className="text-[11vw] md:text-[9vw] lg:text-[7vw] font-black leading-[1.1] tracking-tight text-zinc-900">
+          <span className="block animate-[fadeInUp_0.8s_ease-out]">{t.title}</span>
+          <span className="block mt-2 bg-gradient-to-r from-red-500 via-red-600 to-red-500 bg-clip-text text-transparent animate-[fadeInUp_0.8s_ease-out_0.2s_both] bg-[length:200%_auto] hover:animate-[gradient_3s_linear_infinite]">
+            {t.titleHighlight}
+          </span>
+        </h1>
+
+        {/* Spacer */}
+        <div className="h-8 md:h-12" />
+
+        {/* Subtitle */}
+        <p className="text-base md:text-lg lg:text-xl text-zinc-500 max-w-3xl font-light animate-[fadeInUp_0.8s_ease-out_0.4s_both]">
+          {t.subtitle}
+        </p>
+
+        {/* Spacer */}
+        <div className="h-12 md:h-16" />
+
+        {/* CTA Buttons with hover glow */}
+        <div className="flex flex-wrap justify-center gap-4 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
+          <Link
+            href="#insurance"
+            className="group relative px-8 py-4 bg-red-600 text-white font-bold text-base rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(220,38,38,0.4)]"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              {t.cta}
+              <svg className={`w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 ${isRtl ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-red-600 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </Link>
           
-          <div className="grid lg:grid-cols-2 items-center" style={{ gap: '4rem' }}>
-            
-            {/* Text Column */}
-            <div className={`order-1 ${isRtl ? 'lg:order-2' : ''}`}>
-              {/* Mobile Referral Banner - visible only on mobile */}
-              <Link 
-                href="#referral" 
-                className="flex lg:hidden group relative overflow-hidden bg-linear-to-r from-amber-500/20 via-orange-500/15 to-amber-500/20 backdrop-blur-sm border border-amber-400/30 rounded-2xl hover:border-amber-400/50 transition-all duration-300 cursor-pointer"
-                style={{ padding: '1rem 1.25rem', marginBottom: '1.5rem' }}
-              >
-                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                <div className="relative flex items-center justify-between w-full">
-                  <div className="flex items-center" style={{ gap: '0.75rem' }}>
-                    <div className="shrink-0 w-9 h-9 rounded-xl bg-linear-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/25">
-                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                      </svg>
-                    </div>
-                    <div>
-                      <span className="text-amber-300 text-sm font-semibold">{t.referralBadge}</span>
-                      <p className="text-white/70 text-xs">{t.referralTeaser}</p>
-                    </div>
-                  </div>
-                  <div className="shrink-0 w-7 h-7 rounded-full bg-white/10 flex items-center justify-center">
-                    <svg className={`w-3.5 h-3.5 text-amber-300 ${isRtl ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
+          <Link
+            href={CONTACT.whatsapp}
+            target="_blank"
+            className="group px-6 py-4 bg-zinc-100 backdrop-blur-sm text-zinc-800 font-semibold text-base rounded-full border border-zinc-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all duration-300 flex items-center gap-2"
+          >
+            <svg className="w-5 h-5 text-emerald-600 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp
+          </Link>
+          
+          <Link
+            href={CONTACT.telegram}
+            target="_blank"
+            className="group px-6 py-4 bg-zinc-100 backdrop-blur-sm text-zinc-800 font-semibold text-base rounded-full border border-zinc-200 hover:bg-sky-50 hover:border-sky-300 hover:text-sky-700 hover:shadow-[0_0_30px_rgba(14,165,233,0.15)] transition-all duration-300 flex items-center gap-2"
+          >
+            <svg className="w-5 h-5 text-sky-500 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+            Telegram
+          </Link>
+        </div>
 
-              {/* Label */}
-              <div className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full" style={{ padding: '0.5rem 1rem', marginBottom: '2rem', gap: '0.5rem' }}>
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                <span className="text-white/90 text-sm font-medium">{t.badge}</span>
-              </div>
+        {/* Spacer */}
+        <div className="h-12 md:h-16" />
 
-              {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight" style={{ marginBottom: '1.5rem' }}>
-                {t.title}
-                <br />
-                <span className="bg-linear-to-r from-purple-300 via-violet-200 to-white bg-clip-text text-transparent">
-                  {t.titleHighlight}
-                </span>
-              </h1>
-
-              {/* Subheadline */}
-              <p className="text-lg text-purple-100/80 leading-relaxed max-w-md" style={{ marginBottom: '2.5rem' }}>
-                {t.subtitle}
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col md:flex-row md:items-center" style={{ gap: '1rem', marginBottom: '3rem' }}>
-                <Link
-                  href="#insurance"
-                  className="inline-flex items-center justify-center bg-white text-purple-700 font-semibold rounded-xl hover:bg-purple-50 transition-all duration-300 hover:shadow-xl hover:shadow-white/20 whitespace-nowrap w-full md:w-auto"
-                  style={{ padding: '1rem 2rem', gap: '0.75rem' }}
-                >
-                  {t.cta}
-                  <svg className={`w-5 h-5 ${isRtl ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-                <div className="flex flex-row flex-1" style={{ gap: '0.5rem' }}>
-                  <Link
-                    href={CONTACT.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-green-500/30 flex-1"
-                    style={{ padding: '1rem', height: '52px' }}
-                    aria-label="WhatsApp"
-                  >
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                  </Link>
-                  <Link
-                    href={CONTACT.telegram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center bg-[#0088cc] hover:bg-[#0077b5] text-white rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-[#0088cc]/30 flex-1"
-                    style={{ padding: '1rem', height: '52px' }}
-                    aria-label="Telegram"
-                  >
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Metrics */}
-              <div className="grid grid-cols-3 border-t border-white/10" style={{ gap: '2rem', paddingTop: '2rem' }}>
-                <div>
-                  <div className="text-3xl font-bold text-white">5k+</div>
-                  <div className="text-sm text-purple-200/60" style={{ marginTop: '0.5rem' }}>{t.clients}</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-white">24/7</div>
-                  <div className="text-sm text-purple-200/60" style={{ marginTop: '0.5rem' }}>{t.support}</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-white">$50K</div>
-                  <div className="text-sm text-purple-200/60" style={{ marginTop: '0.5rem' }}>{t.coverage}</div>
-                </div>
-              </div>
+        {/* Bento Grid with stagger */}
+        <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1 - Coverage */}
+          <div className="group relative bg-white backdrop-blur-xl rounded-2xl p-6 border border-zinc-200 shadow-lg hover:border-red-300 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(220,38,38,0.12)] animate-[fadeInUp_0.8s_ease-out_0.8s_both]">
+            <div className="text-5xl font-black bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-transform duration-300">
+              $50K
             </div>
-
-            {/* Pricing Cards Column */}
-            <div className={`order-2 ${isRtl ? 'lg:order-1' : ''}`} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              {/* Referral Program Banner - Desktop only */}
-              <Link 
-                href="#referral" 
-                className="hidden lg:block group relative overflow-hidden bg-linear-to-r from-amber-500/20 via-orange-500/15 to-amber-500/20 backdrop-blur-sm border border-amber-400/30 rounded-2xl hover:border-amber-400/50 transition-all duration-300 cursor-pointer"
-                style={{ padding: '1.25rem 1.5rem' }}
-              >
-                {/* Animated gradient overlay */}
-                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                
-                <div className="relative flex items-center justify-between">
-                  <div className="flex items-center" style={{ gap: '1rem' }}>
-                    {/* Gift icon */}
-                    <div className="shrink-0 w-10 h-10 rounded-xl bg-linear-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/25">
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="flex items-center" style={{ gap: '0.5rem' }}>
-                        <span className="text-amber-300 text-sm font-semibold">{t.referralBadge}</span>
-                        <span className="px-2 py-0.5 bg-amber-400/20 rounded-full text-amber-200 text-xs font-medium">{t.referralNew}</span>
-                      </div>
-                      <p className="text-white/80 text-sm" style={{ marginTop: '0.25rem' }}>{t.referralTeaser}</p>
-                    </div>
-                  </div>
-                  
-                  {/* Arrow */}
-                  <div className="shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                    <svg className={`w-4 h-4 text-amber-300 transition-transform group-hover:translate-x-0.5 ${isRtl ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Featured Card - Premium */}
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-linear-to-r from-blue-400 to-blue-600 rounded-3xl opacity-30 blur-lg group-hover:opacity-40 transition-opacity" />
-                <div className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl" style={{ padding: '2rem' }}>
-                  <div className="flex items-center justify-between" style={{ marginBottom: '1.5rem' }}>
-                    <span className="text-xs font-semibold text-white bg-blue-500 rounded-full" style={{ padding: '0.5rem 1rem' }}>{t.recommend}</span>
-                    <span className="text-blue-200/70 text-sm">PREMIUM</span>
-                  </div>
-                  
-                  <div className="flex items-baseline" style={{ gap: '0.5rem', marginBottom: '0.75rem' }}>
-                    <span className="text-5xl font-bold text-white">300</span>
-                    <span className="text-blue-200/70">{t.perYear}</span>
-                  </div>
-                  <p className="text-blue-100/60 text-sm" style={{ marginBottom: '2rem' }}>{t.forTourists}</p>
-                  
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
-                    {features.map((item, i) => (
-                      <div key={i} className="flex items-center" style={{ gap: '0.75rem' }}>
-                        <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center">
-                          <svg className="w-3 h-3 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-white/90 text-sm">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() => setIsOrderModalOpen(true)}
-                    className="block w-full text-center bg-white text-primary-blue font-semibold rounded-xl hover:bg-blue-50 transition-colors cursor-pointer"
-                    style={{ padding: '1rem' }}
-                  >
-                    {t.orderNow}
-                  </button>
-                </div>
-              </div>
+            <div className="text-zinc-600 text-base font-medium">{t.coverage}</div>
+            <div className="absolute top-5 right-5 w-10 h-10 rounded-full bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+              <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
             </div>
           </div>
 
+          {/* Card 2 - Support */}
+          <div className="group relative bg-white backdrop-blur-xl rounded-2xl p-6 border border-zinc-200 shadow-lg hover:border-red-300 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(220,38,38,0.12)] animate-[fadeInUp_0.8s_ease-out_1s_both]">
+            <div className="text-5xl font-black bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-transform duration-300">
+              24/7
+            </div>
+            <div className="text-zinc-600 text-base font-medium">{t.support}</div>
+            <div className="absolute top-5 right-5 w-10 h-10 rounded-full bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+              <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Card 3 - Clients */}
+          <div className="group relative bg-white backdrop-blur-xl rounded-2xl p-6 border border-zinc-200 shadow-lg hover:border-red-300 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(220,38,38,0.12)] animate-[fadeInUp_0.8s_ease-out_1.2s_both]">
+            <div className="text-5xl font-black bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-transform duration-300">
+              5K+
+            </div>
+            <div className="text-zinc-600 text-base font-medium">{t.clients}</div>
+            <div className="absolute top-5 right-5 w-10 h-10 rounded-full bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+              <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Insurance Order Modal */}
-      <InsuranceOrderModal
-        isOpen={isOrderModalOpen}
-        onClose={() => setIsOrderModalOpen(false)}
-        planName={dict.insurance.plans.premium.name}
-        planPrice={300}
-        planPeriod="year"
-        locale={locale}
-        dict={dict}
-      />
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <div className="w-6 h-10 rounded-full border-2 border-zinc-300 flex justify-center pt-2">
+          <div className="w-1.5 h-3 bg-red-500 rounded-full animate-[scrollDown_2s_ease-in-out_infinite]" />
+        </div>
+      </div>
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
     </section>
   );
 }

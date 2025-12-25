@@ -42,16 +42,16 @@
     }
   },
   "hero": {
-    "badge": "Gürcistan'daki Yabancıların Her İhtiyacı İçin Sigorta",
-    "title": "Gürcistan'da",
-    "titleHighlight": "Sigorta",
-    "subtitle": "Turistler ve göçmenler için 50.000$'a kadar teminat. 15 dakikada online işlem.",
-    "cta": "Sigorta Yaptır",
+    "badge": "Gürcistan'daki güvenilir ortağınız",
+    "title": "Sağlık Sigortası",
+    "titleHighlight": "Gürcistan'da kalışınız için",
+    "subtitle": "Turistler ve yerleşikler için sigorta poliçeleri",
+    "cta": "Hemen Başla",
     "whatsapp": "WhatsApp",
     "telegram": "Telegram",
-    "clients": "Müşteri",
-    "support": "Destek",
-    "coverage": "Teminat",
+    "clients": "Mutlu müşteri",
+    "support": "Her zaman ulaşılabilir",
+    "coverage": "Maksimum koruma",
     "recommend": "Önerilen",
     "perYear": "GEL /yıl",
     "perDay": "GEL/gün",
@@ -65,22 +65,22 @@
     "referralTeaser": "Referanslar için 300 GEL'e kadar indirim veya ücretsiz sigorta"
   },
   "advantages": {
-    "label": "NEDEN BİZ",
-    "title": "Bizimle çalışmanın",
-    "titleHighlight": "avantajları",
-    "description": "Sigorta sürecini basit ve hızlı hale getiriyoruz",
+    "label": "AVANTAJLARIMIZ",
+    "title": "Neden bizi",
+    "titleHighlight": "tercih ediyorlar",
+    "description": "Sigorta poliçelerini hızlı, basit ve gereksiz formaliteler olmadan düzenliyoruz",
     "items": [
       {
         "title": "Hızlı İşlem",
-        "description": "15 dakikada online, evrak işi olmadan poliçenizi alın"
+        "description": "Poliçe 15 dakikada hazır — ofis ziyareti veya evrak işi yok"
       },
       {
-        "title": "Geniş Teminat",
-        "description": "Hastane yatışı dahil 50.000$'a kadar tıbbi masraflar"
+        "title": "50.000$'a Kadar Teminat",
+        "description": "Hastane yatışı, ameliyatlar, testler ve konsültasyonlar — hepsi dahil"
       },
       {
         "title": "7/24 Destek",
-        "description": "Her durumda kesintisiz destek"
+        "description": "Danışmanlarımız her durumda günün her saati ulaşılabilir"
       },
       {
         "title": "Doğrudan Ödeme",
@@ -89,10 +89,10 @@
     ]
   },
   "insurance": {
-    "label": "SİGORTA PLANLARI",
-    "title": "Sigortanızı",
-    "titleHighlight": "seçin",
-    "description": "Farklı ihtiyaçlar için beş sigorta türü. Tüm planlar 7/24 destek içerir.",
+    "label": "SİGORTA PROGRAMLARI",
+    "title": "Sizin için",
+    "titleHighlight": "ideal planı bulun",
+    "description": "Kısa süreli turist sigortasından tam yıllık korumaya kadar — herkes için bir çözümümüz var",
     "recommend": "⭐ Önerilen",
     "order": "Sipariş",
     "needHelp": "Yardıma mı ihtiyacınız var?",
@@ -105,27 +105,27 @@
     "year": "yıl",
     "plans": {
       "visitor": {
-        "name": "VISITOR",
+        "name": "DAILY INSURANCE",
         "description": "Kısa süreli konaklamalar için"
       },
       "standard": {
-        "name": "STANDARD",
+        "name": "EMERGENCY STANDARD",
         "description": "Turistler ve göçmenler için 3 aylık"
       },
       "optimum": {
-        "name": "OPTIMUM",
+        "name": "EMERGENCY EXTENDED",
         "description": "Turistler ve göçmenler için 6 aylık"
       },
       "premium": {
-        "name": "PREMIUM",
+        "name": "EMERGENCY FLEXI",
         "description": "Turistler ve göçmenler için 1 yıllık genişletilmiş sigorta"
       },
       "uno-active": {
-        "name": "UNO ACTIVE",
+        "name": "MEDICAL STANDARD",
         "description": "Uzun süreli konaklama için tam teminat"
       },
       "uno-active-plus": {
-        "name": "UNO ACTIVE +",
+        "name": "MEDICAL FLEXI",
         "description": "Uzun süreli konaklama için genişletilmiş teminat"
       }
     },
@@ -170,7 +170,7 @@
         ]
       },
       "standard": {
-        "description": "3 aya kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için STANDARD sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
+        "description": "3 aya kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için EMERGENCY STANDARD sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
         "coverage": [
           { "icon": "phone", "title": "24 saat telefon danışmanlığı", "limit": "Sınırsız" },
           { "icon": "emergency", "title": "Ambulans hizmeti", "limit": "Sınırsız" },
@@ -188,7 +188,7 @@
         ]
       },
       "optimum": {
-        "description": "6 aya kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için OPTIMUM sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
+        "description": "6 aya kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için EMERGENCY EXTENDED sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
         "coverage": [
           { "icon": "phone", "title": "24 saat telefon danışmanlığı", "limit": "Sınırsız" },
           { "icon": "emergency", "title": "Ambulans hizmeti", "limit": "Sınırsız" },
@@ -206,7 +206,7 @@
         ]
       },
       "premium": {
-        "description": "1 yıla kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için PREMIUM sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
+        "description": "1 yıla kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için EMERGENCY FLEXI sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
         "coverage": [
           { "icon": "phone", "title": "24 saat telefon danışmanlığı", "limit": "Sınırsız" },
           { "icon": "emergency", "title": "Ambulans hizmeti", "limit": "Sınırsız" },
@@ -224,7 +224,7 @@
         ]
       },
       "uno-active": {
-        "description": "Gürcistan'da uzun süreli konaklama için UNO ACTIVE sağlık sigortası. Aile hekimi hizmetleri, acil ve planlı hastane yatışı, ayakta tedavi ve diş hizmetlerini kapsayan kapsamlı teminat.",
+        "description": "Gürcistan'da uzun süreli konaklama için MEDICAL STANDARD sağlık sigortası. Aile hekimi hizmetleri, acil ve planlı hastane yatışı, ayakta tedavi ve diş hizmetlerini kapsayan kapsamlı teminat.",
         "coverage": [
           { "icon": "phone", "title": "7/24 telefon danışmanlığı", "limit": "%100 — Limitsiz" },
           { "icon": "doctor", "title": "Aile hekimi hizmetleri", "limit": "%100 — Limitsiz" },
@@ -246,7 +246,7 @@
           { "icon": "dental", "title": "Ortopedi ve ortodonti", "limit": "%10-60 indirim" }
         ],
         "faq": [
-          { "question": "UNO ACTIVE'i kimler satın alabilir?", "answer": "UNO ACTIVE, Gürcistan'da uzun süreli kalmayı planlayan turistler, göçmenler ve herkes için uygundur, 0-64 yaş arası." },
+          { "question": "MEDICAL STANDARD'i kimler satın alabilir?", "answer": "MEDICAL STANDARD, Gürcistan'da uzun süreli kalmayı planlayan turistler, göçmenler ve herkes için uygundur, 0-64 yaş arası." },
           { "question": "Bekleme süresi nedir?", "answer": "Planlı hastane yatışı ve gündüz hastanesi için — 12 ay. Acil hizmetler için — bekleme süresi yoktur." },
           { "question": "Gebelik kapsanıyor mu?", "answer": "Evet, gebelik takibi partner kliniklerde doktor yönlendirmesiyle %50 oranında 500 GEL limite kadar kapsanır." },
           { "question": "Hangi diş hizmetleri dahil?", "answer": "Acil diş %100 (500 GEL), planlı %30 (300 GEL), SGS implant %60 (1500 GEL), BT %40 (500 GEL)." },
@@ -254,7 +254,7 @@
         ]
       },
       "uno-active-plus": {
-        "description": "Gürcistan'da uzun süreli konaklama için UNO ACTIVE+ genişletilmiş sağlık sigortası. Hastane yatışı için artırılmış limitler, genişletilmiş diş hizmetleri ve ek avantajlar.",
+        "description": "Gürcistan'da uzun süreli konaklama için MEDICAL FLEXI genişletilmiş sağlık sigortası. Hastane yatışı için artırılmış limitler, genişletilmiş diş hizmetleri ve ek avantajlar.",
         "coverage": [
           { "icon": "phone", "title": "7/24 telefon danışmanlığı", "limit": "%100 — Limitsiz" },
           { "icon": "doctor", "title": "Aile hekimi hizmetleri", "limit": "%100 — Limitsiz" },
@@ -276,7 +276,7 @@
           { "icon": "dental", "title": "Ortopedi ve ortodonti", "limit": "%10-60 indirim" }
         ],
         "faq": [
-          { "question": "UNO ACTIVE'den farkı nedir?", "answer": "UNO ACTIVE+ daha yüksek limitlere sahip: hastane 10.000 GEL'e kadar (5.000 yerine), planlı %100/8.000 GEL (%80/4.000 yerine), ayakta tedavi 1.500 GEL'e kadar." },
+          { "question": "MEDICAL STANDARD'den farkı nedir?", "answer": "MEDICAL FLEXI daha yüksek limitlere sahip: hastane 10.000 GEL'e kadar (5.000 yerine), planlı %100/8.000 GEL (%80/4.000 yerine), ayakta tedavi 1.500 GEL'e kadar." },
           { "question": "Bekleme süresi nedir?", "answer": "Planlı hastane yatışı ve gündüz hastanesi için — 12 ay. Acil hizmetler için — bekleme süresi yoktur." },
           { "question": "Gebelik kapsanıyor mu?", "answer": "Evet, gebelik takibi partner kliniklerde doktor yönlendirmesiyle %50 oranında 800 GEL limite kadar kapsanır." },
           { "question": "Hangi diş hizmetleri dahil?", "answer": "Acil diş %100 limitsiz, planlı %60 (1500 GEL), SGS implant %60 (1500 GEL), BT %40 (500 GEL)." },
@@ -286,10 +286,10 @@
     }
   },
   "faq": {
-    "label": "SSS",
-    "title": "Sıkça Sorulan",
-    "titleHighlight": "Sorular",
-    "description": "Gürcistan'da sağlık sigortası hakkında popüler sorulara cevaplar",
+    "label": "BİLGİ",
+    "title": "Her Şey",
+    "titleHighlight": "Açık",
+    "description": "Poliçenizi almadan önce bilmeniz gereken önemli detaylar",
     "items": [
       {
         "question": "Sigorta için hangi belgeler gerekli?",
@@ -317,41 +317,49 @@
       }
     ],
     "sidebar": {
-      "title": "Sorularınız mı var?",
-      "description": "Uzmanlarımız sigorta hakkındaki tüm sorularınızı 15 dakika içinde yanıtlayacak",
-      "button": "WhatsApp'tan yazın"
+      "title": "Danışmanlık mı istiyorsunuz?",
+      "description": "İhtiyaçlarınıza uygun mükemmel planı bulmanıza yardımcı olacağız",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram"
     }
   },
   "contact": {
-    "label": "İLETİŞİM",
-    "title": "Bugün",
-    "titleHighlight": "sigorta",
-    "titleEnd": "yaptırın",
-    "description": "Formu doldurun, işlemi tamamlamak için WhatsApp üzerinden sizinle iletişime geçelim. 15-20 dakika sürer.",
-    "contactUs": "Bize Ulaşın",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
+    "label": "BİZE ULAŞIN",
+    "title": "Başlamaya hazır mısınız? ",
+    "titleHighlight": "Bize yazın!",
+    "description": "İşlem sadece 15 dakika sürer. Tercih ettiğiniz iletişim yolunu seçin ve poliçenizi bugün alın.",
+    "quickContact": "Hızlı İletişim",
+    "quickContactDesc": "Mesajlaşma uygulaması seçin — çalışma saatlerinde 5 dakika içinde yanıt veririz",
+    "whatsappBtn": "WhatsApp'tan yazın",
+    "telegramBtn": "Telegram'dan yazın",
+    "phone": "Telefon",
     "email": "E-posta",
     "workHours": "Çalışma Saatleri",
     "workHoursValue": "Pzt-Cmt: 10:00 - 19:00",
-    "clientsBadge": "",
-    "clientsBadgeEnd": "memnun müşteri",
+    "trustBadge": "5000+ mutlu müşteri",
+    "trustBadgeDesc": "2019'dan beri hizmet, 4.9 puan",
+    "formTitle": "Başvuru Bırakın",
+    "formDesc": "Formu doldurun — 15 dakika içinde sizi arayalım",
+    "statMinutes": "dakika işlem süresi",
+    "statClients": "müşteri",
+    "statSupport": "destek",
+    "statRating": "puan",
     "form": {
       "name": "Adınız",
-      "namePlaceholder": "Ahmet Yılmaz",
+      "namePlaceholder": "Adınız nedir?",
       "phone": "Telefon / WhatsApp",
       "phonePlaceholder": "+995 599 123 456",
-      "plan": "Sigorta Türü",
-      "message": "Ek bilgi",
-      "messagePlaceholder": "Kişi sayısını, özel istekleri belirtin...",
+      "plan": "Hangi sigorta ilginizi çekiyor?",
+      "message": "Yorum",
+      "messagePlaceholder": "Kişi sayısı, tarihler, sorular...",
       "optional": "isteğe bağlı",
-      "submit": "WhatsApp'tan gönder",
-      "privacyNote": "Butona tıklayarak kişisel verilerin işlenmesini kabul ediyorsunuz",
-      "submitting": "Gönderiliyor..."
+      "submit": "Başvuru Gönder",
+      "submitting": "Gönderiliyor...",
+      "privacyNote": "Butona tıklayarak gizlilik politikasını kabul ediyorsunuz"
     },
     "success": {
-      "title": "Başvurunuz için teşekkürler!",
-      "message": "WhatsApp açılmış olmalı. Açılmadıysa bize doğrudan yazın.",
+      "title": "Mükemmel!",
+      "message": "WhatsApp başvurunuzla açıldı. Açılmadıysa — aşağıdaki butona tıklayın.",
       "openWhatsapp": "WhatsApp'ı Aç"
     }
   },
@@ -415,7 +423,7 @@
     "lastUpdated": "Son güncelleme: 21 Aralık 2025",
     "section1": {
       "title": "1. Genel Hükümler",
-      "p1": "Bu Gizlilik Politikası, Gürcistan'daki turistler ve göçmenler için sağlık sigortası hizmetleri sunan visitgeorgia.online web sitesi aracılığıyla toplanan kişisel verilerin işlenmesi ve korunması prosedürünü tanımlar.",
+      "p1": "Bu Gizlilik Politikası, Gürcistan'daki turistler ve göçmenler için sağlık sigortası hizmetleri sunan georgian.support web sitesi aracılığıyla toplanan kişisel verilerin işlenmesi ve korunması prosedürünü tanımlar.",
       "p2": "Siteyi kullanarak bu Politikanın şartlarını kabul etmiş olursunuz."
     },
     "section2": {
@@ -490,7 +498,7 @@
     "lastUpdated": "Son güncelleme: 21 Aralık 2025",
     "section1": {
       "title": "1. Genel Hükümler",
-      "p1": "Bu kullanım koşulları, Gürcistan'daki turistler ve göçmenler için sağlık sigortası hizmetleri sunan visitgeorgia.online web sitesinin kullanımını düzenler.",
+      "p1": "Bu kullanım koşulları, Gürcistan'daki turistler ve göçmenler için sağlık sigortası hizmetleri sunan georgian.support web sitesinin kullanımını düzenler.",
       "p2": "Siteyi kullanarak bu Koşulları kabul ettiğinizi onaylarsınız. Kabul etmiyorsanız, lütfen Siteyi kullanmayı bırakın."
     },
     "section2": {

@@ -90,7 +90,7 @@ const CoverageIcon = ({ type }: { type: string }) => {
   };
   
   return (
-    <div className="w-12 h-12 rounded-xl bg-primary-blue/10 flex items-center justify-center text-primary-blue">
+    <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center text-red-500">
       {icons[type] || icons.emergency}
     </div>
   );
@@ -140,7 +140,7 @@ export default function InsuranceModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header gradient bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-primary-blue via-emerald-500 to-violet-500" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-red-600 via-red-500 to-red-400" />
         
         {/* Close button */}
         <button
@@ -157,15 +157,15 @@ export default function InsuranceModal({
         <div className="overflow-y-auto max-h-[90vh] p-6 lg:p-8">
           {/* Plan header */}
           <div style={{ marginBottom: '32px', paddingRight: isRtl ? '0' : '40px', paddingLeft: isRtl ? '40px' : '0' }}>
-            <h2 className="text-2xl lg:text-3xl font-bold text-primary-black" style={{ marginBottom: '8px' }}>
+            <h2 className="text-2xl lg:text-3xl font-bold text-zinc-800" style={{ marginBottom: '8px' }}>
               {planName}
             </h2>
-            <p className="text-primary-grey">{planDescription}</p>
+            <p className="text-zinc-600">{planDescription}</p>
           </div>
 
           {/* Coverage section */}
           <div style={{ marginBottom: '32px' }}>
-            <h3 className="text-xs font-semibold tracking-wider uppercase text-primary-blue" style={{ marginBottom: '20px' }}>
+            <h3 className="text-xs font-semibold tracking-wider uppercase text-red-600" style={{ marginBottom: '20px' }}>
               {labels.covers}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -177,10 +177,10 @@ export default function InsuranceModal({
                   <div className={`flex items-start gap-3 ${isRtl ? 'flex-row-reverse' : ''}`}>
                     <CoverageIcon type={item.icon} />
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm text-primary-black font-medium leading-tight" style={{ marginBottom: '4px' }}>
+                      <p className="text-sm text-zinc-800 font-medium leading-tight" style={{ marginBottom: '4px' }}>
                         {item.title}
                       </p>
-                      <p className="text-primary-blue font-bold text-sm">
+                      <p className="text-red-600 font-bold text-sm">
                         {item.limit}
                       </p>
                     </div>
@@ -193,7 +193,7 @@ export default function InsuranceModal({
           {/* FAQ section */}
           {faqItems.length > 0 && (
             <div>
-              <h3 className="text-xs font-semibold tracking-wider uppercase text-primary-blue" style={{ marginBottom: '20px' }}>
+              <h3 className="text-xs font-semibold tracking-wider uppercase text-red-600" style={{ marginBottom: '20px' }}>
                 {labels.faq}
               </h3>
               <div className="space-y-3">
@@ -202,8 +202,8 @@ export default function InsuranceModal({
                     key={index}
                     className="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden"
                   >
-                    <summary className={`flex items-center justify-between cursor-pointer p-4 hover:bg-gray-100 transition-colors ${isRtl ? 'flex-row-reverse' : ''}`}>
-                      <span className="font-medium text-primary-black text-sm pr-4">{item.question}</span>
+                    <summary className={`flex items-center justify-between cursor-pointer p-4 hover:bg-red-50 transition-colors ${isRtl ? 'flex-row-reverse' : ''}`}>
+                      <span className="font-medium text-zinc-800 text-sm pr-4">{item.question}</span>
                       <span className="shrink-0 w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center group-open:rotate-180 transition-transform">
                         <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -211,7 +211,7 @@ export default function InsuranceModal({
                       </span>
                     </summary>
                     <div className="px-4 pb-4">
-                      <p className="text-sm text-primary-grey leading-relaxed border-t border-gray-200 pt-3">
+                      <p className="text-sm text-zinc-600 leading-relaxed border-t border-gray-200 pt-3">
                         {item.answer}
                       </p>
                     </div>

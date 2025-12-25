@@ -4,7 +4,6 @@ import { siteMetadata } from "@/lib/metadata";
 import { montserrat } from "@/lib/fonts";
 import { getDictionary, isRtlLocale, locales } from "@/lib/i18n";
 import CookieConsent from "@/components/ui/CookieConsent";
-import Snowflakes from "@/components/ui/Snowflakes";
 import ClickTracking from "@/components/ui/ClickTracking";
 import "../globals.css";
 
@@ -129,7 +128,6 @@ export default async function LocaleLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       </head>
       <body className={`font-montserrat antialiased overflow-x-hidden w-full flex flex-col items-center ${isRtl ? 'rtl' : ''}`}>
-        <Snowflakes />
         <ClickTracking />
         {children}
         <CookieConsent 
