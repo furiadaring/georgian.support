@@ -1,0 +1,53 @@
+const sharp = require('sharp');
+const fs = require('fs');
+const path = require('path');
+
+const svgContent = `<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444"/>
+      <stop offset="100%" style="stop-color:#DC2626"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#redGradient)"/>
+  <g transform="translate(64, 64) scale(12)">
+    <path d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13h-8v3h4.5c-1.2 3.8-4.7 6.5-8.5 6.5-5 0-9-4-9-9s4-9 9-9c2.5 0 4.7 1 6.4 2.6l2.1-2.1C22.3 5.8 19.3 4.5 16 4.5" fill="white" opacity="0.9"/>
+    <rect x="14" y="10" width="4" height="12" rx="1" fill="white"/>
+    <rect x="10" y="14" width="12" height="4" rx="1" fill="white"/>
+  </g>
+</svg>`;
+
+async function generateFavicons() {
+  const publicDir = path.join(__dirname, 'public');
+  
+  // Generate different sizes
+  const sizes = [
+    { name: 'favicon-16x16.png', size: 16 },
+    { name: 'favicon-32x32.png', size: 32 },
+    { name: 'apple-touch-icon.png', size: 180 },
+    { name: 'icon-192x192.png', size: 192 },
+    { name: 'icon-512x512.png', size: 512 },
+  ];
+
+  for (const { name, size } of sizes) {
+    await sharp(Buffer.from(svgContent))
+      .resize(size, size)
+      .png()
+      .toFile(path.join(publicDir, name));
+    console.log(`Generated ${name}`);
+  }
+
+  // Generate .ico file (32x32)
+  const icoBuffer = await sharp(Buffer.from(svgContent))
+    .resize(32, 32)
+    .png()
+    .toBuffer();
+  
+  // For .ico we'll just use PNG as most browsers support it
+  fs.writeFileSync(path.join(publicDir, 'favicon.ico'), icoBuffer);
+  console.log('Generated favicon.ico');
+
+  console.log('All favicons generated successfully!');
+}
+
+generateFavicons().catch(console.error);

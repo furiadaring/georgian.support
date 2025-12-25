@@ -1,10 +1,10 @@
 {
   "meta": {
-    "title": "Visit Georgia | Insurance for Every Need Foreigners Have in Georgia",
+    "title": "Georgian Support | Insurance for Every Need Foreigners Have in Georgia",
     "description": "Health, travel & auto insurance for tourists and expats in Georgia. Fast online processing, coverage up to $50,000, 24/7 support."
   },  "autoInsurancePage": {
     "meta": {
-      "title": "MTPL Auto Insurance | Visit Georgia",
+      "title": "MTPL Auto Insurance | Georgian Support",
       "description": "Mandatory third-party liability insurance (MTPL) for foreign vehicles in Georgia. Quick online processing, affordable prices."
     },
     "badge": "MANDATORY INSURANCE",
@@ -394,7 +394,7 @@
     "cta": "Want to learn more about our loyalty program?",
     "contactUs": "Contact us",
     "shareTitle": "Share with friends",
-    "shareText": "Get up to 300 GEL discount on insurance in Georgia! Visit Georgia referral program."
+    "shareText": "Get up to 300 GEL discount on insurance in Georgia! Georgian Support referral program."
   },  "footer": {
     "description": "Medical insurance for tourists and expats in Georgia. Reliable protection at affordable prices.",
     "navigation": "Navigation",
@@ -554,7 +554,7 @@
   },
   "insurancePage": {
     "meta": {
-      "title": "Health Insurance Plans | Visit Georgia",
+      "title": "Health Insurance Plans | Georgian Support",
       "description": "Medical insurance for tourists and expats in Georgia. Coverage up to $50,000, online processing in 15 minutes, 24/7 support."
     },
     "title": "All Insurance Plans",
@@ -665,3 +665,4 @@
     "paymentYearly": "Payment Yearly"
   }
 }
+

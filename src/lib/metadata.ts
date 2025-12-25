@@ -106,8 +106,8 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${baseUrl}/#organization`,
-  name: "Visit Georgia Insurance",
-  alternateName: ["VisitGeorgia Insurance", "Страховка Visit Georgia"],
+  name: "Georgian Support",
+  alternateName: ["Georgian Support Insurance", "Страховка Georgian Support"],
   url: baseUrl,
   logo: {
     "@type": "ImageObject",
@@ -137,7 +137,7 @@ export const organizationSchema = {
     },
     {
       "@type": "ContactPoint",
-      email: "info@visitgeorgia.online",
+      email: "info@georgian.support",
       contactType: "customer support",
       availableLanguage: ["Russian", "English", "Georgian"],
     },
@@ -153,10 +153,10 @@ export const insuranceAgencySchema = {
   "@context": "https://schema.org",
   "@type": "InsuranceAgency",
   "@id": `${baseUrl}/#business`,
-  name: "Visit Georgia Insurance",
+  name: "Georgian Support",
   url: baseUrl,
   telephone: "+995-591-196-300",
-  email: "info@visitgeorgia.online",
+  email: "info@georgian.support",
   description: "Медицинская страховка для туристов и экспатов в Грузии",
   priceRange: "55 - 300 GEL",
   openingHours: "Mo-Su 00:00-23:59",
@@ -177,7 +177,7 @@ export const productSchemas = [
     description: "Годовая медицинская страховка для туристов и экспатов в Грузии. Покрытие до 30,000 GEL, экстренная помощь 24/7, госпитализация, амбулаторное лечение, стоматология.",
     brand: {
       "@type": "Brand",
-      name: "Visit Georgia Insurance",
+      name: "Georgian Support",
     },
     category: "Health Insurance",
     offers: {
@@ -208,7 +208,7 @@ export const productSchemas = [
     description: "Медицинская страховка на 6 месяцев для иностранцев, проживающих в Грузии. Идеально для digital nomads, удалённых работников и долгосрочных резидентов. Покрытие до 30,000 GEL.",
     brand: {
       "@type": "Brand",
-      name: "Visit Georgia Insurance",
+      name: "Georgian Support",
     },
     category: "Health Insurance",
     offers: {
@@ -239,7 +239,7 @@ export const productSchemas = [
     description: "Гибкий ежемесячный план медицинской страховки UNO Active для краткосрочного пребывания в Грузии. Оплата помесячно, можно отменить в любое время. Включает стоматологию.",
     brand: {
       "@type": "Brand",
-      name: "Visit Georgia Insurance",
+      name: "Georgian Support",
     },
     category: "Health Insurance",
     offers: {
@@ -270,7 +270,7 @@ export const productSchemas = [
     description: "Расширенный ежемесячный план UNO Active+ с максимальным покрытием. Плановые операции, расширенная стоматология, ведение беременности.",
     brand: {
       "@type": "Brand",
-      name: "Visit Georgia Insurance",
+      name: "Georgian Support",
     },
     category: "Health Insurance",
     offers: {
@@ -363,7 +363,7 @@ export const referralOfferSchema = {
   "@context": "https://schema.org",
   "@type": "Offer",
   "@id": `${baseUrl}/#referral-program`,
-  name: "Реферальная программа Visit Georgia Insurance",
+  name: "Реферальная программа Georgian Support",
   alternateName: "Referral & Loyalty Program",
   description: "Приглашайте друзей и получайте скидки до 100 GEL за каждого! Друзья тоже получают скидку. Скидки накапливаются — можно получить страховку бесплатно! До 300 GEL общей экономии.",
   url: `${baseUrl}/#referral`,
@@ -390,7 +390,7 @@ export const websiteSchema = {
   "@type": "WebSite",
   "@id": `${baseUrl}/#website`,
   url: baseUrl,
-  name: "Visit Georgia Insurance",
+  name: "Georgian Support",
   description: "Медицинская страховка для туристов и экспатов в Грузии",
   publisher: {
     "@id": `${baseUrl}/#organization`,

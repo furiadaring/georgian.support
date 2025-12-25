@@ -1,11 +1,11 @@
 {
   "meta": {
-    "title": "Visit Georgia | Gürcistan'daki Yabancıların Her İhtiyacı İçin Sigorta",
+    "title": "Georgian Support | Gürcistan'daki Yabancıların Her İhtiyacı İçin Sigorta",
     "description": "Gürcistan'da turistler ve göçmenler için sağlık, seyahat ve araç sigortası. Hızlı online işlem, 50.000$'a kadar teminat, 7/24 destek."
   },
   "autoInsurancePage": {
     "meta": {
-      "title": "Trafik Sigortası | Visit Georgia",
+      "title": "Trafik Sigortası | Georgian Support",
       "description": "Gürcistan'a giren yabancı araçlar için zorunlu mali sorumluluk sigortası (Trafik). Hızlı online işlem, uygun fiyatlar."
     },
     "badge": "ZORUNLU SİGORTA",
@@ -397,7 +397,7 @@
     "cta": "Sadakat programı hakkında daha fazla bilgi mi istiyorsunuz?",
     "contactUs": "Bize Ulaşın",
     "shareTitle": "Arkadaşlarınızla paylaşın",
-    "shareText": "Gürcistan'da sigortada 300 GEL'e kadar indirim! Visit Georgia yönlendirme programı."
+    "shareText": "Gürcistan'da sigortada 300 GEL'e kadar indirim! Georgian Support yönlendirme programı."
   },
   "footer": {
     "description": "Gürcistan'da turistler ve göçmenler için sağlık sigortası. Uygun fiyatlarla güvenilir koruma.",
@@ -558,7 +558,7 @@
   },
   "insurancePage": {
     "meta": {
-      "title": "Sağlık Sigortası Planları | Visit Georgia",
+      "title": "Sağlık Sigortası Planları | Georgian Support",
       "description": "Gürcistan'da turistler ve göçmenler için sağlık sigortası. 50.000$'a kadar teminat, 15 dakikada online işlem, 7/24 destek."
     },
     "title": "Tüm Sigorta Planları",
@@ -668,3 +668,4 @@
     "paymentYearly": "Yıllık ödeme"
   }
 }
+
