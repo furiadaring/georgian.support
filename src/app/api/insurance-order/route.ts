@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CONTACT } from "@/lib/constants";
 
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+// Use dedicated order bot (same as visitgeorgia) or fallback to default
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_ORDER_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_ORDER_CHAT_ID || process.env.TELEGRAM_CHAT_ID;
 
 export async function POST(request: NextRequest) {
   try {

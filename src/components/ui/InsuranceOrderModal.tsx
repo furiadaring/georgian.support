@@ -379,6 +379,13 @@ export default function InsuranceOrderModal({
   const [scanMessage, setScanMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [emailError, setEmailError] = useState<string | null>(null);
+
+  // Email validation function
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
 
   // Compress image for mobile
   const compressImage = useCallback(async (file: File): Promise<Blob> => {
@@ -490,6 +497,7 @@ export default function InsuranceOrderModal({
       setPassportFile(null);
       setPassportPreview(null);
       setScanMessage(null);
+      setEmailError(null);
       setFormData({
         periodStart: "", periodEnd: "", citizenship: "", firstNameEng: "",
         lastNameEng: "", birthDate: "", passportNumber: "", city: "",
@@ -520,11 +528,27 @@ export default function InsuranceOrderModal({
       return;
     }
     
+    // Email validation
+    if (name === "email") {
+      if (value && !validateEmail(value)) {
+        setEmailError("Invalid email format");
+      } else {
+        setEmailError(null);
+      }
+    }
+    
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate email before submitting
+    if (!validateEmail(formData.email)) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
@@ -895,7 +919,16 @@ export default function InsuranceOrderModal({
               </div>
               <div>
                 <label className={labelClass}>{t.email || "Email"} <span className="text-red-500">*</span></label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="email@example.com" className={`${inputClass} placeholder:text-gray-300`} />
+                <input 
+                  type="email" 
+                  name="email" 
+                  value={formData.email} 
+                  onChange={handleChange} 
+                  required 
+                  placeholder="email@example.com" 
+                  className={`${inputClass} placeholder:text-gray-300 ${emailError ? "!border-red-500 !ring-2 !ring-red-500/20" : ""}`} 
+                />
+                {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
               </div>
             </div>
           </div>
