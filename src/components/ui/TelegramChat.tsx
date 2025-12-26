@@ -127,6 +127,12 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
     const stored = localStorage.getItem("chat_session_id");
     if (stored) {
       setSessionId(stored);
+      // Resume polling from saved time or start fresh
+      const savedPollTime = localStorage.getItem("chat_last_poll");
+      if (savedPollTime) {
+        setLastPollTime(parseInt(savedPollTime, 10));
+      }
+      setShowContactInput(false); // Already has session, no need for contact
     } else {
       const newId = generateSessionId();
       setSessionId(newId);
@@ -179,9 +185,10 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
             return [...prev, ...uniqueNew];
           });
           
-          // Update last poll time to latest message
+          // Update last poll time to latest message and save it
           const maxTime = Math.max(...data.messages.map((m: { timestamp: number }) => m.timestamp));
           setLastPollTime(maxTime);
+          localStorage.setItem("chat_last_poll", maxTime.toString());
         }
       }
     } catch (error) {
@@ -189,10 +196,13 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
     }
   }, [sessionId, isOpen, lastPollTime]);
 
-  // Start polling when chat is open
+  // Start polling when chat is open - poll immediately on open
   useEffect(() => {
     if (!isOpen || !sessionId) return;
 
+    // Poll immediately when opening
+    pollMessages();
+    
     const interval = setInterval(pollMessages, 3000); // Poll every 3 seconds
     return () => clearInterval(interval);
   }, [isOpen, sessionId, pollMessages]);
