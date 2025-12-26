@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { Agent } from "undici";
 import {
   createSession,
   getSession,
@@ -8,6 +9,9 @@ import {
   getTelegramTopicId,
   setTopicToSession,
 } from "@/lib/chatStore";
+
+// Force IPv4 to avoid IPv6 timeout issues
+const ipv4Agent = new Agent({ connect: { family: 4 } });
 
 // Rate limiting
 const rateLimit = new Map<string, { count: number; lastReset: number }>();
@@ -118,6 +122,8 @@ export async function POST(request: NextRequest) {
             chat_id: TELEGRAM_CHAT_ID,
             name: topicName.slice(0, 128), // Telegram limit is 128 chars
           }),
+          // @ts-expect-error - undici dispatcher for IPv4
+          dispatcher: ipv4Agent,
         }
       );
 
@@ -161,6 +167,8 @@ _Просто отвечайте в этом топике - сообщения �
               text: userInfoMessage,
               parse_mode: "Markdown",
             }),
+            // @ts-expect-error - undici dispatcher for IPv4
+            dispatcher: ipv4Agent,
           }
         );
       }
@@ -192,6 +200,8 @@ _Просто отвечайте в этом топике - сообщения �
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(telegramPayload),
+        // @ts-expect-error - undici dispatcher for IPv4
+        dispatcher: ipv4Agent,
       }
     );
 
