@@ -47,6 +47,32 @@ function isRateLimited(key: string): boolean {
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
+// Get user location from IP address
+async function getLocationFromIP(ip: string): Promise<string> {
+  if (!ip || ip === "unknown" || ip === "127.0.0.1" || ip === "::1") {
+    return "Не определено";
+  }
+  
+  try {
+    // Use ip-api.com (free, no API key needed, 45 req/min limit)
+    const response = await fetch(`http://ip-api.com/json/${ip}?fields=status,country,city,regionName&lang=ru`, {
+      signal: AbortSignal.timeout(3000),
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      if (data.status === "success") {
+        const parts = [data.city, data.regionName, data.country].filter(Boolean);
+        return parts.join(", ") || "Не определено";
+      }
+    }
+  } catch (error) {
+    console.error("IP geolocation error:", error);
+  }
+  
+  return "Не определено";
+}
+
 export async function POST(request: NextRequest) {
   try {
     const rateLimitKey = getRateLimitKey(request);
@@ -113,6 +139,12 @@ export async function POST(request: NextRequest) {
     if (!topicId) {
       const topicName = `💬 ${fullName || "User"} | ${localeNames[locale] || locale}`;
       
+      // Get user's IP and location
+      const userIP = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() 
+        ?? request.headers.get("x-real-ip") 
+        ?? "unknown";
+      const userLocation = await getLocationFromIP(userIP);
+      
       try {
         const createTopicResponse = await fetch(
           `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/createForumTopic`,
@@ -142,6 +174,8 @@ export async function POST(request: NextRequest) {
 📞 *Телефон:* ${phone || "Не указан"}
 📧 *Email:* ${email || "Не указан"}
 🌐 *Язык:* ${localeNames[locale] || locale}
+📍 *Локация:* ${userLocation}
+🔗 *IP:* \`${userIP}\`
 🆔 *Сессия:* \`${sessionId.slice(0, 8)}\`
 
 _Просто отвечайте в этом топике - сообщения автоматически отправятся пользователю_
