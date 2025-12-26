@@ -46,6 +46,7 @@ function isRateLimited(key: string): boolean {
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+const TELEGRAM_ARCHIVE_CHAT_ID = process.env.TELEGRAM_ARCHIVE_CHAT_ID;
 
 // Get user location from IP address
 async function getLocationFromIP(ip: string): Promise<string> {
@@ -89,7 +90,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { message, fullName, phone, email, locale, sessionId, isSystemMessage, pageUrl, localTime } = body;
+    const { message, fullName, phone, email, locale, sessionId, isSystemMessage, isEndChat, pageUrl, localTime } = body;
 
     if (!message || typeof message !== "string") {
       return NextResponse.json(
@@ -203,6 +204,70 @@ _Просто отвечайте в этом топике - сообщения �
       } catch (topicError) {
         console.error("Topic creation error:", topicError);
       }
+    }
+
+    // Handle end chat - close topic and send to archive
+    if (isEndChat && topicId) {
+      // Send end notification to topic
+      await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            message_thread_id: topicId,
+            text: "🔴 *Пользователь завершил чат*",
+            parse_mode: "Markdown",
+          }),
+        }
+      );
+
+      // Close the topic
+      await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/closeForumTopic`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            message_thread_id: topicId,
+          }),
+        }
+      );
+      console.log(`Topic ${topicId} closed for session ${sessionId}`);
+
+      // Send user info to archive chat if configured
+      if (TELEGRAM_ARCHIVE_CHAT_ID) {
+        const archiveMessage = `
+📋 *Завершённый чат*
+
+👤 *Пользователь:*
+📛 Имя: ${fullName || "Не указано"}
+📞 Телефон: ${phone || "Не указан"}
+📧 Email: ${email || "Не указан"}
+🌐 Язык: ${locale || "Не указан"}
+
+🆔 Сессия: \`${sessionId.slice(0, 8)}\`
+🕐 Завершён: ${new Date().toLocaleString("ru-RU", { timeZone: "Asia/Tbilisi" })}
+        `.trim();
+
+        await fetch(
+          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              chat_id: TELEGRAM_ARCHIVE_CHAT_ID,
+              text: archiveMessage,
+              parse_mode: "Markdown",
+            }),
+          }
+        );
+        console.log(`User info sent to archive chat for session ${sessionId}`);
+      }
+
+      return NextResponse.json({ success: true, sessionId });
     }
 
     // Format message for Telegram - system messages are sent as-is

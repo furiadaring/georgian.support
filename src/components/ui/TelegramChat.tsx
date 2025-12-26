@@ -373,6 +373,7 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
           locale: locale,
           sessionId: sessionId,
           isSystemMessage: true,
+          isEndChat: true,
         }),
       });
     } catch (error) {

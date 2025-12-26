@@ -50,6 +50,9 @@ export async function POST(request: NextRequest) {
 
     const { message } = update;
     
+    // Log the sender info for debugging
+    console.log(`Webhook message from user: ${message.from.id} (${message.from.first_name}, @${message.from.username || 'no username'})`);
+    
     // Ignore messages from bots (including our own)
     if (message.from.is_bot) {
       return NextResponse.json({ ok: true });
