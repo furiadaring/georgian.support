@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { message, fullName, phone, email, locale, sessionId, isSystemMessage } = body;
+    const { message, fullName, phone, email, locale, sessionId, isSystemMessage, pageUrl, localTime } = body;
 
     if (!message || typeof message !== "string") {
       return NextResponse.json(
@@ -176,6 +176,8 @@ export async function POST(request: NextRequest) {
 🌐 *Язык:* ${localeNames[locale] || locale}
 📍 *Локация:* ${userLocation}
 🔗 *IP:* \`${userIP}\`
+📄 *Страница:* ${pageUrl || "Не указана"}
+🕐 *Время пользователя:* ${localTime || "Не указано"}
 🆔 *Сессия:* \`${sessionId.slice(0, 8)}\`
 
 _Просто отвечайте в этом топике - сообщения автоматически отправятся пользователю_

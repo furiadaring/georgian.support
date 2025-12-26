@@ -425,6 +425,8 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
           email: userInfo.email,
           locale: locale,
           sessionId: sessionId,
+          pageUrl: window.location.href,
+          localTime: new Date().toLocaleString(),
         }),
       });
 
