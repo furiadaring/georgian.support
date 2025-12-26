@@ -1,17 +1,13 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { Agent } from "undici";
 import {
   createSession,
   getSession,
   addMessageToSession,
-  setTelegramTopicId,
   getTelegramTopicId,
+  setTelegramTopicId,
   setTopicToSession,
 } from "@/lib/chatStore";
-
-// Force IPv4 to avoid IPv6 timeout issues
-const ipv4Agent = new Agent({ connect: { family: 4 } });
 
 // Rate limiting
 const rateLimit = new Map<string, { count: number; lastReset: number }>();
@@ -83,13 +79,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Build contact info string
-    const contactInfo = fullName || "Unknown";
+    // Build contact display
+    const contact = fullName || "Unknown";
 
     // Get or create session
     let session = getSession(sessionId);
     if (!session) {
-      session = createSession(sessionId, contactInfo);
+      session = createSession(sessionId, contact);
     }
 
     // Add user message to session
@@ -106,45 +102,38 @@ export async function POST(request: NextRequest) {
       ar: "🇸🇦 AR",
     };
 
-    // Check if we have a topic for this session
+    const isFirstMessage = session.messages.length === 1;
+    
+    // Check if we already have a topic for this session
     let topicId = getTelegramTopicId(sessionId);
     
-    // Create topic for new chat session
+    // Create a new topic for first message
     if (!topicId) {
       const topicName = `💬 ${fullName || "User"} | ${localeNames[locale] || locale}`;
       
-      const createTopicResponse = await fetch(
-        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/createForumTopic`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            chat_id: TELEGRAM_CHAT_ID,
-            name: topicName.slice(0, 128), // Telegram limit is 128 chars
-          }),
-          // @ts-expect-error - undici dispatcher for IPv4
-          dispatcher: ipv4Agent,
-        }
-      );
-
-      if (!createTopicResponse.ok) {
-        const error = await createTopicResponse.text();
-        console.error("Failed to create topic:", error);
-        return NextResponse.json(
-          { error: "Failed to create chat topic" },
-          { status: 500 }
+      try {
+        const createTopicResponse = await fetch(
+          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/createForumTopic`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              chat_id: TELEGRAM_CHAT_ID,
+              name: topicName.slice(0, 128),
+            }),
+          }
         );
-      }
 
-      const topicResult = await createTopicResponse.json();
-      topicId = topicResult.result?.message_thread_id;
-      
-      if (topicId) {
-        setTelegramTopicId(sessionId, topicId);
-        setTopicToSession(topicId, sessionId);
-        
-        // Send user info as first message in topic
-        const userInfoMessage = `
+        if (createTopicResponse.ok) {
+          const topicResult = await createTopicResponse.json();
+          topicId = topicResult.result?.message_thread_id;
+          
+          if (topicId) {
+            setTelegramTopicId(sessionId, topicId);
+            setTopicToSession(topicId, sessionId);
+            
+            // Send user info as first message in topic
+            const userInfoMessage = `
 👤 *Информация о пользователе:*
 
 📛 *Имя:* ${fullName || "Не указано"}
@@ -156,52 +145,49 @@ export async function POST(request: NextRequest) {
 _Просто отвечайте в этом топике - сообщения автоматически отправятся пользователю_
 `.trim();
 
-        await fetch(
-          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              chat_id: TELEGRAM_CHAT_ID,
-              message_thread_id: topicId,
-              text: userInfoMessage,
-              parse_mode: "Markdown",
-            }),
-            // @ts-expect-error - undici dispatcher for IPv4
-            dispatcher: ipv4Agent,
+            await fetch(
+              `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  chat_id: TELEGRAM_CHAT_ID,
+                  message_thread_id: topicId,
+                  text: userInfoMessage,
+                  parse_mode: "Markdown",
+                }),
+              }
+            );
           }
-        );
+        } else {
+          console.error("Failed to create topic:", await createTopicResponse.text());
+        }
+      } catch (topicError) {
+        console.error("Topic creation error:", topicError);
       }
     }
 
     // Format message for Telegram
     const formattedMessage = `💬 *Сообщение от пользователя:*\n\n${message}`;
 
-    // Send to Telegram topic
-    const telegramPayload: {
-      chat_id: string;
-      message_thread_id?: number;
-      text: string;
-      parse_mode: string;
-    } = {
+    // Build payload - include topic if available
+    const telegramPayload: Record<string, unknown> = {
       chat_id: TELEGRAM_CHAT_ID,
       text: formattedMessage,
       parse_mode: "Markdown",
     };
-
-    // Add topic ID if we have one
+    
     if (topicId) {
       telegramPayload.message_thread_id = topicId;
     }
 
+    // Send to Telegram
     const telegramResponse = await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(telegramPayload),
-        // @ts-expect-error - undici dispatcher for IPv4
-        dispatcher: ipv4Agent,
       }
     );
 
