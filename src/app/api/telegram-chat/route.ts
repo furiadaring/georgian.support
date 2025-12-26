@@ -240,6 +240,27 @@ _Просто отвечайте в этом топике - сообщения �
       );
       console.log(`Topic ${effectiveTopicId} closed for session ${sessionId}`);
 
+      // Schedule topic deletion after 3 minutes
+      const topicToDelete = effectiveTopicId;
+      setTimeout(async () => {
+        try {
+          await fetch(
+            `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/deleteForumTopic`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                message_thread_id: topicToDelete,
+              }),
+            }
+          );
+          console.log(`Topic ${topicToDelete} deleted after 3 minutes`);
+        } catch (err) {
+          console.error(`Failed to delete topic ${topicToDelete}:`, err);
+        }
+      }, 3 * 60 * 1000); // 3 minutes
+
       // Send user info to archive chat if configured
       if (TELEGRAM_ARCHIVE_CHAT_ID) {
         const archiveMessage = `
