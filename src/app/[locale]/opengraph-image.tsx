@@ -8,6 +8,18 @@ export const size = {
 };
 export const contentType = "image/png";
 
+// Font URLs for different scripts
+const fontUrls: Record<string, string> = {
+  // Noto Sans for Latin, Cyrillic
+  default: "https://fonts.gstatic.com/s/notosans/v36/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyD9A99d41P6zHtY.woff2",
+  // Noto Sans Georgian
+  ka: "https://fonts.gstatic.com/s/notosansgeorgian/v44/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdpvnzVj-f5WK0OQV.woff2",
+  // Noto Sans Hebrew
+  he: "https://fonts.gstatic.com/s/notosanshebrew/v43/or3HQ7v33eiDljA1IufXTtVf7V6RvEEdhQlk0LlGxCyaeNKYZC0sqk3xXGiXd4qtpw.woff2",
+  // Noto Sans Arabic
+  ar: "https://fonts.gstatic.com/s/notosansarabic/v18/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfyG2vu3CBFQLaig.woff2",
+};
+
 // Localized content for OG images
 const ogContent: Record<Locale, { alt: string; tagline: string; description: string }> = {
   ru: {
@@ -57,6 +69,15 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
   const { locale } = await params;
   const content = ogContent[locale as Locale] || ogContent.ru;
   const isRtl = locale === "he" || locale === "ar";
+
+  // Load the appropriate font for this locale
+  const fontUrl = fontUrls[locale] || fontUrls.default;
+  const fontData = await fetch(fontUrl).then((res) => res.arrayBuffer());
+  
+  // Also load default font for the company name (always Latin)
+  const defaultFontData = locale !== "ru" && locale !== "en" && locale !== "uk" && locale !== "tr"
+    ? await fetch(fontUrls.default).then((res) => res.arrayBuffer())
+    : fontData;
 
   return new ImageResponse(
     (
@@ -126,6 +147,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
               marginBottom: "16px",
               letterSpacing: "-0.02em",
               display: "flex",
+              fontFamily: "DefaultFont",
             }}
           >
             <span>Georgian</span>
@@ -139,6 +161,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
               fontWeight: 500,
               color: "#DC2626",
               marginBottom: "32px",
+              fontFamily: "LocaleFont",
             }}
           >
             {content.tagline}
@@ -152,6 +175,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
               color: "#71717A",
               maxWidth: "800px",
               lineHeight: 1.4,
+              fontFamily: "LocaleFont",
             }}
           >
             {content.description}
@@ -168,6 +192,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
             gap: "40px",
             color: "#A1A1AA",
             fontSize: 20,
+            fontFamily: "DefaultFont",
           }}
         >
           <span>georgian.support</span>
@@ -176,6 +201,20 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: "LocaleFont",
+          data: fontData,
+          style: "normal",
+          weight: 400,
+        },
+        {
+          name: "DefaultFont",
+          data: defaultFontData,
+          style: "normal",
+          weight: 400,
+        },
+      ],
     }
   );
 }
