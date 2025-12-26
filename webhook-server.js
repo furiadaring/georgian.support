@@ -16,9 +16,9 @@ const routeConfig = {
     secret: process.env.WEBHOOK_SECRET_GERESIDENCY || 'geresidency-webhook-secret-2025',
     script: '/var/www/webhooks/geresidency-deploy.sh',
   },
-  '/visitgeorgia-deploy': {
-    secret: process.env.WEBHOOK_SECRET_VISITGEORGIA || 'visitgeorgia-webhook-secret-2025',
-    script: '/var/www/webhooks/visitgeorgia-deploy.sh',
+  '/georgian-support-deploy': {
+    secret: process.env.WEBHOOK_SECRET_GEORGIAN_SUPPORT || 'georgian-support-webhook-secret-2025',
+    script: '/var/www/webhooks/georgian-support-deploy.sh',
   },
 };
 

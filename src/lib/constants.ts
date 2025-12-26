@@ -5,7 +5,7 @@ export const CONTACT = {
   email: "info@georgian.support",
   emailLink: "mailto:info@georgian.support",
   whatsapp: "https://wa.me/995591196300",
-  telegram: "https://t.me/georgiansupport",
+  telegram: "https://t.me/georgialegalresidency",
 } as const;
 
 // Navigation Items
@@ -210,7 +210,7 @@ export const TESTIMONIALS = [
   {
     name: "Анна Сидорова",
     role: "Предприниматель",
-    text: "Оформляю страховку для всей семьи уже второй год. Дети болеют — это неизбежно, но с Visit Georgia я спокойна. Поддержка отвечает мгновенно.",
+    text: "Оформляю страховку для всей семьи уже второй год. Дети болеют — это неизбежно, но с Georgian Support я спокойна. Поддержка отвечает мгновенно.",
     plan: "OPTIMUM+",
   },
   {

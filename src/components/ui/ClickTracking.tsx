@@ -43,7 +43,7 @@ function ClickTrackingInner() {
 
         // Send postback
         fetch(
-          `https://track.visitgeorgia.online/postback?cid=${encodeURIComponent(linkClickid)}`
+          `https://track.georgian.support/postback?cid=${encodeURIComponent(linkClickid)}`
         ).catch(() => {
           // Silently fail
         });

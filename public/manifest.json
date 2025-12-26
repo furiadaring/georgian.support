@@ -1,13 +1,16 @@
 {
-  "name": "Georgian Support",
+  "name": "Georgian Support — Insurance for Tourists & Expats",
   "short_name": "Georgian Support",
-  "description": "Медицинское страхование для туристов и экспатов в Грузии",
-  "start_url": "/",
+  "description": "Medical, travel, and auto insurance for tourists and expats in Georgia. Online application in 15 minutes, coverage up to $50,000, 24/7 support.",
+  "start_url": "/ru",
+  "scope": "/",
+  "id": "georgian-support-app",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#DC2626",
   "orientation": "portrait-primary",
   "lang": "ru",
+  "dir": "ltr",
   "icons": [
     {
       "src": "/favicon.svg",

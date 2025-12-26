@@ -5,6 +5,7 @@ import { montserrat } from "@/lib/fonts";
 import { getDictionary, isRtlLocale, locales } from "@/lib/i18n";
 import CookieConsent from "@/components/ui/CookieConsent";
 import ClickTracking from "@/components/ui/ClickTracking";
+import TelegramChat from "@/components/ui/TelegramChat";
 import "../globals.css";
 
 type Locale = 'ru' | 'en' | 'ka' | 'uk' | 'tr' | 'he' | 'ar';
@@ -39,21 +40,21 @@ export async function generateMetadata({
     title: dict.meta.title,
     description: dict.meta.description,
     alternates: {
-      canonical: `https://visitgeorgia.online/${locale}`,
+      canonical: `https://georgian.support/${locale}`,
       languages: Object.fromEntries(
-        locales.map((loc) => [loc, `https://visitgeorgia.online/${loc}`])
+        locales.map((loc) => [loc, `https://georgian.support/${loc}`])
       ),
     },
     openGraph: {
       type: 'website',
       locale: ogLocaleMap[locale] || 'en_US',
-      url: `https://visitgeorgia.online/${locale}`,
-      siteName: 'Visit Georgia Insurance',
+      url: `https://georgian.support/${locale}`,
+      siteName: 'Georgian Support',
       title: dict.meta.title,
       description: dict.meta.description,
       images: [
         {
-          url: 'https://visitgeorgia.online/opengraph-image',
+          url: 'https://georgian.support/opengraph-image',
           width: 1200,
           height: 630,
           alt: dict.meta.title,
@@ -64,7 +65,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: dict.meta.title,
       description: dict.meta.description,
-      images: ['https://visitgeorgia.online/twitter-image'],
+      images: ['https://georgian.support/twitter-image'],
     },
   };
 }
@@ -130,6 +131,7 @@ export default async function LocaleLayout({
       <body className={`font-montserrat antialiased overflow-x-hidden w-full flex flex-col items-center ${isRtl ? 'rtl' : ''}`}>
         <ClickTracking />
         {children}
+        <TelegramChat locale={locale} />
         <CookieConsent 
           title={dict.cookie.title}
           message={dict.cookie.message}

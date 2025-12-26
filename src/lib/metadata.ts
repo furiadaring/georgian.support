@@ -111,9 +111,9 @@ export const organizationSchema = {
   url: baseUrl,
   logo: {
     "@type": "ImageObject",
-    url: `${baseUrl}/images/logo.png`,
-    width: 200,
-    height: 60,
+    url: `${baseUrl}/opengraph-image`,
+    width: 1200,
+    height: 630,
   },
   image: `${baseUrl}/opengraph-image`,
   description: "Медицинская страховка для туристов и экспатов в Грузии",
@@ -186,7 +186,7 @@ export const productSchemas = [
       price: "300",
       priceCurrency: "GEL",
       availability: "https://schema.org/InStock",
-      priceValidUntil: "2025-12-31",
+      priceValidUntil: "2026-12-31",
       seller: {
         "@id": `${baseUrl}/#organization`,
       },
@@ -217,7 +217,7 @@ export const productSchemas = [
       price: "250",
       priceCurrency: "GEL",
       availability: "https://schema.org/InStock",
-      priceValidUntil: "2025-12-31",
+      priceValidUntil: "2026-12-31",
       seller: {
         "@id": `${baseUrl}/#organization`,
       },
@@ -248,7 +248,7 @@ export const productSchemas = [
       price: "55",
       priceCurrency: "GEL",
       availability: "https://schema.org/InStock",
-      priceValidUntil: "2025-12-31",
+      priceValidUntil: "2026-12-31",
       seller: {
         "@id": `${baseUrl}/#organization`,
       },
@@ -279,7 +279,7 @@ export const productSchemas = [
       price: "90",
       priceCurrency: "GEL",
       availability: "https://schema.org/InStock",
-      priceValidUntil: "2025-12-31",
+      priceValidUntil: "2026-12-31",
       seller: {
         "@id": `${baseUrl}/#organization`,
       },
@@ -356,32 +356,6 @@ export const faqSchema = {
       },
     },
   ],
-};
-
-// Referral Program Special Offer Schema
-export const referralOfferSchema = {
-  "@context": "https://schema.org",
-  "@type": "Offer",
-  "@id": `${baseUrl}/#referral-program`,
-  name: "Реферальная программа Georgian Support",
-  alternateName: "Referral & Loyalty Program",
-  description: "Приглашайте друзей и получайте скидки до 100 GEL за каждого! Друзья тоже получают скидку. Скидки накапливаются — можно получить страховку бесплатно! До 300 GEL общей экономии.",
-  url: `${baseUrl}/#referral`,
-  category: "Loyalty Program",
-  seller: {
-    "@id": `${baseUrl}/#organization`,
-  },
-  eligibleCustomerType: "https://schema.org/Person",
-  priceSpecification: {
-    "@type": "UnitPriceSpecification",
-    price: "100",
-    priceCurrency: "GEL",
-    referenceQuantity: {
-      "@type": "QuantitativeValue",
-      value: "1",
-      unitCode: "C62",
-    },
-  },
 };
 
 // Website Schema
@@ -476,7 +450,6 @@ export const structuredData = [
   websiteSchema,
   serviceSchema,
   faqSchema,
-  referralOfferSchema,
   ...productSchemas,
 ];
 

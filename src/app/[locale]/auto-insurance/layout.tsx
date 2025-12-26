@@ -20,18 +20,18 @@ export async function generateMetadata({
   };
 
   return {
-    title: dict.autoInsurancePage?.meta?.title || 'MTPL Auto Insurance | Visit Georgia',
+    title: dict.autoInsurancePage?.meta?.title || 'MTPL Auto Insurance | Georgian Support',
     description: dict.autoInsurancePage?.meta?.description || 'Mandatory third-party liability insurance for foreign vehicles in Georgia.',
     openGraph: {
       type: 'website',
       locale: ogLocaleMap[locale] || 'en_US',
-      url: `https://visitgeorgia.online/${locale}/auto-insurance`,
-      siteName: 'Visit Georgia Insurance',
-      title: dict.autoInsurancePage?.meta?.title || 'MTPL Auto Insurance | Visit Georgia',
+      url: `https://georgian.support/${locale}/auto-insurance`,
+      siteName: 'Georgian Support',
+      title: dict.autoInsurancePage?.meta?.title || 'MTPL Auto Insurance | Georgian Support',
       description: dict.autoInsurancePage?.meta?.description || 'Mandatory third-party liability insurance for foreign vehicles in Georgia.',
       images: [
         {
-          url: 'https://visitgeorgia.online/opengraph-image',
+          url: 'https://georgian.support/opengraph-image',
           width: 1200,
           height: 630,
           alt: dict.autoInsurancePage?.meta?.title || 'MTPL Auto Insurance',
@@ -40,9 +40,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: dict.autoInsurancePage?.meta?.title || 'MTPL Auto Insurance | Visit Georgia',
+      title: dict.autoInsurancePage?.meta?.title || 'MTPL Auto Insurance | Georgian Support',
       description: dict.autoInsurancePage?.meta?.description || 'Mandatory third-party liability insurance for foreign vehicles in Georgia.',
-      images: ['https://visitgeorgia.online/twitter-image'],
+      images: ['https://georgian.support/twitter-image'],
     },
   };
 }

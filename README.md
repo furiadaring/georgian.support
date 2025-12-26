@@ -1,8 +1,8 @@
-# Visit Georgia Insurance
+# Georgian Support
 
 Medical insurance website for tourists and expats in Georgia. Multi-language platform with coverage up to $50,000 and a referral program.
 
-**Live Site:** [visitgeorgia.online](https://visitgeorgia.online)
+**Live Site:** [georgian.support](https://georgian.support)
 
 ---
 
@@ -38,9 +38,9 @@ The website supports **7 languages** with full translation coverage:
 **Default locale:** Russian (`ru`)
 
 ### URL Structure
-- `visitgeorgia.online/ru` - Russian
-- `visitgeorgia.online/en` - English
-- `visitgeorgia.online/ka` - Georgian
+- `georgian.support/ru` - Russian
+- `georgian.support/en` - English
+- `georgian.support/ka` - Georgian
 - etc.
 
 ### RTL Support
@@ -215,8 +215,8 @@ Located in `src/lib/metadata.ts`:
 
 ```bash
 # Clone the repository
-git clone git@github.com:furiadaring/visitgeorgia.git
-cd visitgeorgia
+git clone git@github.com:furiadaring/georgian.support.git
+cd georgian.support
 
 # Install dependencies
 npm install
@@ -252,9 +252,9 @@ Pre-commit hooks via Husky + lint-staged:
 
 | Property | Value |
 |----------|-------|
-| **Domain** | visitgeorgia.online |
+| **Domain** | georgian.support |
 | **Server** | VPS (179.61.246.55) |
-| **Proxy** | Nginx → localhost:3004 |
+| **Proxy** | Nginx → localhost:3005 |
 | **Process Manager** | PM2 |
 | **SSL** | Let's Encrypt (Certbot) |
 
@@ -265,10 +265,10 @@ Pre-commit hooks via Husky + lint-staged:
 ssh root@179.61.246.55
 
 # Navigate to project
-cd /var/www/visitgeorgia
+cd /var/www/georgian.support
 
 # Run deploy script
-./visitgeorgia-deploy.sh
+./georgian-support-deploy.sh
 ```
 
 Or manually:
@@ -277,11 +277,11 @@ Or manually:
 git pull origin master
 npm install
 npm run build
-pm2 restart visitgeorgia
+pm2 restart georgian-support
 ```
 
 ### Nginx Configuration
-Located at `nginx-visitgeorgia.conf`
+Located at `nginx-georgian.conf`
 
 ---
 
@@ -303,7 +303,7 @@ Located at `nginx-visitgeorgia.conf`
 | Channel | Value |
 |---------|-------|
 | **Phone/WhatsApp** | +995 591 19 63 00 |
-| **Email** | info@visitgeorgia.online |
+| **Email** | info@georgian.support |
 | **Telegram** | [@georgialegalresidency](https://t.me/georgialegalresidency) |
 
 ---
@@ -356,12 +356,12 @@ Configuration in `lighthouserc.json`:
 
 ## 📄 License
 
-© 2024-2025 Visit Georgia Insurance. All rights reserved.
+© 2024-2025 Georgian Support. All rights reserved.
 
 ---
 
 ## 🏢 Company
 
-**Visit Georgia Insurance**  
+**Georgian Support**  
 Insurance services for tourists and expats in Georgia  
-[visitgeorgia.online](https://visitgeorgia.online)
+[georgian.support](https://georgian.support)
