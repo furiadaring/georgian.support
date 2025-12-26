@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { locales, type Locale } from "@/lib/i18n/config";
+import { type Locale } from "@/lib/i18n/config";
 
 export const runtime = "edge";
 export const size = {
@@ -47,19 +47,15 @@ const ogContent: Record<Locale, { alt: string; tagline: string; description: str
   },
 };
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const content = ogContent[locale as Locale] || ogContent.ru;
+  return { alt: content.alt };
 }
 
-export function generateImageMetadata({ params }: { params: { locale: string } }) {
-  const locale = (params.locale as Locale) || "ru";
-  const content = ogContent[locale] || ogContent.ru;
-  return [{ alt: content.alt }];
-}
-
-export default async function Image({ params }: { params: { locale: string } }) {
-  const locale = (params.locale as Locale) || "ru";
-  const content = ogContent[locale] || ogContent.ru;
+export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const content = ogContent[locale as Locale] || ogContent.ru;
   const isRtl = locale === "he" || locale === "ar";
 
   return new ImageResponse(
