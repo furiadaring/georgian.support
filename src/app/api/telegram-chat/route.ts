@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { message, fullName, phone, email, locale, sessionId } = body;
+    const { message, fullName, phone, email, locale, sessionId, isSystemMessage } = body;
 
     if (!message || typeof message !== "string") {
       return NextResponse.json(
@@ -88,8 +88,10 @@ export async function POST(request: NextRequest) {
       session = createSession(sessionId, contact);
     }
 
-    // Add user message to session
-    addMessageToSession(sessionId, message, true);
+    // Don't add system messages to session history
+    if (!isSystemMessage) {
+      addMessageToSession(sessionId, message, true);
+    }
 
     // Format message for Telegram
     const localeNames: Record<string, string> = {
@@ -167,8 +169,10 @@ _Просто отвечайте в этом топике - сообщения �
       }
     }
 
-    // Format message for Telegram
-    const formattedMessage = `💬 *Сообщение от пользователя:*\n\n${message}`;
+    // Format message for Telegram - system messages are sent as-is
+    const formattedMessage = isSystemMessage 
+      ? message 
+      : `💬 *Сообщение от пользователя:*\n\n${message}`;
 
     // Build payload - include topic if available
     const telegramPayload: Record<string, unknown> = {

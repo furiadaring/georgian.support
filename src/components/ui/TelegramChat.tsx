@@ -35,6 +35,7 @@ const translations = {
     emailPlaceholder: "your@email.com",
     startChat: "Начать чат",
     required: "Обязательное поле",
+    endChat: "Завершить",
   },
   en: {
     title: "Support Chat",
@@ -57,6 +58,7 @@ const translations = {
     emailPlaceholder: "your@email.com",
     startChat: "Start Chat",
     required: "Required field",
+    endChat: "End Chat",
   },
   ka: {
     title: "მხარდაჭერის ჩატი",
@@ -79,6 +81,7 @@ const translations = {
     emailPlaceholder: "your@email.com",
     startChat: "ჩატის დაწყება",
     required: "სავალდებულო ველი",
+    endChat: "დასრულება",
   },
   uk: {
     title: "Чат підтримки",
@@ -101,6 +104,7 @@ const translations = {
     emailPlaceholder: "your@email.com",
     startChat: "Почати чат",
     required: "Обов'язкове поле",
+    endChat: "Завершити",
   },
   tr: {
     title: "Destek Sohbeti",
@@ -123,6 +127,7 @@ const translations = {
     emailPlaceholder: "your@email.com",
     startChat: "Sohbeti Başlat",
     required: "Zorunlu alan",
+    endChat: "Bitir",
   },
   he: {
     title: "צ'אט תמיכה",
@@ -145,6 +150,7 @@ const translations = {
     emailPlaceholder: "your@email.com",
     startChat: "התחל צ'אט",
     required: "שדה חובה",
+    endChat: "סיים",
   },
   ar: {
     title: "دردشة الدعم",
@@ -167,6 +173,7 @@ const translations = {
     emailPlaceholder: "your@email.com",
     startChat: "بدء الدردشة",
     required: "حقل مطلوب",
+    endChat: "إنهاء",
   },
 };
 
@@ -350,6 +357,48 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
     setFormErrors({});
   };
 
+  // Handle end chat - clear session and reset
+  const handleEndChat = async () => {
+    // Send end chat notification to Telegram
+    try {
+      const userInfo = JSON.parse(localStorage.getItem("chat_user_info") || "{}");
+      await fetch("/api/telegram-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: "🔴 Пользователь завершил чат",
+          fullName: userInfo.fullName,
+          phone: userInfo.phone,
+          email: userInfo.email,
+          locale: locale,
+          sessionId: sessionId,
+          isSystemMessage: true,
+        }),
+      });
+    } catch (error) {
+      console.error("Failed to send end chat notification:", error);
+    }
+    
+    // Clear all localStorage data
+    localStorage.removeItem("chat_session_id");
+    localStorage.removeItem("chat_messages");
+    localStorage.removeItem("chat_user_info");
+    localStorage.removeItem("chat_registered");
+    localStorage.removeItem("chat_last_poll");
+    localStorage.removeItem("chat_open");
+    
+    // Reset state
+    setSessionId(generateSessionId());
+    setMessages([]);
+    setIsRegistered(false);
+    setFullName("");
+    setPhone("");
+    setEmail("");
+    setInputText("");
+    setLastPollTime(0);
+    setIsOpen(false);
+  };
+
   const handleSend = async () => {
     if (!inputText.trim()) return;
 
@@ -457,16 +506,35 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
         >
           {/* Header */}
           <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold">{isRegistered ? t.title : t.formTitle}</h3>
+                  <p className="text-xs text-white/80">Georgian Support</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-semibold">{isRegistered ? t.title : t.formTitle}</h3>
-                <p className="text-xs text-white/80">Georgian Support</p>
-              </div>
+              {isRegistered && (
+                <button
+                  onClick={handleEndChat}
+                  style={{
+                    padding: '6px 12px',
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    backgroundColor: 'rgba(255,255,255,0.2)',
+                    color: 'white',
+                    border: '1px solid rgba(255,255,255,0.3)',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {t.endChat}
+                </button>
+              )}
             </div>
           </div>
 
@@ -580,33 +648,58 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
           {/* Messages (only shown after registration) */}
           {isRegistered && (
             <>
-              <div className="h-[300px] overflow-y-auto p-4 space-y-3 bg-gray-50">
+              <div 
+                style={{
+                  height: '300px',
+                  overflowY: 'auto',
+                  padding: '16px',
+                  backgroundColor: '#f9fafb',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                }}
+              >
                 {messages.map((msg) => (
                   <div
                     key={msg.id}
-                    className={`flex ${msg.isUser ? "justify-end" : "justify-start"}`}
+                    style={{
+                      display: 'flex',
+                      justifyContent: msg.isUser ? 'flex-end' : 'flex-start',
+                    }}
                   >
                     <div
-                      className={`max-w-[80%] px-4 py-2 rounded-2xl ${
-                        msg.isUser
-                          ? "bg-red-500 text-white rounded-br-sm"
-                          : "bg-white text-gray-800 shadow-sm rounded-bl-sm"
-                      }`}
+                      style={{
+                        maxWidth: '80%',
+                        padding: '10px 16px',
+                        borderRadius: msg.isUser ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
+                        backgroundColor: msg.isUser ? '#ef4444' : 'white',
+                        color: msg.isUser ? 'white' : '#1f2937',
+                        boxShadow: msg.isUser ? 'none' : '0 1px 2px rgba(0,0,0,0.05)',
+                      }}
                     >
-                      <p className="text-sm">{msg.text}</p>
-                      <p className={`text-xs mt-1 ${msg.isUser ? "text-white/70" : "text-gray-400"}`}>
+                      <p style={{ fontSize: '14px', margin: 0, lineHeight: '1.5' }}>{msg.text}</p>
+                      <p style={{ 
+                        fontSize: '11px', 
+                        margin: '4px 0 0 0',
+                        color: msg.isUser ? 'rgba(255,255,255,0.7)' : '#9ca3af',
+                      }}>
                         {msg.timestamp.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" })}
                       </p>
                     </div>
                   </div>
                 ))}
                 {isLoading && (
-                  <div className="flex justify-start">
-                    <div className="bg-white px-4 py-3 rounded-2xl shadow-sm rounded-bl-sm">
-                      <div className="flex gap-1">
-                        <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                        <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                        <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                    <div style={{
+                      backgroundColor: 'white',
+                      padding: '12px 16px',
+                      borderRadius: '16px 16px 16px 4px',
+                      boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+                    }}>
+                      <div style={{ display: 'flex', gap: '4px' }}>
+                        <span style={{ width: '8px', height: '8px', backgroundColor: '#9ca3af', borderRadius: '50%', animation: 'bounce 1s infinite' }} />
+                        <span style={{ width: '8px', height: '8px', backgroundColor: '#9ca3af', borderRadius: '50%', animation: 'bounce 1s infinite 0.15s' }} />
+                        <span style={{ width: '8px', height: '8px', backgroundColor: '#9ca3af', borderRadius: '50%', animation: 'bounce 1s infinite 0.3s' }} />
                       </div>
                     </div>
                   </div>
@@ -615,23 +708,47 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
               </div>
 
               {/* Input */}
-              <div className="p-4 bg-white border-t border-gray-100">
-                <div className="flex gap-2">
+              <div style={{
+                padding: '16px',
+                backgroundColor: 'white',
+                borderTop: '1px solid #f3f4f6',
+              }}>
+                <div style={{ display: 'flex', gap: '8px' }}>
                   <input
                     type="text"
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleSend()}
                     placeholder={t.placeholder}
-                    className="flex-1 px-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500/50 text-sm"
                     disabled={isLoading}
+                    style={{
+                      flex: 1,
+                      padding: '10px 16px',
+                      border: '1px solid #e5e7eb',
+                      borderRadius: '9999px',
+                      fontSize: '14px',
+                      outline: 'none',
+                      backgroundColor: 'white',
+                    }}
                   />
                   <button
                     onClick={handleSend}
                     disabled={isLoading || !inputText.trim()}
-                    className="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      backgroundColor: (isLoading || !inputText.trim()) ? '#fca5a5' : '#ef4444',
+                      color: 'white',
+                      border: 'none',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: (isLoading || !inputText.trim()) ? 'not-allowed' : 'pointer',
+                      flexShrink: 0,
+                    }}
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
                   </button>
