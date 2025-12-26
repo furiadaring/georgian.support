@@ -40,8 +40,11 @@ body {
   align-items: center;
 }
 
-/* Ensure all direct children of body take full width */
-body > * {
+/* Ensure page content takes full width */
+body > header,
+body > main,
+body > footer,
+body > .main-content {
   width: 100%;
 }
 
