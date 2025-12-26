@@ -18,85 +18,155 @@ const translations = {
     title: "Чат поддержки",
     placeholder: "Введите сообщение...",
     send: "Отправить",
-    greeting: "Здравствуйте! 👋 Чем могу помочь?",
+    greeting: "Здравствуйте, {name}! 👋 Чем могу помочь?",
     sent: "Сообщение отправлено!",
     error: "Ошибка отправки. Попробуйте ещё раз.",
-    emailPlaceholder: "Ваш email или Telegram",
-    emailRequired: "Укажите контакт для ответа",
     online: "Онлайн",
     typing: "Печатает...",
+    popup: "Есть вопросы? Спросите сейчас!",
+    // Registration form
+    formTitle: "Начать чат",
+    formSubtitle: "Пожалуйста, представьтесь",
+    fullName: "Полное имя",
+    fullNamePlaceholder: "Введите ваше имя",
+    phone: "Телефон",
+    phonePlaceholder: "+995 XXX XXX XXX",
+    email: "Email (необязательно)",
+    emailPlaceholder: "your@email.com",
+    startChat: "Начать чат",
+    required: "Обязательное поле",
   },
   en: {
     title: "Support Chat",
     placeholder: "Type a message...",
     send: "Send",
-    greeting: "Hello! 👋 How can I help you?",
+    greeting: "Hello, {name}! 👋 How can I help you?",
     sent: "Message sent!",
     error: "Failed to send. Please try again.",
-    emailPlaceholder: "Your email or Telegram",
-    emailRequired: "Please provide contact for reply",
     online: "Online",
     typing: "Typing...",
+    popup: "Any questions? Ask now!",
+    // Registration form
+    formTitle: "Start Chat",
+    formSubtitle: "Please introduce yourself",
+    fullName: "Full Name",
+    fullNamePlaceholder: "Enter your name",
+    phone: "Phone",
+    phonePlaceholder: "+995 XXX XXX XXX",
+    email: "Email (optional)",
+    emailPlaceholder: "your@email.com",
+    startChat: "Start Chat",
+    required: "Required field",
   },
   ka: {
     title: "მხარდაჭერის ჩატი",
     placeholder: "შეიყვანეთ შეტყობინება...",
     send: "გაგზავნა",
-    greeting: "გამარჯობა! 👋 რით შემიძლია დაგეხმაროთ?",
+    greeting: "გამარჯობა, {name}! 👋 რით შემიძლია დაგეხმაროთ?",
     sent: "შეტყობინება გაგზავნილია!",
     error: "გაგზავნა ვერ მოხერხდა.",
-    emailPlaceholder: "თქვენი ელფოსტა ან Telegram",
-    emailRequired: "მიუთითეთ კონტაქტი პასუხისთვის",
     online: "ონლაინ",
     typing: "წერს...",
+    popup: "გაქვთ შეკითხვები? იკითხეთ ახლავე!",
+    // Registration form
+    formTitle: "ჩატის დაწყება",
+    formSubtitle: "გთხოვთ, წარმოგვიდგინოთ თავი",
+    fullName: "სრული სახელი",
+    fullNamePlaceholder: "შეიყვანეთ თქვენი სახელი",
+    phone: "ტელეფონი",
+    phonePlaceholder: "+995 XXX XXX XXX",
+    email: "ელფოსტა (არასავალდებულო)",
+    emailPlaceholder: "your@email.com",
+    startChat: "ჩატის დაწყება",
+    required: "სავალდებულო ველი",
   },
   uk: {
     title: "Чат підтримки",
     placeholder: "Введіть повідомлення...",
     send: "Надіслати",
-    greeting: "Вітаємо! 👋 Чим можу допомогти?",
+    greeting: "Вітаємо, {name}! 👋 Чим можу допомогти?",
     sent: "Повідомлення надіслано!",
     error: "Помилка надсилання.",
-    emailPlaceholder: "Ваш email або Telegram",
-    emailRequired: "Вкажіть контакт для відповіді",
     online: "Онлайн",
     typing: "Друкує...",
+    popup: "Є питання? Запитайте зараз!",
+    // Registration form
+    formTitle: "Почати чат",
+    formSubtitle: "Будь ласка, представтеся",
+    fullName: "Повне ім'я",
+    fullNamePlaceholder: "Введіть ваше ім'я",
+    phone: "Телефон",
+    phonePlaceholder: "+995 XXX XXX XXX",
+    email: "Email (необов'язково)",
+    emailPlaceholder: "your@email.com",
+    startChat: "Почати чат",
+    required: "Обов'язкове поле",
   },
   tr: {
     title: "Destek Sohbeti",
     placeholder: "Mesaj yazın...",
     send: "Gönder",
-    greeting: "Merhaba! 👋 Size nasıl yardımcı olabilirim?",
+    greeting: "Merhaba, {name}! 👋 Size nasıl yardımcı olabilirim?",
     sent: "Mesaj gönderildi!",
     error: "Gönderme hatası.",
-    emailPlaceholder: "E-posta veya Telegram",
-    emailRequired: "Yanıt için iletişim bilgisi girin",
     online: "Çevrimiçi",
     typing: "Yazıyor...",
+    popup: "Sorularınız mı var? Şimdi sorun!",
+    // Registration form
+    formTitle: "Sohbeti Başlat",
+    formSubtitle: "Lütfen kendinizi tanıtın",
+    fullName: "Ad Soyad",
+    fullNamePlaceholder: "Adınızı girin",
+    phone: "Telefon",
+    phonePlaceholder: "+995 XXX XXX XXX",
+    email: "E-posta (isteğe bağlı)",
+    emailPlaceholder: "your@email.com",
+    startChat: "Sohbeti Başlat",
+    required: "Zorunlu alan",
   },
   he: {
     title: "צ'אט תמיכה",
     placeholder: "הקלד הודעה...",
     send: "שלח",
-    greeting: "שלום! 👋 איך אוכל לעזור?",
+    greeting: "שלום, {name}! 👋 איך אוכל לעזור?",
     sent: "ההודעה נשלחה!",
     error: "שגיאה בשליחה.",
-    emailPlaceholder: "אימייל או טלגרם",
-    emailRequired: "נא לספק פרטי קשר",
     online: "מקוון",
     typing: "מקליד...",
+    popup: "יש שאלות? שאל עכשיו!",
+    // Registration form
+    formTitle: "התחל צ'אט",
+    formSubtitle: "אנא הציג את עצמך",
+    fullName: "שם מלא",
+    fullNamePlaceholder: "הזן את שמך",
+    phone: "טלפון",
+    phonePlaceholder: "+995 XXX XXX XXX",
+    email: "אימייל (אופציונלי)",
+    emailPlaceholder: "your@email.com",
+    startChat: "התחל צ'אט",
+    required: "שדה חובה",
   },
   ar: {
     title: "دردشة الدعم",
     placeholder: "اكتب رسالة...",
     send: "إرسال",
-    greeting: "مرحباً! 👋 كيف يمكنني مساعدتك؟",
+    greeting: "مرحباً، {name}! 👋 كيف يمكنني مساعدتك؟",
     sent: "تم إرسال الرسالة!",
     error: "فشل الإرسال.",
-    emailPlaceholder: "البريد الإلكتروني أو تلغرام",
-    emailRequired: "يرجى تقديم جهة اتصال للرد",
     online: "متصل",
     typing: "يكتب...",
+    popup: "لديك أسئلة؟ اسأل الآن!",
+    // Registration form
+    formTitle: "بدء الدردشة",
+    formSubtitle: "يرجى تقديم نفسك",
+    fullName: "الاسم الكامل",
+    fullNamePlaceholder: "أدخل اسمك",
+    phone: "الهاتف",
+    phonePlaceholder: "+995 XXX XXX XXX",
+    email: "البريد الإلكتروني (اختياري)",
+    emailPlaceholder: "your@email.com",
+    startChat: "بدء الدردشة",
+    required: "حقل مطلوب",
   },
 };
 
@@ -112,27 +182,61 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
-  const [contact, setContact] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showContactInput, setShowContactInput] = useState(true);
   const [sessionId, setSessionId] = useState<string>("");
   const [lastPollTime, setLastPollTime] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
+  // Registration form state
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [formErrors, setFormErrors] = useState<{ fullName?: boolean; phone?: boolean }>({});
+  
   const t = translations[locale as keyof typeof translations] || translations.en;
   const isRtl = locale === "he" || locale === "ar";
 
-  // Initialize session ID
+  // Initialize session ID, check registration, and load saved messages
   useEffect(() => {
     const stored = localStorage.getItem("chat_session_id");
-    if (stored) {
+    const storedUser = localStorage.getItem("chat_user_info");
+    const storedMessages = localStorage.getItem("chat_messages");
+    const storedIsOpen = localStorage.getItem("chat_is_open");
+    
+    if (stored && storedUser) {
       setSessionId(stored);
-      // Resume polling from saved time or start fresh
+      const userInfo = JSON.parse(storedUser);
+      setFullName(userInfo.fullName || "");
+      setPhone(userInfo.phone || "");
+      setEmail(userInfo.email || "");
+      setIsRegistered(true);
+      
+      // Load saved messages
+      if (storedMessages) {
+        try {
+          const parsedMessages = JSON.parse(storedMessages);
+          // Convert timestamp strings back to Date objects
+          const messagesWithDates = parsedMessages.map((msg: Message & { timestamp: string }) => ({
+            ...msg,
+            timestamp: new Date(msg.timestamp),
+          }));
+          setMessages(messagesWithDates);
+        } catch (e) {
+          console.error("Failed to parse stored messages:", e);
+        }
+      }
+      
+      // Restore chat open state
+      if (storedIsOpen === "true") {
+        setIsOpen(true);
+      }
+      
+      // Resume polling from saved time
       const savedPollTime = localStorage.getItem("chat_last_poll");
       if (savedPollTime) {
         setLastPollTime(parseInt(savedPollTime, 10));
       }
-      setShowContactInput(false); // Already has session, no need for contact
     } else {
       const newId = generateSessionId();
       setSessionId(newId);
@@ -140,19 +244,35 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
     }
   }, []);
 
-  // Show greeting when chat opens
+  // Save messages to localStorage whenever they change
   useEffect(() => {
-    if (isOpen && messages.length === 0) {
+    if (messages.length > 0) {
+      localStorage.setItem("chat_messages", JSON.stringify(messages));
+    }
+  }, [messages]);
+
+  // Save chat open state
+  useEffect(() => {
+    localStorage.setItem("chat_is_open", isOpen ? "true" : "false");
+  }, [isOpen]);
+
+  // Show greeting when chat opens and user is registered (only if no messages exist)
+  useEffect(() => {
+    if (isOpen && isRegistered && messages.length === 0) {
+      // Get first name from fullName
+      const firstName = fullName.split(' ')[0] || fullName;
+      const personalizedGreeting = t.greeting.replace('{name}', firstName);
+      
       setMessages([
         {
           id: "greeting",
-          text: t.greeting,
+          text: personalizedGreeting,
           isUser: false,
           timestamp: new Date(),
         },
       ]);
     }
-  }, [isOpen, messages.length, t.greeting]);
+  }, [isOpen, isRegistered, messages.length, t.greeting, fullName]);
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -196,23 +316,42 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
     }
   }, [sessionId, isOpen, lastPollTime]);
 
-  // Start polling when chat is open - poll immediately on open
+  // Start polling when chat is open and user is registered
   useEffect(() => {
-    if (!isOpen || !sessionId) return;
+    if (!isOpen || !sessionId || !isRegistered) return;
 
     // Poll immediately when opening
     pollMessages();
     
     const interval = setInterval(pollMessages, 3000); // Poll every 3 seconds
     return () => clearInterval(interval);
-  }, [isOpen, sessionId, pollMessages]);
+  }, [isOpen, sessionId, isRegistered, pollMessages]);
+
+  // Handle registration form submission
+  const handleRegister = () => {
+    const errors: { fullName?: boolean; phone?: boolean } = {};
+    
+    if (!fullName.trim()) {
+      errors.fullName = true;
+    }
+    if (!phone.trim()) {
+      errors.phone = true;
+    }
+    
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+    
+    // Save user info
+    const userInfo = { fullName: fullName.trim(), phone: phone.trim(), email: email.trim() };
+    localStorage.setItem("chat_user_info", JSON.stringify(userInfo));
+    setIsRegistered(true);
+    setFormErrors({});
+  };
 
   const handleSend = async () => {
     if (!inputText.trim()) return;
-    
-    if (showContactInput && !contact.trim()) {
-      return;
-    }
 
     const userMessage: Message = {
       id: `user-${Date.now()}`,
@@ -226,19 +365,21 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
     setIsLoading(true);
 
     try {
+      const userInfo = JSON.parse(localStorage.getItem("chat_user_info") || "{}");
       const response = await fetch("/api/telegram-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: inputText,
-          contact: contact,
+          fullName: userInfo.fullName,
+          phone: userInfo.phone,
+          email: userInfo.email,
           locale: locale,
           sessionId: sessionId,
         }),
       });
 
       if (response.ok) {
-        setShowContactInput(false);
         // Start polling from now
         setLastPollTime(Date.now());
       } else {
@@ -261,6 +402,32 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
 
   return (
     <>
+      {/* Popup tooltip */}
+      {!isOpen && (
+        <div
+          className={`fixed bottom-8 z-40 animate-bounce-slow ${
+            isRtl ? "left-24" : "right-24"
+          }`}
+        >
+          <div 
+            className={`bg-white px-4 py-2 rounded-full shadow-lg border border-gray-100 text-sm font-medium text-gray-700 whitespace-nowrap ${
+              isRtl ? "rounded-bl-none" : "rounded-br-none"
+            }`}
+          >
+            {t.popup}
+          </div>
+          {/* Arrow pointing to button */}
+          <div 
+            className={`absolute top-1/2 -translate-y-1/2 w-0 h-0 border-8 border-transparent ${
+              isRtl 
+                ? "-right-4 border-l-white" 
+                : "-right-4 border-l-white"
+            }`}
+            style={isRtl ? { left: '-16px', borderRightColor: 'white', borderLeftColor: 'transparent' } : { right: '-16px', borderLeftColor: 'white' }}
+          />
+        </div>
+      )}
+
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -274,8 +441,8 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         ) : (
-          <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
           </svg>
         )}
       </button>
@@ -292,91 +459,186 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
           <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold">{t.title}</h3>
+                <h3 className="font-semibold">{isRegistered ? t.title : t.formTitle}</h3>
                 <p className="text-xs text-white/80">Georgian Support</p>
               </div>
             </div>
           </div>
 
-          {/* Messages */}
-          <div className="h-[300px] overflow-y-auto p-4 space-y-3 bg-gray-50">
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`flex ${msg.isUser ? "justify-end" : "justify-start"}`}
+          {/* Registration Form */}
+          {!isRegistered && (
+            <div style={{ padding: '20px', backgroundColor: '#f9fafb' }}>
+              <p style={{ fontSize: '14px', color: '#4b5563', textAlign: 'center', marginBottom: '20px' }}>{t.formSubtitle}</p>
+              
+              {/* Full Name */}
+              <div style={{ marginBottom: '16px' }}>
+                <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, color: '#374151', marginBottom: '8px' }}>
+                  {t.fullName} <span style={{ color: '#ef4444' }}>*</span>
+                </label>
+                <input
+                  type="text"
+                  value={fullName}
+                  onChange={(e) => {
+                    setFullName(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, fullName: false }));
+                  }}
+                  placeholder={t.fullNamePlaceholder}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    fontSize: '14px',
+                    border: formErrors.fullName ? '1px solid #ef4444' : '1px solid #e5e7eb',
+                    borderRadius: '12px',
+                    outline: 'none',
+                    backgroundColor: 'white',
+                    boxSizing: 'border-box',
+                  }}
+                />
+                {formErrors.fullName && (
+                  <p style={{ fontSize: '12px', color: '#ef4444', marginTop: '6px' }}>{t.required}</p>
+                )}
+              </div>
+              
+              {/* Phone */}
+              <div style={{ marginBottom: '16px' }}>
+                <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, color: '#374151', marginBottom: '8px' }}>
+                  {t.phone} <span style={{ color: '#ef4444' }}>*</span>
+                </label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, phone: false }));
+                  }}
+                  placeholder={t.phonePlaceholder}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    fontSize: '14px',
+                    border: formErrors.phone ? '1px solid #ef4444' : '1px solid #e5e7eb',
+                    borderRadius: '12px',
+                    outline: 'none',
+                    backgroundColor: 'white',
+                    boxSizing: 'border-box',
+                  }}
+                />
+                {formErrors.phone && (
+                  <p style={{ fontSize: '12px', color: '#ef4444', marginTop: '6px' }}>{t.required}</p>
+                )}
+              </div>
+              
+              {/* Email (optional) */}
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>
+                  {t.email}
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t.emailPlaceholder}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    fontSize: '14px',
+                    border: '1px solid #e5e7eb',
+                    borderRadius: '12px',
+                    outline: 'none',
+                    backgroundColor: 'white',
+                    boxSizing: 'border-box',
+                  }}
+                />
+              </div>
+              
+              {/* Submit Button */}
+              <button
+                onClick={handleRegister}
+                style={{
+                  width: '100%',
+                  padding: '14px',
+                  background: 'linear-gradient(to right, #ef4444, #dc2626)',
+                  color: 'white',
+                  fontWeight: 600,
+                  fontSize: '14px',
+                  border: 'none',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                }}
               >
-                <div
-                  className={`max-w-[80%] px-4 py-2 rounded-2xl ${
-                    msg.isUser
-                      ? "bg-red-500 text-white rounded-br-sm"
-                      : "bg-white text-gray-800 shadow-sm rounded-bl-sm"
-                  }`}
-                >
-                  <p className="text-sm">{msg.text}</p>
-                  <p className={`text-xs mt-1 ${msg.isUser ? "text-white/70" : "text-gray-400"}`}>
-                    {msg.timestamp.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" })}
-                  </p>
-                </div>
-              </div>
-            ))}
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="bg-white px-4 py-3 rounded-2xl shadow-sm rounded-bl-sm">
-                  <div className="flex gap-1">
-                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
-                  </div>
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Contact Input (shown first time) */}
-          {showContactInput && (
-            <div className="px-4 py-2 bg-white border-t border-gray-100">
-              <input
-                type="text"
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
-                placeholder={t.emailPlaceholder}
-                className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500/50"
-              />
-              {!contact && inputText && (
-                <p className="text-xs text-red-500 mt-1">{t.emailRequired}</p>
-              )}
+                {t.startChat}
+              </button>
             </div>
           )}
 
-          {/* Input */}
-          <div className="p-4 bg-white border-t border-gray-100">
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                placeholder={t.placeholder}
-                className="flex-1 px-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500/50 text-sm"
-                disabled={isLoading}
-              />
-              <button
-                onClick={handleSend}
-                disabled={isLoading || !inputText.trim()}
-                className="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-              </button>
-            </div>
-          </div>
+          {/* Messages (only shown after registration) */}
+          {isRegistered && (
+            <>
+              <div className="h-[300px] overflow-y-auto p-4 space-y-3 bg-gray-50">
+                {messages.map((msg) => (
+                  <div
+                    key={msg.id}
+                    className={`flex ${msg.isUser ? "justify-end" : "justify-start"}`}
+                  >
+                    <div
+                      className={`max-w-[80%] px-4 py-2 rounded-2xl ${
+                        msg.isUser
+                          ? "bg-red-500 text-white rounded-br-sm"
+                          : "bg-white text-gray-800 shadow-sm rounded-bl-sm"
+                      }`}
+                    >
+                      <p className="text-sm">{msg.text}</p>
+                      <p className={`text-xs mt-1 ${msg.isUser ? "text-white/70" : "text-gray-400"}`}>
+                        {msg.timestamp.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" })}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="bg-white px-4 py-3 rounded-2xl shadow-sm rounded-bl-sm">
+                      <div className="flex gap-1">
+                        <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                        <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                        <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+
+              {/* Input */}
+              <div className="p-4 bg-white border-t border-gray-100">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={inputText}
+                    onChange={(e) => setInputText(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                    placeholder={t.placeholder}
+                    className="flex-1 px-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500/50 text-sm"
+                    disabled={isLoading}
+                  />
+                  <button
+                    onClick={handleSend}
+                    disabled={isLoading || !inputText.trim()}
+                    className="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
     </>

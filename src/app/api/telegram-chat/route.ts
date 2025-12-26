@@ -4,7 +4,9 @@ import {
   createSession,
   getSession,
   addMessageToSession,
-  setAdminReplyContext,
+  setTelegramTopicId,
+  getTelegramTopicId,
+  setTopicToSession,
 } from "@/lib/chatStore";
 
 // Rate limiting
@@ -61,7 +63,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { message, contact, locale, sessionId } = body;
+    const { message, fullName, phone, email, locale, sessionId } = body;
 
     if (!message || typeof message !== "string") {
       return NextResponse.json(
@@ -77,10 +79,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Build contact info string
+    const contactInfo = fullName || "Unknown";
+
     // Get or create session
     let session = getSession(sessionId);
     if (!session) {
-      session = createSession(sessionId, contact || "Unknown");
+      session = createSession(sessionId, contactInfo);
     }
 
     // Add user message to session
@@ -97,41 +102,96 @@ export async function POST(request: NextRequest) {
       ar: "🇸🇦 AR",
     };
 
-    const isFirstMessage = session.messages.length === 1;
+    // Check if we have a topic for this session
+    let topicId = getTelegramTopicId(sessionId);
     
-    let formattedMessage: string;
-    if (isFirstMessage) {
-      formattedMessage = `
-💬 *Новый чат с сайта*
+    // Create topic for new chat session
+    if (!topicId) {
+      const topicName = `💬 ${fullName || "User"} | ${localeNames[locale] || locale}`;
+      
+      const createTopicResponse = await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/createForumTopic`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            name: topicName.slice(0, 128), // Telegram limit is 128 chars
+          }),
+        }
+      );
 
-👤 *Контакт:* ${contact || "Не указан"}
+      if (!createTopicResponse.ok) {
+        const error = await createTopicResponse.text();
+        console.error("Failed to create topic:", error);
+        return NextResponse.json(
+          { error: "Failed to create chat topic" },
+          { status: 500 }
+        );
+      }
+
+      const topicResult = await createTopicResponse.json();
+      topicId = topicResult.result?.message_thread_id;
+      
+      if (topicId) {
+        setTelegramTopicId(sessionId, topicId);
+        setTopicToSession(topicId, sessionId);
+        
+        // Send user info as first message in topic
+        const userInfoMessage = `
+👤 *Информация о пользователе:*
+
+📛 *Имя:* ${fullName || "Не указано"}
+📞 *Телефон:* ${phone || "Не указан"}
+📧 *Email:* ${email || "Не указан"}
 🌐 *Язык:* ${localeNames[locale] || locale}
 🆔 *Сессия:* \`${sessionId.slice(0, 8)}\`
 
-📝 *Сообщение:*
-${message}
-
-_Ответьте на это сообщение чтобы ответить пользователю_
+_Просто отвечайте в этом топике - сообщения автоматически отправятся пользователю_
 `.trim();
-    } else {
-      formattedMessage = `
-💬 [${sessionId.slice(0, 8)}] ${contact || "User"}:
 
-${message}
-`.trim();
+        await fetch(
+          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              chat_id: TELEGRAM_CHAT_ID,
+              message_thread_id: topicId,
+              text: userInfoMessage,
+              parse_mode: "Markdown",
+            }),
+          }
+        );
+      }
     }
 
-    // Send to Telegram
+    // Format message for Telegram
+    const formattedMessage = `💬 *Сообщение от пользователя:*\n\n${message}`;
+
+    // Send to Telegram topic
+    const telegramPayload: {
+      chat_id: string;
+      message_thread_id?: number;
+      text: string;
+      parse_mode: string;
+    } = {
+      chat_id: TELEGRAM_CHAT_ID,
+      text: formattedMessage,
+      parse_mode: "Markdown",
+    };
+
+    // Add topic ID if we have one
+    if (topicId) {
+      telegramPayload.message_thread_id = topicId;
+    }
+
     const telegramResponse = await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: formattedMessage,
-          parse_mode: "Markdown",
-        }),
+        body: JSON.stringify(telegramPayload),
       }
     );
 
@@ -146,9 +206,9 @@ ${message}
 
     const telegramResult = await telegramResponse.json();
     
-    // Store the message ID for reply tracking
+    // Log success
     if (telegramResult.result?.message_id) {
-      setAdminReplyContext(telegramResult.result.message_id, sessionId);
+      console.log(`Message sent to topic ${topicId}, message_id: ${telegramResult.result.message_id}`);
     }
 
     return NextResponse.json({ success: true, sessionId });

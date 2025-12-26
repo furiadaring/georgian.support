@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import {
   addMessageToSession,
-  getSessionByAdminReply,
-  getAllSessions,
+  getSessionByTopicId,
 } from "@/lib/chatStore";
 
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
@@ -13,10 +12,12 @@ interface TelegramUpdate {
   update_id: number;
   message?: {
     message_id: number;
+    message_thread_id?: number; // Topic ID
     from: {
       id: number;
       first_name: string;
       username?: string;
+      is_bot?: boolean;
     };
     chat: {
       id: number;
@@ -49,37 +50,28 @@ export async function POST(request: NextRequest) {
 
     const { message } = update;
     
-    // Must be a reply to a user message
-    if (!message.reply_to_message || !message.text) {
+    // Ignore messages from bots (including our own)
+    if (message.from.is_bot) {
+      return NextResponse.json({ ok: true });
+    }
+    
+    // Must have text and be in a topic
+    if (!message.text || !message.message_thread_id) {
       return NextResponse.json({ ok: true });
     }
 
-    // Find session by reply context
-    let sessionId = getSessionByAdminReply(message.reply_to_message.message_id);
-
-    // If not found, try to extract session ID from the original message
-    if (!sessionId && message.reply_to_message.text) {
-      const match = message.reply_to_message.text.match(/Сессия:\s*`([a-f0-9-]+)`/);
-      if (match) {
-        sessionId = getAllSessions().find(s => s.sessionId.startsWith(match[1]))?.sessionId;
-      }
-      
-      // Also try the short format [sessionId]
-      const shortMatch = message.reply_to_message.text.match(/\[([a-f0-9]+)\]/);
-      if (!sessionId && shortMatch) {
-        sessionId = getAllSessions().find(s => s.sessionId.startsWith(shortMatch[1]))?.sessionId;
-      }
-    }
+    // Find session by topic ID
+    const sessionId = getSessionByTopicId(message.message_thread_id);
 
     if (!sessionId) {
-      console.log("Could not find session for reply");
+      console.log(`No session found for topic ${message.message_thread_id}`);
       return NextResponse.json({ ok: true });
     }
 
     // Add admin reply to session
     addMessageToSession(sessionId, message.text, false);
     
-    console.log(`Admin reply added to session ${sessionId}: ${message.text}`);
+    console.log(`Admin reply added to session ${sessionId} (topic ${message.message_thread_id}): ${message.text}`);
 
     return NextResponse.json({ ok: true });
   } catch (error) {
