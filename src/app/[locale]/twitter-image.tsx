@@ -1,14 +1,67 @@
 import { ImageResponse } from "next/og";
+import { locales, type Locale } from "@/lib/i18n/config";
 
 export const runtime = "edge";
-export const alt = "Georgian Support — Медицинское страхование в Грузии";
 export const size = {
   width: 1200,
   height: 630,
 };
 export const contentType = "image/png";
 
-export default async function Image() {
+// Localized content for Twitter images
+const twitterContent: Record<Locale, { alt: string; tagline: string; description: string }> = {
+  ru: {
+    alt: "Georgian Support — Медицинское страхование в Грузии",
+    tagline: "Страхование в Грузии",
+    description: "Медицинская страховка для туристов и экспатов • от 4 GEL/день",
+  },
+  en: {
+    alt: "Georgian Support — Medical Insurance in Georgia",
+    tagline: "Insurance in Georgia",
+    description: "Medical insurance for tourists and expats • from 4 GEL/day",
+  },
+  ka: {
+    alt: "Georgian Support — სამედიცინო დაზღვევა საქართველოში",
+    tagline: "დაზღვევა საქართველოში",
+    description: "სამედიცინო დაზღვევა ტურისტებისა და ექსპატებისთვის • 4 GEL/დღე-დან",
+  },
+  uk: {
+    alt: "Georgian Support — Медичне страхування в Грузії",
+    tagline: "Страхування в Грузії",
+    description: "Медичне страхування для туристів та експатів • від 4 GEL/день",
+  },
+  tr: {
+    alt: "Georgian Support — Gürcistan'da Sağlık Sigortası",
+    tagline: "Gürcistan'da Sigorta",
+    description: "Turistler ve gurbetçiler için sağlık sigortası • günlük 4 GEL'den",
+  },
+  he: {
+    alt: "Georgian Support — ביטוח רפואי בגאורגיה",
+    tagline: "ביטוח בגאורגיה",
+    description: "ביטוח רפואי לתיירים ולמתיישבים • החל מ-4 GEL/יום",
+  },
+  ar: {
+    alt: "Georgian Support — التأمين الطبي في جورجيا",
+    tagline: "التأمين في جورجيا",
+    description: "تأمين طبي للسياح والمغتربين • من 4 GEL/يوم",
+  },
+};
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export function generateImageMetadata({ params }: { params: { locale: string } }) {
+  const locale = (params.locale as Locale) || "ru";
+  const content = twitterContent[locale] || twitterContent.ru;
+  return [{ alt: content.alt }];
+}
+
+export default async function Image({ params }: { params: { locale: string } }) {
+  const locale = (params.locale as Locale) || "ru";
+  const content = twitterContent[locale] || twitterContent.ru;
+  const isRtl = locale === "he" || locale === "ar";
+
   return new ImageResponse(
     (
       <div
@@ -21,6 +74,7 @@ export default async function Image() {
           justifyContent: "center",
           backgroundColor: "#FFFFFF",
           backgroundImage: "linear-gradient(135deg, #FFFFFF 0%, #FEF2F2 50%, #FEE2E2 100%)",
+          direction: isRtl ? "rtl" : "ltr",
         }}
       >
         {/* Red accent bar */}
@@ -91,7 +145,7 @@ export default async function Image() {
               marginBottom: "32px",
             }}
           >
-            Страхование в Грузии
+            {content.tagline}
           </div>
           
           {/* Description */}
@@ -104,7 +158,7 @@ export default async function Image() {
               lineHeight: 1.4,
             }}
           >
-            Медицинская страховка для туристов и экспатов • от 4 GEL/день
+            {content.description}
           </div>
         </div>
         
