@@ -54,7 +54,7 @@ export async function generateMetadata({
       description: dict.meta.description,
       images: [
         {
-          url: 'https://georgian.support/opengraph-image',
+          url: `https://georgian.support/${locale}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: dict.meta.title,
@@ -65,7 +65,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: dict.meta.title,
       description: dict.meta.description,
-      images: ['https://georgian.support/twitter-image'],
+      images: [`https://georgian.support/${locale}/twitter-image`],
     },
   };
 }
