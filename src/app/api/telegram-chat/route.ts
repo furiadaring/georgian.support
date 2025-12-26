@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { message, fullName, phone, email, locale, sessionId, isSystemMessage, isEndChat, pageUrl, localTime } = body;
+    const { message, fullName, phone, email, locale, sessionId, isSystemMessage, isEndChat, pageUrl, localTime, clientTopicId } = body;
 
     if (!message || typeof message !== "string") {
       return NextResponse.json(
@@ -207,7 +207,10 @@ _Просто отвечайте в этом топике - сообщения �
     }
 
     // Handle end chat - close topic and send to archive
-    if (isEndChat && topicId) {
+    // Use clientTopicId if server lost the session
+    const effectiveTopicId = topicId || clientTopicId;
+    
+    if (isEndChat && effectiveTopicId) {
       // Send end notification to topic
       await fetch(
         `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
@@ -216,7 +219,7 @@ _Просто отвечайте в этом топике - сообщения �
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             chat_id: TELEGRAM_CHAT_ID,
-            message_thread_id: topicId,
+            message_thread_id: effectiveTopicId,
             text: "🔴 *Пользователь завершил чат*",
             parse_mode: "Markdown",
           }),
@@ -231,11 +234,11 @@ _Просто отвечайте в этом топике - сообщения �
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             chat_id: TELEGRAM_CHAT_ID,
-            message_thread_id: topicId,
+            message_thread_id: effectiveTopicId,
           }),
         }
       );
-      console.log(`Topic ${topicId} closed for session ${sessionId}`);
+      console.log(`Topic ${effectiveTopicId} closed for session ${sessionId}`);
 
       // Send user info to archive chat if configured
       if (TELEGRAM_ARCHIVE_CHAT_ID) {
@@ -312,7 +315,7 @@ _Просто отвечайте в этом топике - сообщения �
       console.log(`Message sent to topic ${topicId}, message_id: ${telegramResult.result.message_id}`);
     }
 
-    return NextResponse.json({ success: true, sessionId });
+    return NextResponse.json({ success: true, sessionId, topicId });
   } catch (error) {
     console.error("Chat API error:", error);
     return NextResponse.json(

@@ -191,6 +191,7 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState<string>("");
+  const [topicId, setTopicId] = useState<number | null>(null);
   const [lastPollTime, setLastPollTime] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
@@ -210,6 +211,7 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
     const storedUser = localStorage.getItem("chat_user_info");
     const storedMessages = localStorage.getItem("chat_messages");
     const storedIsOpen = localStorage.getItem("chat_is_open");
+    const storedTopicId = localStorage.getItem("chat_topic_id");
     
     if (stored && storedUser) {
       setSessionId(stored);
@@ -218,6 +220,11 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
       setPhone(userInfo.phone || "");
       setEmail(userInfo.email || "");
       setIsRegistered(true);
+      
+      // Load topic ID
+      if (storedTopicId) {
+        setTopicId(parseInt(storedTopicId, 10));
+      }
       
       // Load saved messages
       if (storedMessages) {
@@ -362,6 +369,7 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
     // Send end chat notification to Telegram
     try {
       const userInfo = JSON.parse(localStorage.getItem("chat_user_info") || "{}");
+      const storedTopicId = localStorage.getItem("chat_topic_id");
       await fetch("/api/telegram-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -374,6 +382,7 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
           sessionId: sessionId,
           isSystemMessage: true,
           isEndChat: true,
+          clientTopicId: storedTopicId ? parseInt(storedTopicId, 10) : null,
         }),
       });
     } catch (error) {
@@ -387,9 +396,11 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
     localStorage.removeItem("chat_registered");
     localStorage.removeItem("chat_last_poll");
     localStorage.removeItem("chat_open");
+    localStorage.removeItem("chat_topic_id");
     
     // Reset state
     setSessionId(generateSessionId());
+    setTopicId(null);
     setMessages([]);
     setIsRegistered(false);
     setFullName("");
@@ -432,6 +443,12 @@ export default function TelegramChat({ locale }: TelegramChatProps) {
       });
 
       if (response.ok) {
+        const data = await response.json();
+        // Save topicId if returned
+        if (data.topicId) {
+          setTopicId(data.topicId);
+          localStorage.setItem("chat_topic_id", data.topicId.toString());
+        }
         // Start polling from now
         setLastPollTime(Date.now());
       } else {
