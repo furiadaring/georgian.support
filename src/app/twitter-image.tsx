@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Georgian Support — Медицинское страхование в Грузии";
+export const alt = "Georgian Support — Medical Insurance in Georgia";
 export const size = {
   width: 1200,
   height: 630,
@@ -91,7 +91,7 @@ export default async function Image() {
               marginBottom: "32px",
             }}
           >
-            Страхование в Грузии
+            Insurance in Georgia
           </div>
           
           {/* Description */}
@@ -104,7 +104,7 @@ export default async function Image() {
               lineHeight: 1.4,
             }}
           >
-            Медицинская страховка для туристов и экспатов • от 4 GEL/день
+            Medical insurance for tourists and expats • from 4 GEL/day
           </div>
         </div>
         
