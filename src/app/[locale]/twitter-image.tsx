@@ -8,16 +8,16 @@ export const size = {
 };
 export const contentType = "image/png";
 
-// Font URLs for different scripts (updated v48/v50/v33 - June 2025)
+// Font URLs for different scripts (TTF format required by @vercel/og)
 const fontUrls: Record<string, string> = {
-  // Noto Sans for Latin, Cyrillic
-  default: "https://fonts.gstatic.com/s/notosans/v36/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyD9A99d41P6zHtY.woff2",
-  // Noto Sans Georgian (v48 - Georgian unicode range)
-  ka: "https://fonts.gstatic.com/s/notosansgeorgian/v48/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdpsAy2jmdZS60A.woff2",
-  // Noto Sans Hebrew (v50 - Hebrew unicode range)
-  he: "https://fonts.gstatic.com/s/notosanshebrew/v50/or3HQ7v33eiDljA1IufXTtVf7V6RvEEdhQlk0LlGxCyaeNKYZC0sqk3xXGiXkI2dpyhkhus.woff2",
-  // Noto Sans Arabic (v33 - Arabic unicode range)
-  ar: "https://fonts.gstatic.com/s/notosansarabic/v33/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfL2ufuXqAJQI.woff2",
+  // Noto Sans for Latin, Cyrillic (Bold 700)
+  default: "https://fonts.gstatic.com/s/notosans/v42/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyAaBN9d.ttf",
+  // Noto Sans Georgian (Bold 700)
+  ka: "https://fonts.gstatic.com/s/notosansgeorgian/v48/PlIaFke5O6RzLfvNNVSitxkr76PRHBC4Ytyq-Gof7PUs4S7zWn-8YDB09HFNdpsAy1j-.ttf",
+  // Noto Sans Hebrew (Bold 700)
+  he: "https://fonts.gstatic.com/s/notosanshebrew/v50/or3HQ7v33eiDljA1IufXTtVf7V6RvEEdhQlk0LlGxCyaeNKYZC0sqk3xXGiXkI2tog.ttf",
+  // Noto Sans Arabic (Bold 700)
+  ar: "https://fonts.gstatic.com/s/notosansarabic/v33/nwpxtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfL2uvuw.ttf",
 };
 
 // Localized content for Twitter images
