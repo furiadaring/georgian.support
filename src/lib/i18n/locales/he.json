@@ -105,27 +105,27 @@
     "year": "שנה",
     "plans": {
       "visitor": {
-        "name": "DAILY INSURANCE",
+        "name": "VISITOR",
         "description": "לתיירים לשהייה קצרה"
       },
       "standard": {
-        "name": "EMERGENCY STANDARD",
+        "name": "STANDARD",
         "description": "לתיירים ושוהים ל-3 חודשים"
       },
       "optimum": {
-        "name": "EMERGENCY EXTENDED",
+        "name": "OPTIMUM",
         "description": "לתיירים ושוהים ל-6 חודשים"
       },
       "premium": {
-        "name": "EMERGENCY FLEXI",
+        "name": "PREMIUM",
         "description": "ביטוח מורחב לתיירים ושוהים לשנה"
       },
       "uno-active": {
-        "name": "MEDICAL STANDARD",
+        "name": "UNO ACTIVE",
         "description": "כיסוי מלא לשהייה ארוכת טווח"
       },
       "uno-active-plus": {
-        "name": "MEDICAL FLEXI",
+        "name": "UNO ACTIVE+",
         "description": "כיסוי מורחב לשהייה ארוכת טווח"
       }
     },

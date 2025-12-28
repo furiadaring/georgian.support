@@ -105,27 +105,27 @@
     "year": "yıl",
     "plans": {
       "visitor": {
-        "name": "DAILY INSURANCE",
+        "name": "VISITOR",
         "description": "Kısa süreli konaklamalar için"
       },
       "standard": {
-        "name": "EMERGENCY STANDARD",
+        "name": "STANDARD",
         "description": "Turistler ve göçmenler için 3 aylık"
       },
       "optimum": {
-        "name": "EMERGENCY EXTENDED",
+        "name": "OPTIMUM",
         "description": "Turistler ve göçmenler için 6 aylık"
       },
       "premium": {
-        "name": "EMERGENCY FLEXI",
+        "name": "PREMIUM",
         "description": "Turistler ve göçmenler için 1 yıllık genişletilmiş sigorta"
       },
       "uno-active": {
-        "name": "MEDICAL STANDARD",
+        "name": "UNO ACTIVE",
         "description": "Uzun süreli konaklama için tam teminat"
       },
       "uno-active-plus": {
-        "name": "MEDICAL FLEXI",
+        "name": "UNO ACTIVE+",
         "description": "Uzun süreli konaklama için genişletilmiş teminat"
       }
     },

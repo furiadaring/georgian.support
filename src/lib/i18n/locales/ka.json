@@ -103,27 +103,27 @@
     "year": "წელი",
     "plans": {
       "visitor": {
-        "name": "DAILY INSURANCE",
+        "name": "VISITOR",
         "description": "მოკლე ვიზიტით მყოფი ტურისტებისთვის"
       },
       "standard": {
-        "name": "EMERGENCY STANDARD",
+        "name": "STANDARD",
         "description": "ტურისტებისა და ექსპატებისთვის 3 თვით"
       },
       "optimum": {
-        "name": "EMERGENCY EXTENDED",
+        "name": "OPTIMUM",
         "description": "ტურისტებისა და ექსპატებისთვის 6 თვით"
       },
       "premium": {
-        "name": "EMERGENCY FLEXI",
+        "name": "PREMIUM",
         "description": "გაფართოებული დაზღვევა ტურისტებისა და ექსპატებისთვის 1 წლით"
       },
       "uno-active": {
-        "name": "MEDICAL STANDARD",
+        "name": "UNO ACTIVE",
         "description": "სრული დაფარვა გრძელვადიანი ცხოვრებისთვის"
       },
       "uno-active-plus": {
-        "name": "MEDICAL FLEXI",
+        "name": "UNO ACTIVE+",
         "description": "გაფართოებული დაფარვა გრძელვადიანი ცხოვრებისთვის"
       }
     },

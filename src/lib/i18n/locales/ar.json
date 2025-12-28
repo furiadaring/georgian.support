@@ -103,27 +103,27 @@
     "year": "سنة",
     "plans": {
       "visitor": {
-        "name": "DAILY INSURANCE",
+        "name": "VISITOR",
         "description": "للسياح في إقامة قصيرة"
       },
       "standard": {
-        "name": "EMERGENCY STANDARD",
+        "name": "STANDARD",
         "description": "للسياح والمقيمين لمدة 3 أشهر"
       },
       "optimum": {
-        "name": "EMERGENCY EXTENDED",
+        "name": "OPTIMUM",
         "description": "للسياح والمقيمين لمدة 6 أشهر"
       },
       "premium": {
-        "name": "EMERGENCY FLEXI",
+        "name": "PREMIUM",
         "description": "تأمين موسع للسياح والمقيمين لمدة سنة"
       },
       "uno-active": {
-        "name": "MEDICAL STANDARD",
+        "name": "UNO ACTIVE",
         "description": "تغطية كاملة للإقامة طويلة المدى"
       },
       "uno-active-plus": {
-        "name": "MEDICAL FLEXI",
+        "name": "UNO ACTIVE+",
         "description": "تغطية موسعة للإقامة طويلة المدى"
       }
     },

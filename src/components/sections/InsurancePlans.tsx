@@ -44,14 +44,14 @@ const PLANS_DATA = [
   },
   {
     id: "uno-active",
-    price: 55,
+    price: 65,
     period: "month",
     popular: false,
     coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dental"],
   },
   {
     id: "uno-active-plus",
-    price: 90,
+    price: 110,
     period: "month",
     popular: false,
     coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dental"],

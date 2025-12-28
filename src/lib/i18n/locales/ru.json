@@ -105,27 +105,27 @@
     "year": "год",
     "plans": {
       "visitor": {
-        "name": "DAILY INSURANCE",
+        "name": "VISITOR",
         "description": "Для туристов на короткий срок пребывания"
       },
       "standard": {
-        "name": "EMERGENCY STANDARD",
+        "name": "STANDARD",
         "description": "Для туристов и экспатов на 3 месяца"
       },
       "optimum": {
-        "name": "EMERGENCY EXTENDED",
+        "name": "OPTIMUM",
         "description": "Для туристов и экспатов на 6 месяцев"
       },
       "premium": {
-        "name": "EMERGENCY FLEXI",
+        "name": "PREMIUM",
         "description": "Расширенная страховка для туристов и экспатов на 1 год"
       },
       "uno-active": {
-        "name": "MEDICAL STANDARD",
+        "name": "UNO ACTIVE",
         "description": "Полное покрытие для долгосрочного проживания"
       },
       "uno-active-plus": {
-        "name": "MEDICAL FLEXI",
+        "name": "UNO ACTIVE+",
         "description": "Расширенное покрытие для долгосрочного проживания"
       }
     },
