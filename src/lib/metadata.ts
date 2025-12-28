@@ -9,7 +9,7 @@ export const siteMetadata: Metadata = {
     template: "%s | Georgian Support",
   },
   description:
-    "Медицинская страховка в Грузии от 55 GEL/мес. Покрытие до 30,000 GEL, оформление онлайн за 15 минут. Реферальная программа: до 100 GEL скидка за каждого друга. Поддержка 24/7.",
+    "Медицинская страховка в Грузии от 65 GEL/мес. Покрытие до 30,000 GEL, оформление онлайн за 15 минут. Реферальная программа: до 100 GEL скидка за каждого друга. Поддержка 24/7.",
   keywords: [
     // Insurance keywords
     "страховка в Грузии",
@@ -54,7 +54,7 @@ export const siteMetadata: Metadata = {
     locale: "ru_RU",
     url: baseUrl,
     siteName: "Georgian Support",
-    title: "Страховка в Грузии от 55 GEL/мес | Реферальная программа",
+    title: "Страховка в Грузии от 65 GEL/мес | Реферальная программа",
     description:
       "Медицинская страховка для туристов и экспатов в Грузии. Покрытие до 30,000 GEL, поддержка 24/7. Приглашай друзей — получай до 100 GEL скидки!",
     images: [
@@ -68,7 +68,7 @@ export const siteMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Страховка в Грузии от 55 GEL/мес | Скидки за рефералов",
+    title: "Страховка в Грузии от 65 GEL/мес | Скидки за рефералов",
     description: "Медицинская страховка для туристов и экспатов. Покрытие до 30,000 GEL. Реферальная программа: до 100 GEL за друга!",
     images: [`${baseUrl}/twitter-image`],
   },
@@ -158,7 +158,7 @@ export const insuranceAgencySchema = {
   telephone: "+995-591-196-300",
   email: "info@georgian.support",
   description: "Медицинская страховка для туристов и экспатов в Грузии",
-  priceRange: "55 - 300 GEL",
+  priceRange: "65 - 300 GEL",
   openingHours: "Mo-Su 00:00-23:59",
   areaServed: {
     "@type": "Country",

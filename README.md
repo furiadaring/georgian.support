@@ -56,8 +56,8 @@ Hebrew and Arabic locales have full RTL (right-to-left) support with proper text
 | **STANDARD** | 200 GEL | /3 months | $30,000 | Extended stays |
 | **OPTIMUM** | 250 GEL | /6 months | $30,000 | Long-term tourists |
 | **PREMIUM** ⭐ | 300 GEL | /year | $50,000 | Full coverage |
-| **UNO ACTIVE** | 55 GEL | /month | $15,000 | Flexible monthly |
-| **UNO ACTIVE+** | 90 GEL | /month | $20,000 | Enhanced monthly |
+| **UNO ACTIVE** | 65 GEL | /month | $15,000 | Flexible monthly |
+| **UNO ACTIVE+** | 110 GEL | /month | $20,000 | Enhanced monthly |
 
 ### Coverage Details
 Each plan includes detailed coverage information in a modal popup with:

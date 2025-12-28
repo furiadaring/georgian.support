@@ -7,6 +7,30 @@ const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_ORDER_BOT_TOKEN || process.env.T
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_ORDER_CHAT_ID || process.env.TELEGRAM_CHAT_ID;
 const SMS_API_KEY = process.env.SMS_API_KEY || "8b6b2e817c3e4d61baf1857da70be294";
 
+// Map display plan names to database plan names (matching visitgeorgia database)
+// DB uses: VISITOR, STANDARD, OPTIMUM, PREMIUM, UNO ACTIVE, UNO ACTIVE+
+const PLAN_NAME_TO_DB: Record<string, string> = {
+  // English display names - map to exact DB names
+  "VISITOR": "VISITOR",
+  "STANDARD": "STANDARD",
+  "OPTIMUM": "OPTIMUM",
+  "PREMIUM": "PREMIUM",
+  "UNO ACTIVE": "UNO ACTIVE",
+  "UNO ACTIVE +": "UNO ACTIVE+",
+  "UNO ACTIVE+": "UNO ACTIVE+",
+  // Russian display names
+  "ВИЗИТОР": "VISITOR",
+  "СТАНДАРТ": "STANDARD",
+  "ОПТИМУМ": "OPTIMUM",
+  "ПРЕМИУМ": "PREMIUM",
+};
+
+// Convert display plan name to database plan name
+function getPlanNameForDB(displayName: string): string {
+  const upperName = displayName.toUpperCase().trim();
+  return PLAN_NAME_TO_DB[upperName] || displayName;
+}
+
 // SMS messages in different languages
 const SMS_MESSAGES: Record<string, (orderId: string, planName: string, price: string) => string> = {
   en: (orderId, planName, price) =>
@@ -197,11 +221,14 @@ export async function POST(request: NextRequest) {
       passportPhotoType = passportPhoto.type;
     }
 
+    // Convert display plan name to database plan name
+    const dbPlanName = getPlanNameForDB(planName || "");
+
     // Create order object
     const order: Order = {
       orderId,
       createdAt: new Date().toISOString(),
-      planName: planName || "",
+      planName: dbPlanName,
       planPrice: parseFloat(planPrice) || 0,
       planPricePerDay: planPricePerDay || "",
       numberOfDays: numberOfDays || "",
