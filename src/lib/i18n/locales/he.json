@@ -665,7 +665,31 @@
     },
     "paymentOption": "אפשרות תשלום",
     "paymentQuarterly": "כל 3 חוד׳",
-    "paymentYearly": "תשלום שנתי"
+    "paymentYearly": "תשלום שנתי",
+    "orderReceived": "ההזמנה התקבלה!",
+    "selectPaymentMethod": "אנא בחר אמצעי תשלום",
+    "bankTransfer": "העברה בנקאית",
+    "bankTransferDesc": "העברה לחשבון Bank of Georgia",
+    "koronaPay": "קורונה פיי",
+    "koronaPayDesc": "העברה מרוסיה",
+    "cardPayment": "תשלום בכרטיס",
+    "comingSoon": "בקרוב",
+    "bankTransferTitle": "פרטי העברה בנקאית",
+    "bankTransferInstructions": "אנא העבר את הסכום לחשבון הבא",
+    "amountToPay": "סכום לתשלום",
+    "bankName": "בנק",
+    "beneficiary": "מוטב",
+    "iban": "IBAN",
+    "reference": "אסמכתא",
+    "important": "חשוב",
+    "bankTransferNote": "אנא ציין את מספר ההזמנה בתיאור ההעברה. הפוליסה שלך תופעל לאחר אישור התשלום.",
+    "done": "סיום",
+    "koronaPayTitle": "העברת קורונה פיי",
+    "koronaPayInstructions": "המפעיל שלנו יצור איתך קשר בקרוב",
+    "orderConfirmed": "ההזמנה אושרה",
+    "koronaPayContactNote": "המפעיל שלנו יצור איתך קשר דרך WhatsApp או Telegram עם פרטי העברת קורונה פיי.",
+    "note": "הערה",
+    "koronaPayNote": "אנא ודא ש-WhatsApp או Telegram זמינים במספר הטלפון שסיפקת."
   }
 }
 

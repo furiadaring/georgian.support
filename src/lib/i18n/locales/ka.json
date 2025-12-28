@@ -664,7 +664,31 @@
     },
     "paymentOption": "გადახდის ვარიანტი",
     "paymentQuarterly": "ყოველ 3 თვე",
-    "paymentYearly": "წლიური გადახდა"
+    "paymentYearly": "წლიური გადახდა",
+    "orderReceived": "განაცხადი მიღებულია!",
+    "selectPaymentMethod": "გთხოვთ აირჩიოთ გადახდის მეთოდი",
+    "bankTransfer": "საბანკო გადარიცხვა",
+    "bankTransferDesc": "გადარიცხვა Bank of Georgia-ს ანგარიშზე",
+    "koronaPay": "კორონა პეი",
+    "koronaPayDesc": "გადარიცხვა რუსეთიდან",
+    "cardPayment": "ბარათით გადახდა",
+    "comingSoon": "მალე",
+    "bankTransferTitle": "საბანკო რეკვიზიტები",
+    "bankTransferInstructions": "გთხოვთ გადარიცხოთ თანხა შემდეგ ანგარიშზე",
+    "amountToPay": "გადასახდელი თანხა",
+    "bankName": "ბანკი",
+    "beneficiary": "მიმღები",
+    "iban": "IBAN",
+    "reference": "გადახდის დანიშნულება",
+    "important": "მნიშვნელოვანი",
+    "bankTransferNote": "გთხოვთ მიუთითოთ შეკვეთის ნომერი გადარიცხვის აღწერაში. თქვენი პოლისი გააქტიურდება გადახდის დადასტურების შემდეგ.",
+    "done": "დასრულება",
+    "koronaPayTitle": "კორონა პეი გადარიცხვა",
+    "koronaPayInstructions": "ჩვენი ოპერატორი მალე დაგიკავშირდებათ",
+    "orderConfirmed": "შეკვეთა დადასტურებულია",
+    "koronaPayContactNote": "ჩვენი ოპერატორი დაგიკავშირდებათ WhatsApp-ით ან Telegram-ით კორონა პეი რეკვიზიტების მისაწოდებლად.",
+    "note": "შენიშვნა",
+    "koronaPayNote": "დარწმუნდით, რომ WhatsApp ან Telegram ხელმისაწვდომია თქვენს მიერ მითითებულ ტელეფონის ნომერზე."
   }
 }
 

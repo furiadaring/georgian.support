@@ -662,7 +662,31 @@
     },
     "paymentOption": "Payment Option",
     "paymentQuarterly": "Every 3 mo.",
-    "paymentYearly": "Payment Yearly"
+    "paymentYearly": "Payment Yearly",
+    "orderReceived": "Order Received!",
+    "selectPaymentMethod": "Please select your payment method",
+    "bankTransfer": "Bank Transfer",
+    "bankTransferDesc": "Transfer to Bank of Georgia account",
+    "koronaPay": "Korona Pay",
+    "koronaPayDesc": "Transfer from Russia",
+    "cardPayment": "Card Payment",
+    "comingSoon": "Coming soon",
+    "bankTransferTitle": "Bank Transfer Details",
+    "bankTransferInstructions": "Please transfer the amount to the following account",
+    "amountToPay": "Amount to Pay",
+    "bankName": "Bank",
+    "beneficiary": "Beneficiary",
+    "iban": "IBAN",
+    "reference": "Reference",
+    "important": "Important",
+    "bankTransferNote": "Please include your order number in the transfer description. Your policy will be activated after we confirm the payment.",
+    "done": "Done",
+    "koronaPayTitle": "Korona Pay Transfer",
+    "koronaPayInstructions": "Our operator will contact you shortly",
+    "orderConfirmed": "Order Confirmed",
+    "koronaPayContactNote": "Our operator will contact you via WhatsApp or Telegram to provide Korona Pay transfer details.",
+    "note": "Note",
+    "koronaPayNote": "Please make sure your WhatsApp or Telegram is available on the phone number you provided."
   }
 }
 

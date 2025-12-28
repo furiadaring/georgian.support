@@ -381,10 +381,45 @@ export default function InsuranceOrderModal({
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [emailError, setEmailError] = useState<string | null>(null);
 
+  // Multi-step flow: form → payment → confirmation
+  const [currentStep, setCurrentStep] = useState<"form" | "payment" | "confirmation">("form");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"bank" | "korona" | "card" | null>(null);
+  const [orderId, setOrderId] = useState<string | null>(null);
+
+  // Phone validation function
+  const isPhoneValid = useCallback((phone: string) => {
+    if (!phone) return false;
+    const cleaned = phone.replace(/\D/g, "");
+    return cleaned.length >= 10 && cleaned.length <= 15;
+  }, []);
+
   // Email validation function
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const isEmailValid = useCallback((email: string) => {
+    if (!email) return false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  }, []);
+
+  // Check if all required fields are filled
+  const isFormValid = useMemo(() => {
+    const { periodStart, periodEnd, citizenship, firstNameEng, lastNameEng, birthDate, passportNumber, city, phone, email } = formData;
+    return (
+      periodStart.trim() !== "" &&
+      periodEnd.trim() !== "" &&
+      citizenship.trim() !== "" &&
+      firstNameEng.trim() !== "" &&
+      lastNameEng.trim() !== "" &&
+      birthDate.trim() !== "" &&
+      passportNumber.trim() !== "" &&
+      city.trim() !== "" &&
+      isPhoneValid(phone) &&
+      isEmailValid(email)
+    );
+  }, [formData, isPhoneValid, isEmailValid]);
+
+  // Legacy validateEmail for backward compatibility
+  const validateEmail = (email: string): boolean => {
+    return isEmailValid(email);
   };
 
   // Compress image for mobile
@@ -498,6 +533,9 @@ export default function InsuranceOrderModal({
       setPassportPreview(null);
       setScanMessage(null);
       setEmailError(null);
+      setCurrentStep("form");
+      setSelectedPaymentMethod(null);
+      setOrderId(null);
       setFormData({
         periodStart: "", periodEnd: "", citizenship: "", firstNameEng: "",
         lastNameEng: "", birthDate: "", passportNumber: "", city: "",
@@ -577,16 +615,52 @@ export default function InsuranceOrderModal({
 
       const response = await fetch("/api/insurance-order", { method: "POST", body: submitData });
       if (response.ok) {
-        setSubmitStatus("success");
-        setTimeout(onClose, 2000);
+        const data = await response.json();
+        setOrderId(data.orderId || null);
+
+        // Track Meta Pixel Lead conversion
+        if (typeof window !== 'undefined' && typeof (window as unknown as { fbq?: (action: string, event: string, params?: object) => void }).fbq === 'function') {
+          try {
+            (window as unknown as { fbq: (action: string, event: string, params?: object) => void }).fbq('track', 'Lead', { source: 'form' });
+          } catch (e) {
+            console.error('Meta Pixel fbq error:', e);
+          }
+        }
+
+        // Go to payment selection step
+        setCurrentStep("payment");
       } else {
+        const responseText = await response.text();
+        console.error("Order submission failed:", response.status, responseText);
         setSubmitStatus("error");
       }
-    } catch {
+    } catch (err) {
+      console.error("Order submission error:", err);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Handle payment method selection
+  const handlePaymentMethodSelect = async (method: "bank" | "korona" | "card") => {
+    if (method === "card") return; // Card is disabled
+
+    // Update payment method in database
+    if (orderId) {
+      try {
+        await fetch(`/api/orders/${orderId}/payment-method`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ paymentMethod: method }),
+        });
+      } catch (err) {
+        console.error("Failed to update payment method:", err);
+      }
+    }
+
+    setSelectedPaymentMethod(method);
+    setCurrentStep("confirmation");
   };
 
   const today = useMemo(() => new Date().toISOString().split("T")[0], []);
@@ -638,7 +712,8 @@ export default function InsuranceOrderModal({
           </button>
         </div>
 
-        {/* Form */}
+        {/* Form Step */}
+        {currentStep === "form" && (
         <form onSubmit={handleSubmit} className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-gray-50/50">
           {/* Passport Upload */}
           <div className="bg-white rounded-2xl p-5 border-2 border-dashed border-gray-200 hover:border-red-300 transition-colors mb-6">
@@ -969,6 +1044,226 @@ export default function InsuranceOrderModal({
             )}
           </button>
         </form>
+        )}
+
+        {/* Payment Selection Step */}
+        {currentStep === "payment" && (
+          <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-gray-50/50">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">{(t as Record<string, string>).orderReceived || "Order Received!"}</h3>
+              <p className="text-gray-600">{(t as Record<string, string>).selectPaymentMethod || "Please select your payment method"}</p>
+            </div>
+
+            {/* Price Summary */}
+            <div className="bg-linear-to-r from-red-600 to-red-500 rounded-2xl px-5 py-4 flex items-center justify-between mb-6 shadow-lg shadow-red-500/20">
+              <span className="text-base font-medium text-white/90">{t.policyPrice || "Total Price"}</span>
+              <span className="font-bold text-2xl text-white">{calculatedPrice} GEL</span>
+            </div>
+
+            {/* Payment Options */}
+            <div className="flex flex-col gap-4">
+              {/* Bank Transfer */}
+              <button
+                type="button"
+                onClick={() => handlePaymentMethodSelect("bank")}
+                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-red-500 hover:shadow-lg group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
+                    <svg className="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-base font-bold text-gray-800">{(t as Record<string, string>).bankTransfer || "Bank Transfer"}</p>
+                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).bankTransferDesc || "Transfer to Bank of Georgia account"}</p>
+                  </div>
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </button>
+
+              {/* Korona Pay */}
+              <button
+                type="button"
+                onClick={() => handlePaymentMethodSelect("korona")}
+                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-orange-500 hover:shadow-lg group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                    <svg className="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-base font-bold text-gray-800">{(t as Record<string, string>).koronaPay || "Korona Pay"}</p>
+                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).koronaPayDesc || "Transfer from Russia"}</p>
+                  </div>
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </button>
+
+              {/* Card Payment (Disabled) */}
+              <div className="w-full bg-gray-50 rounded-2xl p-5 border-2 border-gray-200 opacity-60 cursor-not-allowed">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-gray-200 rounded-2xl flex items-center justify-center">
+                    <svg className="w-7 h-7 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-base font-bold text-gray-500">{(t as Record<string, string>).cardPayment || "Card Payment"}</p>
+                    <p className="text-sm text-gray-400 mt-1">{(t as Record<string, string>).comingSoon || "Coming soon"}</p>
+                  </div>
+                  <span className="px-3 py-1 bg-gray-200 text-gray-500 text-xs font-medium rounded-full">{(t as Record<string, string>).comingSoon || "Coming soon"}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Confirmation Step */}
+        {currentStep === "confirmation" && (
+          <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-gray-50/50">
+            {/* Bank Transfer Confirmation */}
+            {selectedPaymentMethod === "bank" && (
+              <div className="flex flex-col gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{(t as Record<string, string>).bankTransferTitle || "Bank Transfer Details"}</h3>
+                  <p className="text-gray-600">{(t as Record<string, string>).bankTransferInstructions || "Please transfer the amount to the following account"}</p>
+                </div>
+
+                {/* Price */}
+                <div className="bg-linear-to-r from-red-600 to-red-500 rounded-2xl px-5 py-4 flex items-center justify-between shadow-lg shadow-red-500/20">
+                  <span className="text-base font-medium text-white/90">{(t as Record<string, string>).amountToPay || "Amount to Pay"}</span>
+                  <span className="font-bold text-2xl text-white">{calculatedPrice} GEL</span>
+                </div>
+
+                {/* Bank Details Card */}
+                <div className="bg-white rounded-2xl p-5 border-2 border-gray-200">
+                  <div className="mb-4">
+                    <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).bankName || "Bank"}</p>
+                    <p className="font-semibold text-gray-800">Bank of Georgia</p>
+                  </div>
+                  <div className="mb-4">
+                    <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).beneficiary || "Beneficiary"}</p>
+                    <p className="font-semibold text-gray-800">Legal Residency Group</p>
+                  </div>
+                  <div className={orderId ? "mb-4" : ""}>
+                    <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).iban || "IBAN"}</p>
+                    <div className="flex items-center gap-2">
+                      <p className="font-mono font-semibold text-gray-800 text-sm">GE26BG0000000611265727</p>
+                      <button
+                        type="button"
+                        onClick={() => navigator.clipboard.writeText("GE26BG0000000611265727")}
+                        className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
+                        title="Copy"
+                      >
+                        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  {orderId && (
+                    <div>
+                      <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).reference || "Reference"}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="font-semibold text-gray-800">Order #{orderId}</p>
+                        <button
+                          type="button"
+                          onClick={() => navigator.clipboard.writeText(orderId)}
+                          className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
+                          title="Copy"
+                        >
+                          <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl px-5 py-4">
+                  <p className="text-yellow-800 text-sm">
+                    <strong>{(t as Record<string, string>).important || "Important"}:</strong> {(t as Record<string, string>).bankTransferNote || "Please include your order number in the transfer description. Your policy will be activated after we confirm the payment."}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="w-full py-4 bg-linear-to-r from-red-600 to-red-500 text-white font-bold text-lg rounded-2xl shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/40 active:scale-[0.98] transition-all"
+                >
+                  {(t as Record<string, string>).done || "Done"}
+                </button>
+              </div>
+            )}
+
+            {/* Korona Pay Confirmation */}
+            {selectedPaymentMethod === "korona" && (
+              <div className="flex flex-col gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{(t as Record<string, string>).koronaPayTitle || "Korona Pay Transfer"}</h3>
+                  <p className="text-gray-600">{(t as Record<string, string>).koronaPayInstructions || "Our operator will contact you shortly"}</p>
+                </div>
+
+                {/* Price */}
+                <div className="bg-linear-to-r from-orange-500 to-orange-400 rounded-2xl px-5 py-4 flex items-center justify-between shadow-lg shadow-orange-500/20">
+                  <span className="text-base font-medium text-white/90">{(t as Record<string, string>).amountToPay || "Amount to Pay"}</span>
+                  <span className="font-bold text-2xl text-white">{calculatedPrice} GEL</span>
+                </div>
+
+                <div className="bg-white rounded-2xl p-5 border-2 border-gray-200">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shrink-0">
+                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-800 mb-1">{(t as Record<string, string>).orderConfirmed || "Order Confirmed"}</p>
+                      <p className="text-sm text-gray-600">{(t as Record<string, string>).koronaPayContactNote || "Our operator will contact you via WhatsApp or Telegram to provide Korona Pay transfer details."}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl px-5 py-4">
+                  <p className="text-blue-800 text-sm">
+                    <strong>{(t as Record<string, string>).note || "Note"}:</strong> {(t as Record<string, string>).koronaPayNote || "Please make sure your WhatsApp or Telegram is available on the phone number you provided."}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="w-full py-4 bg-linear-to-r from-orange-500 to-orange-400 text-white font-bold text-lg rounded-2xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 active:scale-[0.98] transition-all"
+                >
+                  {(t as Record<string, string>).done || "Done"}
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

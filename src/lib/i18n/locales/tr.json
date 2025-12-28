@@ -665,7 +665,31 @@
     },
     "paymentOption": "Ödeme Seçeneği",
     "paymentQuarterly": "Her 3 ay",
-    "paymentYearly": "Yıllık ödeme"
+    "paymentYearly": "Yıllık ödeme",
+    "orderReceived": "Sipariş Alındı!",
+    "selectPaymentMethod": "Lütfen ödeme yönteminizi seçin",
+    "bankTransfer": "Banka Havalesi",
+    "bankTransferDesc": "Bank of Georgia hesabına havale",
+    "koronaPay": "Korona Pay",
+    "koronaPayDesc": "Rusya'dan havale",
+    "cardPayment": "Kart ile Ödeme",
+    "comingSoon": "Yakında",
+    "bankTransferTitle": "Banka Havalesi Bilgileri",
+    "bankTransferInstructions": "Lütfen tutarı aşağıdaki hesaba havale edin",
+    "amountToPay": "Ödenecek Tutar",
+    "bankName": "Banka",
+    "beneficiary": "Alıcı",
+    "iban": "IBAN",
+    "reference": "Referans",
+    "important": "Önemli",
+    "bankTransferNote": "Lütfen havale açıklamasına sipariş numaranızı ekleyin. Ödeme onaylandıktan sonra poliçeniz aktif edilecektir.",
+    "done": "Tamam",
+    "koronaPayTitle": "Korona Pay Havalesi",
+    "koronaPayInstructions": "Operatörümüz sizinle en kısa sürede iletişime geçecektir",
+    "orderConfirmed": "Sipariş Onaylandı",
+    "koronaPayContactNote": "Operatörümüz Korona Pay havale bilgilerini vermek için sizinle WhatsApp veya Telegram üzerinden iletişime geçecektir.",
+    "note": "Not",
+    "koronaPayNote": "Lütfen verdiğiniz telefon numarasında WhatsApp veya Telegram'ın erişilebilir olduğundan emin olun."
   }
 }
 

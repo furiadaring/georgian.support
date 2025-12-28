@@ -663,7 +663,31 @@
     },
     "paymentOption": "خيار الدفع",
     "paymentQuarterly": "كل 3 أشهر",
-    "paymentYearly": "الدفع السنوي"
+    "paymentYearly": "الدفع السنوي",
+    "orderReceived": "تم استلام الطلب!",
+    "selectPaymentMethod": "يرجى اختيار طريقة الدفع",
+    "bankTransfer": "تحويل بنكي",
+    "bankTransferDesc": "تحويل إلى حساب Bank of Georgia",
+    "koronaPay": "كورونا باي",
+    "koronaPayDesc": "تحويل من روسيا",
+    "cardPayment": "الدفع بالبطاقة",
+    "comingSoon": "قريباً",
+    "bankTransferTitle": "تفاصيل التحويل البنكي",
+    "bankTransferInstructions": "يرجى تحويل المبلغ إلى الحساب التالي",
+    "amountToPay": "المبلغ المستحق",
+    "bankName": "البنك",
+    "beneficiary": "المستفيد",
+    "iban": "رقم الآيبان",
+    "reference": "المرجع",
+    "important": "مهم",
+    "bankTransferNote": "يرجى تضمين رقم طلبك في وصف التحويل. سيتم تفعيل وثيقتك بعد تأكيد الدفع.",
+    "done": "تم",
+    "koronaPayTitle": "تحويل كورونا باي",
+    "koronaPayInstructions": "سيتواصل معك المشغل قريباً",
+    "orderConfirmed": "تم تأكيد الطلب",
+    "koronaPayContactNote": "سيتواصل معك المشغل عبر واتساب أو تيليجرام لتزويدك بتفاصيل تحويل كورونا باي.",
+    "note": "ملاحظة",
+    "koronaPayNote": "يرجى التأكد من توفر واتساب أو تيليجرام على رقم الهاتف الذي قدمته."
   }
 }
 

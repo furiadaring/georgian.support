@@ -666,7 +666,31 @@
     },
     "paymentOption": "Варіант оплати",
     "paymentQuarterly": "За 3 міс.",
-    "paymentYearly": "Оплата за рік"
+    "paymentYearly": "Оплата за рік",
+    "orderReceived": "Заявку отримано!",
+    "selectPaymentMethod": "Будь ласка, виберіть спосіб оплати",
+    "bankTransfer": "Банківський переказ",
+    "bankTransferDesc": "Переказ на рахунок Bank of Georgia",
+    "koronaPay": "Корона Пей",
+    "koronaPayDesc": "Переказ з Росії",
+    "cardPayment": "Оплата карткою",
+    "comingSoon": "Незабаром",
+    "bankTransferTitle": "Реквізити для переказу",
+    "bankTransferInstructions": "Будь ласка, переведіть суму на наступний рахунок",
+    "amountToPay": "Сума до оплати",
+    "bankName": "Банк",
+    "beneficiary": "Отримувач",
+    "iban": "IBAN",
+    "reference": "Призначення платежу",
+    "important": "Важливо",
+    "bankTransferNote": "Вкажіть номер замовлення в описі переказу. Ваш поліс буде активовано після підтвердження платежу.",
+    "done": "Готово",
+    "koronaPayTitle": "Переказ через Корона Пей",
+    "koronaPayInstructions": "Наш оператор зв'яжеться з вами найближчим часом",
+    "orderConfirmed": "Замовлення підтверджено",
+    "koronaPayContactNote": "Наш оператор зв'яжеться з вами через WhatsApp або Telegram для надання реквізитів Корона Пей.",
+    "note": "Примітка",
+    "koronaPayNote": "Переконайтеся, що WhatsApp або Telegram доступні на вказаному вами номері телефону."
   }
 }
 
