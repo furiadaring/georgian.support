@@ -446,7 +446,7 @@ Submitted: ${new Date().toISOString()}
           orderId,
           customerName: `${firstNameEng} ${lastNameEng}`,
           planName: planName || "Insurance",
-          price: planPrice || "0",
+          price: parseFloat(planPrice) || 0,
           periodStart: periodStart || "",
           periodEnd: periodEnd || "",
           locale: locale || "en",
