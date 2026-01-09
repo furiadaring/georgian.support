@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CONTACT } from "@/lib/constants";
 import { saveOrder, generateOrderId, Order, saveSMSRecord } from "@/lib/orderStorage";
+import { sendOrderConfirmationEmail } from "@/lib/email";
 
 // Use dedicated order bot (same as visitgeorgia) or fallback to default
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_ORDER_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN;
@@ -418,7 +419,7 @@ Locale: ${locale}
 Submitted: ${new Date().toISOString()}
 `;
 
-    // Send email via webhook if configured
+    // Send email via webhook if configured (legacy)
     const EMAIL_WEBHOOK = process.env.EMAIL_WEBHOOK_URL;
     if (EMAIL_WEBHOOK) {
       try {
@@ -434,6 +435,26 @@ Submitted: ${new Date().toISOString()}
         });
       } catch (emailError) {
         console.error("Email webhook error:", emailError);
+      }
+    }
+
+    // Send customer confirmation email via SMTP
+    if (email) {
+      try {
+        await sendOrderConfirmationEmail({
+          to: email,
+          orderId,
+          customerName: `${firstNameEng} ${lastNameEng}`,
+          planName: planName || "Insurance",
+          amount: parseFloat(planPrice) || 0,
+          startDate: periodStart || "",
+          endDate: periodEnd || "",
+          locale: locale || "en",
+        });
+        console.log("[Email] Customer confirmation email sent to:", email);
+      } catch (emailError) {
+        console.error("[Email] Failed to send confirmation:", emailError);
+        // Don't fail the order if email fails
       }
     }
 

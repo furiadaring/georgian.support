@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -644,8 +645,6 @@ export default function InsuranceOrderModal({
 
   // Handle payment method selection
   const handlePaymentMethodSelect = async (method: "bank" | "korona" | "card") => {
-    if (method === "card") return; // Card is disabled
-
     // Update payment method in database
     if (orderId) {
       try {
@@ -657,6 +656,12 @@ export default function InsuranceOrderModal({
       } catch (err) {
         console.error("Failed to update payment method:", err);
       }
+    }
+
+    // For card payment, redirect to payment page
+    if (method === "card" && orderId) {
+      window.location.href = `/${locale}/payment?order=${orderId}`;
+      return;
     }
 
     setSelectedPaymentMethod(method);
@@ -1111,21 +1116,27 @@ export default function InsuranceOrderModal({
                 </div>
               </button>
 
-              {/* Card Payment (Disabled) */}
-              <div className="w-full bg-gray-50 rounded-2xl p-5 border-2 border-gray-200 opacity-60 cursor-not-allowed">
+              {/* Card Payment */}
+              <button
+                type="button"
+                onClick={() => handlePaymentMethodSelect("card")}
+                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-green-500 hover:shadow-lg group"
+              >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-gray-200 rounded-2xl flex items-center justify-center">
-                    <svg className="w-7 h-7 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                    <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-base font-bold text-gray-500">{(t as Record<string, string>).cardPayment || "Card Payment"}</p>
-                    <p className="text-sm text-gray-400 mt-1">{(t as Record<string, string>).comingSoon || "Coming soon"}</p>
+                    <p className="text-base font-bold text-gray-800">{(t as Record<string, string>).cardPayment || "Card Payment"}</p>
+                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).cardPaymentDesc || "Pay with Visa, Mastercard, Apple Pay, Google Pay"}</p>
                   </div>
-                  <span className="px-3 py-1 bg-gray-200 text-gray-500 text-xs font-medium rounded-full">{(t as Record<string, string>).comingSoon || "Coming soon"}</span>
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
         )}
