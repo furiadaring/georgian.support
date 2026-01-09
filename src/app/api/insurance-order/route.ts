@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CONTACT } from "@/lib/constants";
 import { saveOrder, generateOrderId, Order, saveSMSRecord } from "@/lib/orderStorage";
-import { sendOrderConfirmationEmail } from "@/lib/email";
+import { sendOrderReceivedEmail } from "@/lib/email";
 
 // Use dedicated order bot (same as visitgeorgia) or fallback to default
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_ORDER_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN;
@@ -441,15 +441,16 @@ Submitted: ${new Date().toISOString()}
     // Send customer confirmation email via SMTP
     if (email) {
       try {
-        await sendOrderConfirmationEmail({
+        await sendOrderReceivedEmail({
           to: email,
           orderId,
           customerName: `${firstNameEng} ${lastNameEng}`,
           planName: planName || "Insurance",
-          amount: parseFloat(planPrice) || 0,
-          startDate: periodStart || "",
-          endDate: periodEnd || "",
+          price: planPrice || "0",
+          periodStart: periodStart || "",
+          periodEnd: periodEnd || "",
           locale: locale || "en",
+          paymentMethod: "pending",
         });
         console.log("[Email] Customer confirmation email sent to:", email);
       } catch (emailError) {
