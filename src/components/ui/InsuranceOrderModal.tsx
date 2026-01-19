@@ -251,6 +251,7 @@ const COUNTRIES = [
 interface InsuranceOrderModalProps {
   isOpen: boolean;
   onClose: () => void;
+  planId?: number;
   planName?: string;
   planPrice?: number;
   planPeriod?: string;
@@ -348,6 +349,7 @@ function formatLocalDate(date: Date): string {
 export default function InsuranceOrderModal({
   isOpen,
   onClose,
+  planId,
   planName = "",
   planPrice = 0,
   planPeriod = "day",
