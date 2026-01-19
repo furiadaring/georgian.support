@@ -70,7 +70,7 @@ interface Plan {
   originalPrice: number | null;
   discountPercent: number | null;
   discountFixed: number | null;
-  pricingType: "per_day" | "fixed" | "per_month";
+  pricingType: "per_day" | "per_month" | "per_3_months" | "per_6_months" | "per_year" | "fixed";
   period: string;
   periodLabel: string;
   isActive: boolean;
@@ -371,6 +371,24 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
       he: 'שנה',
       ar: 'سنة',
     },
+    per3Months: {
+      ru: '3 месяца',
+      en: '3 months',
+      ka: '3 თვე',
+      uk: '3 місяці',
+      tr: '3 ay',
+      he: '3 חודשים',
+      ar: '3 أشهر',
+    },
+    per6Months: {
+      ru: '6 месяцев',
+      en: '6 months',
+      ka: '6 თვე',
+      uk: '6 місяців',
+      tr: '6 ay',
+      he: '6 חודשים',
+      ar: '6 أشهر',
+    },
   };
 
   const labels = {
@@ -385,13 +403,17 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
     perDay: labelTranslations.perDay[locale] || labelTranslations.perDay.en,
     perMonth: labelTranslations.perMonth[locale] || labelTranslations.perMonth.en,
     perYear: labelTranslations.perYear[locale] || labelTranslations.perYear.en,
+    per3Months: labelTranslations.per3Months[locale] || labelTranslations.per3Months.en,
+    per6Months: labelTranslations.per6Months[locale] || labelTranslations.per6Months.en,
   };
 
   // Get period label by pricing type
   const getPeriodLabel = (plan: Plan): string => {
     if (plan.pricingType === 'per_day') return labels.perDay;
     if (plan.pricingType === 'per_month') return labels.perMonth;
-    if (plan.pricingType === 'fixed') return labels.perYear;
+    if (plan.pricingType === 'per_3_months') return labels.per3Months;
+    if (plan.pricingType === 'per_6_months') return labels.per6Months;
+    if (plan.pricingType === 'per_year' || plan.pricingType === 'fixed') return labels.perYear;
     return labels.perDay;
   };
 
