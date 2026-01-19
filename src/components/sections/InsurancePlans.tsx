@@ -1,143 +1,81 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { CONTACT } from "@/lib/constants";
 import { type Locale, type Dictionary } from "@/lib/i18n";
 import InsuranceModal from "@/components/ui/InsuranceModal";
 import InsuranceOrderModal from "@/components/ui/InsuranceOrderModal";
-import type { Plan, PlanFeature, CoverageItem } from "@/types";
 
 interface InsurancePlansProps {
   locale: Locale;
   dict: Dictionary;
 }
 
-// Helper functions to get localized content
-const getFeatureName = (feature: PlanFeature, locale: string): string => {
-  const localeMap: Record<string, keyof PlanFeature> = {
-    ru: "nameRu",
-    en: "nameEn",
-    ka: "nameKa",
-    uk: "nameUk",
-    tr: "nameTr",
-    he: "nameHe",
-    ar: "nameAr",
-  };
-  const key = localeMap[locale] || "nameRu";
-  return (feature[key] as string) || feature.nameRu;
-};
-
-const getCoverageTitle = (item: CoverageItem, locale: string): string => {
-  const localeMap: Record<string, keyof CoverageItem> = {
-    ru: "titleRu",
-    en: "titleEn",
-    ka: "titleKa",
-    uk: "titleUk",
-    tr: "titleTr",
-    he: "titleHe",
-    ar: "titleAr",
-  };
-  const key = localeMap[locale] || "titleRu";
-  return (item[key] as string) || item.titleRu;
-};
-
-const getCoverageLimit = (item: CoverageItem, locale: string): string | null => {
-  const localeMap: Record<string, keyof CoverageItem> = {
-    ru: "limitRu",
-    en: "limitEn",
-    ka: "limitKa",
-    uk: "limitUk",
-    tr: "limitTr",
-    he: "limitHe",
-    ar: "limitAr",
-  };
-  const key = localeMap[locale] || "limitRu";
-  return (item[key] as string) || item.limitRu;
-};
-
-const getPlanName = (plan: Plan, locale: string): string => {
-  if (plan.translations[locale]?.name) {
-    return plan.translations[locale].name;
-  }
-  return plan.name;
-};
-
-const getPlanDescription = (plan: Plan, locale: string): string => {
-  if (plan.translations[locale]?.description) {
-    return plan.translations[locale].description;
-  }
-  const localeMap: Record<string, keyof Plan> = {
-    ru: "descriptionRu",
-    en: "descriptionEn",
-    ka: "descriptionKa",
-    uk: "descriptionUk",
-    tr: "descriptionTr",
-    he: "descriptionHe",
-    ar: "descriptionAr",
-  };
-  const key = localeMap[locale] || "descriptionRu";
-  return (plan[key] as string) || plan.descriptionRu;
-};
+// Define plans with prices
+const PLANS_DATA = [
+  {
+    id: "visitor",
+    price: 4,
+    period: "day",
+    popular: false,
+    coverageKeys: ["support247", "emergency", "outpatient", "dentalEmergency", "hospitalization"],
+  },
+  {
+    id: "standard",
+    price: 200,
+    period: "months3",
+    popular: false,
+    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dentalEmergency"],
+  },
+  {
+    id: "optimum",
+    price: 250,
+    period: "months6",
+    popular: false,
+    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dentalEmergency"],
+  },
+  {
+    id: "premium",
+    price: 300,
+    period: "year",
+    popular: true,
+    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dentalEmergency"],
+  },
+  {
+    id: "uno-active",
+    price: 65,
+    period: "month",
+    popular: false,
+    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dental"],
+  },
+  {
+    id: "uno-active-plus",
+    price: 110,
+    period: "month",
+    popular: false,
+    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dental"],
+  },
+];
 
 export default function InsurancePlans({ locale, dict }: InsurancePlansProps) {
   const t = dict.insurance;
-  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [orderPlan, setOrderPlan] = useState<{ id: string; name: string; price: number; period: string } | null>(null);
-  const [plans, setPlans] = useState<Plan[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  // Fetch plans from database
-  useEffect(() => {
-    const fetchPlans = async () => {
-      try {
-        const response = await fetch("/api/v2/plans", { cache: "no-store" });
-        if (response.ok) {
-          const data = await response.json();
-          setPlans(data.plans || []);
-        }
-      } catch (error) {
-        console.error("Failed to fetch plans:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPlans();
-  }, []);
-
-  // Get modal data for selected plan
-  const getModalData = (plan: Plan) => {
-    const coverageItems = plan.coverageItems.map((item) => ({
-      icon: item.coverageKey || "emergency",
-      title: getCoverageTitle(item, locale),
-      limit: getCoverageLimit(item, locale) || "",
-    }));
-
+  
+  const getModalData = (planId: string) => {
+    const planTranslations = t.plans[planId as keyof typeof t.plans];
+    const details = t.planDetails?.[planId as keyof typeof t.planDetails];
+    
     return {
-      planName: getPlanName(plan, locale),
-      planDescription: getPlanDescription(plan, locale),
-      coverageItems,
-      faqItems: [] as { question: string; answer: string }[],
+      planName: planTranslations?.name || "",
+      planDescription: details?.description || planTranslations?.description || "",
+      coverageItems: details?.coverage || [],
+      faqItems: details?.faq || [],
     };
   };
 
   const modalData = selectedPlan ? getModalData(selectedPlan) : null;
-
-  // Get period text from dictionary
-  const getPeriodText = (period: string): string => {
-    const periodKey = period as "day" | "month" | "months3" | "months6" | "year";
-    return (t[periodKey] as string) || period;
-  };
-
-  if (loading) {
-    return (
-      <section className="relative bg-zinc-50 w-full overflow-hidden" style={{ padding: "80px 0 100px 0" }}>
-        <div className="flex justify-center items-center py-20">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600"></div>
-        </div>
-      </section>
-    );
-  }
   
   return (
     <section id="insurance" aria-labelledby="insurance-heading" className="relative bg-zinc-50 w-full overflow-hidden" style={{ padding: '80px 0 100px 0' }}>
@@ -167,86 +105,65 @@ export default function InsurancePlans({ locale, dict }: InsurancePlansProps) {
 
         {/* Plans Grid - 3 columns on large, 2 on medium */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {plans.map((plan) => {
-            const planName = getPlanName(plan, locale);
-            const planDescription = getPlanDescription(plan, locale);
-            const periodText = getPeriodText(plan.period);
-            const hasDetails = plan.coverageItems.length > 0 || plan.features.length > 0;
+          {PLANS_DATA.map((plan) => {
+            const planTranslations = t.plans[plan.id as keyof typeof t.plans];
+            const periodKey = plan.period as 'day' | 'month' | 'months6' | 'year';
+            const periodText = t[periodKey] as string;
+            const hasDetails = t.planDetails?.[plan.id as keyof typeof t.planDetails];
             
             return (
               <div
                 key={plan.id}
                 className={`group relative bg-white rounded-2xl border transition-all duration-300 hover:shadow-xl flex flex-col ${
-                  plan.isFavorite 
+                  plan.popular 
                     ? "border-red-500 shadow-lg shadow-red-100" 
                     : "border-zinc-200 hover:border-red-200"
                 }`}
                 style={{ padding: '28px' }}
               >
                 {/* Popular badge */}
-                {plan.isFavorite && (
+                {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-semibold py-1.5 px-4 rounded-full whitespace-nowrap">
                     {t.recommend}
                   </div>
                 )}
 
                 {/* Plan Header */}
-                <div style={{ marginBottom: '20px', paddingTop: plan.isFavorite ? '8px' : '0' }}>
+                <div style={{ marginBottom: '20px', paddingTop: plan.popular ? '8px' : '0' }}>
                   <h3 className="text-lg font-bold text-zinc-900 text-center" style={{ marginBottom: '6px' }}>
-                    {planName}
+                    {planTranslations.name}
                   </h3>
                   <p className="text-zinc-500 text-sm text-center">
-                    {planDescription}
+                    {planTranslations.description}
                   </p>
                 </div>
 
                 {/* Price */}
                 <div className="text-center" style={{ marginBottom: '24px' }}>
                   <div className="flex items-baseline justify-center gap-1">
-                    {plan.originalPrice && (
-                      <span className="text-lg text-zinc-400 line-through mr-2">{plan.originalPrice}</span>
-                    )}
                     <span className="text-4xl font-bold text-red-600">{plan.price}</span>
                     <span className="text-zinc-500 text-sm">GEL / {periodText}</span>
                   </div>
-                  {plan.discountPercent && (
-                    <span className="inline-block mt-2 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-                      -{plan.discountPercent}%
-                    </span>
-                  )}
                 </div>
 
-                {/* Features/Coverage List */}
+                {/* Coverage List */}
                 <ul className="grow" style={{ marginBottom: '24px' }}>
-                  {plan.features.length > 0 ? (
-                    plan.features.slice(0, 5).map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2" style={{ marginBottom: '12px' }}>
-                        <svg className="w-5 h-5 text-emerald-500 shrink-0" style={{ marginTop: '1px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-zinc-600 text-sm">
-                          {getFeatureName(feature, locale)}
-                        </span>
-                      </li>
-                    ))
-                  ) : (
-                    plan.coverageItems.slice(0, 5).map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2" style={{ marginBottom: '12px' }}>
-                        <svg className="w-5 h-5 text-emerald-500 shrink-0" style={{ marginTop: '1px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-zinc-600 text-sm">
-                          {getCoverageTitle(item, locale)}
-                        </span>
-                      </li>
-                    ))
-                  )}
+                  {plan.coverageKeys.map((key, idx) => (
+                    <li key={idx} className="flex items-start gap-2" style={{ marginBottom: '12px' }}>
+                      <svg className="w-5 h-5 text-emerald-500 shrink-0" style={{ marginTop: '1px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-zinc-600 text-sm">
+                        {t.coverage[key as keyof typeof t.coverage]}
+                      </span>
+                    </li>
+                  ))}
                 </ul>
 
                 {/* More Details Button */}
                 {hasDetails && (
                   <button
-                    onClick={() => setSelectedPlan(plan)}
+                    onClick={() => setSelectedPlan(plan.id)}
                     className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 transition-all duration-200"
                     style={{ marginBottom: '12px' }}
                   >
@@ -259,9 +176,9 @@ export default function InsurancePlans({ locale, dict }: InsurancePlansProps) {
 
                 {/* CTA Button */}
                 <button
-                  onClick={() => setOrderPlan({ id: plan.slug, name: planName, price: plan.price, period: plan.period })}
+                  onClick={() => setOrderPlan({ id: plan.id, name: planTranslations.name, price: plan.price, period: plan.period })}
                   className={`w-full text-center py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                    plan.isFavorite
+                    plan.popular
                       ? "bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-200"
                       : "bg-zinc-100 hover:bg-red-600 text-zinc-700 hover:text-white"
                   }`}
