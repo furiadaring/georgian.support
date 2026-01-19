@@ -6,63 +6,76 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InsuranceModal from "@/components/ui/InsuranceModal";
 import InsuranceOrderModal from "@/components/ui/InsuranceOrderModal";
-import { CONTACT } from "@/lib/constants";
 import { getDictionary, type Locale, type Dictionary } from "@/lib/i18n";
 import { useParams, useSearchParams } from "next/navigation";
+import type { Plan, PlanFeature, CoverageItem } from "@/types";
 
-// All insurance plans data
-const ALL_PLANS = [
-  // Main Plans
-  {
-    id: "visitor",
-    price: 4,
-    period: "day",
-    popular: false,
-    category: "main",
-    coverageKeys: ["support247", "emergency", "outpatient", "dentalEmergency", "hospitalization"],
-  },
-  {
-    id: "standard",
-    price: 200,
-    period: "months3",
-    popular: false,
-    category: "main",
-    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dentalEmergency"],
-  },
-  {
-    id: "optimum",
-    price: 250,
-    period: "months6",
-    popular: false,
-    category: "main",
-    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dentalEmergency"],
-  },
-  {
-    id: "premium",
-    price: 300,
-    period: "year",
-    popular: true,
-    category: "main",
-    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dentalEmergency"],
-  },
-  // Long-term Plans
-  {
-    id: "uno-active",
-    price: 55,
-    period: "month",
-    popular: false,
-    category: "longterm",
-    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dental"],
-  },
-  {
-    id: "uno-active-plus",
-    price: 90,
-    period: "month",
-    popular: false,
-    category: "longterm",
-    coverageKeys: ["support247", "emergency", "hospitalization", "outpatient", "dental"],
-  },
-];
+// Helper functions to get localized content
+const getFeatureName = (feature: PlanFeature, locale: string): string => {
+  const localeMap: Record<string, keyof PlanFeature> = {
+    ru: "nameRu",
+    en: "nameEn",
+    ka: "nameKa",
+    uk: "nameUk",
+    tr: "nameTr",
+    he: "nameHe",
+    ar: "nameAr",
+  };
+  const key = localeMap[locale] || "nameRu";
+  return (feature[key] as string) || feature.nameRu;
+};
+
+const getCoverageTitle = (item: CoverageItem, locale: string): string => {
+  const localeMap: Record<string, keyof CoverageItem> = {
+    ru: "titleRu",
+    en: "titleEn",
+    ka: "titleKa",
+    uk: "titleUk",
+    tr: "titleTr",
+    he: "titleHe",
+    ar: "titleAr",
+  };
+  const key = localeMap[locale] || "titleRu";
+  return (item[key] as string) || item.titleRu;
+};
+
+const getCoverageLimit = (item: CoverageItem, locale: string): string | null => {
+  const localeMap: Record<string, keyof CoverageItem> = {
+    ru: "limitRu",
+    en: "limitEn",
+    ka: "limitKa",
+    uk: "limitUk",
+    tr: "limitTr",
+    he: "limitHe",
+    ar: "limitAr",
+  };
+  const key = localeMap[locale] || "limitRu";
+  return (item[key] as string) || item.limitRu;
+};
+
+const getPlanName = (plan: Plan, locale: string): string => {
+  if (plan.translations[locale]?.name) {
+    return plan.translations[locale].name;
+  }
+  return plan.name;
+};
+
+const getPlanDescription = (plan: Plan, locale: string): string => {
+  if (plan.translations[locale]?.description) {
+    return plan.translations[locale].description;
+  }
+  const localeMap: Record<string, keyof Plan> = {
+    ru: "descriptionRu",
+    en: "descriptionEn",
+    ka: "descriptionKa",
+    uk: "descriptionUk",
+    tr: "descriptionTr",
+    he: "descriptionHe",
+    ar: "descriptionAr",
+  };
+  const key = localeMap[locale] || "descriptionRu";
+  return (plan[key] as string) || plan.descriptionRu;
+};
 
 function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const t = dict.insurance;
@@ -70,11 +83,31 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
   const searchParams = useSearchParams();
   const categoryFromUrl = searchParams.get('category');
   
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [orderPlan, setOrderPlan] = useState<{ id: string; name: string; price: number; period: string } | null>(null);
   const [activeCategory, setActiveCategory] = useState<"main" | "longterm" | null>(
     categoryFromUrl === 'main' || categoryFromUrl === 'longterm' ? categoryFromUrl : null
   );
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch plans from database
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const response = await fetch("/api/v2/plans", { cache: "no-store" });
+        if (response.ok) {
+          const data = await response.json();
+          setPlans(data.plans || []);
+        }
+      } catch (error) {
+        console.error("Failed to fetch plans:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPlans();
+  }, []);
 
   // Update category when URL changes
   useEffect(() => {
@@ -83,24 +116,46 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
     }
   }, [categoryFromUrl]);
 
+  // Filter plans by category
   const filteredPlans = activeCategory === null 
-    ? ALL_PLANS 
-    : ALL_PLANS.filter(plan => plan.category === activeCategory);
+    ? plans 
+    : plans.filter(plan => plan.categorySlug === activeCategory);
 
   // Get modal data for selected plan
-  const getModalData = (planId: string) => {
-    const planTranslations = t.plans[planId as keyof typeof t.plans];
-    const details = t.planDetails?.[planId as keyof typeof t.planDetails];
-    
+  const getModalData = (plan: Plan) => {
+    const coverageItems = plan.coverageItems.map((item) => ({
+      icon: item.coverageKey || "emergency",
+      title: getCoverageTitle(item, locale),
+      limit: getCoverageLimit(item, locale) || "",
+    }));
+
     return {
-      planName: planTranslations?.name || "",
-      planDescription: details?.description || planTranslations?.description || "",
-      coverageItems: details?.coverage || [],
-      faqItems: details?.faq || [],
+      planName: getPlanName(plan, locale),
+      planDescription: getPlanDescription(plan, locale),
+      coverageItems,
+      faqItems: [] as { question: string; answer: string }[],
     };
   };
 
   const modalData = selectedPlan ? getModalData(selectedPlan) : null;
+
+  // Get period text from dictionary
+  const getPeriodText = (period: string): string => {
+    const periodKey = period as "day" | "month" | "months3" | "months6" | "year";
+    return (t[periodKey] as string) || period;
+  };
+
+  if (loading) {
+    return (
+      <div className="w-full flex flex-col">
+        <Header locale={locale} dict={dict} />
+        <main className="main-content w-full flex flex-col items-center justify-center min-h-[60vh]">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600"></div>
+        </main>
+        <Footer locale={locale} dict={dict} />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full flex flex-col">
@@ -176,64 +231,85 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
           <div style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPlans.map((plan) => {
-                const planTranslations = t.plans[plan.id as keyof typeof t.plans];
-                const periodKey = plan.period as 'day' | 'month' | 'months3' | 'months6' | 'year';
-                const periodText = t[periodKey] as string;
-                const hasDetails = t.planDetails?.[plan.id as keyof typeof t.planDetails];
+                const planName = getPlanName(plan, locale);
+                const planDescription = getPlanDescription(plan, locale);
+                const periodText = getPeriodText(plan.period);
+                const hasDetails = plan.coverageItems.length > 0 || plan.features.length > 0;
 
                 return (
                   <div
                     key={plan.id}
                     className={`group relative bg-white rounded-2xl border transition-all duration-300 hover:shadow-xl flex flex-col ${
-                      plan.popular
+                      plan.isFavorite
                         ? "border-red-500 shadow-lg shadow-red-500/10"
                         : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
-                    {plan.popular && (
+                    {plan.isFavorite && (
                       <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-semibold py-1.5 px-4 rounded-full whitespace-nowrap">
                         {t.recommend}
                       </div>
                     )}
 
-                    <div className={`p-6 flex flex-col grow ${plan.popular ? "pt-8" : ""}`}>
+                    <div className={`p-6 flex flex-col grow ${plan.isFavorite ? "pt-8" : ""}`}>
                       {/* Plan Name & Description */}
                       <div style={{ marginBottom: '16px' }}>
                         <h3 className="text-xl font-bold text-primary-black text-center" style={{ marginBottom: '8px' }}>
-                          {planTranslations.name}
+                          {planName}
                         </h3>
                         <p className="text-primary-grey text-sm text-center">
-                          {planTranslations.description}
+                          {planDescription}
                         </p>
                       </div>
 
                       {/* Price */}
                       <div className="text-center" style={{ marginBottom: '24px' }}>
                         <div className="flex items-baseline justify-center gap-1 flex-wrap">
+                          {plan.originalPrice && (
+                            <span className="text-lg text-gray-400 line-through mr-2">{plan.originalPrice}</span>
+                          )}
                           <span className="text-4xl font-bold text-red-600">{plan.price}</span>
                           <span className="text-primary-grey">GEL/{periodText}</span>
                         </div>
+                        {plan.discountPercent && (
+                          <span className="inline-block mt-2 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+                            -{plan.discountPercent}%
+                          </span>
+                        )}
                       </div>
 
-                      {/* Coverage List */}
+                      {/* Features/Coverage List */}
                       <ul className="grow" style={{ marginBottom: '20px' }}>
-                        {plan.coverageKeys.map((key, idx) => (
-                          <li key={idx} className="flex items-start gap-2" style={{ marginBottom: '10px' }}>
-                            <svg className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-primary-grey text-sm leading-tight">
-                              {t.coverage[key as keyof typeof t.coverage]}
-                            </span>
-                          </li>
-                        ))}
+                        {plan.features.length > 0 ? (
+                          plan.features.slice(0, 5).map((feature, idx) => (
+                            <li key={idx} className="flex items-start gap-2" style={{ marginBottom: '10px' }}>
+                              <svg className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span className="text-primary-grey text-sm leading-tight">
+                                {getFeatureName(feature, locale)}
+                              </span>
+                            </li>
+                          ))
+                        ) : (
+                          plan.coverageItems.slice(0, 5).map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-2" style={{ marginBottom: '10px' }}>
+                              <svg className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span className="text-primary-grey text-sm leading-tight">
+                                {getCoverageTitle(item, locale)}
+                              </span>
+                            </li>
+                          ))
+                        )}
                       </ul>
 
                       {/* Buttons */}
                       <div className="flex flex-col gap-3" style={{ marginTop: 'auto' }}>
                         {hasDetails && (
                           <button
-                            onClick={() => setSelectedPlan(plan.id)}
+                            onClick={() => setSelectedPlan(plan)}
                             className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 transition-all duration-200"
                           >
                             <svg className="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -243,9 +319,9 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
                           </button>
                         )}
                         <button
-                          onClick={() => setOrderPlan({ id: plan.id, name: planTranslations.name, price: plan.price, period: plan.period })}
+                          onClick={() => setOrderPlan({ id: plan.slug, name: planName, price: plan.price, period: plan.period })}
                           className={`block w-full text-center py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer ${
-                            plan.popular
+                            plan.isFavorite
                               ? "bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/30 hover:shadow-xl hover:shadow-red-600/40"
                               : "bg-gray-100 hover:bg-red-50 text-primary-black hover:text-red-600"
                           }`}
