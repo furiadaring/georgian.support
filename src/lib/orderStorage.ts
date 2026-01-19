@@ -39,7 +39,7 @@ export interface Order {
   source: "website" | "manual";
   sourceDomain?: string;
   paymentId?: string;
-  paymentMethod?: "bank" | "korona" | "card";
+  paymentMethod?: "bank" | "korona" | "card" | "crypto";
 }
 
 // Database row type
@@ -240,7 +240,7 @@ export async function saveOrder(order: Order): Promise<void> {
 
 export async function updateOrderPaymentMethod(
   orderId: string,
-  paymentMethod: "bank" | "korona" | "card"
+  paymentMethod: "bank" | "korona" | "card" | "crypto"
 ): Promise<boolean> {
   const rowCount = await execute(
     "UPDATE orders SET payment_method = $1, updated_at = NOW() WHERE order_id = $2",

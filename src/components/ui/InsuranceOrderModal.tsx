@@ -388,7 +388,7 @@ export default function InsuranceOrderModal({
 
   // Multi-step flow: form → payment → confirmation
   const [currentStep, setCurrentStep] = useState<"form" | "payment" | "confirmation">("form");
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"bank" | "korona" | "card" | null>(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"bank" | "korona" | "card" | "crypto" | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
 
   // Phone validation function
@@ -657,7 +657,7 @@ export default function InsuranceOrderModal({
   };
 
   // Handle payment method selection
-  const handlePaymentMethodSelect = async (method: "bank" | "korona" | "card") => {
+  const handlePaymentMethodSelect = async (method: "bank" | "korona" | "card" | "crypto") => {
     // Update payment method in database
     if (orderId) {
       try {
@@ -671,7 +671,7 @@ export default function InsuranceOrderModal({
       }
     }
 
-    // For card payment, redirect to payment page
+    // For card payment, redirect to payment page (currently disabled)
     if (method === "card" && orderId) {
       window.location.href = `/${locale}/payment?order=${orderId}`;
       return;
@@ -1085,6 +1085,40 @@ export default function InsuranceOrderModal({
 
             {/* Payment Options */}
             <div className="flex flex-col gap-4">
+              {/* Card Payment - Disabled with Under Construction */}
+              <div className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 opacity-60 cursor-not-allowed">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-gray-100 rounded-2xl flex items-center justify-center">
+                    <svg className="w-7 h-7 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <p className="text-base font-bold text-gray-500">{(t as Record<string, string>).cardPayment || "Card Payment"}</p>
+                      <span className="text-xs font-medium text-yellow-600 bg-yellow-100 px-2 py-0.5 rounded-full">🚧 {(t as Record<string, string>).underConstruction || "Under Construction"}</span>
+                    </div>
+                    <p className="text-sm text-gray-400 mt-1">{(t as Record<string, string>).cardPaymentComingSoon || "Coming back soon! Please use other payment methods."}</p>
+                    {/* Payment Method Logos - Grayed out */}
+                    <div className="flex gap-1.5 mt-2 flex-wrap opacity-50">
+                      <div className="bg-gray-100 border border-gray-200 rounded px-2 py-0.5">
+                        <span className="text-gray-400 font-bold text-xs">VISA</span>
+                      </div>
+                      <div className="bg-gray-100 border border-gray-200 rounded px-2 py-0.5 flex items-center gap-0.5">
+                        <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+                        <div className="w-3 h-3 bg-gray-200 rounded-full -ml-1.5"></div>
+                      </div>
+                      <div className="bg-gray-100 border border-gray-200 rounded px-2 py-0.5">
+                        <span className="text-gray-400 text-xs">Apple Pay</span>
+                      </div>
+                      <div className="bg-gray-100 border border-gray-200 rounded px-2 py-0.5">
+                        <span className="text-gray-400 text-xs">Google Pay</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Bank Transfer */}
               <button
                 type="button"
@@ -1099,7 +1133,7 @@ export default function InsuranceOrderModal({
                   </div>
                   <div className="flex-1">
                     <p className="text-base font-bold text-gray-800">{(t as Record<string, string>).bankTransfer || "Bank Transfer"}</p>
-                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).bankTransferDesc || "Transfer to Bank of Georgia account"}</p>
+                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).bankTransferDesc || "For those with a Georgian bank account"}</p>
                   </div>
                   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -1129,21 +1163,19 @@ export default function InsuranceOrderModal({
                 </div>
               </button>
 
-              {/* Card Payment */}
+              {/* Crypto Payment (USDT TRC-20) */}
               <button
                 type="button"
-                onClick={() => handlePaymentMethodSelect("card")}
-                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-green-500 hover:shadow-lg group"
+                onClick={() => handlePaymentMethodSelect("crypto")}
+                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-yellow-500 hover:shadow-lg group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                    <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                    </svg>
+                  <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center group-hover:bg-yellow-200 transition-colors">
+                    <span className="text-2xl text-yellow-600">₿</span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-base font-bold text-gray-800">{(t as Record<string, string>).cardPayment || "Card Payment"}</p>
-                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).cardPaymentDesc || "Pay with Visa, Mastercard, Apple Pay, Google Pay"}</p>
+                    <p className="text-base font-bold text-gray-800">{(t as Record<string, string>).cryptoPayment || "Crypto (USDT TRC-20)"}</p>
+                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).cryptoPaymentDesc || "Pay with USDT on Tron network"}</p>
                   </div>
                   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -1228,6 +1260,16 @@ export default function InsuranceOrderModal({
                   </p>
                 </div>
 
+                {/* Other Bank Note */}
+                <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl px-5 py-4">
+                  <p className="text-blue-800 text-sm flex items-start gap-2">
+                    <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{(t as Record<string, string>).otherBankNote || "If you are paying from a bank other than Bank of Georgia, please send us the payment confirmation via WhatsApp, Telegram, or email so we can process your order faster."}</span>
+                  </p>
+                </div>
+
                 <button
                   type="button"
                   onClick={onClose}
@@ -1281,6 +1323,75 @@ export default function InsuranceOrderModal({
                   type="button"
                   onClick={onClose}
                   className="w-full py-4 bg-linear-to-r from-orange-500 to-orange-400 text-white font-bold text-lg rounded-2xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 active:scale-[0.98] transition-all"
+                >
+                  {(t as Record<string, string>).done || "Done"}
+                </button>
+              </div>
+            )}
+
+            {/* Crypto Payment Confirmation */}
+            {selectedPaymentMethod === "crypto" && (
+              <div className="flex flex-col gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl text-yellow-600">₿</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{(t as Record<string, string>).cryptoPaymentTitle || "Crypto Payment (USDT TRC-20)"}</h3>
+                  <p className="text-gray-600">{(t as Record<string, string>).cryptoPaymentInstructions || "Please transfer USDT to the following TRC-20 wallet address"}</p>
+                </div>
+
+                {/* Price */}
+                <div className="bg-linear-to-r from-yellow-500 to-yellow-400 rounded-2xl px-5 py-4 flex items-center justify-between shadow-lg shadow-yellow-500/20">
+                  <span className="text-base font-medium text-white/90">{(t as Record<string, string>).amountToPay || "Amount to Pay"}</span>
+                  <span className="font-bold text-2xl text-white">{calculatedPrice} GEL</span>
+                </div>
+
+                {/* Wallet Address */}
+                <div className="bg-white rounded-2xl p-5 border-2 border-gray-200">
+                  <p className="text-sm text-gray-500 mb-2">{(t as Record<string, string>).walletAddress || "TRC-20 Wallet Address"}</p>
+                  <div className="flex items-center gap-2 bg-gray-50 rounded-xl p-3">
+                    <p className="font-mono text-sm text-gray-800 break-all flex-1">TFWLbF4gUBqDGhsQdMeQHWAqLNJNuVJqGX</p>
+                    <button
+                      type="button"
+                      onClick={() => navigator.clipboard.writeText("TFWLbF4gUBqDGhsQdMeQHWAqLNJNuVJqGX")}
+                      className="p-2 hover:bg-gray-200 rounded-lg transition-colors shrink-0"
+                      title="Copy"
+                    >
+                      <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                    </button>
+                  </div>
+                  {orderId && (
+                    <div className="mt-4">
+                      <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).reference || "Reference"}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="font-semibold text-gray-800">Order #{orderId}</p>
+                        <button
+                          type="button"
+                          onClick={() => navigator.clipboard.writeText(orderId)}
+                          className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
+                          title="Copy"
+                        >
+                          <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl px-5 py-4">
+                  <p className="text-yellow-800 text-sm">
+                    <strong>{(t as Record<string, string>).important || "Important"}:</strong> {(t as Record<string, string>).cryptoPaymentNote || "Send only USDT on the TRC-20 network. Sending other tokens or using wrong network will result in loss of funds. After payment, please send a screenshot of the transaction to our WhatsApp or Telegram."}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="w-full py-4 bg-linear-to-r from-yellow-500 to-yellow-400 text-white font-bold text-lg rounded-2xl shadow-lg shadow-yellow-500/30 hover:shadow-xl hover:shadow-yellow-500/40 active:scale-[0.98] transition-all"
                 >
                   {(t as Record<string, string>).done || "Done"}
                 </button>

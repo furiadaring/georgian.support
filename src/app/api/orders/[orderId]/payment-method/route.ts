@@ -10,7 +10,7 @@ export async function PATCH(
     const body = await request.json();
     const { paymentMethod } = body;
 
-    if (!paymentMethod || !["bank", "korona", "card"].includes(paymentMethod)) {
+    if (!paymentMethod || !["bank", "korona", "card", "crypto"].includes(paymentMethod)) {
       return NextResponse.json(
         { error: "Invalid payment method" },
         { status: 400 }
