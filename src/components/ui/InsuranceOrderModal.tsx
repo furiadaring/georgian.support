@@ -606,6 +606,10 @@ export default function InsuranceOrderModal({
           submitData.append(key, value);
         }
       });
+      // Pass planId for database tracking
+      if (planId) {
+        submitData.append("planId", planId.toString());
+      }
       submitData.append("planName", planName);
       submitData.append("planPrice", calculatedPrice.toString());
       submitData.append("planPricePerDay", isDaily ? planPrice.toString() : "");
@@ -617,6 +621,11 @@ export default function InsuranceOrderModal({
       }
       submitData.append("locale", locale);
       if (passportFile) submitData.append("passportPhoto", passportFile);
+      
+      // Add source domain for tracking which website the order came from
+      if (typeof window !== 'undefined') {
+        submitData.append("sourceDomain", window.location.hostname);
+      }
 
       const response = await fetch("/api/insurance-order", { method: "POST", body: submitData });
       if (response.ok) {

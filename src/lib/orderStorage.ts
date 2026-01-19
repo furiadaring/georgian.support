@@ -10,6 +10,7 @@ export interface Order {
   orderId: string;
   createdAt: string;
   updatedAt?: string;
+  planId?: number;
   planName: string;
   planPrice: number;
   planPricePerDay: string;
@@ -36,6 +37,7 @@ export interface Order {
   status: "pending" | "paid" | "confirmed" | "cancelled" | "expired";
   notes?: string;
   source: "website" | "manual";
+  sourceDomain?: string;
   paymentId?: string;
   paymentMethod?: "bank" | "korona" | "card";
 }
@@ -141,24 +143,26 @@ export async function saveOrder(order: Order): Promise<void> {
         city = $6,
         birth_date = $7,
         passport_number = $8,
-        plan = $9,
-        price = $10,
-        plan_period = $11,
-        period_start = $12,
-        period_end = $13,
-        has_passport_photo = $14,
-        passport_photo_url = $15,
-        notes = $16,
-        payment_id = $17,
-        source = $18,
-        payment_method = $19,
-        locale = $20,
-        payment_option = $21,
-        payment_months = $22,
-        number_of_days = $23,
-        price_per_day = $24,
+        plan_id = $9,
+        plan = $10,
+        price = $11,
+        plan_period = $12,
+        period_start = $13,
+        period_end = $14,
+        has_passport_photo = $15,
+        passport_photo_url = $16,
+        notes = $17,
+        payment_id = $18,
+        source = $19,
+        source_domain = $20,
+        payment_method = $21,
+        locale = $22,
+        payment_option = $23,
+        payment_months = $24,
+        number_of_days = $25,
+        price_per_day = $26,
         updated_at = NOW()
-      WHERE order_id = $25`,
+      WHERE order_id = $27`,
       [
         order.status,
         customer,
@@ -168,6 +172,7 @@ export async function saveOrder(order: Order): Promise<void> {
         order.city,
         order.birthDate || null,
         order.passportNumber || null,
+        order.planId || null,
         order.planName,
         order.planPrice,
         order.planPeriod,
@@ -178,6 +183,7 @@ export async function saveOrder(order: Order): Promise<void> {
         order.notes || null,
         order.paymentId || null,
         order.source,
+        order.sourceDomain || null,
         order.paymentMethod || null,
         order.locale || null,
         order.paymentOption || null,
@@ -191,16 +197,17 @@ export async function saveOrder(order: Order): Promise<void> {
     // Insert new order
     await execute(
       `INSERT INTO orders (
-        order_id, status, source, customer, email, phone, citizenship, city,
-        birth_date, passport_number,
+        order_id, status, source, source_domain, customer, email, phone, citizenship, city,
+        birth_date, passport_number, plan_id,
         plan, price, plan_period, period_start, period_end,
         has_passport_photo, passport_photo_url, notes, payment_id, payment_method,
         locale, payment_option, payment_months, number_of_days, price_per_day
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25)`,
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27)`,
       [
         order.orderId,
         order.status,
         order.source,
+        order.sourceDomain || null,
         customer,
         order.email,
         order.mobileNumber,
@@ -208,6 +215,7 @@ export async function saveOrder(order: Order): Promise<void> {
         order.city,
         order.birthDate || null,
         order.passportNumber || null,
+        order.planId || null,
         order.planName,
         order.planPrice,
         order.planPeriod,

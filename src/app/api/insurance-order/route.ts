@@ -167,6 +167,7 @@ export async function POST(request: NextRequest) {
     // Handle FormData for file uploads
     const formData = await request.formData();
 
+    const planId = formData.get("planId") as string;
     const planName = formData.get("planName") as string;
     const planPrice = formData.get("planPrice") as string;
     const planPricePerDay = formData.get("planPricePerDay") as string;
@@ -186,6 +187,7 @@ export async function POST(request: NextRequest) {
     const paymentOption = formData.get("paymentOption") as string;
     const paymentMonths = formData.get("paymentMonths") as string;
     const passportPhoto = formData.get("passportPhoto") as File | null;
+    const sourceDomain = formData.get("sourceDomain") as string;
 
     // Store for logging
     orderData = {
@@ -193,6 +195,7 @@ export async function POST(request: NextRequest) {
       customer: `${firstNameEng} ${lastNameEng}`,
       email,
       phone: mobileNumber,
+      planId,
       plan: planName,
       price: planPrice,
       city,
@@ -229,6 +232,7 @@ export async function POST(request: NextRequest) {
     const order: Order = {
       orderId,
       createdAt: new Date().toISOString(),
+      planId: planId ? parseInt(planId) : undefined,
       planName: dbPlanName,
       planPrice: parseFloat(planPrice) || 0,
       planPricePerDay: planPricePerDay || "",
@@ -252,6 +256,7 @@ export async function POST(request: NextRequest) {
       passportPhotoType,
       status: "pending", // Website orders start as pending
       source: "website",
+      sourceDomain: sourceDomain || "georgian.support",
     };
 
     // Save to database
