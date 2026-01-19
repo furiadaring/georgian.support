@@ -255,6 +255,7 @@ interface InsuranceOrderModalProps {
   planName?: string;
   planPrice?: number;
   planPeriod?: string;
+  initialPromocode?: string;
   locale: string;
   dict: {
     insuranceOrder?: {
@@ -353,6 +354,7 @@ export default function InsuranceOrderModal({
   planName = "",
   planPrice = 0,
   planPeriod = "day",
+  initialPromocode,
   locale,
   dict,
 }: InsuranceOrderModalProps) {
