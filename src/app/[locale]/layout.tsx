@@ -139,6 +139,86 @@ export default async function LocaleLayout({
           accept={dict.cookie.accept}
           decline={dict.cookie.decline}
         />
+        {/* Keitaro subid tracking - fills hidden field from URL */}
+        <Script id="keitaro-subid" strategy="afterInteractive">
+          {`
+            (function () {
+              var params = new URLSearchParams(window.location.search);
+              var subid = params.get('subid') || '';
+              
+              // Save to localStorage for persistence
+              if (subid) {
+                try { localStorage.setItem('kt_subid', subid); } catch(e) {}
+              } else {
+                try { subid = localStorage.getItem('kt_subid') || ''; } catch(e) {}
+              }
+              
+              // Fill all subid inputs
+              function fillSubid() {
+                var input = document.getElementById('kt_subid');
+                if (input) input.value = subid;
+                document.querySelectorAll('input[name="subid"]').forEach(function(i) {
+                  i.value = subid;
+                });
+              }
+              
+              fillSubid();
+              console.log('Keitaro subid:', subid);
+              
+              // Keep filling while modals open
+              setInterval(fillSubid, 500);
+            })();
+          `}
+        </Script>
+        
+        {/* Keitaro conversion tracking - postback on success/clicks */}
+        <Script id="keitaro-conversion" strategy="afterInteractive">
+          {`
+            (function () {
+              function getSubid() {
+                var input = document.getElementById('kt_subid');
+                if (input && input.value) return input.value;
+                try { return localStorage.getItem('kt_subid') || ''; } catch(e) { return ''; }
+              }
+              
+              function sendPostback(status) {
+                var subid = getSubid();
+                if (!subid) return;
+                fetch('https://track.georgian.support/postback?subid=' + encodeURIComponent(subid) + '&status=' + status);
+                console.log('Keitaro postback sent:', status);
+              }
+              
+              // WhatsApp / Telegram click tracking
+              document.addEventListener('click', function (e) {
+                var a = e.target.closest && e.target.closest('a');
+                if (!a) return;
+                var href = (a.getAttribute('href') || '').trim();
+                if (href.startsWith('https://wa.me/') || href.startsWith('https://api.whatsapp.com/') || href.startsWith('whatsapp://')) {
+                  sendPostback('whatsapp');
+                  return;
+                }
+                if (href.startsWith('https://t.me/') || href.startsWith('tg://')) {
+                  sendPostback('telegram');
+                }
+              }, true);
+              
+              // Form success detection - send lead on "спасибо" / "thank" / success message
+              var leadSent = false;
+              var observer = new MutationObserver(function () {
+                if (leadSent) return;
+                var bodyText = document.body.innerText.toLowerCase();
+                // Check for success indicators
+                if (bodyText.includes('спасибо') || bodyText.includes('thank') || 
+                    document.querySelector('.bg-green-50.text-green-700') ||
+                    document.querySelector('[class*="success"]')) {
+                  leadSent = true;
+                  sendPostback('lead');
+                }
+              });
+              observer.observe(document.body, { childList: true, subtree: true });
+            })();
+          `}
+        </Script>
       </body>
     </html>
   );

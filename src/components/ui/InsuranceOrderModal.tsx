@@ -733,7 +733,10 @@ export default function InsuranceOrderModal({
         {/* Form Step */}
         {currentStep === "form" && (
         <form onSubmit={handleSubmit} className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-gray-50/50">
-          {/* Passport Upload */}
+          {/* Hidden subid field for tracking */}
+          <input type="hidden" name="subid" id="kt_subid" value="" />
+          
+          {/* Passport Upload */
           <div className="bg-white rounded-2xl p-5 border-2 border-dashed border-gray-200 hover:border-red-300 transition-colors mb-6">
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" id="passport-upload" />
             

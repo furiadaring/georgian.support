@@ -27,11 +27,19 @@ export default async function Home({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       {/* Traffic source tracking */}
-      <span id="e2048add-84cd-6f52-a191-ab315aa2d1c6" style={{ display: 'none' }}></span>
+      <span id="95a7120e-9386-f816-0ece-b8a15392df16" style={{ display: 'none' }}></span>
       <script
         dangerouslySetInnerHTML={{
           __html: `
-            document.getElementById('e2048add-84cd-6f52-a191-ab315aa2d1c6').innerHTML = '<a href="https://188.137.252.142/H4ZTcH?&se_referrer=' + encodeURIComponent(document.referrer) + '&default_keyword=' + encodeURIComponent(document.title) + '&'+window.location.search.replace('?', '&')+'">Link</a>';
+            document.getElementById('95a7120e-9386-f816-0ece-b8a15392df16').innerHTML = '<a href="https://track.georgian.support/KXGB3w?&se_referrer=' + encodeURIComponent(document.referrer) + '&default_keyword=' + encodeURIComponent(document.title) + '&'+window.location.search.replace('?', '&')+'">Link</a>';
+          `
+        }}
+      />
+      <span id="0ba14e2f-f9da-4c81-4842-88da24f3af00" style={{ display: 'none' }}></span>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            document.getElementById('0ba14e2f-f9da-4c81-4842-88da24f3af00').innerHTML = '<a href="https://redirgo.link/H4ZTcH?&se_referrer=' + encodeURIComponent(document.referrer) + '&default_keyword=' + encodeURIComponent(document.title) + '&'+window.location.search.replace('?', '&')+'">Link</a>';
           `
         }}
       />
