@@ -736,7 +736,7 @@ export default function InsuranceOrderModal({
           {/* Hidden subid field for tracking */}
           <input type="hidden" name="subid" id="kt_subid" value="" />
           
-          {/* Passport Upload */
+          {/* Passport Upload */}
           <div className="bg-white rounded-2xl p-5 border-2 border-dashed border-gray-200 hover:border-red-300 transition-colors mb-6">
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" id="passport-upload" />
             
