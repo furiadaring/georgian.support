@@ -671,6 +671,8 @@
     "koronaPay": "كورونا باي",
     "koronaPayDesc": "تحويل من روسيا",
     "cardPayment": "الدفع بالبطاقة",
+    "cardPaymentDesc": "دفع آمن بواسطة Visa أو Mastercard أو البطاقات الجورجية",
+    "recommended": "موصى به",
     "comingSoon": "قريباً",
     "bankTransferTitle": "تفاصيل التحويل البنكي",
     "bankTransferInstructions": "يرجى تحويل المبلغ إلى الحساب التالي",

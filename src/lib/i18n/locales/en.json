@@ -670,6 +670,8 @@
     "koronaPay": "Korona Pay",
     "koronaPayDesc": "Transfer from Russia",
     "cardPayment": "Card Payment",
+    "cardPaymentDesc": "Pay securely with Visa, Mastercard, or Georgian cards",
+    "recommended": "Recommended",
     "comingSoon": "Coming soon",
     "bankTransferTitle": "Bank Transfer Details",
     "bankTransferInstructions": "Please transfer the amount to the following account",

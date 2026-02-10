@@ -672,6 +672,8 @@
     "koronaPay": "კორონა პეი",
     "koronaPayDesc": "გადარიცხვა რუსეთიდან",
     "cardPayment": "ბარათით გადახდა",
+    "cardPaymentDesc": "უსაფრთხო გადახდა Visa, Mastercard ან ქართული ბარათებით",
+    "recommended": "რეკომენდებული",
     "comingSoon": "მალე",
     "bankTransferTitle": "საბანკო რეკვიზიტები",
     "bankTransferInstructions": "გთხოვთ გადარიცხოთ თანხა შემდეგ ანგარიშზე",

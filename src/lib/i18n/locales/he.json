@@ -673,6 +673,8 @@
     "koronaPay": "קורונה פיי",
     "koronaPayDesc": "העברה מרוסיה",
     "cardPayment": "תשלום בכרטיס",
+    "cardPaymentDesc": "תשלום מאובטח באמצעות Visa, Mastercard או כרטיסים גאורגיים",
+    "recommended": "מומלץ",
     "comingSoon": "בקרוב",
     "bankTransferTitle": "פרטי העברה בנקאית",
     "bankTransferInstructions": "אנא העבר את הסכום לחשבון הבא",

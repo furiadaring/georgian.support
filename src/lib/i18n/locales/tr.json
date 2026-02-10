@@ -673,6 +673,8 @@
     "koronaPay": "Korona Pay",
     "koronaPayDesc": "Rusya'dan havale",
     "cardPayment": "Kart ile Ödeme",
+    "cardPaymentDesc": "Visa, Mastercard veya Gürcü kartlarıyla güvenli ödeme",
+    "recommended": "Önerilen",
     "comingSoon": "Yakında",
     "bankTransferTitle": "Banka Havalesi Bilgileri",
     "bankTransferInstructions": "Lütfen tutarı aşağıdaki hesaba havale edin",

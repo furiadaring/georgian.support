@@ -671,9 +671,10 @@ export default function InsuranceOrderModal({
       }
     }
 
-    // For card payment, redirect to payment page (currently disabled)
+    // For card payment, redirect to BOG payment at visitgeorgia.online
     if (method === "card" && orderId) {
-      window.location.href = `/${locale}/payment?order=${orderId}`;
+      const returnUrl = `${window.location.origin}/${locale}/payment/success`;
+      window.location.href = `https://visitgeorgia.online/${locale}/payment?order=${orderId}&return=${encodeURIComponent(returnUrl)}`;
       return;
     }
 
@@ -1088,39 +1089,46 @@ export default function InsuranceOrderModal({
 
             {/* Payment Options */}
             <div className="flex flex-col gap-4">
-              {/* Card Payment - Disabled with Under Construction */}
-              <div className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 opacity-60 cursor-not-allowed">
+              {/* Card Payment - BOG */}
+              <button
+                type="button"
+                onClick={() => handlePaymentMethodSelect("card")}
+                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-red-500 hover:shadow-lg group"
+              >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-gray-100 rounded-2xl flex items-center justify-center">
-                    <svg className="w-7 h-7 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <p className="text-base font-bold text-gray-500">{(t as Record<string, string>).cardPayment || "Card Payment"}</p>
-                      <span className="text-xs font-medium text-yellow-600 bg-yellow-100 px-2 py-0.5 rounded-full">🚧 {(t as Record<string, string>).underConstruction || "Under Construction"}</span>
+                      <p className="text-base font-bold text-gray-800 group-hover:text-red-600 transition-colors">{(t as Record<string, string>).cardPayment || "Card Payment"}</p>
+                      <span className="text-xs font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full">✓ {(t as Record<string, string>).recommended || "Recommended"}</span>
                     </div>
-                    <p className="text-sm text-gray-400 mt-1">{(t as Record<string, string>).cardPaymentComingSoon || "Coming back soon! Please use other payment methods."}</p>
-                    {/* Payment Method Logos - Grayed out */}
-                    <div className="flex gap-1.5 mt-2 flex-wrap opacity-50">
-                      <div className="bg-gray-100 border border-gray-200 rounded px-2 py-0.5">
-                        <span className="text-gray-400 font-bold text-xs">VISA</span>
+                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).cardPaymentDesc || "Pay securely with Visa, Mastercard, or Georgian cards"}</p>
+                    {/* Payment Method Logos */}
+                    <div className="flex gap-1.5 mt-2 flex-wrap">
+                      <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5">
+                        <span className="text-blue-700 font-bold text-xs">VISA</span>
                       </div>
-                      <div className="bg-gray-100 border border-gray-200 rounded px-2 py-0.5 flex items-center gap-0.5">
-                        <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
-                        <div className="w-3 h-3 bg-gray-200 rounded-full -ml-1.5"></div>
+                      <div className="bg-orange-50 border border-orange-200 rounded px-2 py-0.5 flex items-center gap-0.5">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-yellow-400 rounded-full -ml-1.5"></div>
                       </div>
-                      <div className="bg-gray-100 border border-gray-200 rounded px-2 py-0.5">
-                        <span className="text-gray-400 text-xs">Apple Pay</span>
+                      <div className="bg-green-50 border border-green-200 rounded px-2 py-0.5">
+                        <span className="text-green-700 text-xs font-medium">BOG</span>
                       </div>
-                      <div className="bg-gray-100 border border-gray-200 rounded px-2 py-0.5">
-                        <span className="text-gray-400 text-xs">Google Pay</span>
+                      <div className="bg-purple-50 border border-purple-200 rounded px-2 py-0.5">
+                        <span className="text-purple-700 text-xs font-medium">TBC</span>
                       </div>
                     </div>
                   </div>
+                  <svg className="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </div>
-              </div>
+              </button>
 
               {/* Bank Transfer */}
               <button

@@ -674,6 +674,8 @@
     "koronaPay": "Корона Пей",
     "koronaPayDesc": "Переказ з Росії",
     "cardPayment": "Оплата карткою",
+    "cardPaymentDesc": "Безпечна оплата Visa, Mastercard або грузинськими картками",
+    "recommended": "Рекомендовано",
     "comingSoon": "Незабаром",
     "bankTransferTitle": "Реквізити для переказу",
     "bankTransferInstructions": "Будь ласка, переведіть суму на наступний рахунок",

@@ -15,8 +15,6 @@
     "prepare": "husky || true"
   },
   "dependencies": {
-    "@stripe/react-stripe-js": "^5.4.1",
-    "@stripe/stripe-js": "^8.6.1",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/pg": "^8.16.0",
     "bcryptjs": "^3.0.3",
@@ -31,7 +29,6 @@
     "react-phone-input-2": "^2.15.1",
     "react-select": "^5.10.2",
     "resend": "^6.6.0",
-    "stripe": "^20.1.2",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
