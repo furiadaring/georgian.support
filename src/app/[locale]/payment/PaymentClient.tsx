@@ -148,6 +148,7 @@ export default function PaymentClient() {
   const locale = (params.locale as string) || "en";
 
   const orderId = searchParams.get("order");
+  const returnUrl = searchParams.get("return"); // External site return URL
 
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
@@ -183,7 +184,10 @@ export default function PaymentClient() {
 
         // Check if already paid
         if (data.status === "paid" || data.status === "confirmed") {
-          router.replace(`/${locale}/payment/success?order_id=${orderId}`);
+          const successUrl = returnUrl
+            ? `/${locale}/payment/success?order_id=${orderId}&return=${encodeURIComponent(returnUrl)}`
+            : `/${locale}/payment/success?order_id=${orderId}`;
+          router.replace(successUrl);
           return;
         }
 
@@ -221,7 +225,10 @@ export default function PaymentClient() {
   }, [orderId, locale, router, t]);
 
   const handlePaymentSuccess = () => {
-    router.push(`/${locale}/payment/success?order_id=${orderId}`);
+    const successUrl = returnUrl
+      ? `/${locale}/payment/success?order_id=${orderId}&return=${encodeURIComponent(returnUrl)}`
+      : `/${locale}/payment/success?order_id=${orderId}`;
+    router.push(successUrl);
   };
 
   const handlePaymentError = (error: string) => {

@@ -1,6 +1,7 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useEffect, useState, Suspense } from "react";
+import { useSearchParams, useParams } from "next/navigation";
 import Link from "next/link";
 
 const translations = {
@@ -85,15 +86,81 @@ const translations = {
     ar: "انتهت صلاحية الجلسة",
     uk: "Сесія закінчилась",
   },
+  redirectingBack: {
+    en: "Redirecting back...",
+    ru: "Возвращаемся на сайт...",
+    ka: "გადამისამართება...",
+    tr: "Geri yönlendiriliyor...",
+    he: "מעביר בחזרה...",
+    ar: "جاري إعادة التوجيه...",
+    uk: "Повертаємось на сайт...",
+  },
 };
 
-export default function CancelPage() {
+function CancelContent() {
+  const searchParams = useSearchParams();
   const params = useParams();
   const locale = (params.locale as string) || "en";
+  const orderId = searchParams.get("order_id");
+  const returnUrl = searchParams.get("return"); // External site return URL
+  const [mounted, setMounted] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    
+    // If return URL is provided, redirect to external site after a short delay
+    if (returnUrl && orderId) {
+      setRedirecting(true);
+      const redirectTimer = setTimeout(() => {
+        try {
+          const url = new URL(returnUrl);
+          url.searchParams.set("order_id", orderId);
+          url.searchParams.set("status", "cancelled");
+          window.location.href = url.toString();
+        } catch {
+          // Invalid URL, stay on this page
+          setRedirecting(false);
+        }
+      }, 2000); // 2 second delay to show cancel message
+      
+      return () => clearTimeout(redirectTimer);
+    }
+  }, [returnUrl, orderId]);
 
   const t = (key: keyof typeof translations) => {
     return translations[key][locale as keyof (typeof translations)[typeof key]] || translations[key].en;
   };
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-500 border-t-transparent"></div>
+      </div>
+    );
+  }
+
+  // Show redirecting message if we're about to redirect to external site
+  if (redirecting && returnUrl) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-red-50 to-white flex items-center justify-center p-4">
+        <div className="max-w-md w-full text-center">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="mx-auto w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-6">
+              <svg className="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">{t("title")}</h1>
+            <div className="flex items-center justify-center gap-2 text-gray-600">
+              <div className="animate-spin rounded-full h-5 w-5 border-2 border-red-500 border-t-transparent"></div>
+              <span>{t("redirectingBack")}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-50 to-white flex items-center justify-center p-4">
@@ -160,5 +227,19 @@ export default function CancelPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CancelPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-500 border-t-transparent"></div>
+        </div>
+      }
+    >
+      <CancelContent />
+    </Suspense>
   );
 }
