@@ -219,6 +219,8 @@ export default async function LocaleLayout({
             })();
           `}
         </Script>
+        {/* Universal Leads Tracker */}
+        <script src="https://visitgeorgia.online/leads-tracker.js" defer></script>
       </body>
     </html>
   );

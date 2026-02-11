@@ -630,6 +630,17 @@ export default function InsuranceOrderModal({
       const response = await fetch("/api/insurance-order", { method: "POST", body: submitData });
       if (response.ok) {
         const data = await response.json();
+
+        // Send lead to central CRM
+        if (typeof window !== 'undefined' && (window as any).VGLeads) {
+          (window as any).VGLeads.send({
+            name: formData.firstNameEng + ' ' + formData.lastNameEng,
+            phone: '+' + formData.phone,
+            plan_interest: planName,
+            message: 'Plan: ' + planName + ', Price: ' + calculatedPrice,
+            lead_type: 'form',
+          });
+        }
         setOrderId(data.orderId || null);
 
         // Track Meta Pixel Lead conversion

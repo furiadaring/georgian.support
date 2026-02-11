@@ -56,6 +56,17 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
     
     window.open(`${CONTACT.whatsapp}?text=${message}`, "_blank");
     setSubmitted(true);
+
+        // Send lead to central CRM
+        if (typeof window !== 'undefined' && (window as any).VGLeads) {
+          (window as any).VGLeads.send({
+            name: formData.name,
+            phone: formData.phone,
+            message: formData.message || '',
+            plan_interest: formData.insuranceType,
+            lead_type: 'form',
+          });
+        }
     setIsSubmitting(false);
   };
 
