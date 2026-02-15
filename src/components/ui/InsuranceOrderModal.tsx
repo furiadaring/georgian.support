@@ -630,17 +630,6 @@ export default function InsuranceOrderModal({
       const response = await fetch("/api/insurance-order", { method: "POST", body: submitData });
       if (response.ok) {
         const data = await response.json();
-
-        // Send lead to central CRM
-        if (typeof window !== 'undefined' && (window as any).VGLeads) {
-          (window as any).VGLeads.send({
-            name: formData.firstNameEng + ' ' + formData.lastNameEng,
-            phone: '+' + formData.phone,
-            plan_interest: planName,
-            message: 'Plan: ' + planName + ', Price: ' + calculatedPrice,
-            lead_type: 'form',
-          });
-        }
         setOrderId(data.orderId || null);
 
         // Track Meta Pixel Lead conversion
@@ -695,11 +684,23 @@ export default function InsuranceOrderModal({
 
   const today = useMemo(() => new Date().toISOString().split("T")[0], []);
   
-  const tomorrow = useMemo(() => {
-    const date = new Date();
-    date.setDate(date.getDate() + 1);
-    return date;
-  }, []);
+  // Today as Date object for minDate on DatePickers
+  const todayDate = useMemo(() => new Date(), []);
+  
+  // Minimum end date: for visitor insurance (isDaily), must be at least 5 days from start
+  const minEndDate = useMemo(() => {
+    if (formData.periodStart) {
+      const startDate = new Date(formData.periodStart);
+      if (isDaily) {
+        // 5-day minimum for visitor insurance: end date must be at least 4 days after start (5 days inclusive)
+        const minEnd = new Date(startDate);
+        minEnd.setDate(minEnd.getDate() + 4);
+        return minEnd;
+      }
+      return startDate;
+    }
+    return new Date();
+  }, [formData.periodStart, isDaily]);
   
   const calculatedPrice = useMemo(() => {
     if (isDaily && formData.periodStart && formData.periodEnd) {
@@ -810,7 +811,7 @@ export default function InsuranceOrderModal({
                   <DatePicker
                     selected={formData.periodStart ? new Date(formData.periodStart) : null}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodStart: date ? formatLocalDate(date) : '' }))}
-                    minDate={tomorrow}
+                    minDate={todayDate}
                     dateFormat="dd/MM/yyyy"
                     placeholderText="DD/MM/YYYY"
                     showMonthDropdown
@@ -863,7 +864,7 @@ export default function InsuranceOrderModal({
                   <DatePicker
                     selected={formData.periodStart ? new Date(formData.periodStart) : null}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodStart: date ? formatLocalDate(date) : '' }))}
-                    minDate={tomorrow}
+                    minDate={todayDate}
                     dateFormat="dd/MM/yyyy"
                     placeholderText="DD/MM/YYYY"
                     showMonthDropdown
@@ -882,7 +883,7 @@ export default function InsuranceOrderModal({
                   <DatePicker
                     selected={formData.periodEnd ? new Date(formData.periodEnd) : null}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodEnd: date ? formatLocalDate(date) : '' }))}
-                    minDate={formData.periodStart ? new Date(formData.periodStart) : new Date()}
+                    minDate={minEndDate}
                     dateFormat="dd/MM/yyyy"
                     placeholderText="DD/MM/YYYY"
                     showMonthDropdown
