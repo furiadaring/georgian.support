@@ -189,6 +189,17 @@ export async function POST(request: NextRequest) {
     const passportPhoto = formData.get("passportPhoto") as File | null;
     const sourceDomain = formData.get("sourceDomain") as string;
 
+    // Tracking / Attribution fields
+    const subid = formData.get("subid") as string;
+    const clickId = formData.get("clickId") as string;
+    const adSource = formData.get("adSource") as string;
+    const keyword = formData.get("keyword") as string;
+    const utmSource = formData.get("utmSource") as string;
+    const utmMedium = formData.get("utmMedium") as string;
+    const utmCampaign = formData.get("utmCampaign") as string;
+    const utmTerm = formData.get("utmTerm") as string;
+    const utmContent = formData.get("utmContent") as string;
+
     // Store for logging
     orderData = {
       timestamp: new Date().toISOString(),
@@ -257,12 +268,51 @@ export async function POST(request: NextRequest) {
       status: "pending", // Website orders start as pending
       source: "website",
       sourceDomain: sourceDomain || "georgian.support",
+          subid: subid || undefined,
+      clickId: clickId || undefined,
+      adSource: adSource || undefined,
+      keyword: keyword || undefined,
+      utmSource: utmSource || undefined,
+      utmMedium: utmMedium || undefined,
+      utmCampaign: utmCampaign || undefined,
+      utmTerm: utmTerm || undefined,
+      utmContent: utmContent || undefined,
     };
 
     // Save to database
     try {
       await saveOrder(order);
       console.log(`[Insurance Order] Saved to database: ${orderId}`);
+
+      // Create order lead in central CRM
+      try {
+        const leadData = {
+          name: `${firstNameEng} ${lastNameEng}`.trim(),
+          phone: mobileNumber ? "+" + mobileNumber.replace(/^\+/, "") : null,
+          email: email || null,
+          lead_type: "order",
+          plan_interest: order.planName,
+          source_domain: order.sourceDomain,
+          subid: subid || null,
+          click_id: clickId || null,
+          ad_source: adSource || null,
+          keyword: keyword || null,
+          utm_source: utmSource || null,
+          utm_medium: utmMedium || null,
+          utm_campaign: utmCampaign || null,
+          utm_term: utmTerm || null,
+          utm_content: utmContent || null,
+          order_id: orderId,
+        };
+        await fetch("https://visitgeorgia.online/api/leads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(leadData),
+        });
+        console.log(`[Insurance Order] Order lead sent to CRM for ${orderId}`);
+      } catch (leadErr) {
+        console.error("[Insurance Order] Lead creation error:", leadErr);
+      }
     } catch (dbError) {
       console.error("[Insurance Order] Database save error:", dbError);
       // Continue with Telegram notification even if DB save fails

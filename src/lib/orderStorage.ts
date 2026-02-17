@@ -38,6 +38,15 @@ export interface Order {
   notes?: string;
   source: "website" | "manual";
   sourceDomain?: string;
+  subid?: string;
+  clickId?: string;
+  adSource?: string;
+  keyword?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmTerm?: string;
+  utmContent?: string;
   paymentId?: string;
   paymentMethod?: "bank" | "korona" | "card" | "crypto";
 }
@@ -201,8 +210,9 @@ export async function saveOrder(order: Order): Promise<void> {
         birth_date, passport_number, plan_id,
         plan, price, plan_period, period_start, period_end,
         has_passport_photo, passport_photo_url, notes, payment_id, payment_method,
-        locale, payment_option, payment_months, number_of_days, price_per_day
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27)`,
+        locale, payment_option, payment_months, number_of_days, price_per_day,
+        subid, click_id, ad_source, utm_source, utm_campaign, utm_term, utm_content
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34)`,
       [
         order.orderId,
         order.status,
@@ -231,6 +241,13 @@ export async function saveOrder(order: Order): Promise<void> {
         order.paymentMonths ? parseInt(order.paymentMonths) : null,
         order.numberOfDays ? parseInt(order.numberOfDays) : null,
         order.planPricePerDay ? parseFloat(order.planPricePerDay) : null,
+        order.subid || null,
+        order.clickId || null,
+        order.adSource || null,
+        order.utmSource || null,
+        order.utmCampaign || null,
+        order.utmTerm || null,
+        order.utmContent || null,
       ]
     );
   }

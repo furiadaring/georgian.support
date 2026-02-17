@@ -627,6 +627,24 @@ export default function InsuranceOrderModal({
         submitData.append("sourceDomain", window.location.hostname);
       }
 
+      // Add tracking attribution data from VGLeads / Keitaro
+      try {
+        const attr = (window as any).VGLeads?.getAttribution?.() || {};
+        const subidInput = document.getElementById("kt_subid") as HTMLInputElement;
+        const subid = subidInput?.value || attr.subid || "";
+        if (subid) submitData.append("subid", subid);
+        if (attr.click_id) submitData.append("clickId", attr.click_id);
+        if (attr.ad_source) submitData.append("adSource", attr.ad_source);
+        if (attr.keyword) submitData.append("keyword", attr.keyword);
+        if (attr.utm_source) submitData.append("utmSource", attr.utm_source);
+        if (attr.utm_medium) submitData.append("utmMedium", attr.utm_medium);
+        if (attr.utm_campaign) submitData.append("utmCampaign", attr.utm_campaign);
+        if (attr.utm_term) submitData.append("utmTerm", attr.utm_term);
+        if (attr.utm_content) submitData.append("utmContent", attr.utm_content);
+      } catch(e) {
+        console.error("Attribution capture error:", e);
+      }
+
       const response = await fetch("/api/insurance-order", { method: "POST", body: submitData });
       if (response.ok) {
         const data = await response.json();
