@@ -95,19 +95,19 @@ export default function Hero({ locale, dict }: HeroProps) {
             <StatCard 
               icon={<ClockIcon />} 
               value="15мин" 
-              label={t.stats?.minutesDesc || 'оформление'} 
+              label="оформление" 
               shadowSide="left"
             />
             <StatCard 
               icon={<HeadsetIcon />} 
               value="24/7" 
-              label={t.stats?.support || 'поддержка'} 
+              label={t.support || 'поддержка'} 
               shadowSide="none"
             />
             <StatCard 
               icon={<ShieldIcon />} 
               value="$50K" 
-              label={t.stats?.coverage || 'покрытие'} 
+              label={t.coverage || 'покрытие'} 
               shadowSide="right"
             />
           </div>

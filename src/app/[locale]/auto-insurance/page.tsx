@@ -58,16 +58,16 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
             <div className="font-medium mb-5 lg:mb-10">
               <span className="text-[14px] lg:text-[16px] text-[#ABA2A5]" style={{ lineHeight: '1.3' }}>
                 <Link href={`/${locale}`} className="hover:opacity-80 transition-opacity">
-                  {dict.nav?.home || "Главная"}
+                  Главная
                 </Link>
               </span>
               <span className="text-[14px] lg:text-[16px] text-[#ABA2A5]" style={{ lineHeight: '1.3' }}> / </span>
               <span className="text-[14px] lg:text-[16px] text-[#ABA2A5]" style={{ lineHeight: '1.3' }}>
                 <Link href={`/${locale}/insurance`} className="hover:opacity-80 transition-opacity">
-                  Страховки
+                  {dict.header?.insurance || "Страховки"}
                 </Link>
               </span>
-              <span className="text-[14px] lg:text-[16px] text-[#2D1D38]" style={{ lineHeight: '1.3' }}> / Автостраховка</span>
+              <span className="text-[14px] lg:text-[16px] text-[#2D1D38]" style={{ lineHeight: '1.3' }}> / {dict.header?.insuranceDropdown?.autoEntry || "Автостраховка"}</span>
             </div>
 
             {/* Title Section - Centered */}
