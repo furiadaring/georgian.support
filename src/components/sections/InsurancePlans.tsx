@@ -499,19 +499,19 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 20, padding: '10px 15px 20px 15px', flex: 1 }}>
                   {/* SECTION 1: Title block */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15, width: '100%' }}>
-                    {/* Name - single line, fixed height */}
-                    <h3 style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.2, color: '#2D1D38', height: 26, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15, width: '100%', alignItems: 'center', textAlign: 'center' }}>
+                    {/* Name - single line, fixed height, centered */}
+                    <h3 style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.2, color: '#2D1D38', height: 26, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
                       {translation.name}
                     </h3>
                     
-                    {/* Subtitle - 2 lines max, fixed height */}
-                    <p style={{ fontSize: 12, fontWeight: 600, lineHeight: 1.4, color: '#2D1D38', height: 34, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const }}>
+                    {/* Subtitle - single line, fixed height, centered */}
+                    <p style={{ fontSize: 12, fontWeight: 600, lineHeight: 1.4, color: '#2D1D38', height: 17, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', width: '100%' }}>
                       {translation.subtitle}
                     </p>
                     
-                    {/* Legal badge - fixed height placeholder */}
-                    <div style={{ height: 24, display: 'flex', alignItems: 'center' }}>
+                    {/* Legal badge - fixed height placeholder, centered */}
+                    <div style={{ height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       {plan.isLegalCompliant && (
                         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, backgroundColor: '#F4EFF3', borderRadius: 1000, paddingLeft: 8, paddingRight: 10, paddingTop: 5, paddingBottom: 5 }}>
                           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
@@ -522,19 +522,19 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
                       )}
                     </div>
 
-                    {/* Price section - fixed heights */}
-                    <div style={{ display: 'flex', flexDirection: 'column', fontWeight: 600 }}>
+                    {/* Price section - fixed heights, centered */}
+                    <div style={{ display: 'flex', flexDirection: 'column', fontWeight: 600, alignItems: 'center' }}>
                       {/* Original price - fixed height */}
                       <div style={{ height: 16 }}>
                         {plan.originalPrice && (
                           <span style={{ fontSize: 12, color: '#ABA2A5', textDecoration: 'line-through', lineHeight: 1.3 }}>{plan.originalPrice} GEL</span>
                         )}
                       </div>
-                      {/* Current price */}
-                      <div style={{ display: 'flex', gap: 5, alignItems: 'baseline' }}>
+                      {/* Current price - always on one line */}
+                      <div style={{ display: 'flex', gap: 3, alignItems: 'baseline', whiteSpace: 'nowrap' }}>
                         <span style={{ fontSize: 26, fontWeight: 600, lineHeight: 1.3, color: '#2D1D38' }}>{plan.price}</span>
-                        <span style={{ fontSize: 16, fontWeight: 600, lineHeight: 1.3, color: '#2D1D38' }}>GEL</span>
-                        <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.3, color: '#ABA2A5' }}>/{getPeriodLabel(plan)}</span>
+                        <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.3, color: '#2D1D38' }}>GEL</span>
+                        <span style={{ fontSize: 12, fontWeight: 600, lineHeight: 1.3, color: '#ABA2A5' }}>/{getPeriodLabel(plan)}</span>
                       </div>
                     </div>
                   </div>
