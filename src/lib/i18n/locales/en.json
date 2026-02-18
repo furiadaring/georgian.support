@@ -87,15 +87,16 @@
     ]
   },
   "insurance": {
-    "label": "INSURANCE PROGRAMS",
+    "label": "Insurance programs",
     "title": "Find your",
-    "titleHighlight": "perfect plan",
+    "titleHighlight": "perfect",
+    "titleEnd": "plan",
     "description": "From short-term tourist coverage to full annual protection — we have a solution for everyone",
     "recommend": "⭐ Recommended",
     "order": "Order",
     "needHelp": "Need help?",
     "writeUs": "Write to us",
-    "seeAll": "See All Insurance Plans",
+    "seeAll": "See all insurance types",
     "day": "day",
     "month": "month",
     "months3": "3 months",
@@ -284,7 +285,7 @@
     }
   },
   "faq": {
-    "label": "FAQ",
+    "label": "Question/Answer",
     "title": "Crystal",
     "titleHighlight": "Clear",
     "description": "Everything you need to know before getting your insurance policy",
@@ -400,8 +401,11 @@
     "navigation": "Navigation",
     "insurancePlans": "Insurance Plans",
     "contacts": "Contacts",
+    "address": "Address",
     "phoneWhatsapp": "Phone / WhatsApp",
     "workHours": "Working Hours",
+    "workHoursValue": "Mon-Sat  10:00 - 19:00",
+    "legalDisclaimer": "The GeorgianSupport insurance service is maintained and operated by {company} — a holding company providing comprehensive services for expats and tourists in Georgia.",
     "copyright": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms and Conditions"

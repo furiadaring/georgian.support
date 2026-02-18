@@ -6,11 +6,11 @@ import { type Locale, locales, localeNames } from "@/lib/i18n/config";
 
 interface LanguageSwitcherProps {
   locale: Locale;
-  variant?: "desktop" | "mobile";
+  variant?: "desktop" | "mobile" | "mobile-header";
 }
 
 // SVG Flag components for reliable cross-platform rendering
-const FlagIcon = ({ locale, size = 24 }: { locale: Locale; size?: number }) => {
+const FlagIcon = ({ locale, size = 24, circular = false }: { locale: Locale; size?: number; circular?: boolean }) => {
   const width = size;
   const height = Math.round(size * 0.75); // 4:3 aspect ratio for flags
   
@@ -84,7 +84,7 @@ const FlagIcon = ({ locale, size = 24 }: { locale: Locale; size?: number }) => {
   
   return (
     <span 
-      className="inline-flex items-center justify-center rounded-sm border border-gray-200 overflow-hidden shrink-0" 
+      className={`inline-flex items-center justify-center overflow-hidden shrink-0 ${circular ? '' : 'rounded-sm border border-gray-200'}`}
       style={{ width: width, height: height }}
     >
       {flags[locale]}
@@ -125,6 +125,44 @@ export default function LanguageSwitcher({ locale, variant = "desktop" }: Langua
     router.push(newPath);
     setIsOpen(false);
   };
+
+  if (variant === "mobile-header") {
+    return (
+      <div className="relative" ref={dropdownRef}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="size-[30px] rounded-full overflow-hidden shrink-0 relative"
+          style={{ border: '1.273px solid #e5e7eb' }}
+          aria-label="Change language"
+          aria-expanded={isOpen}
+        >
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <FlagIcon locale={locale} size={40} circular />
+          </div>
+        </button>
+
+        {isOpen && (
+          <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-[60] min-w-35">
+            {locales.map((loc) => (
+              <button
+                key={loc}
+                onClick={() => handleLocaleChange(loc)}
+                className={`w-full flex items-center gap-2.5 px-3 py-2 transition-colors ${locale === loc ? "bg-blue-50 text-primary-blue" : "hover:bg-gray-50 text-gray-700"}`}
+              >
+                <FlagIcon locale={loc} size={20} />
+                <span className="text-sm font-medium">{localeNames[loc]}</span>
+                {locale === loc && (
+                  <svg className="w-4 h-4 ml-auto text-primary-blue" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   if (variant === "mobile") {
     return (

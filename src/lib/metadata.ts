@@ -137,7 +137,7 @@ export const organizationSchema = {
     },
     {
       "@type": "ContactPoint",
-      email: "info@georgian.support",
+      email: "info@georgian-legal.group",
       contactType: "customer support",
       availableLanguage: ["Russian", "English", "Georgian"],
     },
@@ -156,7 +156,7 @@ export const insuranceAgencySchema = {
   name: "Georgian Support",
   url: baseUrl,
   telephone: "+995-591-196-300",
-  email: "info@georgian.support",
+  email: "info@georgian-legal.group",
   description: "Медицинская страховка для туристов и экспатов в Грузии",
   priceRange: "65 - 300 GEL",
   openingHours: "Mo-Su 00:00-23:59",

@@ -89,15 +89,16 @@
     ]
   },
   "insurance": {
-    "label": "SİGORTA PROGRAMLARI",
+    "label": "Sigorta programları",
     "title": "Sizin için",
-    "titleHighlight": "ideal planı bulun",
+    "titleHighlight": "ideal",
+    "titleEnd": "planı bulun",
     "description": "Kısa süreli turist sigortasından tam yıllık korumaya kadar — herkes için bir çözümümüz var",
     "recommend": "⭐ Önerilen",
     "order": "Sipariş",
     "needHelp": "Yardıma mı ihtiyacınız var?",
     "writeUs": "Bize yazın",
-    "seeAll": "Tüm Sigorta Planlarını Gör",
+    "seeAll": "Tüm sigorta türlerini görün",
     "day": "gün",
     "month": "ay",
     "months3": "3 ay",
@@ -286,7 +287,7 @@
     }
   },
   "faq": {
-    "label": "BİLGİ",
+    "label": "Soru/Cevap",
     "title": "Her Şey",
     "titleHighlight": "Açık",
     "description": "Poliçenizi almadan önce bilmeniz gereken önemli detaylar",
@@ -404,8 +405,11 @@
     "navigation": "Navigasyon",
     "insurancePlans": "Sigorta Planları",
     "contacts": "İletişim",
+    "address": "Adres",
     "phoneWhatsapp": "Telefon / WhatsApp",
     "workHours": "Çalışma Saatleri",
+    "workHoursValue": "Pzt-Cmt  10:00 - 19:00",
+    "legalDisclaimer": "GeorgianSupport sigorta hizmeti, {company} tarafından yönetilmekte ve işletilmektedir — Gürcistan'da gurbetçiler ve turistler için kapsamlı hizmetler sunan bir holding şirketi.",
     "copyright": "Tüm hakları saklıdır.",
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Koşulları"

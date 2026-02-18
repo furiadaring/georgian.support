@@ -2,10 +2,11 @@
 export const CONTACT = {
   phone: "+995 591 19 63 00",
   phoneLink: "tel:+995591196300",
-  email: "info@georgian.support",
-  emailLink: "mailto:info@georgian.support",
+  email: "info@georgian-legal.group",
+  emailLink: "mailto:info@georgian-legal.group",
   whatsapp: "https://wa.me/995591196300",
   telegram: "https://t.me/georgialegalresidency",
+  address: "28 Luka Asatiani street, Batumi, 6000, Georgia",
 } as const;
 
 // Navigation Items

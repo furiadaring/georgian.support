@@ -260,13 +260,13 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
   // Labels with all language translations
   const labelTranslations: Record<string, Record<Locale, string>> = {
     recommend: {
-      ru: '⭐ Фаворит',
-      en: '⭐ Favorite',
-      ka: '⭐ ფავორიტი',
-      uk: '⭐ Фаворит',
-      tr: '⭐ Favori',
-      he: '⭐ מועדף',
-      ar: '⭐ المفضل',
+      ru: 'Фаворит',
+      en: 'Favorite',
+      ka: 'ფავორიტი',
+      uk: 'Фаворит',
+      tr: 'Favori',
+      he: 'מועדף',
+      ar: 'المفضل',
     },
     legalBadge: {
       ru: 'Соответствует закону',
@@ -296,31 +296,31 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
       ar: 'طلب',
     },
     seeAll: {
-      ru: 'Все планы',
-      en: 'See all plans',
-      ka: 'ყველა გეგმა',
-      uk: 'Всі плани',
-      tr: 'Tüm planlar',
-      he: 'כל התוכניות',
-      ar: 'جميع الخطط',
+      ru: 'Смотреть все виды страхования',
+      en: 'See all insurance types',
+      ka: 'ყველა სახის დაზღვევა',
+      uk: 'Дивитися всі види страхування',
+      tr: 'Tüm sigorta türlerini görün',
+      he: 'צפו בכל סוגי הביטוח',
+      ar: 'عرض جميع أنواع التأمين',
     },
     needHelp: {
-      ru: 'Нужна помощь?',
-      en: 'Need help?',
-      ka: 'დახმარება გჭირდებათ?',
-      uk: 'Потрібна допомога?',
-      tr: 'Yardım mı lazım?',
-      he: 'צריך עזרה?',
-      ar: 'تحتاج مساعدة؟',
+      ru: 'Сомневаетесь, какая страховка подойдёт именно вам?',
+      en: 'Not sure which insurance plan is right for you?',
+      ka: 'არ იცით, რომელი დაზღვევა მოგერგებათ?',
+      uk: 'Сумніваєтесь, яка страховка підійде саме вам?',
+      tr: 'Hangi sigortanın size uygun olduğundan emin değil misiniz?',
+      he: 'לא בטוחים איזה ביטוח מתאים לכם?',
+      ar: 'هل تشك في أي تأمين يناسبك؟',
     },
     writeUs: {
-      ru: 'Напишите нам',
+      ru: 'Обратитесь к нам',
       en: 'Contact us',
       ka: 'დაგვიკავშირდით',
-      uk: 'Напишіть нам',
-      tr: 'Bize yazın',
-      he: 'צור קשר',
-      ar: 'اتصل بنا',
+      uk: 'Зверніться до нас',
+      tr: 'Bize ulaşın',
+      he: 'פנו אלינו',
+      ar: 'تواصل معنا',
     },
     coverage: {
       ru: 'СТРАХОВОЕ ПОКРЫТИЕ',
@@ -436,187 +436,143 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
   };
   
   return (
-    <section id="insurance" aria-labelledby="insurance-heading" className="relative bg-zinc-50 py-16 lg:py-24 w-full overflow-hidden bg-[linear-gradient(rgba(30,58,138,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,0.02)_1px,transparent_1px)] bg-size-[60px_60px]">
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary-blue/5 rounded-full blur-3xl" />
-        <div className="absolute -top-12 right-0 w-72 h-72 bg-red-400/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-red-300/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-20 right-1/4 w-96 h-96 bg-primary-blue/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative z-10" style={{ maxWidth: '1440px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }}>
-        {/* Header */}
-        <div className="text-center" style={{ marginBottom: '48px' }}>
-          <p className="text-primary-blue text-xs font-medium tracking-[0.2em] uppercase" style={{ margin: '0 0 20px 0' }}>{t.label}</p>
-          <h2 id="insurance-heading" className="text-3xl lg:text-4xl xl:text-5xl font-bold text-zinc-800" style={{ margin: '0 0 20px 0' }}>
-            {t.title} <span className="text-primary-blue">{t.titleHighlight}</span>
+    <section id="insurance" aria-labelledby="insurance-heading" className="relative bg-[#FAFAFA] w-full">
+      {/* ===== DESKTOP ===== */}
+      <div
+        className="hidden lg:flex flex-col max-w-[1920px] mx-auto px-10 xl:px-20 2xl:px-32 3xl:px-[310px]"
+        style={{ paddingTop: 80, paddingBottom: 80, gap: 40 }}
+      >
+        {/* Header - centered */}
+        <div className="flex flex-col items-center text-center" style={{ gap: 20 }}>
+          <span className="font-medium text-[#ABA2A5]" style={{ fontSize: 18, lineHeight: 1.3 }}>
+            {t.label}
+          </span>
+          <h2
+            id="insurance-heading"
+            className="font-bold text-[#2D1D38]"
+            style={{ fontSize: 55, lineHeight: 0.9 }}
+          >
+            {t.title} <span style={{ color: '#DE643B' }}>{t.titleHighlight}</span> {t.titleEnd}
           </h2>
-          <p className="text-base text-zinc-600" style={{ margin: '0 auto', maxWidth: '600px' }}>
+          <p
+            className="font-medium text-[#776667]"
+            style={{ fontSize: 16, lineHeight: 1.3, maxWidth: 485 }}
+          >
             {t.description}
           </p>
         </div>
 
-        {/* Plans Grid */}
+        {/* Plans Row - 6 columns */}
         {loading ? (
           <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue"></div>
+            <div className="animate-spin h-12 w-12 border-b-2 border-[#DE643B]" style={{ borderRadius: '50%' }}></div>
           </div>
         ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20 }}>
           {plans.map((plan) => {
             const translation = getPlanTranslation(plan);
             const features = plan.features || [];
             const hasDetails = features.length > 0 || (plan.coverageItems && plan.coverageItems.length > 0);
-            
+
             return (
               <div
                 key={plan.id}
-                className="group relative bg-white rounded-2xl border transition-all duration-300 hover:shadow-xl flex flex-col overflow-hidden"
                 style={{
-                  borderColor: plan.isFavorite ? '#dc2626' : '#e5e7eb',
-                  borderWidth: plan.isFavorite ? '2px' : '1px',
-                  boxShadow: plan.isFavorite ? '0 10px 25px rgba(37,99,235,0.15)' : '0 4px 12px rgba(0,0,0,0.05)',
-                  transform: plan.isFavorite ? 'scale(1.02)' : 'none',
-                  zIndex: plan.isFavorite ? 10 : 1,
+                  flex: '1 1 0',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  borderRadius: plan.isFavorite ? 16 : 12,
+                  border: plan.isFavorite ? '2px solid #2D1D38' : '1px solid #E5E5E5',
+                  overflow: 'hidden',
+                  backgroundColor: '#FAFAFA',
                 }}
               >
-                {/* Popular Badge */}
+                {/* Favorite Badge */}
                 {plan.isFavorite && (
-                  <div style={{ position: 'relative', textAlign: 'center', marginTop: '-1px' }}>
-                    <span style={{
-                      display: 'inline-block',
-                      backgroundColor: '#dc2626',
-                      color: 'white',
-                      fontSize: '11px',
-                      fontWeight: 600,
-                      padding: '6px 16px',
-                      borderRadius: '0 0 12px 12px',
-                    }}>
-                      {labels.recommend}
-                    </span>
+                  <div style={{ textAlign: 'center', color: '#FAFAFA', fontWeight: 600, fontSize: 12, backgroundColor: '#2D1D38', padding: '4px 8px', lineHeight: 1.3 }}>
+                    {labels.recommend}
                   </div>
                 )}
 
-                <div style={{ padding: '16px', paddingTop: plan.isFavorite ? '8px' : '16px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                  {/* Legal Badge */}
-                  {plan.isLegalCompliant && (
-                    <div style={{ textAlign: 'center', marginBottom: '8px' }}>
-                      <span style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                        padding: '4px 10px',
-                        borderRadius: '20px',
-                        fontSize: '10px',
-                        fontWeight: 600,
-                        background: 'linear-gradient(to right, #10b981, #14b8a6)',
-                        color: 'white',
-                      }}>
-                        <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        {labels.legalBadge}
-                      </span>
-                    </div>
-                  )}
-                  
-                  {/* Plan Name & Subtitle */}
-                  <div style={{ minHeight: '70px', textAlign: 'center' }}>
-                    <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#27272a', margin: '0 0 6px' }}>
-                      {translation.name}
-                    </h3>
-                    <p style={{ fontSize: '12px', color: '#71717a', margin: 0 }}>
-                      {translation.subtitle}
-                    </p>
-                  </div>
-
-                  {/* Price */}
-                  <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-                    {plan.originalPrice ? (
-                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
-                        <span style={{ fontSize: '13px', color: '#9ca3af', textDecoration: 'line-through' }}>{plan.originalPrice} GEL</span>
-                        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: '4px' }}>
-                          <span style={{ fontSize: '28px', fontWeight: 700, color: '#dc2626' }}>{plan.price}</span>
-                          <span style={{ fontSize: '12px', color: '#71717a' }}>GEL/{getPeriodLabel(plan)}</span>
-                        </div>
-                      </div>
-                    ) : (
-                      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: '4px' }}>
-                        <span style={{ fontSize: '28px', fontWeight: 700, color: '#dc2626' }}>{plan.price}</span>
-                        <span style={{ fontSize: '12px', color: '#71717a' }}>GEL/{getPeriodLabel(plan)}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Features List - all active features */}
-                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 12px', minHeight: '100px', flexGrow: 1 }}>
-                    {features.length > 0 ? (
-                      features.map((feature) => (
-                        <li key={feature.id} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px', marginBottom: '8px' }}>
-                          <svg width="14" height="14" fill="none" stroke="#dc2626" viewBox="0 0 24 24" style={{ marginTop: '2px', flexShrink: 0 }}>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 20, padding: '10px 15px 20px 15px' }}>
+                  {/* SECTION 1: Title block */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15, width: '100%' }}>
+                    {/* Name + Subtitle + Legal badge */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                      <h3 style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.3, color: '#2D1D38' }}>
+                        {translation.name}
+                      </h3>
+                      <p style={{ fontSize: 12, fontWeight: 600, lineHeight: 1.3, color: '#2D1D38', height: 50 }}>
+                        {translation.subtitle}
+                      </p>
+                      {plan.isLegalCompliant && (
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, backgroundColor: '#F4EFF3', borderRadius: 1000, paddingLeft: 8, paddingRight: 10, paddingTop: 5, paddingBottom: 5, alignSelf: 'flex-start' }}>
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
+                            <path d="M4 7L6 9L10 5" stroke="#DE643B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
-                          <span style={{ fontSize: '12px', color: '#52525b', lineHeight: 1.4 }}>{getFeatureName(feature)}</span>
-                        </li>
-                      ))
-                    ) : (
-                      <li style={{ fontSize: '12px', color: '#a1a1aa', textAlign: 'center', padding: '20px 0' }}>
-                        {labels.noFeatures}
-                      </li>
-                    )}
-                  </ul>
+                          <span style={{ fontSize: 10, color: '#2D1D38', whiteSpace: 'nowrap' }}>{labels.legalBadge}</span>
+                        </div>
+                      )}
+                    </div>
+                    {/* Price */}
+                    <div style={{ display: 'flex', flexDirection: 'column', fontWeight: 600 }}>
+                      {plan.originalPrice && (
+                        <span style={{ fontSize: 12, color: '#ABA2A5', textDecoration: 'line-through', lineHeight: 1.3 }}>{plan.originalPrice} GEL</span>
+                      )}
+                      <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
+                        <span style={{ fontSize: 26, fontWeight: 600, lineHeight: 1.3, color: '#2D1D38' }}>{plan.price} GEL</span>
+                        <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.3, color: '#ABA2A5' }}>/{getPeriodLabel(plan)}</span>
+                      </div>
+                    </div>
+                  </div>
 
-                  {/* More Details Button */}
-                  {hasDetails && (
-                    <div style={{ borderTop: '1px solid #f4f4f5', paddingTop: '12px', marginBottom: '12px' }}>
+                  {/* SECTION 2: Buttons */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15, alignItems: 'center' }}>
+                    <button
+                      onClick={() => setOrderPlan({ id: plan.id, slug: plan.slug, name: translation.name, price: plan.price, period: plan.period })}
+                      className="cursor-pointer"
+                      style={{
+                        width: '100%',
+                        padding: '10px 30px',
+                        border: plan.isFavorite ? 'none' : '1px solid #DE643B',
+                        backgroundColor: plan.isFavorite ? '#DE643B' : 'transparent',
+                        color: plan.isFavorite ? '#FAFAFA' : '#DE643B',
+                        borderRadius: 1000,
+                        fontSize: 14,
+                        fontWeight: 600,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {labels.order}
+                    </button>
+                    {hasDetails && (
                       <button
                         onClick={() => setSelectedPlan(plan)}
-                        style={{
-                          width: '100%',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: '6px',
-                          padding: '8px 12px',
-                          borderRadius: '10px',
-                          border: 'none',
-                          backgroundColor: '#eff6ff',
-                          color: '#dc2626',
-                          fontSize: '12px',
-                          fontWeight: 500,
-                          cursor: 'pointer',
-                        }}
+                        className="cursor-pointer"
+                        style={{ fontSize: 12, fontWeight: 600, padding: 0, background: 'transparent', border: 'none', color: '#ABA2A5', textDecoration: 'underline', lineHeight: 1.3 }}
                       >
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
                         {labels.moreDetails}
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
                       </button>
-                    </div>
-                  )}
+                    )}
+                  </div>
 
-                  {/* CTA Button */}
-                  <button
-                    onClick={() => setOrderPlan({ id: plan.id, slug: plan.slug, name: translation.name, price: plan.price, period: plan.period })}
-                    style={{
-                      width: '100%',
-                      padding: '10px 16px',
-                      borderRadius: '10px',
-                      border: 'none',
-                      backgroundColor: plan.isFavorite ? '#dc2626' : '#f4f4f5',
-                      color: plan.isFavorite ? 'white' : '#27272a',
-                      fontSize: '14px',
-                      fontWeight: 600,
-                      cursor: 'pointer',
-                      boxShadow: plan.isFavorite ? '0 4px 12px rgba(37,99,235,0.3)' : 'none',
-                    }}
-                  >
-                    {labels.order}
-                  </button>
+                  {/* SECTION 3: Features */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6, borderTop: '1px solid #E5E5E5', paddingTop: 12 }}>
+                    {features.length > 0 ? (
+                      features.map((feature) => (
+                        <div key={feature.id} style={{ display: 'flex', alignItems: 'flex-start', gap: 5 }}>
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, marginTop: 1 }}>
+                            <path d="M3.5 7L5.5 9L10.5 4" stroke="#DE643B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          <span style={{ fontSize: 12, lineHeight: 1.3, color: '#776667' }}>{getFeatureName(feature)}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <div style={{ fontSize: 12, color: '#ABA2A5', textAlign: 'center', padding: '12px 0' }}>
+                        {labels.noFeatures}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             );
@@ -624,34 +580,224 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
         </div>
         )}
 
-        {/* See All Button */}
-        <div className="text-center" style={{ marginTop: '40px' }}>
+        {/* See All Link */}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Link
             href={`/${locale}/insurance`}
-            className="inline-flex items-center gap-2 bg-primary-blue hover:bg-primary-red-dark text-white py-3 px-8 rounded-full font-semibold transition-all duration-200 shadow-lg shadow-primary-blue/30 hover:shadow-xl hover:shadow-primary-blue/40"
+            style={{ fontSize: 16, color: '#776667', textDecoration: 'underline', fontWeight: 500, lineHeight: 1.3 }}
           >
-            {labels.seeAll}
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            {t.seeAll || labels.seeAll}
           </Link>
         </div>
 
-        {/* Additional Info */}
-        <div className="text-center" style={{ marginTop: '24px' }}>
-          <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full py-3 px-6 shadow-sm">
-            <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        {/* Help Banner */}
+        <div
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#E6CFE3', borderRadius: 20, padding: '25px 40px', maxWidth: 731, width: '100%', marginLeft: 'auto', marginRight: 'auto' }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 15 }}>
+            {/* WhatsApp Icon */}
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style={{ flexShrink: 0 }}>
+              <path d="M18 0C8.059 0 0 8.059 0 18c0 3.183.832 6.167 2.281 8.757L.082 36l9.486-2.137A17.9 17.9 0 0018 36c9.941 0 18-8.059 18-18S27.941 0 18 0zm0 33.012A14.96 14.96 0 019.93 30.48l-.356-.213-5.376 1.41 1.434-5.244-.234-.372A14.94 14.94 0 013.012 18c0-8.271 6.717-14.988 14.988-14.988S33.012 9.729 33.012 18 26.271 33.012 18 33.012zm8.226-11.222c-.45-.225-2.67-1.317-3.084-1.467-.414-.15-.716-.225-1.017.225-.3.45-1.166 1.467-1.43 1.768-.264.3-.528.338-.978.113-.45-.225-1.9-.7-3.618-2.232-1.338-1.194-2.241-2.667-2.504-3.117-.264-.45-.029-.693.198-.918.204-.201.45-.526.675-.789.225-.264.3-.45.45-.75.15-.3.075-.563-.038-.789-.112-.225-1.017-2.452-1.392-3.352-.375-.9-.75-.75-1.017-.75-.264-.012-.564-.015-.864-.015s-.789.112-1.202.563c-.414.45-1.577 1.541-1.577 3.76s1.614 4.36 1.839 4.66c.225.3 3.176 4.852 7.695 6.804 1.076.464 1.915.741 2.57.948 1.08.344 2.063.296 2.84.18.866-.13 2.67-1.092 3.046-2.146.377-1.054.377-1.96.264-2.146-.113-.188-.414-.3-.864-.526z" fill="#25D366"/>
             </svg>
-            <span className="text-zinc-600">{labels.needHelp}</span>
-            <Link href={CONTACT.whatsapp} target="_blank" onClick={() => typeof window !== 'undefined' && (window as any).keitaro?.track({event:'whatsapp'})} className="text-primary-blue hover:underline font-semibold">
-              {labels.writeUs}
-            </Link>
+            <span style={{ fontWeight: 500, color: '#2D1D38', fontSize: 18, lineHeight: 1.3, maxWidth: 310 }}>
+              {labels.needHelp}
+            </span>
           </div>
+          <Link
+            href={CONTACT.whatsapp}
+            target="_blank"
+            onClick={() => typeof window !== 'undefined' && (window as any).keitaro?.track({event:'whatsapp'})}
+            style={{ display: 'flex', alignItems: 'center', flexShrink: 0, fontWeight: 500, color: '#FAFAFA', backgroundColor: '#DE643B', borderRadius: 1000, paddingLeft: 30, paddingRight: 5, paddingTop: 5, paddingBottom: 5, fontSize: 18, gap: 20, textDecoration: 'none', lineHeight: 1.3 }}
+          >
+            {labels.writeUs}
+            <div style={{ width: 50, height: 50, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+          </Link>
         </div>
       </div>
 
-      {/* Details Modal - exactly like admin preview */}
+      {/* ===== MOBILE ===== */}
+      <div
+        className="flex lg:hidden flex-col"
+        style={{ padding: '40px 20px', gap: 30 }}
+      >
+        {/* Header - centered */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' as const, gap: 15 }}>
+          <span style={{ fontWeight: 500, color: '#ABA2A5', fontSize: 16, lineHeight: 1.3 }}>
+            {t.label}
+          </span>
+          <h2
+            style={{ fontWeight: 700, color: '#2D1D38', fontSize: 34, lineHeight: 1.3 }}
+          >
+            {t.title} <span style={{ color: '#DE643B' }}>{t.titleHighlight}</span> {t.titleEnd}
+          </h2>
+          <p
+            style={{ fontWeight: 500, color: '#776667', fontSize: 14, lineHeight: 1.3 }}
+          >
+            {t.description}
+          </p>
+        </div>
+
+        {/* Plans stacked */}
+        {loading ? (
+          <div className="flex justify-center py-8">
+            <div className="animate-spin h-10 w-10 border-b-2 border-[#DE643B]" style={{ borderRadius: '50%' }}></div>
+          </div>
+        ) : (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {plans.map((plan) => {
+            const translation = getPlanTranslation(plan);
+            const features = plan.features || [];
+            const hasDetails = features.length > 0 || (plan.coverageItems && plan.coverageItems.length > 0);
+
+            return (
+              <div
+                key={plan.id}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  borderRadius: plan.isFavorite ? 24 : 20,
+                  border: plan.isFavorite ? '2px solid #2D1D38' : '1px solid #E5E5E5',
+                  overflow: 'hidden',
+                  backgroundColor: '#FAFAFA',
+                }}
+              >
+                {/* Favorite Badge */}
+                {plan.isFavorite && (
+                  <div style={{ textAlign: 'center', color: '#FAFAFA', fontWeight: 500, fontSize: 16, backgroundColor: '#2D1D38', padding: '8px 0', lineHeight: 1.3 }}>
+                    {labels.recommend}
+                  </div>
+                )}
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 20, padding: '20px 20px 25px 20px' }}>
+                  {/* SECTION 1: Title block */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 25, width: '100%' }}>
+                    {/* Name + Subtitle + Legal badge */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
+                      <h3 style={{ fontSize: 34, fontWeight: 700, lineHeight: 1.3, color: '#2D1D38' }}>
+                        {translation.name}
+                      </h3>
+                      <p style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.3, color: '#2D1D38', height: 45 }}>
+                        {translation.subtitle}
+                      </p>
+                      {plan.isLegalCompliant && (
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, backgroundColor: '#F4EFF3', borderRadius: 1000, paddingLeft: 8, paddingRight: 10, paddingTop: 5, paddingBottom: 5, alignSelf: 'flex-start' }}>
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
+                            <path d="M4 7L6 9L10 5" stroke="#DE643B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          <span style={{ fontSize: 14, fontWeight: 600, color: '#2D1D38', whiteSpace: 'nowrap' }}>{labels.legalBadge}</span>
+                        </div>
+                      )}
+                    </div>
+                    {/* Price */}
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      {plan.originalPrice && (
+                        <span style={{ fontSize: 16, fontWeight: 500, color: '#ABA2A5', textDecoration: 'line-through', lineHeight: 1.3 }}>{plan.originalPrice} GEL</span>
+                      )}
+                      <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                        <span style={{ fontSize: 34, fontWeight: 700, lineHeight: 1.3, color: '#2D1D38' }}>{plan.price} GEL</span>
+                        <span style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.3, color: '#ABA2A5' }}>/{getPeriodLabel(plan)}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* SECTION 2: Buttons */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 15, alignItems: 'center' }}>
+                    <button
+                      onClick={() => setOrderPlan({ id: plan.id, slug: plan.slug, name: translation.name, price: plan.price, period: plan.period })}
+                      className="cursor-pointer"
+                      style={{
+                        width: '100%',
+                        height: 48,
+                        padding: '10px 30px',
+                        border: plan.isFavorite ? 'none' : '1px solid #DE643B',
+                        backgroundColor: plan.isFavorite ? '#DE643B' : 'transparent',
+                        color: plan.isFavorite ? '#FAFAFA' : '#DE643B',
+                        borderRadius: 1000,
+                        fontSize: 14,
+                        fontWeight: 600,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {labels.order}
+                    </button>
+                    {hasDetails && (
+                      <button
+                        onClick={() => setSelectedPlan(plan)}
+                        className="cursor-pointer"
+                        style={{ fontSize: 16, fontWeight: 500, padding: 0, background: 'transparent', border: 'none', color: '#ABA2A5', textDecoration: 'underline', lineHeight: 1.3 }}
+                      >
+                        {labels.moreDetails}
+                      </button>
+                    )}
+                  </div>
+
+                  {/* SECTION 3: Features */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6, borderTop: '1px solid #E5E5E5', paddingTop: 12 }}>
+                    {features.length > 0 ? (
+                      features.map((feature) => (
+                        <div key={feature.id} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0, marginTop: 1 }}>
+                            <path d="M4.5 10L8 13.5L15.5 6" stroke="#DE643B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          <span style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.3, color: '#776667' }}>{getFeatureName(feature)}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <div style={{ fontSize: 14, color: '#ABA2A5', textAlign: 'center', padding: '12px 0' }}>
+                        {labels.noFeatures}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        )}
+
+        {/* See All Link */}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Link
+            href={`/${locale}/insurance`}
+            style={{ fontSize: 16, color: '#776667', textDecoration: 'underline', fontWeight: 500, lineHeight: 1.3 }}
+          >
+            {t.seeAll || labels.seeAll}
+          </Link>
+        </div>
+
+        {/* Help Banner */}
+        <div
+          style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#E6CFE3', borderRadius: 20, padding: '25px 20px', gap: 15, marginLeft: 10, marginRight: 10 }}
+        >
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 15 }}>
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style={{ flexShrink: 0, marginTop: 4 }}>
+              <path d="M18 0C8.059 0 0 8.059 0 18c0 3.183.832 6.167 2.281 8.757L.082 36l9.486-2.137A17.9 17.9 0 0018 36c9.941 0 18-8.059 18-18S27.941 0 18 0zm0 33.012A14.96 14.96 0 019.93 30.48l-.356-.213-5.376 1.41 1.434-5.244-.234-.372A14.94 14.94 0 013.012 18c0-8.271 6.717-14.988 14.988-14.988S33.012 9.729 33.012 18 26.271 33.012 18 33.012zm8.226-11.222c-.45-.225-2.67-1.317-3.084-1.467-.414-.15-.716-.225-1.017.225-.3.45-1.166 1.467-1.43 1.768-.264.3-.528.338-.978.113-.45-.225-1.9-.7-3.618-2.232-1.338-1.194-2.241-2.667-2.504-3.117-.264-.45-.029-.693.198-.918.204-.201.45-.526.675-.789.225-.264.3-.45.45-.75.15-.3.075-.563-.038-.789-.112-.225-1.017-2.452-1.392-3.352-.375-.9-.75-.75-1.017-.75-.264-.012-.564-.015-.864-.015s-.789.112-1.202.563c-.414.45-1.577 1.541-1.577 3.76s1.614 4.36 1.839 4.66c.225.3 3.176 4.852 7.695 6.804 1.076.464 1.915.741 2.57.948 1.08.344 2.063.296 2.84.18.866-.13 2.67-1.092 3.046-2.146.377-1.054.377-1.96.264-2.146-.113-.188-.414-.3-.864-.526z" fill="#25D366"/>
+            </svg>
+            <span style={{ fontWeight: 500, color: '#2D1D38', fontSize: 16, lineHeight: 1.3 }}>
+              {labels.needHelp}
+            </span>
+          </div>
+          <Link
+            href={CONTACT.whatsapp}
+            target="_blank"
+            onClick={() => typeof window !== 'undefined' && (window as any).keitaro?.track({event:'whatsapp'})}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, color: '#FAFAFA', backgroundColor: '#DE643B', borderRadius: 1000, paddingLeft: 30, paddingRight: 5, paddingTop: 5, paddingBottom: 5, fontSize: 18, gap: 20, textDecoration: 'none', width: '100%', lineHeight: 1.3 }}
+          >
+            {labels.writeUs}
+            <div style={{ width: 50, height: 50, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      {/* Details Modal */}
       {selectedPlan && (
         <div style={{
           position: 'fixed',
@@ -667,7 +813,7 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
         }}>
           <div style={{
             backgroundColor: 'white',
-            borderRadius: '16px',
+            borderRadius: 0,
             width: '90%',
             maxWidth: '700px',
             maxHeight: '85vh',
@@ -678,22 +824,22 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
             {/* Header */}
             <div style={{
               padding: '24px',
-              borderBottom: '1px solid #e5e7eb',
+              borderBottom: '1px solid #E5E5E5',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-start',
             }}>
               <div style={{ flex: 1 }}>
-                <h3 style={{ margin: 0, fontSize: '24px', fontWeight: 700, color: '#111827' }}>
+                <h3 style={{ margin: 0, fontSize: '24px', fontWeight: 700, color: '#2D1D38' }}>
                   {getPlanTranslation(selectedPlan).name}
                 </h3>
-                <p style={{ margin: '16px 0 0', fontSize: '14px', color: '#6b7280', lineHeight: 1.6 }}>
+                <p style={{ margin: '16px 0 0', fontSize: '14px', color: '#776667', lineHeight: 1.6 }}>
                   {getPlanTranslation(selectedPlan).description || getPlanTranslation(selectedPlan).subtitle || ""}
                 </p>
               </div>
               <button
                 onClick={() => setSelectedPlan(null)}
-                style={{ background: 'none', border: 'none', padding: '4px', cursor: 'pointer', color: '#9ca3af', fontSize: '24px', marginLeft: '16px' }}
+                style={{ background: 'none', border: 'none', padding: '4px', cursor: 'pointer', color: '#ABA2A5', fontSize: '24px', marginLeft: '16px' }}
               >
                 ×
               </button>
@@ -701,7 +847,7 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
 
             {/* Content */}
             <div style={{ flex: 1, overflow: 'auto', padding: '24px' }}>
-              <p style={{ fontSize: '12px', color: '#dc2626', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '20px' }}>
+              <p style={{ fontSize: '12px', color: '#DE643B', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '20px' }}>
                 {labels.coverage}
               </p>
               
@@ -711,15 +857,12 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
                   {selectedPlan.coverageItems.map((item) => (
                     <div key={item.id} style={{
                       padding: '16px',
-                      borderRadius: '12px',
-                      border: '1px solid #e5e7eb',
-                      backgroundColor: '#fafafa',
+                      border: '1px solid #E5E5E5',
+                      backgroundColor: '#FAFAFA',
                     }}>
                       <div style={{ 
                         width: '40px', 
                         height: '40px', 
-                        borderRadius: '10px', 
-                        backgroundColor: '#eff6ff', 
                         display: 'flex', 
                         alignItems: 'center', 
                         justifyContent: 'center',
@@ -727,33 +870,32 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
                       }}>
                         <CoverageIcon icon={item.icon} />
                       </div>
-                      <div style={{ fontSize: '13px', color: '#374151', marginBottom: '6px', lineHeight: 1.4 }}>
+                      <div style={{ fontSize: '13px', color: '#2D1D38', marginBottom: '6px', lineHeight: 1.4 }}>
                         {getCoverageTitle(item)}
                       </div>
-                      <div style={{ fontSize: '14px', fontWeight: 600, color: '#dc2626' }}>
+                      <div style={{ fontSize: '14px', fontWeight: 600, color: '#DE643B' }}>
                         {getCoverageLimit(item)}
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p style={{ textAlign: 'center', color: '#9ca3af', padding: '40px 0' }}>
+                <p style={{ textAlign: 'center', color: '#ABA2A5', padding: '40px 0' }}>
                   {labels.noCoverage}
                 </p>
               )}
             </div>
 
             {/* Footer */}
-            <div style={{ padding: '16px 24px', borderTop: '1px solid #e5e7eb' }}>
+            <div style={{ padding: '16px 24px', borderTop: '1px solid #E5E5E5' }}>
               <button
                 onClick={() => setSelectedPlan(null)}
                 style={{
                   width: '100%',
                   padding: '12px',
-                  borderRadius: '10px',
-                  border: 'none',
-                  backgroundColor: '#f4f4f5',
-                  color: '#27272a',
+                  border: '1px solid #E5E5E5',
+                  backgroundColor: '#FAFAFA',
+                  color: '#2D1D38',
                   fontSize: '14px',
                   fontWeight: 600,
                   cursor: 'pointer',
@@ -787,9 +929,9 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
 export default function InsurancePlans({ locale, dict }: InsurancePlansProps) {
   return (
     <Suspense fallback={
-      <section className="relative bg-zinc-50 py-16 lg:py-24 w-full overflow-hidden">
+      <section className="relative bg-[#FAFAFA] py-16 lg:py-24 w-full">
         <div className="flex justify-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue"></div>
+          <div className="animate-spin h-12 w-12 border-b-2 border-[#DE643B]" style={{ borderRadius: '50%' }}></div>
         </div>
       </section>
     }>

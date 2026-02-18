@@ -8,6 +8,15 @@
   box-sizing: border-box;
 }
 
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Main content wrapper */
 .main-content {
   width: 100%;

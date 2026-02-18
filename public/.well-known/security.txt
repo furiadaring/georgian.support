@@ -1,7 +1,7 @@
 # Georgian Support Security Contact
 # https://securitytxt.org/
 
-Contact: mailto:info@georgian.support
+Contact: mailto:info@georgian-legal.group
 Contact: https://wa.me/995591196300
 Preferred-Languages: en, ru, ka
 Canonical: https://georgian.support/.well-known/security.txt

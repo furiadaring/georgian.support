@@ -7,113 +7,223 @@ interface AdvantagesProps {
   dict: Dictionary;
 }
 
+// Advantage Card Component - matches Figma node 119:19002
+function AdvantageCard({
+  title,
+  description,
+  value,
+  bgColor,
+  textColor,
+  valueColor,
+}: {
+  title: string;
+  description: string;
+  value: string;
+  bgColor: string;
+  textColor: string;
+  valueColor: string;
+}) {
+  return (
+    <div
+      className={`${bgColor} flex flex-col items-end`}
+      style={{ gap: 55, padding: '25px 30px' }}
+    >
+      <div className="flex flex-col items-start w-full" style={{ gap: 50 }}>
+        <p className={`font-semibold w-full ${textColor}`} style={{ fontSize: 26, lineHeight: 1.3 }}>
+          {title}
+        </p>
+        <p className={`font-medium w-full ${textColor}`} style={{ fontSize: 16, lineHeight: 1.3 }}>
+          {description}
+        </p>
+      </div>
+      <p className={`font-bold text-right w-full ${valueColor}`} style={{ fontSize: 55, lineHeight: 0.9 }}>
+        {value}
+      </p>
+    </div>
+  );
+}
+
+// Mobile Advantage Card
+function AdvantageCardMobile({
+  title,
+  description,
+  value,
+  bgColor,
+  textColor,
+  valueColor,
+}: {
+  title: string;
+  description: string;
+  value: string;
+  bgColor: string;
+  textColor: string;
+  valueColor: string;
+}) {
+  return (
+    <div
+      className={`${bgColor} flex flex-col items-end`}
+      style={{ gap: 30, padding: '20px 25px' }}
+    >
+      <div className="flex flex-col items-start w-full" style={{ gap: 20 }}>
+        <p className={`font-semibold w-full ${textColor}`} style={{ fontSize: 20, lineHeight: 1.3 }}>
+          {title}
+        </p>
+        <p className={`font-medium w-full ${textColor}`} style={{ fontSize: 14, lineHeight: 1.3 }}>
+          {description}
+        </p>
+      </div>
+      <p className={`font-bold text-right w-full ${valueColor}`} style={{ fontSize: 40, lineHeight: 0.9 }}>
+        {value}
+      </p>
+    </div>
+  );
+}
+
+// Stat Card Component - matches Figma node 123:19029
+function StatCard({ value, label }: { value: string; label: string }) {
+  return (
+    <div
+      className="border border-[#ABA2A5] flex flex-col items-end justify-end"
+      style={{ height: 180, padding: 20 }}
+    >
+      <div className="flex flex-col items-end text-[#2D1D38]" style={{ gap: 10 }}>
+        <span className="font-bold" style={{ fontSize: 55, lineHeight: 0.9 }}>{value}</span>
+        <span className="font-medium" style={{ fontSize: 16, lineHeight: 1.3 }}>{label}</span>
+      </div>
+    </div>
+  );
+}
+
+// Mobile Stat Card
+function StatCardMobile({ value, label }: { value: string; label: string }) {
+  return (
+    <div
+      className="border border-[#ABA2A5] flex flex-col items-center justify-center"
+      style={{ height: 100, padding: 20 }}
+    >
+      <div className="flex flex-col items-center text-[#2D1D38]" style={{ gap: 6 }}>
+        <span className="font-bold" style={{ fontSize: 36, lineHeight: 0.9 }}>{value}</span>
+        <span className="font-medium" style={{ fontSize: 14, lineHeight: 1.3 }}>{label}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function Advantages({ locale, dict }: AdvantagesProps) {
   const t = dict.advantages;
   const items = t.items;
 
-  const cardIcons = [
-    // Fast Processing - Clock
-    <svg key="clock" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>,
-    // Wide Coverage - Shield
-    <svg key="shield" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-    </svg>,
-    // 24/7 Support - Headphones
-    <svg key="support" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-    </svg>,
-    // Direct Billing - Credit Card
-    <svg key="billing" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-    </svg>,
+  const cardConfigs = [
+    { bgColor: "bg-[#DE643B]", textColor: "text-[#FAFAFA]", valueColor: "text-[#FAFAFA]", value: "15 мин" },
+    { bgColor: "bg-[#2D1D38]", textColor: "text-[#FAFAFA]", valueColor: "text-[#FAFAFA]", value: "$50K" },
+    { bgColor: "bg-[#F6F6CD]", textColor: "text-[#2D1D38]", valueColor: "text-[#DE643B]", value: "24/7" },
+    { bgColor: "bg-[#E6CFE3]", textColor: "text-[#2D1D38]", valueColor: "text-[#DE643B]", value: "98%" },
   ];
 
   const stats = [
-    { value: "15", suffix: locale === 'ru' ? "мин" : locale === 'en' ? "min" : locale === 'ka' ? "წთ" : locale === 'uk' ? "хв" : locale === 'tr' ? "dk" : locale === 'he' ? "דק׳" : "د" },
-    { value: "$50K", suffix: "" },
-    { value: "24/7", suffix: "" },
-    { value: "98%", suffix: "" },
+    { value: "5000+", label: "клиентов" },
+    { value: "3+", label: "года опыта" },
+    { value: "7", label: "языков" },
   ];
 
   return (
-    <section id="advantages" aria-labelledby="advantages-heading" className="relative bg-white py-20 lg:py-28 w-full overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(239,68,68,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(239,68,68,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="advantages" aria-labelledby="advantages-heading" className="relative bg-[#FAFAFA] w-full">
+      {/* ===== DESKTOP ===== */}
+      <div
+        className="hidden lg:flex flex-col max-w-[1920px] mx-auto px-10 xl:px-20 2xl:px-[310px] py-20"
+        style={{ gap: 40 }}
+      >
         {/* Header */}
-        <div className="flex flex-col items-center text-center" style={{ marginBottom: '60px' }}>
-          {/* Label badge */}
-          <div className="inline-flex items-center gap-2 bg-red-50 border border-red-100 rounded-full px-4 py-1.5" style={{ marginBottom: '24px' }}>
-            <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
-            <span className="text-red-600 text-xs font-semibold tracking-wider uppercase">{t.label}</span>
+        <div className="flex items-end justify-between w-full">
+          <div className="flex flex-col flex-1 min-w-0" style={{ gap: 20 }}>
+            <span className="font-medium text-[#ABA2A5]" style={{ fontSize: 18, lineHeight: 1.3 }}>
+              {t.label}
+            </span>
+            <h2
+              id="advantages-heading"
+              className="font-bold text-[#2D1D38] text-4xl xl:text-5xl 2xl:text-[55px]"
+              style={{ lineHeight: 0.9 }}
+            >
+              {t.title} {t.titleHighlight}
+            </h2>
           </div>
-          
-          {/* Title */}
-          <h2 id="advantages-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900" style={{ marginBottom: '20px' }}>
-            {t.title}{" "}
-            <span className="text-red-600">{t.titleHighlight}</span>
-          </h2>
-          
-          {/* Description */}
-          <p className="text-base md:text-lg text-zinc-500 max-w-xl text-center leading-relaxed">
+          <p
+            className="font-medium text-[#776667] text-right shrink-0"
+            style={{ fontSize: 16, lineHeight: 1.3, maxWidth: 336 }}
+          >
             {t.description}
           </p>
         </div>
 
-        {/* Cards - 2x2 grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
-          {items.map((item, idx) => (
-            <div
-              key={idx}
-              className="group relative bg-zinc-50 hover:bg-white rounded-2xl border border-zinc-100 hover:border-red-200 transition-all duration-300 hover:shadow-xl hover:shadow-red-100/50"
-              style={{ padding: '28px 28px 32px 28px' }}
-            >
-              {/* Top row: Icon + Stat */}
-              <div className="flex items-start justify-between" style={{ marginBottom: '20px' }}>
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-lg shadow-red-200">
-                  {cardIcons[idx]}
-                </div>
-                
-                {/* Stat */}
-                <div className="text-right">
-                  <div className="text-2xl lg:text-3xl font-bold text-red-600">
-                    {stats[idx]?.value}
-                    {stats[idx]?.suffix && <span className="text-lg text-red-400 ml-1">{stats[idx].suffix}</span>}
-                  </div>
-                </div>
-              </div>
-              
-              {/* Title */}
-              <h3 className="text-lg lg:text-xl font-bold text-zinc-900" style={{ marginBottom: '10px' }}>
-                {item.title}
-              </h3>
-              
-              {/* Description */}
-              <p className="text-sm lg:text-base text-zinc-500 leading-relaxed">
-                {item.description}
-              </p>
+        {/* Content */}
+        <div className="flex" style={{ gap: 20 }}>
+          {/* Left - 2x2 Cards Grid */}
+          <div className="flex-1 min-w-0 grid grid-cols-2" style={{ gap: 20 }}>
+            {items.slice(0, 4).map((item, idx) => (
+              <AdvantageCard
+                key={idx}
+                title={item.title}
+                description={item.description}
+                value={cardConfigs[idx].value}
+                bgColor={cardConfigs[idx].bgColor}
+                textColor={cardConfigs[idx].textColor}
+                valueColor={cardConfigs[idx].valueColor}
+              />
+            ))}
+          </div>
 
-              {/* Hover accent line */}
-              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-red-500 to-red-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
-            </div>
+          {/* Right - 3 Stat Boxes */}
+          <div className="flex flex-col shrink-0 w-52 xl:w-64 2xl:w-[310px]" style={{ gap: 20 }}>
+            {stats.map((stat, idx) => (
+              <StatCard key={idx} value={stat.value} label={stat.label} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ===== MOBILE ===== */}
+      <div
+        className="flex lg:hidden flex-col"
+        style={{ padding: '40px 20px', gap: 30 }}
+      >
+        {/* Header */}
+        <div className="flex flex-col" style={{ gap: 15 }}>
+          <span className="font-medium text-[#ABA2A5]" style={{ fontSize: 16, lineHeight: 1.3 }}>
+            {t.label}
+          </span>
+          <h2
+            className="font-bold text-[#2D1D38]"
+            style={{ fontSize: 32, lineHeight: 0.9 }}
+          >
+            {t.title} {t.titleHighlight}
+          </h2>
+          <p
+            className="font-medium text-[#776667]"
+            style={{ fontSize: 14, lineHeight: 1.3 }}
+          >
+            {t.description}
+          </p>
+        </div>
+
+        {/* Cards stacked */}
+        <div className="flex flex-col" style={{ gap: 10 }}>
+          {items.slice(0, 4).map((item, idx) => (
+            <AdvantageCardMobile
+              key={idx}
+              title={item.title}
+              description={item.description}
+              value={cardConfigs[idx].value}
+              bgColor={cardConfigs[idx].bgColor}
+              textColor={cardConfigs[idx].textColor}
+              valueColor={cardConfigs[idx].valueColor}
+            />
           ))}
         </div>
 
-        {/* Bottom highlight strip */}
-        <div className="flex flex-wrap justify-center gap-6 lg:gap-12" style={{ marginTop: '50px' }}>
-          {[
-            { value: "5000+", label: locale === 'ru' ? "Клиентов" : locale === 'en' ? "Clients" : locale === 'ka' ? "კლიენტი" : locale === 'uk' ? "Клієнтів" : locale === 'tr' ? "Müşteri" : locale === 'he' ? "לקוחות" : "عميل" },
-            { value: "7", label: locale === 'ru' ? "Языков" : locale === 'en' ? "Languages" : locale === 'ka' ? "ენა" : locale === 'uk' ? "Мов" : locale === 'tr' ? "Dil" : locale === 'he' ? "שפות" : "لغات" },
-            { value: "3+", label: locale === 'ru' ? "Года опыта" : locale === 'en' ? "Years" : locale === 'ka' ? "წელი" : locale === 'uk' ? "Роки" : locale === 'tr' ? "Yıl" : locale === 'he' ? "שנים" : "سنوات" },
-          ].map((stat, idx) => (
-            <div key={idx} className="flex items-center gap-3">
-              <span className="text-2xl lg:text-3xl font-bold text-zinc-900">{stat.value}</span>
-              <span className="text-sm text-zinc-400">{stat.label}</span>
-            </div>
+        {/* Stat Boxes stacked */}
+        <div className="flex flex-col" style={{ gap: 10 }}>
+          {stats.map((stat, idx) => (
+            <StatCardMobile key={idx} value={stat.value} label={stat.label} />
           ))}
         </div>
       </div>

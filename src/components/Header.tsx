@@ -2,24 +2,26 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { CONTACT, COMPANY } from "@/lib/constants";
+import { CONTACT } from "@/lib/constants";
 import { type Locale, type Dictionary } from "@/lib/i18n";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 interface HeaderProps {
   locale: Locale;
   dict: Dictionary;
+  darkText?: boolean;
 }
 
-export default function Header({ locale, dict }: HeaderProps) {
+export default function Header({ locale, dict, darkText = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const isDark = isScrolled || darkText;
   const [isInsuranceDropdownOpen, setIsInsuranceDropdownOpen] = useState(false);
 
   const insuranceDropdownItems = [
-    { href: `/${locale}/insurance?category=main`, label: dict.header.insuranceDropdown?.borderEntry || 'Border Entry', icon: 'shield' },
-    { href: `/${locale}/insurance?category=longterm`, label: dict.header.insuranceDropdown?.fullMedical || 'Full Medical', icon: 'heart' },
-    { href: `/${locale}/auto-insurance`, label: dict.header.insuranceDropdown?.autoEntry || 'Auto Entry', icon: 'car' },
+    { href: `/${locale}/insurance?category=main`, label: dict.header.insuranceDropdown?.borderEntry || 'Туристическая', icon: 'shield' },
+    { href: `/${locale}/insurance?category=longterm`, label: dict.header.insuranceDropdown?.fullMedical || 'Медицинская', icon: 'heart' },
+    { href: `/${locale}/auto-insurance`, label: dict.header.insuranceDropdown?.autoEntry || 'Автостраховка', icon: 'car' },
   ];
 
   const navItems = [
@@ -53,51 +55,47 @@ export default function Header({ locale, dict }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${
         isScrolled 
-          ? "bg-white/95 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-zinc-100" 
-          : "bg-white/80 backdrop-blur-md shadow-sm shadow-black/5"
+          ? "bg-[rgba(250,250,250,0.98)] shadow-[0px_4px_11px_0px_rgba(45,29,56,0.08)]" 
+          : "bg-[rgba(250,250,250,0.01)] shadow-[0px_4px_11px_0px_rgba(45,29,56,0.08)]"
       }`}
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-16 lg:h-20">
+      <div className="w-full max-w-[1920px] mx-auto px-5 lg:px-[100px] xl:px-[200px] 2xl:px-[310px] py-[15px]">
+        <div className="relative flex items-center justify-between">
           
           {/* Logo - Left */}
-          <Link href={`/${locale}`} className="group flex items-center gap-3 shrink-0 z-10">
+          <Link href={`/${locale}`} className="group flex items-center gap-[6px] lg:gap-2.5 shrink-0 z-10">
             {/* Logo Icon */}
-            <div className="relative">
-              <div className="absolute -inset-2 bg-gradient-to-r from-red-600 via-red-500 to-red-600 rounded-2xl blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
-              <div className="relative w-10 h-10 lg:w-11 lg:h-11 rounded-xl overflow-hidden shadow-lg transform group-hover:scale-105 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-red-500 to-red-600" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent" />
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white drop-shadow" viewBox="0 0 32 32" fill="none">
-                    <path 
-                      d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13h-8v3h4.5c-1.2 3.8-4.7 6.5-8.5 6.5-5 0-9-4-9-9s4-9 9-9c2.5 0 4.7 1 6.4 2.6l2.1-2.1C22.3 5.8 19.3 4.5 16 4.5"
-                      fill="currentColor"
-                      opacity="0.9"
-                    />
-                    <rect x="14" y="10" width="4" height="12" rx="1" fill="currentColor" />
-                    <rect x="10" y="14" width="12" height="4" rx="1" fill="currentColor" />
-                  </svg>
-                </div>
-              </div>
+            <div 
+              className="w-[30px] h-[30px] lg:w-[45px] lg:h-[45px] rounded-[10px] lg:rounded-[16px] flex items-center justify-center shadow-[0px_10px_15px_-3px_rgba(251,44,54,0.25),0px_4px_6px_-4px_rgba(251,44,54,0.25)]"
+              style={{ background: "linear-gradient(135deg, #FB2C36 0%, #E7000B 100%)" }}
+            >
+              <svg className="w-4 h-4 lg:w-7 lg:h-7 text-white" viewBox="0 0 32 32" fill="none">
+                <path 
+                  d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13h-8v3h4.5c-1.2 3.8-4.7 6.5-8.5 6.5-5 0-9-4-9-9s4-9 9-9c2.5 0 4.7 1 6.4 2.6l2.1-2.1C22.3 5.8 19.3 4.5 16 4.5"
+                  fill="currentColor"
+                  opacity="0.9"
+                />
+                <rect x="14" y="10" width="4" height="12" rx="1" fill="currentColor" />
+                <rect x="10" y="14" width="12" height="4" rx="1" fill="currentColor" />
+              </svg>
             </div>
-            {/* Text */}
-            <div className="flex flex-col">
-              <div className="font-black text-lg lg:text-xl tracking-tight leading-none flex items-baseline gap-1">
-                <span className={`bg-gradient-to-r from-red-600 via-red-500 to-red-600 bg-clip-text text-transparent`}>
-                  Georgian
-                </span>
-                <span className="text-zinc-800 transition-colors duration-300">Support</span>
+            
+            {/* Logo Text */}
+            <div className="flex flex-col gap-0.5 lg:gap-[3px]">
+              <div className="flex items-baseline font-bold text-[13px] lg:text-[20px] leading-[1.3]">
+                <span className={`${isDark ? 'text-[#2D1D38]' : 'text-[#FAFAFA]'} transition-colors duration-300`}>Georgian</span>
+                <span className="bg-gradient-to-r from-[#FB2C36] via-[#FB2C36] to-[#E7000B] bg-clip-text text-transparent">Support</span>
               </div>
+              <span className={`text-[8px] lg:text-[12px] font-semibold leading-[1.3] ${isDark ? 'text-[#2D1D38] lg:text-[#776667]' : 'text-[#FAFAFA]/60'} transition-colors duration-300`}>
+                by Legal Residency Group
+              </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation - Absolutely Centered */}
-          <nav className={`hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 px-2 py-1.5 rounded-full transition-all duration-300 ${
-            isScrolled ? 'bg-zinc-100' : 'bg-zinc-100/80'
-          }`}>
+          {/* Desktop Navigation - Center */}
+          <nav className="hidden lg:flex items-center gap-[45px]">
             {navItems.map((item) => (
               item.hasDropdown ? (
                 <div 
@@ -108,11 +106,13 @@ export default function Header({ locale, dict }: HeaderProps) {
                 >
                   <Link
                     href={item.href}
-                    className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-1.5 text-zinc-600 hover:text-zinc-900 hover:bg-white"
+                    className={`text-[18px] font-medium leading-[1.3] transition-all duration-200 flex items-center ${
+                      isDark ? 'text-[#2D1D38] hover:text-[#DE643B]' : 'text-[#FAFAFA] hover:text-white'
+                    } ${isInsuranceDropdownOpen ? 'pb-[10px] border-b border-current' : ''}`}
                   >
                     {item.label}
                     <svg 
-                      className={`w-3.5 h-3.5 transition-transform duration-200 ${isInsuranceDropdownOpen ? 'rotate-180' : ''}`} 
+                      className={`w-6 h-6 ml-1 transition-transform duration-200 ${isInsuranceDropdownOpen ? 'rotate-180' : ''}`} 
                       fill="none" 
                       stroke="currentColor" 
                       viewBox="0 0 24 24"
@@ -123,37 +123,21 @@ export default function Header({ locale, dict }: HeaderProps) {
                   
                   {/* Dropdown Menu */}
                   <div 
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-2xl shadow-2xl shadow-black/10 border border-zinc-100 overflow-hidden transition-all duration-300 ${
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-5 w-[318px] bg-white rounded-[20px] shadow-xl overflow-hidden transition-all duration-300 ${
                       isInsuranceDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                     }`}
                   >
-                    <div className="p-2">
+                    <div className="py-5">
                       {insuranceDropdownItems.map((dropdownItem) => (
                         <Link
                           key={dropdownItem.href}
                           href={dropdownItem.href}
-                          className="group flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-red-100 transition-all duration-200"
+                          className="group flex items-center justify-between px-[25px] py-[15px] text-[#2D1D38] hover:bg-gray-50 transition-all duration-200"
                         >
-                          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center group-hover:from-red-500 group-hover:to-red-600 transition-all duration-200">
-                            {dropdownItem.icon === 'shield' && (
-                              <svg className="w-4 h-4 text-red-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                              </svg>
-                            )}
-                            {dropdownItem.icon === 'heart' && (
-                              <svg className="w-4 h-4 text-red-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                              </svg>
-                            )}
-                            {dropdownItem.icon === 'car' && (
-                              <svg className="w-4 h-4 text-red-600 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
-                              </svg>
-                            )}
-                          </div>
-                          <div>
-                            <span className="text-sm font-medium text-zinc-800 group-hover:text-zinc-900">{dropdownItem.label}</span>
-                          </div>
+                          <span className="text-[18px] font-medium">{dropdownItem.label}</span>
+                          <svg className="w-5 h-5 text-[#ABA2A5] group-hover:text-[#DE643B] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
                         </Link>
                       ))}
                     </div>
@@ -163,7 +147,9 @@ export default function Header({ locale, dict }: HeaderProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 text-zinc-600 hover:text-zinc-900 hover:bg-white"
+                  className={`text-[18px] font-medium leading-[1.3] transition-all duration-200 ${
+                    isDark ? 'text-[#2D1D38] hover:text-[#DE643B]' : 'text-[#FAFAFA] hover:text-white'
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -171,34 +157,35 @@ export default function Header({ locale, dict }: HeaderProps) {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-2 z-10">
+          {/* Desktop Right - Language, Social & CTA */}
+          <div className="hidden lg:flex items-center gap-5 z-10">
+            {/* Language Switcher */}
             <LanguageSwitcher locale={locale} variant="desktop" />
             
-            {/* Social buttons */}
-            <div className="flex items-center gap-1.5 ml-2">
+            {/* Social Icons */}
+            <div className="flex items-center gap-2.5">
               <Link
                 href={CONTACT.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex items-center justify-center w-9 h-9 rounded-full bg-[#25D366] hover:scale-110 transition-all duration-300"
+                className="flex items-center justify-center w-[30px] h-[30px] transition-all duration-300"
                 aria-label="WhatsApp"
               >
-                <div className="absolute inset-0 rounded-full bg-[#25D366] blur opacity-0 group-hover:opacity-50 transition-opacity" />
-                <svg className="relative w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                <svg className="w-[30px] h-[30px]" viewBox="0 0 30 30" fill="none">
+                  <circle cx="15" cy="15" r="15" fill="#25D366"/>
+                  <path d="M21.5 8.5C20.2 7.2 18.5 6.5 16.5 6.5C12.5 6.5 9.2 9.8 9.2 13.8C9.2 15.1 9.5 16.4 10.2 17.5L9.1 21.4L13.1 20.3C14.2 20.9 15.3 21.2 16.5 21.2C20.5 21.2 23.8 17.9 23.8 13.9C23.8 11.9 23 10 21.5 8.5ZM16.5 19.8C15.4 19.8 14.3 19.5 13.4 18.9L13.2 18.8L10.8 19.4L11.4 17.1L11.2 16.9C10.5 15.9 10.2 14.9 10.2 13.8C10.2 10.4 13 7.6 16.4 7.6C18 7.6 19.5 8.2 20.6 9.3C21.7 10.4 22.3 11.9 22.3 13.5C22.4 17 19.9 19.8 16.5 19.8ZM19.8 15.3C19.6 15.2 18.5 14.7 18.3 14.6C18.1 14.5 18 14.5 17.9 14.7C17.8 14.9 17.4 15.4 17.3 15.5C17.2 15.6 17.1 15.6 16.9 15.5C16.7 15.4 15.9 15.2 15 14.4C14.3 13.8 13.8 13 13.7 12.8C13.6 12.6 13.7 12.5 13.8 12.4C13.9 12.3 14 12.2 14.1 12.1C14.2 12 14.2 11.9 14.3 11.8C14.4 11.7 14.3 11.6 14.3 11.5C14.3 11.4 13.8 10.3 13.6 9.9C13.5 9.5 13.3 9.5 13.2 9.5C13.1 9.5 13 9.5 12.9 9.5C12.8 9.5 12.6 9.5 12.4 9.7C12.2 9.9 11.7 10.4 11.7 11.5C11.7 12.6 12.5 13.6 12.6 13.7C12.7 13.8 13.8 15.5 15.5 16.3C16.1 16.6 16.5 16.7 16.9 16.8C17.5 16.9 18 16.9 18.5 16.8C19 16.7 19.9 16.3 20.1 15.9C20.3 15.5 20.3 15.1 20.2 15C20.1 15.4 20 15.4 19.8 15.3Z" fill="white"/>
                 </svg>
               </Link>
               <Link
                 href={CONTACT.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex items-center justify-center w-9 h-9 rounded-full bg-[#0088cc] hover:scale-110 transition-all duration-300"
+                className="flex items-center justify-center w-[30px] h-[30px] transition-all duration-300"
                 aria-label="Telegram"
               >
-                <div className="absolute inset-0 rounded-full bg-[#0088cc] blur opacity-0 group-hover:opacity-50 transition-opacity" />
-                <svg className="relative w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                <svg className="w-[30px] h-[30px]" viewBox="0 0 30 30" fill="none">
+                  <circle cx="15" cy="15" r="15" fill="#229ED9"/>
+                  <path d="M21.5 9.5L19.3 20.5C19.3 20.5 19 21.2 18.2 20.9L13.7 17.5L12 16.7L8.8 15.7C8.8 15.7 8.3 15.5 8.3 15.1C8.3 14.7 8.9 14.5 8.9 14.5L20.5 9.9C20.5 9.9 21.5 9.5 21.5 9.5ZM17.2 12.2L13.2 16L12.9 18.7L12.3 16.3L17.2 12.2Z" fill="white"/>
                 </svg>
               </Link>
             </div>
@@ -206,27 +193,33 @@ export default function Header({ locale, dict }: HeaderProps) {
             {/* CTA Button */}
             <Link
               href={`/${locale}#contacts`}
-              className="group relative ml-2 px-5 py-2.5 rounded-full overflow-hidden"
+              className="group flex items-center gap-5 pl-[30px] pr-[5px] py-[5px] bg-[#DE643B] hover:bg-[#E85D3B] rounded-full transition-all duration-300"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 transition-all duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-r from-red-700 via-red-600 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative text-sm font-semibold text-white">{dict.header.contacts}</span>
+              <span className="text-[18px] font-medium text-[#FAFAFA] leading-[1.3]">{dict.header.contacts}</span>
+              <div className="w-[50px] h-[50px] rounded-full bg-white/20 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300 bg-zinc-100 hover:bg-zinc-200"
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMenuOpen}
-          >
-            <div className="w-5 h-4 flex flex-col justify-between">
-              <span className={`block h-0.5 rounded-full transition-all duration-300 origin-center bg-zinc-800 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-              <span className={`block h-0.5 rounded-full transition-all duration-300 bg-zinc-800 ${isMenuOpen ? 'opacity-0 scale-0' : ''}`} />
-              <span className={`block h-0.5 rounded-full transition-all duration-300 origin-center bg-zinc-800 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
-            </div>
-          </button>
+          {/* Mobile Right - Flag + Menu */}
+          <div className="lg:hidden flex items-center gap-[15px]">
+            <LanguageSwitcher locale={locale} variant="mobile-header" />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="relative w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+            >
+              <div className="w-6 h-5 flex flex-col justify-between">
+                <span className={`block h-0.5 rounded-full transition-all duration-300 origin-center ${isDark ? 'bg-[#2D1D38]' : 'bg-white'} ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`block h-0.5 rounded-full transition-all duration-300 ${isDark ? 'bg-[#2D1D38]' : 'bg-white'} ${isMenuOpen ? 'opacity-0 scale-0' : ''}`} />
+                <span className={`block h-0.5 rounded-full transition-all duration-300 origin-center ${isDark ? 'bg-[#2D1D38]' : 'bg-white'} ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              </div>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -238,7 +231,7 @@ export default function Header({ locale, dict }: HeaderProps) {
       >
         {/* Backdrop */}
         <div 
-          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+          className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0'
           }`}
           onClick={() => setIsMenuOpen(false)}
@@ -246,32 +239,19 @@ export default function Header({ locale, dict }: HeaderProps) {
         
         {/* Menu Panel */}
         <div 
-          className={`absolute right-0 top-0 h-full w-[85%] max-w-sm shadow-2xl transition-transform duration-500 ease-out ${
+          className={`absolute inset-0 bg-[#FAFAFA] transition-transform duration-500 ease-out ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
-          style={{ background: 'linear-gradient(135deg, #18181b 0%, #27272a 50%, #18181b 100%)' }}
         >
-          {/* Decorative gradient orbs - Georgian red */}
-          <div className="absolute top-20 -left-20 w-40 h-40 bg-red-500/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-40 -right-10 w-32 h-32 bg-red-600/20 rounded-full blur-3xl" />
-          
-          {/* Close Button */}
-          <button
-            onClick={() => setIsMenuOpen(false)}
-            className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-            aria-label="Close menu"
-          >
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          {/* Menu Content */}
-          <div className="relative flex flex-col h-full pt-20 pb-8 px-6">
-            {/* Logo in menu */}
-            <div className="flex items-center gap-3 mb-8 pb-6 border-b border-white/10">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 via-red-500 to-red-600 flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" viewBox="0 0 32 32" fill="none">
+          {/* Header */}
+          <div className="flex items-center justify-between px-5 py-4 shadow-[0px_4px_11px_0px_rgba(45,29,56,0.08)]">
+            {/* Logo */}
+            <Link href={`/${locale}`} className="flex items-center gap-1.5" onClick={() => setIsMenuOpen(false)}>
+              <div 
+                className="w-[30px] h-[30px] rounded-[10px] flex items-center justify-center shadow-[0px_6.667px_10px_-2px_rgba(251,44,54,0.25),0px_2.667px_4px_-2.667px_rgba(251,44,54,0.25)]"
+                style={{ background: "linear-gradient(135deg, #FB2C36 0%, #E7000B 100%)" }}
+              >
+                <svg className="w-[18px] h-[18px] text-white" viewBox="0 0 32 32" fill="none">
                   <path 
                     d="M16 3C8.82 3 3 8.82 3 16s5.82 13 13 13 13-5.82 13-13h-8v3h4.5c-1.2 3.8-4.7 6.5-8.5 6.5-5 0-9-4-9-9s4-9 9-9c2.5 0 4.7 1 6.4 2.6l2.1-2.1C22.3 5.8 19.3 4.5 16 4.5"
                     fill="currentColor"
@@ -281,38 +261,51 @@ export default function Header({ locale, dict }: HeaderProps) {
                   <rect x="10" y="14" width="12" height="4" rx="1" fill="currentColor" />
                 </svg>
               </div>
-              <div>
-                <span className="font-bold text-lg text-white">Georgian Support</span>
-                <p className="text-xs text-white/50">Healthcare you can trust</p>
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-baseline font-bold text-[13px] leading-[1.3]">
+                  <span className="text-[#2D1D38]">Georgian</span>
+                  <span className="bg-gradient-to-r from-[#FB2C36] to-[#E7000B] bg-clip-text text-transparent">Support</span>
+                </div>
+                <span className="text-[8px] font-semibold text-[#776667] leading-[1.3]">by Legal Residency Group</span>
               </div>
-            </div>
+            </Link>
+            
+            {/* Close Button */}
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="w-10 h-10 flex items-center justify-center"
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6 text-[#2D1D38]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
 
+          {/* Menu Content */}
+          <div className="flex flex-col h-[calc(100%-72px)] px-5 pt-10">
             {/* Nav Links */}
-            <nav className="flex-1 space-y-1 overflow-y-auto">
-              {navItems.map((item, index) => (
+            <nav className="flex-1 flex flex-col gap-4">
+              {navItems.map((item) => (
                 item.hasDropdown ? (
-                  <div key={item.href}>
+                  <div key={item.href} className="flex flex-col gap-1">
                     <Link
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="group flex items-center gap-4 px-4 py-3.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
-                      style={{ animationDelay: `${index * 50}ms` }}
+                      className="text-[20px] font-bold text-[#2D1D38] leading-[1.3]"
                     >
-                      <span className="w-2 h-2 rounded-full bg-gradient-to-r from-red-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <span className="text-lg font-medium">{item.label}</span>
+                      {item.label}
                     </Link>
                     {/* Dropdown items */}
-                    <div className="ml-8 space-y-1 mt-1">
-                      {insuranceDropdownItems.map((dropdownItem, dropIndex) => (
+                    <div className="flex flex-col gap-4 pl-[25px] py-1">
+                      {insuranceDropdownItems.map((dropdownItem) => (
                         <Link
                           key={dropdownItem.href}
                           href={dropdownItem.href}
                           onClick={() => setIsMenuOpen(false)}
-                          className="group flex items-center gap-3 px-4 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/10 transition-all duration-200"
-                          style={{ animationDelay: `${(index + dropIndex + 1) * 50}ms` }}
+                          className="text-[18px] font-medium text-[#2D1D38] leading-[1.3]"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-red-500/50" />
-                          <span className="text-base">{dropdownItem.label}</span>
+                          {dropdownItem.label}
                         </Link>
                       ))}
                     </div>
@@ -322,50 +315,63 @@ export default function Header({ locale, dict }: HeaderProps) {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="group flex items-center gap-4 px-4 py-3.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
-                    style={{ animationDelay: `${index * 50}ms` }}
+                    className="text-[20px] font-bold text-[#2D1D38] leading-[1.3]"
                   >
-                    <span className="w-2 h-2 rounded-full bg-gradient-to-r from-red-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span className="text-lg font-medium">{item.label}</span>
+                    {item.label}
                   </Link>
                 )
               ))}
             </nav>
 
             {/* Language Switcher */}
-            <div className="py-4 border-t border-white/10">
+            <div className="py-4">
               <LanguageSwitcher locale={locale} variant="mobile" />
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex gap-3">
+            <div className="flex items-center gap-8 pb-10">
               <Link
-                href={CONTACT.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/${locale}#contacts`}
                 onClick={() => setIsMenuOpen(false)}
-                className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5a] text-white font-semibold py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-green-500/20"
+                className="group flex items-center gap-5 pl-[30px] pr-[5px] py-[5px] bg-[#DE643B] hover:bg-[#E85D3B] rounded-full transition-all duration-300"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
+                <span className="text-[18px] font-medium text-[#FAFAFA]">{dict.header.contacts}</span>
+                <div className="w-[50px] h-[50px] rounded-full bg-white/20 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
               </Link>
-              <Link
-                href={CONTACT.telegram}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMenuOpen(false)}
-                className="flex-1 flex items-center justify-center gap-2 bg-[#0088cc] hover:bg-[#0077b5] text-white font-semibold py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-blue-500/20"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                </svg>
-              </Link>
-            </div>
-
-            {/* Footer info */}
-            <div className="mt-6 pt-4 border-t border-white/10 text-center">
-              <p className="text-xs text-white/40">© 2025 Georgian Support</p>
+              
+              {/* Social Icons */}
+              <div className="flex items-center gap-4">
+                <Link
+                  href={CONTACT.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-center w-[46px] h-[46px]"
+                  aria-label="WhatsApp"
+                >
+                  <svg className="w-[46px] h-[46px]" viewBox="0 0 46 46" fill="none">
+                    <circle cx="23" cy="23" r="23" fill="#25D366"/>
+                    <path d="M32.5 13.5C30.6 11.6 28.1 10.5 25.3 10.5C19.7 10.5 15.1 15.1 15.1 20.7C15.1 22.7 15.6 24.6 16.6 26.3L15 32L20.9 30.4C22.5 31.3 24.3 31.8 26.1 31.8C31.7 31.8 36.3 27.2 36.3 21.6C36.3 18.8 35.2 16.3 32.5 13.5ZM25.3 29.8C23.6 29.8 22 29.4 20.6 28.5L20.3 28.3L17 29.1L17.8 25.9L17.6 25.6C16.6 24.1 16.1 22.5 16.1 20.7C16.1 15.6 20.2 11.5 25.3 11.5C27.8 11.5 30.1 12.5 31.8 14.2C33.5 15.9 34.5 18.2 34.5 20.7C34.5 26 30.4 29.8 25.3 29.8ZM30.3 23.3C30 23.2 28.4 22.4 28.1 22.3C27.8 22.2 27.6 22.1 27.4 22.4C27.2 22.7 26.6 23.5 26.4 23.7C26.2 23.9 26 24 25.7 23.8C25.4 23.6 24.3 23.3 23 22.2C22 21.3 21.3 20.2 21.1 19.9C20.9 19.6 21.1 19.4 21.2 19.2C21.4 19.1 21.5 18.9 21.7 18.7C21.9 18.5 21.9 18.4 22 18.2C22.1 18 22.1 17.8 22 17.7C21.9 17.6 21.2 16 20.9 15.4C20.7 14.8 20.4 14.9 20.2 14.9C20 14.9 19.8 14.9 19.6 14.9C19.4 14.9 19.1 15 18.8 15.3C18.5 15.6 17.7 16.4 17.7 18C17.7 19.6 18.9 21.1 19 21.3C19.1 21.5 21.2 24.6 24.4 25.8C25.3 26.2 26 26.4 26.5 26.5C27.4 26.7 28.2 26.7 28.8 26.6C29.5 26.5 30.8 25.8 31.1 25.1C31.4 24.4 31.4 23.8 31.3 23.6C31.2 23.5 30.6 23.4 30.3 23.3Z" fill="white"/>
+                  </svg>
+                </Link>
+                <Link
+                  href={CONTACT.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-center w-[46px] h-[46px]"
+                  aria-label="Telegram"
+                >
+                  <svg className="w-[46px] h-[46px]" viewBox="0 0 46 46" fill="none">
+                    <circle cx="23" cy="23" r="23" fill="#229ED9"/>
+                    <path d="M32.5 14.5L29.3 30.5C29.3 30.5 28.9 31.5 27.8 31L21.3 26L18.7 24.8L14 23.3C14 23.3 13.3 23 13.3 22.4C13.3 21.8 14 21.5 14 21.5L30.8 15.1C30.8 15.1 32.5 14.5 32.5 14.5ZM26.3 18.3L20.3 24L19.9 28L19 24.5L26.3 18.3Z" fill="white"/>
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

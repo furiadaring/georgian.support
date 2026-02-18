@@ -18,7 +18,7 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  
+
   const t = dict.contact;
   const isRtl = isRtlLocale(locale);
 
@@ -28,7 +28,7 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
       case "standard": return dict.insurance.months3;
       case "optimum": return dict.insurance.months6;
       case "premium": return dict.insurance.year;
-      case "uno-active": 
+      case "uno-active":
       case "uno-active-plus": return dict.insurance.month;
       default: return "";
     }
@@ -53,88 +53,60 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
     const message = encodeURIComponent(
       `${t.form.name}: ${formData.name}\n\n${t.form.plan}: ${selectedPlan?.label || formData.insuranceType}\n\n${formData.message ? `${t.form.message}: ${formData.message}` : ""}\n${t.form.phone}: ${formData.phone}`
     );
-    
+
     window.open(`${CONTACT.whatsapp}?text=${message}`, "_blank");
     setSubmitted(true);
 
-        // Send lead to central CRM
-        if (typeof window !== 'undefined' && (window as any).VGLeads) {
-          (window as any).VGLeads.send({
-            name: formData.name,
-            phone: formData.phone,
-            message: formData.message || '',
-            plan_interest: formData.insuranceType,
-            lead_type: 'form',
-          });
-        }
+    // Send lead to central CRM
+    if (typeof window !== 'undefined' && (window as any).VGLeads) {
+      (window as any).VGLeads.send({
+        name: formData.name,
+        phone: formData.phone,
+        message: formData.message || '',
+        plan_interest: formData.insuranceType,
+        lead_type: 'form',
+      });
+    }
     setIsSubmitting(false);
   };
 
+  // Success state
   if (submitted) {
     return (
-      <section 
-        id="contacts" 
-        className="w-full"
-        style={{ 
-          background: 'linear-gradient(135deg, #fef2f2 0%, #fff 50%, #fef2f2 100%)',
-          paddingTop: '100px',
-          paddingBottom: '100px'
-        }}
+      <section
+        id="contacts"
+        className="w-full relative overflow-hidden"
+        style={{ padding: '60px 0' }}
       >
-        <div style={{ maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '24px', paddingRight: '24px' }}>
-          <div 
-            style={{
-              backgroundColor: '#fff',
-              borderRadius: '32px',
-              padding: '60px 40px',
-              textAlign: 'center',
-              boxShadow: '0 25px 80px rgba(0,0,0,0.08)'
-            }}
-          >
-            <div 
-              style={{
-                width: '100px',
-                height: '100px',
-                background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 32px auto',
-                boxShadow: '0 20px 50px rgba(34, 197, 94, 0.4)'
-              }}
-            >
-              <svg style={{ width: '48px', height: '48px', color: '#fff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        {/* Background */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute inset-0 overflow-hidden">
+            <img alt="" className="absolute max-w-none" style={{ height: '221.52%', left: '-14.16%', top: '-44.1%', width: '132.85%' }} src="/images/contact-bg.png" />
+          </div>
+          <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)]" />
+        </div>
+
+        <div className="relative z-10 mx-auto" style={{ maxWidth: 560, padding: '0 20px' }}>
+          <div className="bg-[#FAFAFA] rounded-[20px] text-center shadow-[0px_25px_80px_0px_rgba(0,0,0,0.2)]" style={{ padding: 40 }}>
+            <div className="bg-[#22c55e] rounded-full flex items-center justify-center mx-auto" style={{ width: 100, height: 100, marginBottom: 32 }}>
+              <svg className="size-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 style={{ fontSize: '32px', fontWeight: '800', color: '#18181b', marginBottom: '16px' }}>
+            <h3 className="text-[24px] lg:text-[28px] font-bold text-[#2D1D38]" style={{ marginBottom: 16 }}>
               {t.success.title}
             </h3>
-            <p style={{ color: '#71717a', marginBottom: '36px', fontSize: '18px', lineHeight: '1.6' }}>
+            <p className="text-[16px] text-[#776667] leading-[1.6]" style={{ marginBottom: 32 }}>
               {t.success.message}
             </p>
             <a
               href={CONTACT.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '12px',
-                background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-                color: '#fff',
-                fontWeight: '700',
-                fontSize: '18px',
-                padding: '18px 36px',
-                borderRadius: '16px',
-                textDecoration: 'none',
-                boxShadow: '0 15px 40px rgba(34, 197, 94, 0.4)',
-                transition: 'transform 0.2s ease'
-              }}
-              className="hover:scale-105"
+              className="inline-flex items-center bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold text-[16px] rounded-full transition-all duration-300"
+              style={{ gap: 12, padding: '16px 32px' }}
             >
-              <svg style={{ width: '24px', height: '24px' }} fill="currentColor" viewBox="0 0 24 24">
+              <svg className="size-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
               {t.success.openWhatsapp}
@@ -146,349 +118,193 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
   }
 
   return (
-    <section 
-      id="contacts" 
+    <section
+      id="contacts"
       className="w-full relative overflow-hidden"
-      style={{ 
-        background: '#fafafa',
-        paddingTop: '60px',
-        paddingBottom: '80px'
-      }}
+      style={{ padding: '80px 0' }}
     >
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(239,68,68,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(239,68,68,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      
-      {/* Background decorations */}
-      <div style={{
-        position: 'absolute',
-        top: '-150px',
-        right: '-150px',
-        width: '350px',
-        height: '350px',
-        background: 'radial-gradient(circle, rgba(239, 68, 68, 0.08) 0%, transparent 70%)',
-        borderRadius: '50%',
-        pointerEvents: 'none'
-      }} />
-      <div style={{
-        position: 'absolute',
-        bottom: '-100px',
-        left: '-100px',
-        width: '300px',
-        height: '300px',
-        background: 'radial-gradient(circle, rgba(239, 68, 68, 0.06) 0%, transparent 70%)',
-        borderRadius: '50%',
-        pointerEvents: 'none'
-      }} />
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 overflow-hidden">
+          <img alt="" className="absolute max-w-none" style={{ height: '221.52%', left: '-14.16%', top: '-44.1%', width: '132.85%' }} src="/images/contact-bg.png" />
+        </div>
+        <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)]" />
+      </div>
 
-      <div style={{ maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '16px', paddingRight: '16px', position: 'relative', zIndex: 1 }}>
-        
-        {/* Section Header - Big & Bold */}
-        <div className="text-center" style={{ marginBottom: '48px' }}>
-          <div 
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
-              color: '#fff',
-              fontSize: '12px',
-              fontWeight: '700',
-              letterSpacing: '0.15em',
-              padding: '8px 16px',
-              borderRadius: '50px',
-              marginBottom: '24px'
-            }}
-          >
-            <svg style={{ width: '14px', height: '14px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
+      <div className="relative z-10 mx-auto px-5" style={{ maxWidth: 1120 }}>
+
+        {/* Section Header */}
+        <div className="text-center" style={{ marginBottom: 40 }}>
+          <span className="block text-[18px] font-medium text-[#FAFAFA] leading-[1.3]" style={{ marginBottom: 20 }}>
             {t.label}
-          </div>
-          <h2 
-            style={{ 
-              fontSize: 'clamp(28px, 5vw, 48px)',
-              fontWeight: '800',
-              color: '#18181b',
-              marginBottom: '20px',
-              lineHeight: '1.2'
-            }}
-          >
+          </span>
+          <h2 className="text-[34px] lg:text-[55px] font-bold text-[#FAFAFA] leading-[0.9]" style={{ marginBottom: 20 }}>
             {t.title}
-            <span style={{ 
-              background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>{t.titleHighlight}</span>
+            <span className="text-[#DE643B]">{t.titleHighlight}</span>
           </h2>
-          <p 
-            style={{ 
-              fontSize: '16px',
-              color: '#71717a',
-              maxWidth: '500px',
-              margin: '0 auto',
-              lineHeight: '1.6',
-              padding: '0 16px'
-            }}
-          >
+          <p className="text-[16px] font-medium text-[#FAFAFA] mx-auto leading-[1.3]">
             {t.description}
           </p>
         </div>
 
-        {/* Main Content - Two Big Cards */}
-        <div 
-          style={{ 
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '24px'
-          }}
-          className="lg:!flex-row"
-        >
-          
-          {/* LEFT CARD - Quick Contact */}
-          <div 
-            style={{
-              background: '#fff',
-              borderRadius: '24px',
-              padding: '32px',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.06)',
-              flex: '1'
-            }}
-          >
-            <h3 style={{ 
-              fontSize: '22px', 
-              fontWeight: '800', 
-              color: '#18181b', 
-              marginBottom: '8px' 
-            }}>
-              {t.quickContact}
-            </h3>
-            <p style={{ 
-              fontSize: '14px', 
-              color: '#71717a', 
-              marginBottom: '28px',
-              lineHeight: '1.5'
-            }}>
-              {t.quickContactDesc}
-            </p>
+        {/* Main Content - Two Columns */}
+        <div className="flex flex-col lg:flex-row lg:items-start" style={{ gap: 20 }}>
 
-            {/* Messenger Buttons */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
-              <a 
-                href={CONTACT.whatsapp} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-                  color: '#fff',
-                  padding: '16px 20px',
-                  borderRadius: '14px',
-                  textDecoration: 'none',
-                  fontWeight: '600',
-                  fontSize: '15px',
-                  boxShadow: '0 8px 25px rgba(34, 197, 94, 0.3)',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                }}
-                className="hover:scale-[1.02] hover:shadow-xl"
-              >
-                <svg style={{ width: '24px', height: '24px', flexShrink: 0 }} fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                <span style={{ flex: 1 }}>{t.whatsappBtn}</span>
-                <svg style={{ width: '18px', height: '18px', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
+          {/* LEFT — Quick Contact Card */}
+          <div className="w-full lg:basis-[39.6%] lg:shrink-0 bg-[#2D1D38] flex flex-col items-start" style={{ padding: '28px 35px', gap: 40, height: 'auto', minHeight: 486 }}>
 
-              <a 
-                href={CONTACT.telegram} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  background: 'linear-gradient(135deg, #0088cc 0%, #0077b5 100%)',
-                  color: '#fff',
-                  padding: '16px 20px',
-                  borderRadius: '14px',
-                  textDecoration: 'none',
-                  fontWeight: '600',
-                  fontSize: '15px',
-                  boxShadow: '0 8px 25px rgba(0, 136, 204, 0.3)',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                }}
-                className="hover:scale-[1.02] hover:shadow-xl"
-              >
-                <svg style={{ width: '24px', height: '24px', flexShrink: 0 }} fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                </svg>
-                <span style={{ flex: 1 }}>{t.telegramBtn}</span>
-                <svg style={{ width: '18px', height: '18px', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
+            {/* Inner wrapper: title + contacts + buttons */}
+            <div className="flex flex-col items-start shrink-0" style={{ gap: 28 }}>
+
+              {/* Title block */}
+              <div className="flex flex-col items-start" style={{ gap: 5 }}>
+                <h3 className="text-[26px] font-semibold text-[#FAFAFA] leading-[1.3] w-full">
+                  {t.quickContact}
+                </h3>
+                <p className="text-[16px] font-medium text-[#ABA2A5] leading-[1.3] w-full">
+                  {t.quickContactDesc}
+                </p>
+              </div>
+
+              {/* Contact Info */}
+              <div className="flex flex-col items-start shrink-0" style={{ gap: 10 }}>
+                {/* Schedule */}
+                <div className="flex items-center shrink-0" style={{ gap: 8 }}>
+                  <svg className="shrink-0 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: 24, height: 24 }}>
+                    <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                    <path strokeLinecap="round" strokeWidth="2" d="M12 6v6l4 2" />
+                  </svg>
+                  <span className="text-[16px] font-medium text-[#FAFAFA] leading-[1.3] whitespace-nowrap">
+                    {t.workHoursValue}
+                  </span>
+                </div>
+                {/* Phone */}
+                <div className="flex items-center shrink-0" style={{ gap: 8 }}>
+                  <svg className="shrink-0 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: 24, height: 24 }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <a href={CONTACT.phoneLink} className="text-[16px] font-medium text-[#FAFAFA] leading-[1.3] whitespace-nowrap hover:text-[#DE643B] transition-colors">
+                    {CONTACT.phone}
+                  </a>
+                </div>
+                {/* Email */}
+                <div className="flex items-center shrink-0" style={{ gap: 8 }}>
+                  <svg className="shrink-0 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: 24, height: 24 }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <a href={CONTACT.emailLink} className="text-[16px] font-medium text-[#FAFAFA] leading-[1.3] whitespace-nowrap hover:text-[#DE643B] transition-colors">
+                    {CONTACT.email}
+                  </a>
+                </div>
+              </div>
+
+              {/* Messenger Buttons */}
+              <div className="flex flex-col items-center justify-center w-full" style={{ gap: 10 }}>
+                <a
+                  href={CONTACT.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center bg-whatsapp text-[#FAFAFA] font-semibold text-[14px] rounded-full hover:opacity-90 transition-opacity duration-300"
+                  style={{ gap: 15, padding: '12px 15px' }}
+                >
+                  <svg className="size-6 shrink-0" viewBox="0 0 30 30" fill="none">
+                    <path d="M22.2 7.8C20.8 6.4 18.9 5.6 16.9 5.6C12.7 5.6 9.2 9.1 9.2 13.3C9.2 14.7 9.6 16.1 10.3 17.3L9.1 21.5L13.4 20.3C14.6 20.9 15.7 21.3 16.9 21.3C21.1 21.3 24.6 17.8 24.6 13.6C24.6 11.5 23.6 9.5 22.2 7.8Z" fill="white"/>
+                  </svg>
+                  {t.whatsappBtn}
+                </a>
+                <a
+                  href={CONTACT.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center bg-telegram text-[#FAFAFA] font-semibold text-[14px] rounded-full hover:opacity-90 transition-opacity duration-300"
+                  style={{ gap: 15, padding: '12px 15px' }}
+                >
+                  <svg className="size-6 shrink-0" viewBox="0 0 30 30" fill="none">
+                    <path d="M21.8 9.2L19.4 20.8C19.4 20.8 19.1 21.6 18.2 21.2L13.3 17.5L11.5 16.6L8.1 15.5C8.1 15.5 7.5 15.3 7.5 14.8C7.5 14.3 8.1 14.1 8.1 14.1L20.8 9.2C20.8 9.2 21.8 8.8 21.8 9.2Z" fill="white"/>
+                  </svg>
+                  {t.telegramBtn}
+                </a>
+              </div>
+
             </div>
 
-            {/* Contact Info Grid */}
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: '1fr 1fr', 
-              gap: '12px',
-              padding: '16px',
-              background: '#fafafa',
-              borderRadius: '16px',
-              marginBottom: '16px'
-            }}>
-              <div>
-                <p style={{ fontSize: '11px', fontWeight: '600', color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>{t.phone}</p>
-                <p style={{ fontSize: '14px', fontWeight: '600', color: '#18181b' }}>{CONTACT.phone}</p>
-              </div>
-              <div>
-                <p style={{ fontSize: '11px', fontWeight: '600', color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>{t.email}</p>
-                <p style={{ fontSize: '14px', fontWeight: '600', color: '#18181b', wordBreak: 'break-all' }}>{CONTACT.email}</p>
-              </div>
-              <div style={{ gridColumn: 'span 2' }}>
-                <p style={{ fontSize: '11px', fontWeight: '600', color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>{t.workHours}</p>
-                <p style={{ fontSize: '14px', fontWeight: '600', color: '#18181b' }}>{t.workHoursValue}</p>
-              </div>
-            </div>
-
-            {/* Trust Badge */}
-            <div style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '12px',
-              padding: '16px',
-              background: 'linear-gradient(135deg, #fef2f2 0%, #fff 100%)',
-              borderRadius: '14px',
-              border: '1px solid #fecaca'
-            }}>
-              <div style={{ 
-                width: '48px', 
-                height: '48px', 
-                background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
-                borderRadius: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0
-              }}>
-                <svg style={{ width: '24px', height: '24px', color: '#fff' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <div style={{ minWidth: 0 }}>
-                <p style={{ fontSize: '14px', fontWeight: '700', color: '#18181b' }}>{t.trustBadge}</p>
-                <p style={{ fontSize: '13px', color: '#71717a' }}>{t.trustBadgeDesc}</p>
+            {/* Trust Badge — separated by gap-40 from inner wrapper */}
+            <div className="flex items-center shrink-0 w-full" style={{ gap: 15 }}>
+              <svg className="shrink-0" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <circle cx="15" cy="15" r="15" fill="#60D669"/>
+                <path d="M9 15L13 19L21 11" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <div className="flex flex-col" style={{ gap: 5 }}>
+                <p className="text-[16px] font-medium text-[#ABA2A5] leading-[1.3]">
+                  {t.trustBadge}
+                </p>
+                <p className="text-[12px] font-normal text-[#ABA2A5] leading-[1.3]">
+                  {t.trustBadgeDesc}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* RIGHT CARD - Application Form */}
-          <div 
-            style={{
-              background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
-              borderRadius: '24px',
-              padding: '32px',
-              boxShadow: '0 20px 60px rgba(239, 68, 68, 0.2)',
-              flex: '1'
-            }}
-          >
-            <h3 style={{ 
-              fontSize: '22px', 
-              fontWeight: '800', 
-              color: '#fff', 
-              marginBottom: '8px' 
-            }}>
-              {t.formTitle}
-            </h3>
-            <p style={{ 
-              fontSize: '14px', 
-              color: 'rgba(255,255,255,0.85)', 
-              marginBottom: '28px',
-              lineHeight: '1.5'
-            }}>
-              {t.formDesc}
-            </p>
+          {/* RIGHT — Form Card */}
+          <div className="w-full lg:basis-[60.4%] lg:shrink-0 bg-[#FAFAFA] flex flex-col items-start" style={{ padding: '28px 35px', height: 'auto', minHeight: 486, boxShadow: '10px 10px 0px 0px #2D1D38' }}>
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              
-              {/* Name */}
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: 'rgba(255,255,255,0.9)', marginBottom: '6px' }}>
-                  {t.form.name}
+            {/* Inner flex-wrap container matching Figma: content-center flex flex-wrap gap-[20px] items-center w-[570px] */}
+            <form onSubmit={handleSubmit} className="flex flex-wrap items-center content-center shrink-0 w-full" style={{ gap: 20 }}>
+
+              {/* Title block — w-[446px] in Figma, but we use responsive max */}
+              <div className="flex flex-col items-start shrink-0 w-full lg:w-auto" style={{ gap: 5, maxWidth: 446 }}>
+                <h3 className="text-[26px] font-semibold text-[#2D1D38] leading-[1.3] w-full">
+                  {t.formTitle}
+                </h3>
+                <p className="text-[16px] font-medium text-[#776667] leading-[1.3] w-full">
+                  {t.formDesc}
+                </p>
+              </div>
+
+              {/* Name input — w-[275px] in Figma */}
+              <div className="flex flex-col items-start shrink-0 w-full lg:w-auto" style={{ gap: 5, maxWidth: 275 }}>
+                <label className="block text-[16px] font-medium text-[#2D1D38] leading-[1.3] w-full">
+                  {t.form.name}<span className="text-[#DE643B]">*</span>
                 </label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '14px 16px',
-                    borderRadius: '12px',
-                    border: 'none',
-                    backgroundColor: 'rgba(255,255,255,0.95)',
-                    fontSize: '15px',
-                    outline: 'none',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                    boxSizing: 'border-box'
-                  }}
+                  className="w-full border border-[#ABA2A5] bg-white text-[16px] text-[#2D1D38] outline-none transition-all duration-200 focus:border-[#DE643B] placeholder:text-[#ABA2A5] leading-[1.3]"
+                  style={{ padding: 10, borderRadius: 6 }}
                   placeholder={t.form.namePlaceholder}
                   dir={isRtl ? 'rtl' : 'ltr'}
                 />
               </div>
 
-              {/* Phone */}
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: 'rgba(255,255,255,0.9)', marginBottom: '6px' }}>
-                  {t.form.phone}
+              {/* Phone input — w-[275px] in Figma */}
+              <div className="flex flex-col items-start shrink-0 w-full lg:w-auto" style={{ gap: 5, maxWidth: 275 }}>
+                <label className="block text-[16px] font-medium text-[#2D1D38] leading-[1.3] w-full">
+                  {t.form.phone}<span className="text-[#DE643B]">*</span>
                 </label>
                 <input
                   type="tel"
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '14px 16px',
-                    borderRadius: '12px',
-                    border: 'none',
-                    backgroundColor: 'rgba(255,255,255,0.95)',
-                    fontSize: '15px',
-                    outline: 'none',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                    boxSizing: 'border-box'
-                  }}
+                  className="w-full border border-[#ABA2A5] bg-white text-[16px] text-[#2D1D38] outline-none transition-all duration-200 focus:border-[#DE643B] placeholder:text-[#ABA2A5] leading-[1.3]"
+                  style={{ padding: 10, borderRadius: 6 }}
                   placeholder={t.form.phonePlaceholder}
                   dir="ltr"
                 />
               </div>
 
-              {/* Plan */}
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: 'rgba(255,255,255,0.9)', marginBottom: '6px' }}>
-                  {t.form.plan}
+              {/* Plan Select — w-[570px] full width in Figma */}
+              <div className="flex flex-col items-start shrink-0 w-full" style={{ gap: 5 }}>
+                <label className="block text-[16px] font-medium text-[#2D1D38] leading-[1.3] w-full">
+                  {t.form.plan}<span className="text-[#DE643B]">*</span>
                 </label>
                 <select
                   value={formData.insuranceType}
                   onChange={(e) => setFormData({ ...formData, insuranceType: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '14px 16px',
-                    borderRadius: '12px',
-                    border: 'none',
-                    backgroundColor: 'rgba(255,255,255,0.95)',
-                    fontSize: '15px',
-                    outline: 'none',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                    boxSizing: 'border-box'
-                  }}
+                  className="w-full border border-[#ABA2A5] bg-white text-[16px] text-[#2D1D38] outline-none cursor-pointer transition-all duration-200 focus:border-[#DE643B] leading-[1.3]"
+                  style={{ padding: 10, borderRadius: 6 }}
                   dir={isRtl ? 'rtl' : 'ltr'}
                 >
                   {planOptions.map((option) => (
@@ -499,82 +315,58 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
                 </select>
               </div>
 
-              {/* Message */}
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: 'rgba(255,255,255,0.9)', marginBottom: '6px' }}>
-                  {t.form.message} <span style={{ opacity: 0.7, fontWeight: '400' }}>({t.form.optional})</span>
+              {/* Textarea — w-[570px] h-[70px] in Figma */}
+              <div className="flex flex-col items-start shrink-0 w-full" style={{ gap: 5 }}>
+                <label className="block text-[16px] font-medium text-[#2D1D38] leading-[1.3] w-full">
+                  {t.form.message} <span className="font-normal text-[#ABA2A5]">({t.form.optional})</span>
                 </label>
                 <textarea
                   rows={3}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '14px 16px',
-                    borderRadius: '12px',
-                    border: 'none',
-                    backgroundColor: 'rgba(255,255,255,0.95)',
-                    fontSize: '15px',
-                    outline: 'none',
-                    resize: 'none',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                    boxSizing: 'border-box'
-                  }}
+                  className="w-full border border-[#ABA2A5] bg-white text-[16px] text-[#2D1D38] outline-none resize-none transition-all duration-200 focus:border-[#DE643B] placeholder:text-[#ABA2A5] leading-[1.3]"
+                  style={{ padding: 10, borderRadius: 6, height: 70 }}
                   placeholder={t.form.messagePlaceholder}
                   dir={isRtl ? 'rtl' : 'ltr'}
                 />
               </div>
 
-              {/* Submit */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                style={{
-                  width: '100%',
-                  padding: '16px 20px',
-                  backgroundColor: '#fff',
-                  color: '#dc2626',
-                  fontWeight: '700',
-                  fontSize: '15px',
-                  borderRadius: '12px',
-                  border: 'none',
-                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '10px',
-                  opacity: isSubmitting ? 0.8 : 1,
-                  boxShadow: '0 8px 25px rgba(0,0,0,0.12)',
-                  transition: 'transform 0.2s ease',
-                  boxSizing: 'border-box'
-                }}
-                className="hover:scale-[1.02]"
-              >
-                {isSubmitting ? (
-                  <>
-                    <svg style={{ width: '20px', height: '20px', animation: 'spin 1s linear infinite' }} fill="none" viewBox="0 0 24 24">
-                      <circle style={{ opacity: 0.25 }} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path style={{ opacity: 0.75 }} fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                    {t.form.submitting}
-                  </>
-                ) : (
-                  <>
-                    <svg style={{ width: '20px', height: '20px' }} fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                    {t.form.submit}
-                  </>
-                )}
-              </button>
+              {/* Submit button — in Figma flex-wrap flow, sits next to privacy text */}
+              <div className="flex items-center justify-center shrink-0">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center bg-[#DE643B] hover:bg-[#c9573a] text-white font-medium text-[18px] rounded-full transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shrink-0"
+                  style={{ gap: 20, paddingLeft: 30, paddingRight: 5, paddingTop: 5, paddingBottom: 5 }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="size-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      {t.form.submitting}
+                    </>
+                  ) : (
+                    <>
+                      {t.form.submit}
+                      <div className="rounded-full bg-[#DE643B] border border-white/20 flex items-center justify-center" style={{ width: 50, height: 50 }}>
+                        <svg className={`size-4 ${isRtl ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
+                    </>
+                  )}
+                </button>
+              </div>
 
-              <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', textAlign: 'center' }}>
+              {/* Privacy note — w-[229px] 12px semibold in Figma */}
+              <p className="text-[12px] font-semibold text-[#ABA2A5] leading-[1.3] shrink-0" style={{ width: 229 }}>
                 {t.form.privacyNote}
               </p>
             </form>
           </div>
         </div>
-
       </div>
     </section>
   );

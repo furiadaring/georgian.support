@@ -303,7 +303,7 @@ Located at `nginx-georgian.conf`
 | Channel | Value |
 |---------|-------|
 | **Phone/WhatsApp** | +995 591 19 63 00 |
-| **Email** | info@georgian.support |
+| **Email** | info@georgian-legal.group |
 | **Telegram** | [@georgialegalresidency](https://t.me/georgialegalresidency) |
 
 ---

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { type Locale, type Dictionary } from "@/lib/i18n";
+import { type Locale, type Dictionary, isRtlLocale } from "@/lib/i18n";
 
 interface TestimonialsProps {
   locale: Locale;
@@ -21,8 +20,9 @@ const getTestimonials = (locale: Locale) => {
             locale === 'tr' ? "15 dakikada WhatsApp üzerinden sigorta yaptırdım. Hastalandığımda — yardım hattını aradım ve bir saat içinde doktordaydım. Her şeyi soru sormadan ödediler!" :
             "Got insurance in 15 minutes via WhatsApp. When I got sick — called the hotline, and within an hour I was at the doctor. They paid for everything without questions!",
       rating: 5,
-      plan: "EMERGENCY FLEXI",
-      avatar: "AM"
+      plan: "Emergency Flexi",
+      hasPhoto: true,
+      bgColor: "#F4EFF3"
     },
     {
       name: locale === 'ru' ? "Светлана К." : locale === 'uk' ? "Світлана К." : locale === 'ka' ? "სვეტლანა კ." : locale === 'he' ? "סבטלנה ק." : locale === 'ar' ? "سفيتلانا ك." : locale === 'tr' ? "Svetlana K." : "Svetlana K.",
@@ -35,8 +35,10 @@ const getTestimonials = (locale: Locale) => {
             locale === 'tr' ? "Batum'da yarım yıldır yaşıyorum. MEDICAL STANDARD sigortası planlı doktor ziyaretlerini bile kapsıyor. Çok kullanışlı ve avantajlı!" :
             "Living in Batumi for half a year. MEDICAL STANDARD insurance covers even planned doctor visits. Very convenient and cost-effective!",
       rating: 5,
-      plan: "MEDICAL STANDARD",
-      avatar: "СК"
+      plan: "Medical Standard",
+      hasPhoto: false,
+      avatar: "С",
+      bgColor: "#F4EFF3"
     },
     {
       name: locale === 'ru' ? "Дмитрий В." : locale === 'uk' ? "Дмитро В." : locale === 'ka' ? "დიმიტრი ვ." : locale === 'he' ? "דמיטרי ו." : locale === 'ar' ? "ديمتري ف." : locale === 'tr' ? "Dmitry V." : "Dmitry V.",
@@ -49,8 +51,9 @@ const getTestimonials = (locale: Locale) => {
             locale === 'tr' ? "Bir aylığına geldim, acil yardıma ihtiyacım oldu. Sigorta mükemmel çalıştı — hastaneye yatış, ameliyat, her şey karşılandı. Ekibe teşekkürler!" :
             "Came for a month, needed emergency help. Insurance worked perfectly — hospitalization, surgery, everything covered. Thanks to the team!",
       rating: 5,
-      plan: "EMERGENCY STANDARD",
-      avatar: "ДВ"
+      plan: "Emergency Standard",
+      hasPhoto: true,
+      bgColor: "#F4EFF3"
     },
     {
       name: locale === 'ru' ? "Марина П." : locale === 'uk' ? "Марина П." : locale === 'ka' ? "მარინა პ." : locale === 'he' ? "מרינה פ." : locale === 'ar' ? "مارينا ب." : locale === 'tr' ? "Marina P." : "Marina P.",
@@ -63,227 +66,125 @@ const getTestimonials = (locale: Locale) => {
             locale === 'tr' ? "Ailemle Tiflis'e taşındım. Üçümüz için sigorta yaptırdık — hızlı, anlaşılır, bürokrasi yok. Herkese tavsiye ederim!" :
             "Moved to Tbilisi with family. Got insurance for three — fast, clear, no bureaucracy. Recommend to everyone!",
       rating: 5,
-      plan: "MEDICAL FLEXI",
-      avatar: "МП"
+      plan: "Medical Flexi",
+      hasPhoto: true,
+      bgColor: "#F4EFF3"
     }
   ];
   return testimonials;
 };
 
+/* Star icon matching Figma 16×16 */
+function StarIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0">
+      <path d="M8 0.5L10.163 5.3L15.5 5.955L11.575 9.6L12.615 15L8 12.3L3.385 15L4.425 9.6L0.5 5.955L5.837 5.3L8 0.5Z" fill="#F6C644"/>
+    </svg>
+  );
+}
+
+/* Quote icon matching Figma — orange double-quote marks */
+function QuoteIcon() {
+  return (
+    <svg width="24" height="19" viewBox="0 0 24 19" fill="none" className="shrink-0">
+      <path d="M5.31 18.7C3.81 18.7 2.61 18.16 1.71 17.08C0.87 15.94 0.45 14.5 0.45 12.76C0.45 10.42 1.11 8.2 2.43 6.1C3.81 3.94 5.67 2.2 8.01 0.879999L8.91 2.32C7.35 3.34 6.12 4.48 5.22 5.74C4.38 7 3.93 8.32 3.87 9.7C4.29 9.52 4.77 9.43 5.31 9.43C6.63 9.43 7.71 9.88 8.55 10.78C9.39 11.62 9.81 12.76 9.81 14.2C9.81 15.58 9.36 16.72 8.46 17.62C7.62 18.34 6.57 18.7 5.31 18.7ZM16.11 18.7C14.61 18.7 13.41 18.16 12.51 17.08C11.67 15.94 11.25 14.5 11.25 12.76C11.25 10.42 11.91 8.2 13.23 6.1C14.61 3.94 16.47 2.2 18.81 0.879999L19.71 2.32C18.15 3.34 16.92 4.48 16.02 5.74C15.18 7 14.73 8.32 14.67 9.7C15.09 9.52 15.57 9.43 16.11 9.43C17.43 9.43 18.51 9.88 19.35 10.78C20.19 11.62 20.61 12.76 20.61 14.2C20.61 15.58 20.16 16.72 19.26 17.62C18.42 18.34 17.37 18.7 16.11 18.7Z" fill="#DE643B"/>
+    </svg>
+  );
+}
+
 export default function Testimonials({ locale, dict }: TestimonialsProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
   const t = dict.testimonials;
   const testimonials = getTestimonials(locale);
 
   return (
-    <section 
-      id="testimonials" 
-      className="w-full relative overflow-hidden"
-      style={{ 
-        background: '#fff',
-        paddingTop: '60px',
-        paddingBottom: '80px'
-      }}
+    <section
+      id="testimonials"
+      className="w-full relative overflow-hidden bg-[#FAFAFA]"
     >
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(239,68,68,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(239,68,68,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      
-      <div className="relative z-10" style={{ maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '16px', paddingRight: '16px' }}>
-        
-        {/* Section Header */}
-        <div className="text-center" style={{ marginBottom: '48px' }}>
-          <div 
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
-              color: '#fff',
-              fontSize: '12px',
-              fontWeight: '700',
-              letterSpacing: '0.15em',
-              padding: '8px 16px',
-              borderRadius: '50px',
-              marginBottom: '20px'
-            }}
-          >
-            <svg style={{ width: '14px', height: '14px' }} fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-            </svg>
+      {/* Figma: px-[310px] py-[80px], content 1300px wide */}
+      <div className="mx-auto px-5 lg:px-[100px] xl:px-[200px] 2xl:px-[310px]" style={{ maxWidth: 1920, paddingTop: 80, paddingBottom: 80 }}>
+
+        {/* Section Header — Figma: flex-col gap-[20px] items-start, left-aligned */}
+        <div className="flex flex-col items-start" style={{ gap: 20, marginBottom: 40 }}>
+          <span className="text-[18px] font-medium text-[#ABA2A5] leading-[1.3]">
             {t.label}
-          </div>
-          <h2 
-            style={{ 
-              fontSize: 'clamp(28px, 5vw, 44px)',
-              fontWeight: '800',
-              color: '#18181b',
-              marginBottom: '16px',
-              lineHeight: '1.2'
-            }}
-          >
-            {t.title} <span style={{ color: '#ef4444' }}>{t.titleHighlight}</span>
-          </h2>
-          <p 
-            style={{ 
-              fontSize: '16px',
-              color: '#71717a',
-              maxWidth: '500px',
-              margin: '0 auto',
-              lineHeight: '1.6'
-            }}
-          >
+          </span>
+          <p className="text-[28px] md:text-[40px] lg:text-[55px] font-bold text-[#2D1D38] leading-[0.9]">
+            {t.title}{' '}
+            <span className="text-[#DE643B]">{t.titleHighlight}</span>
+          </p>
+          <p className="text-[16px] font-medium text-[#776667] leading-[1.3]">
             {t.description}
           </p>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div style={{ position: 'relative' }}>
-          
-          {/* Main Testimonial Card */}
-          <div 
-            style={{
-              background: '#fff',
-              borderRadius: '24px',
-              padding: '32px',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.08)',
-              border: '1px solid #f4f4f5',
-              marginBottom: '24px'
-            }}
-          >
-            {/* Quote Icon */}
-            <div 
-              style={{
-                width: '48px',
-                height: '48px',
-                background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
-                borderRadius: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '24px'
-              }}
+        {/* Cards Container — Figma: flex gap-[20px], 4 cards each 310×361 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style={{ gap: 20 }}>
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="bg-[#F4EFF3] flex items-center"
+              style={{ borderRadius: 16, padding: '30px 20px', minHeight: 361 }}
             >
-              <svg style={{ width: '24px', height: '24px', color: '#fff' }} fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
-              </svg>
-            </div>
+              {/* Inner container — Figma: flex-col gap-[70px] w-[270px] */}
+              <div className="flex flex-col items-start w-full" style={{ gap: 70 }}>
 
-            {/* Testimonial Text */}
-            <p 
-              style={{
-                fontSize: '18px',
-                lineHeight: '1.7',
-                color: '#3f3f46',
-                marginBottom: '28px',
-                fontStyle: 'italic'
-              }}
-            >
-              "{testimonials[activeIndex].text}"
-            </p>
+                {/* Upper block — Figma: flex-col gap-[30px] h-[176px] */}
+                <div className="flex flex-col items-start w-full" style={{ gap: 30, minHeight: 176 }}>
 
-            {/* Author Info */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div 
-                  style={{
-                    width: '52px',
-                    height: '52px',
-                    background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
-                    borderRadius: '14px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#fff',
-                    fontWeight: '700',
-                    fontSize: '18px'
-                  }}
-                >
-                  {testimonials[activeIndex].avatar}
-                </div>
-                <div>
-                  <p style={{ fontWeight: '700', color: '#18181b', fontSize: '16px', marginBottom: '2px' }}>
-                    {testimonials[activeIndex].name}
-                  </p>
-                  <p style={{ color: '#71717a', fontSize: '14px' }}>
-                    {testimonials[activeIndex].country}
+                  {/* Quote icon + plan badge row — Figma: flex justify-between w-full */}
+                  <div className="flex items-center justify-between w-full shrink-0">
+                    <QuoteIcon />
+                    <div className="bg-[#FAFAFA] flex items-center justify-center shrink-0" style={{ borderRadius: 1000, padding: '2px 8px' }}>
+                      <span className="text-[12px] font-semibold text-[#ABA2A5] leading-[1.3] whitespace-nowrap">
+                        {testimonial.plan}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Testimonial text — Figma: 16px medium, flex-1 */}
+                  <p className="text-[16px] font-medium text-[#2D1D38] leading-[1.3] flex-1">
+                    {testimonial.text}
                   </p>
                 </div>
-              </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                {/* Rating */}
-                <div style={{ display: 'flex', gap: '2px' }}>
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} style={{ width: '18px', height: '18px', color: '#facc15' }} fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                  ))}
+                {/* Author block — Figma: flex gap-[15px] items-start */}
+                <div className="flex items-start shrink-0" style={{ gap: 15 }}>
+                  {/* Avatar — Figma: 55×55 rounded-[30px] */}
+                  {testimonial.hasPhoto ? (
+                    <div className="shrink-0 bg-[#ABA2A5] overflow-hidden flex items-center justify-center" style={{ width: 55, height: 55, borderRadius: 30 }}>
+                      <span className="text-white font-bold text-[20px]">
+                        {testimonial.name.charAt(0)}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="shrink-0 bg-[#DE643B] overflow-hidden flex items-center justify-center" style={{ width: 55, height: 55, borderRadius: 30 }}>
+                      <span className="text-white font-bold text-[20px]">
+                        {testimonial.avatar || testimonial.name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Name + Country + Stars — Figma: flex-col gap-[2px] */}
+                  <div className="flex flex-col items-start" style={{ gap: 2 }}>
+                    <span className="text-[14px] font-semibold text-[#2D1D38] leading-[1.3]">
+                      {testimonial.name}
+                    </span>
+                    <span className="text-[12px] font-semibold text-[#ABA2A5] leading-[1.3]">
+                      {testimonial.country}
+                    </span>
+                    {/* Stars — Figma: flex gap-[2px] */}
+                    <div className="flex items-center" style={{ gap: 2 }}>
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <StarIcon key={i} />
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                
-                {/* Plan Badge */}
-                <span 
-                  style={{
-                    background: '#fef2f2',
-                    color: '#dc2626',
-                    fontSize: '12px',
-                    fontWeight: '700',
-                    padding: '6px 12px',
-                    borderRadius: '8px'
-                  }}
-                >
-                  {testimonials[activeIndex].plan}
-                </span>
+
               </div>
             </div>
-          </div>
-
-          {/* Navigation Dots */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                style={{
-                  width: index === activeIndex ? '32px' : '10px',
-                  height: '10px',
-                  borderRadius: '5px',
-                  background: index === activeIndex ? 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)' : '#e4e4e7',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease'
-                }}
-                aria-label={`Testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Stats Row */}
-        <div 
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '16px',
-            marginTop: '48px'
-          }}
-          className="sm:!grid-cols-4"
-        >
-          <div style={{ textAlign: 'center', padding: '20px' }}>
-            <p style={{ fontSize: '28px', fontWeight: '800', color: '#ef4444', marginBottom: '4px' }}>5000+</p>
-            <p style={{ fontSize: '13px', color: '#71717a' }}>{t.stats.clients}</p>
-          </div>
-          <div style={{ textAlign: 'center', padding: '20px' }}>
-            <p style={{ fontSize: '28px', fontWeight: '800', color: '#ef4444', marginBottom: '4px' }}>4.9</p>
-            <p style={{ fontSize: '13px', color: '#71717a' }}>{t.stats.rating}</p>
-          </div>
-          <div style={{ textAlign: 'center', padding: '20px' }}>
-            <p style={{ fontSize: '28px', fontWeight: '800', color: '#ef4444', marginBottom: '4px' }}>15 {t.stats.processingTime?.replace('15 ', '').replace('15', '') || 'мин'}</p>
-            <p style={{ fontSize: '13px', color: '#71717a' }}>{t.stats.processing}</p>
-          </div>
-          <div style={{ textAlign: 'center', padding: '20px' }}>
-            <p style={{ fontSize: '28px', fontWeight: '800', color: '#ef4444', marginBottom: '4px' }}>24/7</p>
-            <p style={{ fontSize: '13px', color: '#71717a' }}>{t.stats.support}</p>
-          </div>
+          ))}
         </div>
 
       </div>

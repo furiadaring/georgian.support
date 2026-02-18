@@ -740,58 +740,57 @@ export default function InsuranceOrderModal({
 
   if (!isOpen) return null;
 
-  const inputClass = "w-full px-4 py-3.5 text-base border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500/20 focus:border-red-500 transition-all bg-white hover:border-gray-300 outline-none";
-  const labelClass = "block text-sm font-semibold text-zinc-600 mb-2.5";
+  const inputClass = "w-full px-4 py-3 text-base border border-[#E5E5E5] rounded-none focus:ring-1 focus:ring-[#DE643B]/20 focus:border-[#DE643B] transition-all bg-white hover:border-[#ABA2A5] outline-none placeholder:text-[#ABA2A5]";
+  const labelClass = "block text-sm font-medium text-[#2D1D38] mb-2";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4">
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+    <div className="fixed inset-0 z-50 flex items-end lg:items-center justify-center lg:p-4">
+      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
       
-      <div className="relative bg-white w-full sm:max-w-2xl lg:max-w-3xl sm:rounded-3xl rounded-t-3xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden shadow-2xl">
+      <div className="relative bg-[#F4F3EE] w-full lg:max-w-[680px] rounded-t-2xl lg:rounded-none max-h-[95vh] lg:max-h-[90vh] overflow-hidden shadow-2xl">
         {/* Header */}
-        <div className="sticky top-0 bg-linear-to-r from-red-600 to-red-500 px-6 py-4 flex items-center justify-between z-10">
+        <div className="sticky top-0 bg-[#F4F3EE] px-5 lg:px-8 pt-6 pb-4 flex items-start justify-between z-10 border-b border-[#E5E5E5]">
           <div>
-            <h2 className="text-white font-bold text-xl">{t.title || "Order Insurance"}</h2>
-            <p className="text-red-100 text-sm mt-1">{planName} • {getPeriodText(planPeriod, t)}</p>
+            <h2 className="text-[#DE643B] font-bold text-xl lg:text-2xl">{t.title || "Оформление страховки"}</h2>
+            <p className="text-[#2D1D38] text-sm mt-1 font-medium uppercase">{planName} / {getPeriodText(planPeriod, t)}</p>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-white/20 rounded-full transition-colors">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <button onClick={onClose} className="p-1 hover:opacity-70 transition-opacity mt-1">
+            <svg className="w-6 h-6 text-[#2D1D38]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
         {/* Form Step */}
         {currentStep === "form" && (
-        <form onSubmit={handleSubmit} className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-gray-50/50">
+        <form onSubmit={handleSubmit} className="overflow-y-auto max-h-[calc(95vh-140px)] px-5 lg:px-8 py-5 bg-[#F4F3EE]">
           {/* Hidden subid field for tracking */}
           <input type="hidden" name="subid" id="kt_subid" value="" />
           
           {/* Passport Upload */}
-          <div className="bg-white rounded-2xl p-5 border-2 border-dashed border-gray-200 hover:border-red-300 transition-colors mb-6">
+          <div className="bg-[#FAFAFA] border border-[#E5E5E5] p-4 mb-6">
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" id="passport-upload" />
             
             {!passportPreview ? (
               <label htmlFor="passport-upload" className="flex items-center gap-4 cursor-pointer group">
-                <div className="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center group-hover:bg-red-200 transition-all group-hover:scale-105">
-                  <svg className="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                <div className="w-12 h-12 bg-[#F4EFF3] flex items-center justify-center group-hover:bg-[#E6CFE3] transition-all">
+                  <svg className="w-6 h-6 text-[#ABA2A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-gray-800">{t.uploadPassport || "Upload Passport Photo"}</p>
-                  <p className="text-sm text-gray-500">Auto-fills your details</p>
+                  <p className="text-sm font-medium text-[#2D1D38]">{t.uploadPassport || "Нажмите, чтобы загрузить фото паспорта"}</p>
+                  <p className="text-xs text-[#ABA2A5]">Auto-fills your details</p>
                 </div>
               </label>
             ) : (
               <div className="flex items-center gap-4">
-                <div className="relative w-20 h-14 rounded-xl overflow-hidden bg-gray-200 shrink-0 shadow-sm">
+                <div className="relative w-16 h-12 overflow-hidden bg-gray-200 shrink-0">
                   <Image src={passportPreview} alt="Passport" fill className="object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   {isScanning ? (
-                    <div className="flex items-center gap-2 text-red-600">
+                    <div className="flex items-center gap-2 text-[#DE643B]">
                       <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -805,7 +804,7 @@ export default function InsuranceOrderModal({
                   ) : null}
                 </div>
                 <button type="button" onClick={handleRemovePhoto} className="p-1.5 hover:bg-gray-200 rounded-full transition-colors">
-                  <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-[#ABA2A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
@@ -814,102 +813,101 @@ export default function InsuranceOrderModal({
           </div>
 
           {/* Period Section */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-5">
-            <h3 className="text-sm font-bold text-zinc-800 mb-4 flex items-center gap-2">
-              <span className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center text-red-600 text-xs">1</span>
-              {t.policyDetails || "Coverage Period"}
+          <div className="bg-white border border-[#E5E5E5] p-5 mb-5">
+            <h3 className="text-base font-bold text-[#2D1D38] mb-4">
+              1. {t.policyDetails || "Детали полиса"}
             </h3>
             
             {isMonthly ? (
-              /* UNO Active / UNO Active+ - Start Date + Payment Options on one line */
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-3 md:items-end">
+              /* UNO Active / UNO Active+ - Start Date + Payment Options */
+              <div className="space-y-4">
                 {/* Start Date */}
                 <div>
-                  <label className={labelClass}>{t.periodStart || "Start Date"} <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>{t.periodStart || "Начало периода"} <span className="text-[#DE643B]">*</span></label>
                   <DatePicker
                     selected={formData.periodStart ? new Date(formData.periodStart) : null}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodStart: date ? formatLocalDate(date) : '' }))}
                     minDate={todayDate}
                     dateFormat="dd/MM/yyyy"
-                    placeholderText="DD/MM/YYYY"
+                    placeholderText="дд/мм/гггг"
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
                     className={inputClass}
                     wrapperClassName="w-full"
-                    calendarClassName="!rounded-xl !shadow-xl !border-2 !border-gray-200"
+                    calendarClassName="!rounded-none !shadow-xl !border !border-[#E5E5E5]"
                     popperClassName="!z-[100]"
                     popperPlacement="bottom-start"
                     required
                   />
                 </div>
-                {/* Payment options with label */}
+                {/* Payment options */}
                 <div>
-                  <label className={labelClass}>{(t as Record<string, string>).paymentOption || "Payment Option"} <span className="text-red-500">*</span></label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <label className={labelClass}>{(t as Record<string, string>).paymentOption || "Payment Option"} <span className="text-[#DE643B]">*</span></label>
+                  <div className="grid grid-cols-2 gap-3">
                     <button
                       type="button"
                       onClick={() => setPaymentOption("quarterly")}
-                      className={`px-4 py-2.5 rounded-xl border-2 transition-all text-center whitespace-nowrap flex-1 ${
+                      className={`px-4 py-3 border transition-all text-center ${
                         paymentOption === "quarterly" 
-                          ? "border-red-500 bg-red-50 ring-2 ring-red-500/20" 
-                          : "border-gray-200 hover:border-gray-300"
+                          ? "border-[#DE643B] bg-[#DE643B]/5" 
+                          : "border-[#E5E5E5] hover:border-[#ABA2A5]"
                       }`}
                     >
-                      <div className="text-xs font-medium text-gray-600">{(t as Record<string, string>).paymentQuarterly || "Every 3 mo."}</div>
-                      <div className="text-lg font-bold text-red-600">{planPrice * 3} GEL</div>
+                      <div className="text-xs font-medium text-[#ABA2A5]">{(t as Record<string, string>).paymentQuarterly || "Every 3 mo."}</div>
+                      <div className="text-lg font-bold text-[#DE643B]">{planPrice * 3} GEL</div>
                     </button>
                     <button
                       type="button"
                       onClick={() => setPaymentOption("yearly")}
-                      className={`px-4 py-2.5 rounded-xl border-2 transition-all text-center whitespace-nowrap flex-1 ${
+                      className={`px-4 py-3 border transition-all text-center ${
                         paymentOption === "yearly" 
-                          ? "border-red-500 bg-red-50 ring-2 ring-red-500/20" 
-                          : "border-gray-200 hover:border-gray-300"
+                          ? "border-[#DE643B] bg-[#DE643B]/5" 
+                          : "border-[#E5E5E5] hover:border-[#ABA2A5]"
                       }`}
                     >
-                      <div className="text-xs font-medium text-gray-600">{(t as Record<string, string>).paymentYearly || "Yearly"}</div>
-                      <div className="text-lg font-bold text-red-600">{planPrice * 12} GEL</div>
+                      <div className="text-xs font-medium text-[#ABA2A5]">{(t as Record<string, string>).paymentYearly || "Yearly"}</div>
+                      <div className="text-lg font-bold text-[#DE643B]">{planPrice * 12} GEL</div>
                     </button>
                   </div>
                 </div>
               </div>
             ) : (
               /* Other plans - Start/End Date */
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
-                  <label className={labelClass}>{t.periodStart || "Start Date"} <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>{t.periodStart || "Начало периода"} <span className="text-[#DE643B]">*</span></label>
                   <DatePicker
                     selected={formData.periodStart ? new Date(formData.periodStart) : null}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodStart: date ? formatLocalDate(date) : '' }))}
                     minDate={todayDate}
                     dateFormat="dd/MM/yyyy"
-                    placeholderText="DD/MM/YYYY"
+                    placeholderText="дд/мм/гггг"
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
                     className={inputClass}
                     wrapperClassName="w-full"
-                    calendarClassName="!rounded-xl !shadow-xl !border-2 !border-gray-200"
+                    calendarClassName="!rounded-none !shadow-xl !border !border-[#E5E5E5]"
                     popperClassName="!z-[100]"
                     popperPlacement="bottom-start"
                     required
                   />
                 </div>
                 <div>
-                  <label className={labelClass}>{t.periodEnd || "End Date"} <span className="text-red-500">*</span></label>
+                  <label className={labelClass}>{t.periodEnd || "Конец периода"} <span className="text-[#DE643B]">*</span></label>
                   <DatePicker
                     selected={formData.periodEnd ? new Date(formData.periodEnd) : null}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodEnd: date ? formatLocalDate(date) : '' }))}
                     minDate={minEndDate}
                     dateFormat="dd/MM/yyyy"
-                    placeholderText="DD/MM/YYYY"
+                    placeholderText="дд/мм/гггг"
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
                     className={`${inputClass} ${!isDaily ? "!bg-gray-100 !cursor-not-allowed" : ""}`}
                     wrapperClassName="w-full"
-                    calendarClassName="!rounded-xl !shadow-xl !border-2 !border-gray-200"
+                    calendarClassName="!rounded-none !shadow-xl !border !border-[#E5E5E5]"
                     popperClassName="!z-[100]"
                     popperPlacement="bottom-start"
                     disabled={!isDaily}
@@ -920,41 +918,30 @@ export default function InsuranceOrderModal({
             )}
           </div>
 
-          {/* Price Display */}
-          <div className="bg-linear-to-r from-red-600 to-red-500 rounded-2xl px-5 py-4 flex items-center justify-between mb-5 shadow-lg shadow-red-500/20">
-            <span className="text-base font-medium text-white/90">{t.policyPrice || "Total Price"}</span>
-            <span className="font-bold text-2xl text-white">
-              {calculatedPrice} GEL
-              {isDaily && numberOfDays > 0 && <span className="text-sm font-normal text-white/80 ml-1">({numberOfDays} days)</span>}
-              {isMonthly && <span className="text-sm font-normal text-white/80 ml-1">({paymentOption === "quarterly" ? "3" : "12"} months)</span>}
-            </span>
-          </div>
-
           {/* Customer Details */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-5">
-            <h3 className="text-sm font-bold text-zinc-800 mb-5 flex items-center gap-2">
-              <span className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center text-red-600 text-xs">2</span>
-              {t.customerDetails || "Personal Information"}
+          <div className="bg-white border border-[#E5E5E5] p-5 mb-5">
+            <h3 className="text-base font-bold text-[#2D1D38] mb-4">
+              2. {t.customerDetails || "Данные клиента"}
             </h3>
-          <div className="space-y-5">
-            {/* Row 1: First Name, Last Name, Birth Date */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+          <div className="space-y-4">
+            {/* Row 1: First Name, Last Name, Birth Date - Desktop: 3 cols, Mobile: 1 col */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               <div>
-                <label className={labelClass}>{t.firstNameEng || "First Name"} <span className="text-red-500">*</span></label>
-                <input type="text" name="firstNameEng" value={formData.firstNameEng} onChange={handleChange} required placeholder="JOHN" className={`${inputClass} uppercase placeholder:text-gray-300`} />
+                <label className={labelClass}>{t.firstNameEng || "Имя (ENG)"} <span className="text-[#DE643B]">*</span></label>
+                <input type="text" name="firstNameEng" value={formData.firstNameEng} onChange={handleChange} required placeholder="Anna" className={`${inputClass} uppercase`} />
               </div>
               <div>
-                <label className={labelClass}>{t.lastNameEng || "Last Name"} <span className="text-red-500">*</span></label>
-                <input type="text" name="lastNameEng" value={formData.lastNameEng} onChange={handleChange} required placeholder="DOE" className={`${inputClass} uppercase placeholder:text-gray-300`} />
+                <label className={labelClass}>{t.lastNameEng || "Фамилия (ENG)"} <span className="text-[#DE643B]">*</span></label>
+                <input type="text" name="lastNameEng" value={formData.lastNameEng} onChange={handleChange} required placeholder="Gora" className={`${inputClass} uppercase`} />
               </div>
               <div>
-                <label className={labelClass}>{t.birthDate || "Birth Date"} <span className="text-red-500">*</span></label>
+                <label className={labelClass}>{t.birthDate || "Дата рождения"} <span className="text-[#DE643B]">*</span></label>
                 <DatePicker
                   selected={formData.birthDate ? new Date(formData.birthDate) : null}
                   onChange={(date: Date | null) => setFormData(prev => ({ ...prev, birthDate: date ? formatLocalDate(date) : '' }))}
                   maxDate={new Date()}
                   dateFormat="dd/MM/yyyy"
-                  placeholderText="DD/MM/YYYY"
+                  placeholderText="дд/мм/гггг"
                   showYearDropdown
                   showMonthDropdown
                   dropdownMode="select"
@@ -962,35 +949,35 @@ export default function InsuranceOrderModal({
                   scrollableYearDropdown
                   className={inputClass}
                   wrapperClassName="w-full"
-                  calendarClassName="!rounded-xl !shadow-xl !border-2 !border-gray-200"
+                  calendarClassName="!rounded-none !shadow-xl !border !border-[#E5E5E5]"
                   popperPlacement="top-start"
                   required
                 />
               </div>
             </div>
 
-            {/* Row 2: Passport #, Citizenship, City */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+            {/* Row 2: Passport #, Citizenship, City - Desktop: 3 cols, Mobile: 1 col */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               <div>
-                <label className={labelClass}>{t.passportNumber || "Passport #"} <span className="text-red-500">*</span></label>
-                <input type="text" name="passportNumber" value={formData.passportNumber} onChange={handleChange} required placeholder="AB123456" className={`${inputClass} placeholder:text-gray-300`} />
+                <label className={labelClass}>{t.passportNumber || "Номер паспорта"} <span className="text-[#DE643B]">*</span></label>
+                <input type="text" name="passportNumber" value={formData.passportNumber} onChange={handleChange} required placeholder="AV125632" className={inputClass} />
               </div>
               <div>
-                <label className={labelClass}>{t.citizenship || "Citizenship"} <span className="text-red-500">*</span></label>
+                <label className={labelClass}>{t.citizenship || "Гражданство"} <span className="text-[#DE643B]">*</span></label>
                 <Select
                   value={COUNTRIES.filter(c => c.code === formData.citizenship).map(c => ({ value: c.code, label: c.name }))[0] || null}
                   onChange={(option) => setFormData(prev => ({ ...prev, citizenship: option?.value || "" }))}
                   options={COUNTRIES.map(c => ({ value: c.code, label: c.name }))}
-                  placeholder={t.selectOption || "Search..."}
+                  placeholder={t.selectOption || "Выберите..."}
                   isClearable
                   isSearchable
                   menuPlacement="top"
                   classNames={{
-                    control: () => "!min-h-[52px] !border-2 !border-gray-200 !rounded-xl hover:!border-gray-300 !shadow-none",
-                    menu: () => "!rounded-xl !shadow-xl !border-2 !border-gray-200 !z-50",
+                    control: () => "!min-h-[46px] !border !border-[#E5E5E5] !rounded-none hover:!border-[#ABA2A5] !shadow-none",
+                    menu: () => "!rounded-none !shadow-xl !border !border-[#E5E5E5] !z-50",
                     option: ({ isFocused, isSelected }) => 
-                      `!py-2.5 !px-3 ${isSelected ? "!bg-red-500 !text-white" : isFocused ? "!bg-red-50" : ""}`,
-                    placeholder: () => "!text-gray-400",
+                      `!py-2.5 !px-3 ${isSelected ? "!bg-[#DE643B] !text-white" : isFocused ? "!bg-[#F4EFF3]" : ""}`,
+                    placeholder: () => "!text-[#ABA2A5]",
                     input: () => "!text-base",
                     singleValue: () => "!text-base",
                   }}
@@ -1000,21 +987,21 @@ export default function InsuranceOrderModal({
                 />
               </div>
               <div>
-                <label className={labelClass}>{t.cityInGeorgia || "City in Georgia"} <span className="text-red-500">*</span></label>
+                <label className={labelClass}>{t.cityInGeorgia || "Город в Грузии (местоположение)"} <span className="text-[#DE643B]">*</span></label>
                 <Select
                   value={formData.city ? { value: formData.city, label: formData.city } : null}
                   onChange={(option) => setFormData(prev => ({ ...prev, city: option?.value || "" }))}
                   options={GEORGIAN_CITIES.map(city => ({ value: city, label: city }))}
-                  placeholder={t.selectOption || "Search..."}
+                  placeholder={t.selectOption || "Выберите..."}
                   isClearable
                   isSearchable
                   menuPlacement="top"
                   classNames={{
-                    control: () => "!min-h-[52px] !border-2 !border-gray-200 !rounded-xl hover:!border-gray-300 !shadow-none",
-                    menu: () => "!rounded-xl !shadow-xl !border-2 !border-gray-200 !z-50",
+                    control: () => "!min-h-[46px] !border !border-[#E5E5E5] !rounded-none hover:!border-[#ABA2A5] !shadow-none",
+                    menu: () => "!rounded-none !shadow-xl !border !border-[#E5E5E5] !z-50",
                     option: ({ isFocused, isSelected }) => 
-                      `!py-2.5 !px-3 ${isSelected ? "!bg-red-500 !text-white" : isFocused ? "!bg-red-50" : ""}`,
-                    placeholder: () => "!text-gray-400",
+                      `!py-2.5 !px-3 ${isSelected ? "!bg-[#DE643B] !text-white" : isFocused ? "!bg-[#F4EFF3]" : ""}`,
+                    placeholder: () => "!text-[#ABA2A5]",
                     input: () => "!text-base",
                     singleValue: () => "!text-base",
                   }}
@@ -1025,27 +1012,27 @@ export default function InsuranceOrderModal({
               </div>
             </div>
 
-            {/* Row 3: Phone with country code, Email */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+            {/* Row 3: Phone with country code, Email - Desktop: 2 cols, Mobile: 1 col */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div>
-                <label className={labelClass}>{t.mobileNumber || "Phone"} <span className="text-red-500">*</span></label>
+                <label className={labelClass}>{t.mobileNumber || "Мобильный номер"} <span className="text-[#DE643B]">*</span></label>
                 <PhoneInput
                   country="ge"
                   value={formData.phone}
                   onChange={(phone) => setFormData(prev => ({ ...prev, phone }))}
-                  inputClass="!w-full !h-[52px] !text-base !border-2 !border-gray-200 !rounded-xl !pl-14 focus:!ring-2 focus:!ring-red-500/20 focus:!border-red-500"
-                  buttonClass="!border-2 !border-gray-200 !rounded-l-xl !bg-gray-50 hover:!bg-gray-100 !h-[52px] !w-12"
+                  inputClass="!w-full !h-[46px] !text-base !border !border-[#E5E5E5] !rounded-none !pl-14 focus:!ring-1 focus:!ring-[#DE643B]/20 focus:!border-[#DE643B]"
+                  buttonClass="!border !border-[#E5E5E5] !rounded-none !bg-white hover:!bg-[#F4EFF3] !h-[46px] !w-12"
                   containerClass="!w-full"
-                  dropdownClass="!rounded-xl !shadow-xl !border-2 !border-gray-200 !bottom-full !top-auto !mb-1"
-                  searchClass="!rounded-lg !border-gray-200 !mx-2 !my-2"
+                  dropdownClass="!rounded-none !shadow-xl !border !border-[#E5E5E5] !bottom-full !top-auto !mb-1"
+                  searchClass="!rounded-none !border-[#E5E5E5] !mx-2 !my-2"
                   enableSearch
                   searchPlaceholder="Search..."
                   preferredCountries={["ge", "ru", "ua", "tr", "il", "us", "de"]}
-                  inputProps={{ required: true }}
+                  inputProps={{ required: true, placeholder: "+995 Телефон" }}
                 />
               </div>
               <div>
-                <label className={labelClass}>{t.email || "Email"} <span className="text-red-500">*</span></label>
+                <label className={labelClass}>{t.email || "Электронная почта"} <span className="text-[#DE643B]">*</span></label>
                 <input 
                   type="email" 
                   name="email" 
@@ -1053,68 +1040,92 @@ export default function InsuranceOrderModal({
                   onChange={handleChange} 
                   required 
                   placeholder="email@example.com" 
-                  className={`${inputClass} placeholder:text-gray-300 ${emailError ? "!border-red-500 !ring-2 !ring-red-500/20" : ""}`} 
+                  className={`${inputClass} ${emailError ? "!border-[#DE643B]" : ""}`} 
                 />
-                {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
+                {emailError && <p className="text-[#DE643B] text-sm mt-1">{emailError}</p>}
               </div>
             </div>
           </div>
           </div>
 
+          {/* Price Section */}
+          <div className="bg-white border border-[#E5E5E5] p-5 mb-5">
+            <h3 className="text-base font-bold text-[#2D1D38] mb-3">
+              3. {t.policyPrice || "Цена полиса"}
+            </h3>
+            <div className="text-center py-3">
+              <span className="font-bold text-2xl text-[#DE643B]">
+                {calculatedPrice} GEL
+              </span>
+              {isDaily && numberOfDays > 0 && <span className="text-sm font-normal text-[#ABA2A5] ml-2">({numberOfDays} дней)</span>}
+              {isMonthly && <span className="text-sm font-normal text-[#ABA2A5] ml-2">({paymentOption === "quarterly" ? "3" : "12"} мес.)</span>}
+            </div>
+          </div>
+
           {/* Status Messages */}
           {submitStatus === "success" && (
-            <div className="bg-green-50 text-green-700 text-base px-5 py-4 rounded-xl flex items-center gap-3 border-2 border-green-200 mb-5">
+            <div className="bg-green-50 text-green-700 text-base px-5 py-4 flex items-center gap-3 border border-green-200 mb-5">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              {t.success || "Order submitted!"}
+              {t.success || "Заявка отправлена!"}
             </div>
           )}
           
           {submitStatus === "error" && (
-            <div className="bg-red-50 text-red-700 text-base px-5 py-4 rounded-xl border-2 border-red-200 mb-5">
-              {t.error || "Error. Please try again."}
+            <div className="bg-red-50 text-red-700 text-base px-5 py-4 border border-red-200 mb-5">
+              {t.error || "Ошибка. Попробуйте снова."}
             </div>
           )}
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full py-4 bg-linear-to-r from-red-600 to-red-500 text-white font-bold text-lg rounded-2xl shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/40 active:scale-[0.98] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
-          >
-            {isSubmitting ? (
-              <>
-                <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
-                {t.submitting || "Submitting..."}
-              </>
-            ) : (
-              t.submit || "Submit Order"
-            )}
-          </button>
+          {/* Submit Button + Privacy Text */}
+          <div className="flex flex-col lg:flex-row items-center gap-4">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full lg:w-auto px-8 py-3.5 bg-[#DE643B] text-white font-medium text-base rounded-full hover:bg-[#c55530] active:scale-[0.98] transition-all disabled:opacity-50 flex items-center justify-center gap-3"
+            >
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                  {t.submitting || "Отправка..."}
+                </>
+              ) : (
+                <>
+                  {t.submit || "Отправить заявку"}
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </>
+              )}
+            </button>
+            <p className="text-xs text-[#ABA2A5] text-center lg:text-left">
+              Нажимая кнопку, вы соглашаетесь с<br className="lg:hidden" /> политикой конфиденциальности
+            </p>
+          </div>
         </form>
         )}
 
         {/* Payment Selection Step */}
         {currentStep === "payment" && (
-          <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-gray-50/50">
+          <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-5 lg:px-8 py-5 bg-[#F4F3EE]">
             <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{(t as Record<string, string>).orderReceived || "Order Received!"}</h3>
-              <p className="text-gray-600">{(t as Record<string, string>).selectPaymentMethod || "Please select your payment method"}</p>
+              <h3 className="text-xl font-bold text-[#2D1D38] mb-2">{(t as Record<string, string>).orderReceived || "Order Received!"}</h3>
+              <p className="text-[#ABA2A5]">{(t as Record<string, string>).selectPaymentMethod || "Please select your payment method"}</p>
             </div>
 
             {/* Price Summary */}
-            <div className="bg-linear-to-r from-red-600 to-red-500 rounded-2xl px-5 py-4 flex items-center justify-between mb-6 shadow-lg shadow-red-500/20">
-              <span className="text-base font-medium text-white/90">{t.policyPrice || "Total Price"}</span>
-              <span className="font-bold text-2xl text-white">{calculatedPrice} GEL</span>
+            <div className="bg-white border border-[#E5E5E5] px-5 py-4 flex items-center justify-between mb-6">
+              <span className="text-base font-medium text-[#2D1D38]">{t.policyPrice || "Цена полиса"}</span>
+              <span className="font-bold text-2xl text-[#DE643B]">{calculatedPrice} GEL</span>
             </div>
 
             {/* Payment Options */}
@@ -1123,38 +1134,38 @@ export default function InsuranceOrderModal({
               <button
                 type="button"
                 onClick={() => handlePaymentMethodSelect("card")}
-                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-red-500 hover:shadow-lg group"
+                className="w-full bg-white p-5 border border-[#E5E5E5] cursor-pointer text-left transition-all hover:border-[#DE643B] group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 bg-[#DE643B] flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <p className="text-base font-bold text-gray-800 group-hover:text-red-600 transition-colors">{(t as Record<string, string>).cardPayment || "Card Payment"}</p>
-                      <span className="text-xs font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full">✓ {(t as Record<string, string>).recommended || "Recommended"}</span>
+                      <p className="text-base font-bold text-[#2D1D38] group-hover:text-[#DE643B] transition-colors">{(t as Record<string, string>).cardPayment || "Card Payment"}</p>
+                      <span className="text-xs font-medium text-green-600 bg-green-100 px-2 py-0.5">✓ {(t as Record<string, string>).recommended || "Recommended"}</span>
                     </div>
-                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).cardPaymentDesc || "Pay securely with Visa, Mastercard, or Georgian cards"}</p>
+                    <p className="text-sm text-[#ABA2A5] mt-1">{(t as Record<string, string>).cardPaymentDesc || "Pay securely with Visa, Mastercard, or Georgian cards"}</p>
                     {/* Payment Method Logos */}
                     <div className="flex gap-1.5 mt-2 flex-wrap">
-                      <div className="bg-blue-50 border border-blue-200 rounded px-2 py-0.5">
+                      <div className="bg-blue-50 border border-blue-200 px-2 py-0.5">
                         <span className="text-blue-700 font-bold text-xs">VISA</span>
                       </div>
-                      <div className="bg-orange-50 border border-orange-200 rounded px-2 py-0.5 flex items-center gap-0.5">
+                      <div className="bg-orange-50 border border-orange-200 px-2 py-0.5 flex items-center gap-0.5">
                         <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                         <div className="w-3 h-3 bg-yellow-400 rounded-full -ml-1.5"></div>
                       </div>
-                      <div className="bg-green-50 border border-green-200 rounded px-2 py-0.5">
+                      <div className="bg-green-50 border border-green-200 px-2 py-0.5">
                         <span className="text-green-700 text-xs font-medium">BOG</span>
                       </div>
-                      <div className="bg-purple-50 border border-purple-200 rounded px-2 py-0.5">
+                      <div className="bg-purple-50 border border-purple-200 px-2 py-0.5">
                         <span className="text-purple-700 text-xs font-medium">TBC</span>
                       </div>
                     </div>
                   </div>
-                  <svg className="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-[#ABA2A5] group-hover:text-[#DE643B] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -1164,19 +1175,19 @@ export default function InsuranceOrderModal({
               <button
                 type="button"
                 onClick={() => handlePaymentMethodSelect("bank")}
-                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-red-500 hover:shadow-lg group"
+                className="w-full bg-white p-5 border border-[#E5E5E5] cursor-pointer text-left transition-all hover:border-[#DE643B] group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
-                    <svg className="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-14 h-14 bg-[#F4F3EE] flex items-center justify-center group-hover:bg-[#DE643B]/10 transition-colors">
+                    <svg className="w-7 h-7 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-base font-bold text-gray-800">{(t as Record<string, string>).bankTransfer || "Bank Transfer"}</p>
-                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).bankTransferDesc || "For those with a Georgian bank account"}</p>
+                    <p className="text-base font-bold text-[#2D1D38]">{(t as Record<string, string>).bankTransfer || "Bank Transfer"}</p>
+                    <p className="text-sm text-[#ABA2A5] mt-1">{(t as Record<string, string>).bankTransferDesc || "For those with a Georgian bank account"}</p>
                   </div>
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#ABA2A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -1186,19 +1197,19 @@ export default function InsuranceOrderModal({
               <button
                 type="button"
                 onClick={() => handlePaymentMethodSelect("korona")}
-                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-orange-500 hover:shadow-lg group"
+                className="w-full bg-white p-5 border border-[#E5E5E5] cursor-pointer text-left transition-all hover:border-[#DE643B] group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                    <svg className="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-14 h-14 bg-[#F4F3EE] flex items-center justify-center group-hover:bg-[#DE643B]/10 transition-colors">
+                    <svg className="w-7 h-7 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-base font-bold text-gray-800">{(t as Record<string, string>).koronaPay || "Korona Pay"}</p>
-                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).koronaPayDesc || "Transfer from Russia"}</p>
+                    <p className="text-base font-bold text-[#2D1D38]">{(t as Record<string, string>).koronaPay || "Korona Pay"}</p>
+                    <p className="text-sm text-[#ABA2A5] mt-1">{(t as Record<string, string>).koronaPayDesc || "Transfer from Russia"}</p>
                   </div>
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#ABA2A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -1208,17 +1219,17 @@ export default function InsuranceOrderModal({
               <button
                 type="button"
                 onClick={() => handlePaymentMethodSelect("crypto")}
-                className="w-full bg-white rounded-2xl p-5 border-2 border-gray-200 cursor-pointer text-left transition-all hover:border-yellow-500 hover:shadow-lg group"
+                className="w-full bg-white p-5 border border-[#E5E5E5] cursor-pointer text-left transition-all hover:border-[#DE643B] group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center group-hover:bg-yellow-200 transition-colors">
-                    <span className="text-2xl text-yellow-600">₿</span>
+                  <div className="w-14 h-14 bg-[#F4F3EE] flex items-center justify-center group-hover:bg-[#DE643B]/10 transition-colors">
+                    <span className="text-2xl text-[#DE643B]">₿</span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-base font-bold text-gray-800">{(t as Record<string, string>).cryptoPayment || "Crypto (USDT TRC-20)"}</p>
-                    <p className="text-sm text-gray-500 mt-1">{(t as Record<string, string>).cryptoPaymentDesc || "Pay with USDT on Tron network"}</p>
+                    <p className="text-base font-bold text-[#2D1D38]">{(t as Record<string, string>).cryptoPayment || "Crypto (USDT TRC-20)"}</p>
+                    <p className="text-sm text-[#ABA2A5] mt-1">{(t as Record<string, string>).cryptoPaymentDesc || "Pay with USDT on Tron network"}</p>
                   </div>
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[#ABA2A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -1229,47 +1240,47 @@ export default function InsuranceOrderModal({
 
         {/* Confirmation Step */}
         {currentStep === "confirmation" && (
-          <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-gray-50/50">
+          <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-[#F4F3EE]">
             {/* Bank Transfer Confirmation */}
             {selectedPaymentMethod === "bank" && (
               <div className="flex flex-col gap-6">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 bg-[#DE643B]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{(t as Record<string, string>).bankTransferTitle || "Bank Transfer Details"}</h3>
-                  <p className="text-gray-600">{(t as Record<string, string>).bankTransferInstructions || "Please transfer the amount to the following account"}</p>
+                  <h3 className="text-xl font-bold text-[#2D1D38] mb-2">{(t as Record<string, string>).bankTransferTitle || "Bank Transfer Details"}</h3>
+                  <p className="text-[#ABA2A5]">{(t as Record<string, string>).bankTransferInstructions || "Please transfer the amount to the following account"}</p>
                 </div>
 
                 {/* Price */}
-                <div className="bg-linear-to-r from-red-600 to-red-500 rounded-2xl px-5 py-4 flex items-center justify-between shadow-lg shadow-red-500/20">
+                <div className="bg-[#DE643B] px-5 py-4 flex items-center justify-between">
                   <span className="text-base font-medium text-white/90">{(t as Record<string, string>).amountToPay || "Amount to Pay"}</span>
                   <span className="font-bold text-2xl text-white">{calculatedPrice} GEL</span>
                 </div>
 
                 {/* Bank Details Card */}
-                <div className="bg-white rounded-2xl p-5 border-2 border-gray-200">
+                <div className="bg-white p-5 border border-[#E5E5E5]">
                   <div className="mb-4">
-                    <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).bankName || "Bank"}</p>
-                    <p className="font-semibold text-gray-800">Bank of Georgia</p>
+                    <p className="text-sm text-[#ABA2A5] mb-1">{(t as Record<string, string>).bankName || "Bank"}</p>
+                    <p className="font-semibold text-[#2D1D38]">Bank of Georgia</p>
                   </div>
                   <div className="mb-4">
-                    <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).beneficiary || "Beneficiary"}</p>
-                    <p className="font-semibold text-gray-800">Legal Residency Group</p>
+                    <p className="text-sm text-[#ABA2A5] mb-1">{(t as Record<string, string>).beneficiary || "Beneficiary"}</p>
+                    <p className="font-semibold text-[#2D1D38]">Legal Residency Group</p>
                   </div>
                   <div className={orderId ? "mb-4" : ""}>
-                    <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).iban || "IBAN"}</p>
+                    <p className="text-sm text-[#ABA2A5] mb-1">{(t as Record<string, string>).iban || "IBAN"}</p>
                     <div className="flex items-center gap-2">
-                      <p className="font-mono font-semibold text-gray-800 text-sm">GE26BG0000000611265727</p>
+                      <p className="font-mono font-semibold text-[#2D1D38] text-sm">GE26BG0000000611265727</p>
                       <button
                         type="button"
                         onClick={() => navigator.clipboard.writeText("GE26BG0000000611265727")}
-                        className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
+                        className="p-1.5 hover:bg-[#F4F3EE] transition-colors"
                         title="Copy"
                       >
-                        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-[#ABA2A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                         </svg>
                       </button>
@@ -1277,16 +1288,16 @@ export default function InsuranceOrderModal({
                   </div>
                   {orderId && (
                     <div>
-                      <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).reference || "Reference"}</p>
+                      <p className="text-sm text-[#ABA2A5] mb-1">{(t as Record<string, string>).reference || "Reference"}</p>
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-gray-800">Order #{orderId}</p>
+                        <p className="font-semibold text-[#2D1D38]">Order #{orderId}</p>
                         <button
                           type="button"
                           onClick={() => navigator.clipboard.writeText(orderId)}
-                          className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
+                          className="p-1.5 hover:bg-[#F4F3EE] transition-colors"
                           title="Copy"
                         >
-                          <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-[#ABA2A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                           </svg>
                         </button>
@@ -1295,14 +1306,14 @@ export default function InsuranceOrderModal({
                   )}
                 </div>
 
-                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl px-5 py-4">
-                  <p className="text-yellow-800 text-sm">
+                <div className="bg-[#DE643B]/10 border border-[#DE643B]/20 px-5 py-4">
+                  <p className="text-[#DE643B] text-sm">
                     <strong>{(t as Record<string, string>).important || "Important"}:</strong> {(t as Record<string, string>).bankTransferNote || "Please include your order number in the transfer description. Your policy will be activated after we confirm the payment."}
                   </p>
                 </div>
 
                 {/* Other Bank Note */}
-                <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl px-5 py-4">
+                <div className="bg-blue-50 border border-blue-200 px-5 py-4">
                   <p className="text-blue-800 text-sm flex items-start gap-2">
                     <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -1314,7 +1325,7 @@ export default function InsuranceOrderModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="w-full py-4 bg-linear-to-r from-red-600 to-red-500 text-white font-bold text-lg rounded-2xl shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/40 active:scale-[0.98] transition-all"
+                  className="w-full py-4 bg-[#DE643B] text-white font-bold text-lg rounded-full hover:bg-[#c55632] active:scale-[0.98] transition-all"
                 >
                   {(t as Record<string, string>).done || "Done"}
                 </button>
@@ -1325,22 +1336,22 @@ export default function InsuranceOrderModal({
             {selectedPaymentMethod === "korona" && (
               <div className="flex flex-col gap-6">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 bg-[#DE643B]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{(t as Record<string, string>).koronaPayTitle || "Korona Pay Transfer"}</h3>
-                  <p className="text-gray-600">{(t as Record<string, string>).koronaPayInstructions || "Our operator will contact you shortly"}</p>
+                  <h3 className="text-xl font-bold text-[#2D1D38] mb-2">{(t as Record<string, string>).koronaPayTitle || "Korona Pay Transfer"}</h3>
+                  <p className="text-[#ABA2A5]">{(t as Record<string, string>).koronaPayInstructions || "Our operator will contact you shortly"}</p>
                 </div>
 
                 {/* Price */}
-                <div className="bg-linear-to-r from-orange-500 to-orange-400 rounded-2xl px-5 py-4 flex items-center justify-between shadow-lg shadow-orange-500/20">
+                <div className="bg-[#DE643B] px-5 py-4 flex items-center justify-between">
                   <span className="text-base font-medium text-white/90">{(t as Record<string, string>).amountToPay || "Amount to Pay"}</span>
                   <span className="font-bold text-2xl text-white">{calculatedPrice} GEL</span>
                 </div>
 
-                <div className="bg-white rounded-2xl p-5 border-2 border-gray-200">
+                <div className="bg-white p-5 border border-[#E5E5E5]">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shrink-0">
                       <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1348,13 +1359,13 @@ export default function InsuranceOrderModal({
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-800 mb-1">{(t as Record<string, string>).orderConfirmed || "Order Confirmed"}</p>
-                      <p className="text-sm text-gray-600">{(t as Record<string, string>).koronaPayContactNote || "Our operator will contact you via WhatsApp or Telegram to provide Korona Pay transfer details."}</p>
+                      <p className="font-semibold text-[#2D1D38] mb-1">{(t as Record<string, string>).orderConfirmed || "Order Confirmed"}</p>
+                      <p className="text-sm text-[#ABA2A5]">{(t as Record<string, string>).koronaPayContactNote || "Our operator will contact you via WhatsApp or Telegram to provide Korona Pay transfer details."}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl px-5 py-4">
+                <div className="bg-blue-50 border border-blue-200 px-5 py-4">
                   <p className="text-blue-800 text-sm">
                     <strong>{(t as Record<string, string>).note || "Note"}:</strong> {(t as Record<string, string>).koronaPayNote || "Please make sure your WhatsApp or Telegram is available on the phone number you provided."}
                   </p>
@@ -1363,7 +1374,7 @@ export default function InsuranceOrderModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="w-full py-4 bg-linear-to-r from-orange-500 to-orange-400 text-white font-bold text-lg rounded-2xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 active:scale-[0.98] transition-all"
+                  className="w-full py-4 bg-[#DE643B] text-white font-bold text-lg rounded-full hover:bg-[#c55632] active:scale-[0.98] transition-all"
                 >
                   {(t as Record<string, string>).done || "Done"}
                 </button>
@@ -1374,47 +1385,47 @@ export default function InsuranceOrderModal({
             {selectedPaymentMethod === "crypto" && (
               <div className="flex flex-col gap-6">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl text-yellow-600">₿</span>
+                  <div className="w-16 h-16 bg-[#DE643B]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl text-[#DE643B]">₿</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{(t as Record<string, string>).cryptoPaymentTitle || "Crypto Payment (USDT TRC-20)"}</h3>
-                  <p className="text-gray-600">{(t as Record<string, string>).cryptoPaymentInstructions || "Please transfer USDT to the following TRC-20 wallet address"}</p>
+                  <h3 className="text-xl font-bold text-[#2D1D38] mb-2">{(t as Record<string, string>).cryptoPaymentTitle || "Crypto Payment (USDT TRC-20)"}</h3>
+                  <p className="text-[#ABA2A5]">{(t as Record<string, string>).cryptoPaymentInstructions || "Please transfer USDT to the following TRC-20 wallet address"}</p>
                 </div>
 
                 {/* Price */}
-                <div className="bg-linear-to-r from-yellow-500 to-yellow-400 rounded-2xl px-5 py-4 flex items-center justify-between shadow-lg shadow-yellow-500/20">
+                <div className="bg-[#DE643B] px-5 py-4 flex items-center justify-between">
                   <span className="text-base font-medium text-white/90">{(t as Record<string, string>).amountToPay || "Amount to Pay"}</span>
                   <span className="font-bold text-2xl text-white">{calculatedPrice} GEL</span>
                 </div>
 
                 {/* Wallet Address */}
-                <div className="bg-white rounded-2xl p-5 border-2 border-gray-200">
-                  <p className="text-sm text-gray-500 mb-2">{(t as Record<string, string>).walletAddress || "TRC-20 Wallet Address"}</p>
-                  <div className="flex items-center gap-2 bg-gray-50 rounded-xl p-3">
-                    <p className="font-mono text-sm text-gray-800 break-all flex-1">TFWLbF4gUBqDGhsQdMeQHWAqLNJNuVJqGX</p>
+                <div className="bg-white p-5 border border-[#E5E5E5]">
+                  <p className="text-sm text-[#ABA2A5] mb-2">{(t as Record<string, string>).walletAddress || "TRC-20 Wallet Address"}</p>
+                  <div className="flex items-center gap-2 bg-[#F4F3EE] p-3">
+                    <p className="font-mono text-sm text-[#2D1D38] break-all flex-1">TFWLbF4gUBqDGhsQdMeQHWAqLNJNuVJqGX</p>
                     <button
                       type="button"
                       onClick={() => navigator.clipboard.writeText("TFWLbF4gUBqDGhsQdMeQHWAqLNJNuVJqGX")}
-                      className="p-2 hover:bg-gray-200 rounded-lg transition-colors shrink-0"
+                      className="p-2 hover:bg-[#E5E5E5] transition-colors shrink-0"
                       title="Copy"
                     >
-                      <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-[#ABA2A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                     </button>
                   </div>
                   {orderId && (
                     <div className="mt-4">
-                      <p className="text-sm text-gray-500 mb-1">{(t as Record<string, string>).reference || "Reference"}</p>
+                      <p className="text-sm text-[#ABA2A5] mb-1">{(t as Record<string, string>).reference || "Reference"}</p>
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-gray-800">Order #{orderId}</p>
+                        <p className="font-semibold text-[#2D1D38]">Order #{orderId}</p>
                         <button
                           type="button"
                           onClick={() => navigator.clipboard.writeText(orderId)}
-                          className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
+                          className="p-1.5 hover:bg-[#F4F3EE] transition-colors"
                           title="Copy"
                         >
-                          <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-[#ABA2A5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                           </svg>
                         </button>
@@ -1423,8 +1434,8 @@ export default function InsuranceOrderModal({
                   )}
                 </div>
 
-                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl px-5 py-4">
-                  <p className="text-yellow-800 text-sm">
+                <div className="bg-[#DE643B]/10 border border-[#DE643B]/20 px-5 py-4">
+                  <p className="text-[#DE643B] text-sm">
                     <strong>{(t as Record<string, string>).important || "Important"}:</strong> {(t as Record<string, string>).cryptoPaymentNote || "Send only USDT on the TRC-20 network. Sending other tokens or using wrong network will result in loss of funds. After payment, please send a screenshot of the transaction to our WhatsApp or Telegram."}
                   </p>
                 </div>
@@ -1432,7 +1443,7 @@ export default function InsuranceOrderModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="w-full py-4 bg-linear-to-r from-yellow-500 to-yellow-400 text-white font-bold text-lg rounded-2xl shadow-lg shadow-yellow-500/30 hover:shadow-xl hover:shadow-yellow-500/40 active:scale-[0.98] transition-all"
+                  className="w-full py-4 bg-[#DE643B] text-white font-bold text-lg rounded-full hover:bg-[#c55632] active:scale-[0.98] transition-all"
                 >
                   {(t as Record<string, string>).done || "Done"}
                 </button>

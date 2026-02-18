@@ -85,67 +85,67 @@ function CoverageIcon({ icon }: { icon: string }) {
   switch (icon) {
     case "phone":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
       );
     case "emergency":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
         </svg>
       );
     case "hospital":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
         </svg>
       );
     case "ambulance":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       );
     case "dental":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       );
     case "plane":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
         </svg>
       );
     case "shield":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       );
     case "heart":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
       );
     case "home":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
         </svg>
       );
     case "dollar":
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       );
     default:
       return (
-        <svg width="20" height="20" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#DE643B" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
         </svg>
       );
@@ -417,211 +417,302 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
     return labels.perDay;
   };
 
+  // Category filter labels
+  const categoryLabels: Record<string, Record<Locale, string>> = {
+    tourist: {
+      ru: 'Туристическая страховка',
+      en: 'Tourist Insurance',
+      ka: 'ტურისტული დაზღვევა',
+      uk: 'Туристична страховка',
+      tr: 'Turist Sigortası',
+      he: 'ביטוח תיירים',
+      ar: 'تأمين السياح',
+    },
+    medical: {
+      ru: 'Медицинская страховка',
+      en: 'Medical Insurance',
+      ka: 'სამედიცინო დაზღვევა',
+      uk: 'Медична страховка',
+      tr: 'Sağlık Sigortası',
+      he: 'ביטוח רפואי',
+      ar: 'التأمين الطبي',
+    },
+    auto: {
+      ru: 'Автостраховка',
+      en: 'Auto Insurance',
+      ka: 'ავტო დაზღვევა',
+      uk: 'Автострахування',
+      tr: 'Kasko Sigortası',
+      he: 'ביטוח רכב',
+      ar: 'تأمين السيارات',
+    },
+  };
+
+  // Breadcrumb labels
+  const breadcrumbLabels: Record<string, Record<Locale, string>> = {
+    home: {
+      ru: 'Главная',
+      en: 'Home',
+      ka: 'მთავარი',
+      uk: 'Головна',
+      tr: 'Ana Sayfa',
+      he: 'בית',
+      ar: 'الرئيسية',
+    },
+    insurance: {
+      ru: 'Страховки',
+      en: 'Insurance',
+      ka: 'დაზღვევა',
+      uk: 'Страховки',
+      tr: 'Sigorta',
+      he: 'ביטוח',
+      ar: 'التأمين',
+    },
+  };
+
+  // Title parts
+  const titleParts: Record<string, Record<Locale, string>> = {
+    all: {
+      ru: 'Все ',
+      en: 'All ',
+      ka: 'ყველა ',
+      uk: 'Всі ',
+      tr: 'Tüm ',
+      he: 'כל ',
+      ar: 'جميع ',
+    },
+    insurance: {
+      ru: 'страховые',
+      en: 'insurance',
+      ka: 'სადაზღვეო',
+      uk: 'страхові',
+      tr: 'sigorta',
+      he: 'הביטוח',
+      ar: 'التأمين',
+    },
+    plans: {
+      ru: ' планы',
+      en: ' plans',
+      ka: ' გეგმები',
+      uk: ' плани',
+      tr: ' planları',
+      he: ' תוכניות',
+      ar: ' خطط',
+    },
+  };
+
   return (
-    <div className="w-full flex flex-col">
-      <Header locale={locale} dict={dict} />
-      <main className="main-content w-full flex flex-col items-center">
-        {/* Hero Section */}
-        <section className="relative w-full bg-linear-to-br from-red-600 via-red-700 to-slate-900 overflow-hidden" style={{ paddingTop: '120px', paddingBottom: '60px' }}>
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-[10%] w-72 h-72 bg-red-400/20 rounded-full blur-3xl" />
-            <div className="absolute top-40 right-[15%] w-96 h-96 bg-red-300/10 rounded-full blur-3xl" />
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[50px_50px]" />
-          </div>
-          <div className="relative z-10" style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }}>
-            <div className="text-center">
-              <Link href={`/${locale}`} className="inline-flex items-center gap-2 text-red-200/70 hover:text-white transition-colors text-sm" style={{ marginBottom: '1rem' }}>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                {dict.common.backToHome}
-              </Link>
-              <h1 className="text-3xl lg:text-5xl font-bold text-white">
-                {insurancePage.title}
+    <div className="w-full flex flex-col bg-[#FAFAFA]">
+      <Header locale={locale} dict={dict} darkText={true} />
+      <main className="main-content w-full flex flex-col items-center" style={{ paddingTop: '90px' }}>
+        {/* Plans Section */}
+        <section className="w-full bg-[#F4F3EE]" style={{ paddingTop: '50px', paddingBottom: '80px' }}>
+          <div className="px-[20px] lg:px-[310px]" style={{ maxWidth: '1920px', marginLeft: 'auto', marginRight: 'auto' }}>
+            {/* Title Section */}
+            <div className="flex flex-col" style={{ gap: '20px', marginBottom: '40px' }}>
+              {/* Breadcrumb */}
+              <div className="font-medium text-[16px]" style={{ lineHeight: 1.3 }}>
+                <Link href={`/${locale}`} className="text-[#ABA2A5] hover:text-[#2D1D38] transition-colors">
+                  {breadcrumbLabels.home[locale]}
+                </Link>
+                <span className="text-[#2D1D38]"> / {breadcrumbLabels.insurance[locale]}</span>
+              </div>
+              
+              {/* Main Title */}
+              <h1 className="font-bold text-[#2D1D38] text-[34px] md:text-[55px] leading-[1.3] md:leading-[0.9]">
+                {titleParts.all[locale]}
+                <span className="text-[#DE643B]">{titleParts.insurance[locale]}</span>
+                {titleParts.plans[locale]}
               </h1>
             </div>
-          </div>
-        </section>
 
-        {/* Category Filter */}
-        <section className="w-full bg-white border-b border-gray-100" style={{ paddingTop: '24px', paddingBottom: '24px' }}>
-          <div style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }}>
-            <div className="flex flex-wrap justify-center gap-3">
+            {/* Category Filters */}
+            <div className="flex flex-col lg:flex-row lg:flex-wrap" style={{ gap: '20px', marginBottom: '40px' }}>
               <button
                 onClick={() => setActiveCategory("main")}
-                className={`px-6 py-2.5 rounded-full font-medium transition-all duration-200 flex items-center gap-2 ${
+                className={`font-medium text-[16px] transition-all duration-200 w-full lg:w-auto ${
                   activeCategory === "main"
-                    ? "bg-red-600 text-white shadow-lg shadow-red-600/30"
-                    : "bg-gray-100 text-primary-grey hover:bg-gray-200"
+                    ? "bg-[#E6CFE3] text-[#2D1D38]"
+                    : "bg-transparent border border-[#E6CFE3] text-[#ABA2A5] hover:text-[#2D1D38]"
                 }`}
+                style={{ padding: '15px 25px', lineHeight: 1.3 }}
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                {insurancePage.categories.main}
+                {categoryLabels.tourist[locale]}
               </button>
               <button
                 onClick={() => setActiveCategory("longterm")}
-                className={`px-6 py-2.5 rounded-full font-medium transition-all duration-200 flex items-center gap-2 ${
+                className={`font-medium text-[16px] transition-all duration-200 w-full lg:w-auto ${
                   activeCategory === "longterm"
-                    ? "bg-red-600 text-white shadow-lg shadow-red-600/30"
-                    : "bg-gray-100 text-primary-grey hover:bg-gray-200"
+                    ? "bg-[#E6CFE3] text-[#2D1D38]"
+                    : "bg-transparent border border-[#E6CFE3] text-[#ABA2A5] hover:text-[#2D1D38]"
                 }`}
+                style={{ padding: '15px 25px', lineHeight: 1.3 }}
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-                {insurancePage.categories.longterm}
+                {categoryLabels.medical[locale]}
               </button>
               <Link
                 href={`/${locale}/auto-insurance`}
-                className="px-6 py-2.5 rounded-full font-medium transition-all duration-200 bg-linear-to-r from-red-100 to-red-50 text-red-700 hover:from-red-200 hover:to-red-100 flex items-center gap-2"
+                className="font-medium text-[16px] bg-transparent border border-[#E6CFE3] text-[#ABA2A5] hover:text-[#2D1D38] transition-all duration-200 w-full lg:w-auto text-center"
+                style={{ padding: '15px 25px', lineHeight: 1.3 }}
               >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
-                </svg>
-                {insurancePage.categories?.auto || "ОСАГО"}
+                {categoryLabels.auto[locale]}
               </Link>
             </div>
-          </div>
-        </section>
 
-        {/* Plans Grid */}
-        <section className="w-full bg-linear-to-b from-slate-50 via-red-50/30 to-white" style={{ paddingTop: '48px', paddingBottom: '64px' }}>
-          <div style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }}>
+            {/* Plans Grid */}
             {loading ? (
               <div className="flex justify-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#DE643B]"></div>
               </div>
             ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPlans.map((plan) => {
-                const translation = getPlanTranslation(plan);
-                const features = plan.features || [];
-                const hasDetails = features.length > 0 || (plan.coverageItems && plan.coverageItems.length > 0);
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style={{ gap: '20px' }}>
+                {filteredPlans.map((plan) => {
+                  const translation = getPlanTranslation(plan);
+                  const features = plan.features || [];
+                  const hasDetails = features.length > 0 || (plan.coverageItems && plan.coverageItems.length > 0);
 
-                return (
-                  <div
-                    key={plan.id}
-                    className={`group relative bg-white rounded-2xl border transition-all duration-300 hover:shadow-xl flex flex-col ${
-                      plan.isFavorite
-                        ? "border-red-500 shadow-lg shadow-red-500/10"
-                        : "border-gray-200 hover:border-gray-300"
-                    }`}
-                  >
-                    {plan.isFavorite && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-semibold py-1.5 px-4 rounded-full whitespace-nowrap">
-                        {labels.recommend}
-                      </div>
-                    )}
-
-                    <div className={`p-6 flex flex-col grow ${plan.isFavorite ? "pt-8" : ""}`}>
-                      {/* Legal Badge */}
-                      {plan.isLegalCompliant && (
-                        <div style={{ textAlign: 'center', marginBottom: '8px' }}>
-                          <span style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '4px',
-                            padding: '4px 10px',
-                            borderRadius: '20px',
-                            fontSize: '10px',
-                            fontWeight: 600,
-                            background: 'linear-gradient(to right, #10b981, #14b8a6)',
-                            color: 'white',
-                          }}>
-                            <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
-                            {labels.legalBadge}
+                  return (
+                    <div
+                      key={plan.id}
+                      className={`flex flex-col ${
+                        plan.isFavorite
+                          ? "border-2 border-[#2D1D38] rounded-[24px]"
+                          : "bg-[#2D1D38] rounded-[16px]"
+                      }`}
+                    >
+                      {/* Favorite Badge */}
+                      {plan.isFavorite && (
+                        <div 
+                          className="bg-[#2D1D38] flex items-center justify-center rounded-tl-[24px] rounded-tr-[24px]"
+                          style={{ padding: '8px 0' }}
+                        >
+                          <span className="font-medium text-[16px] text-[#FAFAFA]" style={{ lineHeight: 1.3 }}>
+                            {labels.recommend.replace('★ ', '')}
                           </span>
                         </div>
                       )}
-
-                      {/* Plan Name & Description */}
-                      <div style={{ marginBottom: '16px' }}>
-                        <h3 className="text-xl font-bold text-primary-black text-center" style={{ marginBottom: '8px' }}>
-                          {translation.name}
-                        </h3>
-                        <p className="text-primary-grey text-sm text-center">
-                          {translation.subtitle}
-                        </p>
-                      </div>
-
-                      {/* Price */}
-                      <div className="text-center" style={{ marginBottom: '24px' }}>
-                        {plan.originalPrice ? (
-                          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
-                            <span style={{ fontSize: '13px', color: '#9ca3af', textDecoration: 'line-through' }}>{plan.originalPrice} GEL</span>
-                            <div className="flex items-baseline justify-center gap-1 flex-wrap">
-                              <span className="text-4xl font-bold text-red-600">{plan.price}</span>
-                              <span className="text-primary-grey">GEL/{getPeriodLabel(plan)}</span>
+                      
+                      {/* Card Content */}
+                      <div 
+                        className={`bg-[#FAFAFA] flex flex-col h-full ${
+                          plan.isFavorite 
+                            ? "rounded-bl-[24px] rounded-br-[24px]" 
+                            : "rounded-[16px]"
+                        }`}
+                        style={{ padding: '20px 20px 25px', gap: '25px' }}
+                      >
+                        {/* Title Section */}
+                        <div className="flex flex-col" style={{ gap: '25px' }}>
+                          {/* Plan Info */}
+                          <div className="flex flex-col" style={{ gap: '15px' }}>
+                            {/* Plan Name */}
+                            <h3 className="font-bold text-[34px] text-[#2D1D38]" style={{ lineHeight: 1.3 }}>
+                              {translation.name}
+                            </h3>
+                            
+                            {/* Subtitle */}
+                            <p 
+                              className="font-medium text-[16px] text-[#2D1D38]"
+                              style={{ lineHeight: 1.3, height: '45px' }}
+                            >
+                              {translation.subtitle}
+                            </p>
+                            
+                            {/* Legal Badge */}
+                            {plan.isLegalCompliant && (
+                              <div 
+                                className="inline-flex items-center bg-[#F4EFF3] rounded-full self-start"
+                                style={{ gap: '5px', padding: '5px 10px 5px 8px' }}
+                              >
+                                {/* Checkmark Icon */}
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                  <path d="M7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0ZM10.5303 5.53033L6.53033 9.53033C6.23744 9.82322 5.76256 9.82322 5.46967 9.53033L3.46967 7.53033C3.17678 7.23744 3.17678 6.76256 3.46967 6.46967C3.76256 6.17678 4.23744 6.17678 4.53033 6.46967L6 7.93934L9.46967 4.46967C9.76256 4.17678 10.2374 4.17678 10.5303 4.46967C10.8232 4.76256 10.8232 5.23744 10.5303 5.53033Z" fill="#2D1D38"/>
+                                </svg>
+                                <span className="font-semibold text-[14px] text-[#2D1D38]" style={{ lineHeight: 1.3 }}>
+                                  {labels.legalBadge}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                          
+                          {/* Price */}
+                          <div className="flex flex-col">
+                            {plan.originalPrice && (
+                              <span className="font-medium text-[16px] text-[#ABA2A5] line-through" style={{ lineHeight: 1.3 }}>
+                                {plan.originalPrice} GEL
+                              </span>
+                            )}
+                            <div className="flex items-center" style={{ gap: '10px' }}>
+                              <span className="font-bold text-[34px] text-[#2D1D38]" style={{ lineHeight: 1.3 }}>
+                                {plan.price} GEL
+                              </span>
+                              <span className="font-medium text-[18px] text-[#ABA2A5]" style={{ lineHeight: 1.3 }}>
+                                /{getPeriodLabel(plan)}
+                              </span>
                             </div>
                           </div>
-                        ) : (
-                          <div className="flex items-baseline justify-center gap-1 flex-wrap">
-                            <span className="text-4xl font-bold text-red-600">{plan.price}</span>
-                            <span className="text-primary-grey">GEL/{getPeriodLabel(plan)}</span>
+                        </div>
+                        
+                        {/* Buttons */}
+                        <div className="flex flex-col items-center" style={{ gap: '15px' }}>
+                          <button
+                            onClick={() => setOrderPlan({ id: plan.id, slug: plan.slug, name: translation.name, price: plan.price, period: plan.period })}
+                            className={`w-full flex items-center justify-center h-[48px] rounded-full font-medium text-[16px] transition-colors duration-200 ${
+                              plan.isFavorite
+                                ? "bg-[#DE643B] text-[#FAFAFA] hover:bg-[#c9572f]"
+                                : "bg-transparent border border-[#DE643B] text-[#DE643B] hover:bg-[#DE643B] hover:text-[#FAFAFA]"
+                            }`}
+                            style={{ lineHeight: 1.3 }}
+                          >
+                            {labels.order}
+                          </button>
+                          
+                          {hasDetails && (
+                            <button
+                              onClick={() => setSelectedPlan(plan)}
+                              className="font-medium text-[16px] text-[#ABA2A5] underline hover:text-[#2D1D38] transition-colors"
+                              style={{ lineHeight: 1.3 }}
+                            >
+                              {labels.moreDetails}
+                            </button>
+                          )}
+                        </div>
+                        
+                        {/* Features */}
+                        {features.length > 0 && (
+                          <div className="flex flex-col" style={{ gap: '6px' }}>
+                            {features.slice(0, 6).map((feature, index) => (
+                              <div key={feature.id} className="flex items-start" style={{ gap: '10px' }}>
+                                {index === 0 ? (
+                                  /* Phone/Support icon for first feature */
+                                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0">
+                                    <path d="M18.3333 14.1V16.6C18.3343 16.8321 18.2867 17.0618 18.1937 17.2745C18.1008 17.4871 17.9644 17.678 17.7934 17.8349C17.6224 17.9918 17.4205 18.1112 17.2006 18.1856C16.9808 18.26 16.7478 18.2876 16.5167 18.2667C13.9523 17.988 11.4892 17.1118 9.32499 15.7083C7.31151 14.4289 5.60443 12.7218 4.32499 10.7083C2.91663 8.53435 2.04019 6.05917 1.76665 3.48333C1.74583 3.2529 1.77321 3.02063 1.84707 2.80133C1.92092 2.58203 2.03963 2.38058 2.19562 2.20971C2.35162 2.03884 2.54152 1.90229 2.75314 1.80878C2.96476 1.71527 3.19348 1.66688 3.42499 1.66666H5.92499C6.32953 1.66273 6.72147 1.80591 7.02812 2.06962C7.33478 2.33333 7.53505 2.69954 7.59165 3.1C7.69721 3.90006 7.89286 4.68562 8.17499 5.44166C8.28708 5.73996 8.31137 6.06447 8.24498 6.37581C8.1786 6.68715 8.02434 6.97278 7.79999 7.2L6.74165 8.25833C7.92795 10.3446 9.65539 12.0721 11.7417 13.2583L12.8 12.2C13.0272 11.9757 13.3128 11.8214 13.6242 11.755C13.9355 11.6886 14.26 11.7129 14.5583 11.825C15.3144 12.1071 16.0999 12.3028 16.9 12.4083C17.3048 12.4655 17.6745 12.6694 17.9388 12.9813C18.203 13.2932 18.3434 13.6914 18.3333 14.1Z" stroke="#DE643B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                  </svg>
+                                ) : (
+                                  /* Checkmark icon for other features */
+                                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0">
+                                    <path d="M16.6667 5L7.50001 14.1667L3.33334 10" stroke="#DE643B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                  </svg>
+                                )}
+                                <span className="font-medium text-[16px] text-[#776667] flex-1" style={{ lineHeight: 1.3 }}>
+                                  {getFeatureName(feature)}
+                                </span>
+                              </div>
+                            ))}
                           </div>
                         )}
                       </div>
-
-                      {/* Coverage List */}
-                      <ul className="grow" style={{ marginBottom: '20px' }}>
-                        {features.length > 0 ? (
-                          features.map((feature) => (
-                            <li key={feature.id} className="flex items-start gap-2" style={{ marginBottom: '10px' }}>
-                              <svg className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                              </svg>
-                              <span className="text-primary-grey text-sm leading-tight">
-                                {getFeatureName(feature)}
-                              </span>
-                            </li>
-                          ))
-                        ) : (
-                          <li style={{ fontSize: '12px', color: '#a1a1aa', textAlign: 'center', padding: '20px 0' }}>
-                            {labels.noFeatures}
-                          </li>
-                        )}
-                      </ul>
-
-                      {/* Buttons */}
-                      <div className="flex flex-col gap-3" style={{ marginTop: 'auto' }}>
-                        {hasDetails && (
-                          <button
-                            onClick={() => setSelectedPlan(plan)}
-                            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 transition-all duration-200"
-                          >
-                            <svg className="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            {labels.moreDetails}
-                          </button>
-                        )}
-                        <button
-                          onClick={() => setOrderPlan({ id: plan.id, slug: plan.slug, name: translation.name, price: plan.price, period: plan.period })}
-                          className={`block w-full text-center py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer ${
-                            plan.isFavorite
-                              ? "bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/30 hover:shadow-xl hover:shadow-red-600/40"
-                              : "bg-gray-100 hover:bg-red-50 text-primary-black hover:text-red-600"
-                          }`}
-                        >
-                          {labels.order}
-                        </button>
-                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
             )}
           </div>
         </section>
       </main>
       <Footer locale={locale} dict={dict} />
 
-      {/* Details Modal - inline like Visitgeorgia */}
+      {/* Details Modal */}
       {selectedPlan && (
         <div style={{
           position: 'fixed',
@@ -629,14 +720,14 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: 'rgba(45, 29, 56, 0.5)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 2000,
         }}>
           <div style={{
-            backgroundColor: 'white',
+            backgroundColor: '#FAFAFA',
             borderRadius: '16px',
             width: '90%',
             maxWidth: '700px',
@@ -648,22 +739,22 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
             {/* Header */}
             <div style={{
               padding: '24px',
-              borderBottom: '1px solid #e5e7eb',
+              borderBottom: '1px solid #E6CFE3',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-start',
             }}>
               <div style={{ flex: 1 }}>
-                <h3 style={{ margin: 0, fontSize: '24px', fontWeight: 700, color: '#111827' }}>
+                <h3 style={{ margin: 0, fontSize: '24px', fontWeight: 700, color: '#2D1D38' }}>
                   {getPlanTranslation(selectedPlan).name}
                 </h3>
-                <p style={{ margin: '16px 0 0', fontSize: '14px', color: '#6b7280', lineHeight: 1.6 }}>
+                <p style={{ margin: '16px 0 0', fontSize: '14px', color: '#776667', lineHeight: 1.6 }}>
                   {getPlanTranslation(selectedPlan).description || getPlanTranslation(selectedPlan).subtitle || ""}
                 </p>
               </div>
               <button
                 onClick={() => setSelectedPlan(null)}
-                style={{ background: 'none', border: 'none', padding: '4px', cursor: 'pointer', color: '#9ca3af', fontSize: '24px', marginLeft: '16px' }}
+                style={{ background: 'none', border: 'none', padding: '4px', cursor: 'pointer', color: '#ABA2A5', fontSize: '24px', marginLeft: '16px' }}
               >
                 ×
               </button>
@@ -671,7 +762,7 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
 
             {/* Content */}
             <div style={{ flex: 1, overflow: 'auto', padding: '24px' }}>
-              <p style={{ fontSize: '12px', color: '#dc2626', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '20px' }}>
+              <p style={{ fontSize: '12px', color: '#DE643B', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '20px' }}>
                 {labels.coverage}
               </p>
 
@@ -682,14 +773,14 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
                     <div key={item.id} style={{
                       padding: '16px',
                       borderRadius: '12px',
-                      border: '1px solid #e5e7eb',
-                      backgroundColor: '#fafafa',
+                      border: '1px solid #E6CFE3',
+                      backgroundColor: '#F4F3EE',
                     }}>
                       <div style={{
                         width: '40px',
                         height: '40px',
                         borderRadius: '10px',
-                        backgroundColor: '#fef2f2',
+                        backgroundColor: '#E6CFE3',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -697,33 +788,33 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
                       }}>
                         <CoverageIcon icon={item.icon} />
                       </div>
-                      <div style={{ fontSize: '13px', color: '#374151', marginBottom: '6px', lineHeight: 1.4 }}>
+                      <div style={{ fontSize: '13px', color: '#2D1D38', marginBottom: '6px', lineHeight: 1.4 }}>
                         {getCoverageTitle(item)}
                       </div>
-                      <div style={{ fontSize: '14px', fontWeight: 600, color: '#dc2626' }}>
+                      <div style={{ fontSize: '14px', fontWeight: 600, color: '#DE643B' }}>
                         {getCoverageLimit(item)}
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p style={{ textAlign: 'center', color: '#9ca3af', padding: '40px 0' }}>
+                <p style={{ textAlign: 'center', color: '#ABA2A5', padding: '40px 0' }}>
                   {labels.noCoverage}
                 </p>
               )}
             </div>
 
             {/* Footer */}
-            <div style={{ padding: '16px 24px', borderTop: '1px solid #e5e7eb' }}>
+            <div style={{ padding: '16px 24px', borderTop: '1px solid #E6CFE3' }}>
               <button
                 onClick={() => setSelectedPlan(null)}
                 style={{
                   width: '100%',
                   padding: '12px',
-                  borderRadius: '10px',
+                  borderRadius: '1000px',
                   border: 'none',
-                  backgroundColor: '#f4f4f5',
-                  color: '#27272a',
+                  backgroundColor: '#2D1D38',
+                  color: '#FAFAFA',
                   fontSize: '14px',
                   fontWeight: 600,
                   cursor: 'pointer',
@@ -758,7 +849,7 @@ export default function InsurancePage() {
   const dict = getDictionary(locale);
 
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600"></div></div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#DE643B]"></div></div>}>
       <InsurancePageContent locale={locale} dict={dict} />
     </Suspense>
   );

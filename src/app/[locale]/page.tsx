@@ -6,6 +6,8 @@ import InsurancePlans from "@/components/sections/InsurancePlans";
 import FAQ from "@/components/sections/FAQ";
 import ContactForm from "@/components/sections/ContactForm";
 import Testimonials from "@/components/sections/Testimonials";
+import Numbers from "@/components/sections/Numbers";
+import TrackingScripts from "@/components/ui/TrackingScripts";
 import { getDictionary, type Dictionary } from "@/lib/i18n";
 import { structuredData } from "@/lib/metadata";
 
@@ -27,22 +29,7 @@ export default async function Home({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       {/* Traffic source tracking */}
-      <span id="95a7120e-9386-f816-0ece-b8a15392df16" style={{ display: 'none' }}></span>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            document.getElementById('95a7120e-9386-f816-0ece-b8a15392df16').innerHTML = '<a href="https://track.georgian.support/KXGB3w?&se_referrer=' + encodeURIComponent(document.referrer) + '&default_keyword=' + encodeURIComponent(document.title) + '&'+window.location.search.replace('?', '&')+'">Link</a>';
-          `
-        }}
-      />
-      <span id="0ba14e2f-f9da-4c81-4842-88da24f3af00" style={{ display: 'none' }}></span>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            document.getElementById('0ba14e2f-f9da-4c81-4842-88da24f3af00').innerHTML = '<a href="https://redirgo.link/H4ZTcH?&se_referrer=' + encodeURIComponent(document.referrer) + '&default_keyword=' + encodeURIComponent(document.title) + '&'+window.location.search.replace('?', '&')+'">Link</a>';
-          `
-        }}
-      />
+      <TrackingScripts />
       <Header locale={locale} dict={dict} />
       <main className="main-content w-full flex flex-col items-center">
         <Hero locale={locale} dict={dict} />
@@ -51,6 +38,7 @@ export default async function Home({
         <FAQ locale={locale} dict={dict} />
         <ContactForm locale={locale} dict={dict} />
         <Testimonials locale={locale} dict={dict} />
+        <Numbers locale={locale} dict={dict} />
       </main>
       <Footer locale={locale} dict={dict} />
     </div>
