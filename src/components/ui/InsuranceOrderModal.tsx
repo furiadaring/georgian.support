@@ -1053,12 +1053,14 @@ export default function InsuranceOrderModal({
             <h3 className="text-base font-bold text-[#2D1D38] mb-3">
               3. {t.policyPrice || "Цена полиса"}
             </h3>
-            <div className="text-center py-3">
-              <span className="font-bold text-2xl text-[#DE643B]">
-                {calculatedPrice} GEL
-              </span>
-              {isDaily && numberOfDays > 0 && <span className="text-sm font-normal text-[#ABA2A5] ml-2">({numberOfDays} дней)</span>}
-              {isMonthly && <span className="text-sm font-normal text-[#ABA2A5] ml-2">({paymentOption === "quarterly" ? "3" : "12"} мес.)</span>}
+            <div className="border border-[#E5E5E5] py-4">
+              <div className="text-center">
+                <span className="font-bold text-2xl text-[#DE643B]">
+                  {calculatedPrice} GEL
+                </span>
+                {isDaily && numberOfDays > 0 && <span className="text-sm font-normal text-[#ABA2A5] ml-2">({numberOfDays} дней)</span>}
+                {isMonthly && <span className="text-sm font-normal text-[#ABA2A5] ml-2">({paymentOption === "quarterly" ? "3" : "12"} мес.)</span>}
+              </div>
             </div>
           </div>
 
@@ -1083,22 +1085,24 @@ export default function InsuranceOrderModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full lg:w-auto px-8 py-3.5 bg-[#DE643B] text-white font-medium text-base rounded-full hover:bg-[#c55530] active:scale-[0.98] transition-all disabled:opacity-50 flex items-center justify-center gap-3"
+              className="flex items-center gap-5 pl-8 pr-1.5 py-1.5 bg-[#DE643B] rounded-full hover:bg-[#c55530] active:scale-[0.98] transition-all disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
-                  <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
-                  {t.submitting || "Отправка..."}
+                  <span className="text-white font-medium text-base">{t.submitting || "Отправка..."}</span>
                 </>
               ) : (
                 <>
-                  {t.submit || "Отправить заявку"}
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                  <span className="text-white font-medium text-base">{t.submit || "Отправить заявку"}</span>
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
                 </>
               )}
             </button>
