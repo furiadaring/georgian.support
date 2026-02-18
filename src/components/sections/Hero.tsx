@@ -94,20 +94,20 @@ export default function Hero({ locale, dict }: HeroProps) {
           <div className="flex flex-col gap-5">
             <StatCard 
               icon={<ClockIcon />} 
-              value="15мин" 
-              label="оформление" 
+              value={t.statsTime || "15мин"} 
+              label={t.statsTimeLabel || "оформление"} 
               shadowSide="left"
             />
             <StatCard 
               icon={<HeadsetIcon />} 
-              value="24/7" 
-              label={t.support || 'поддержка'} 
+              value={t.statsSupport || "24/7"} 
+              label={t.statsSupportLabel || "поддержка"} 
               shadowSide="none"
             />
             <StatCard 
               icon={<ShieldIcon />} 
-              value="$50K" 
-              label={t.coverage || 'покрытие'} 
+              value={t.statsCoverage || "$50K"} 
+              label={t.statsCoverageLabel || "покрытие"} 
               shadowSide="right"
             />
           </div>
@@ -136,8 +136,8 @@ export default function Hero({ locale, dict }: HeroProps) {
                   className="group inline-flex items-center gap-5 bg-[#DE643B] rounded-full pl-8 pr-1 py-1 hover:opacity-90 transition-opacity"
                 >
                   <span className="text-lg font-medium text-[#FAFAFA]">{t.cta}</span>
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                    <svg className={`w-6 h-6 text-white ${isRtl ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                    <svg className={`w-6 h-6 text-[#DE643B] ${isRtl ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none">
                       <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
@@ -195,8 +195,8 @@ export default function Hero({ locale, dict }: HeroProps) {
             className="inline-flex items-center gap-5 bg-[#DE643B] rounded-full pl-[30px] pr-[5px] py-[5px] hover:opacity-90 transition-opacity"
           >
             <span className="text-[18px] font-medium text-[#FAFAFA] leading-[1.3]">{t.cta}</span>
-            <div className="w-[50px] h-[50px] rounded-full bg-white/20 flex items-center justify-center">
-              <svg className={`w-6 h-6 text-white ${isRtl ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none">
+            <div className="w-[50px] h-[50px] rounded-full bg-white flex items-center justify-center">
+              <svg className={`w-6 h-6 text-[#DE643B] ${isRtl ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none">
                 <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
@@ -238,8 +238,8 @@ export default function Hero({ locale, dict }: HeroProps) {
                 </div>
               </div>
               <div className="flex flex-col text-[#E6CFE3]">
-                <span className="text-[34px] font-bold leading-[1.3]">15мин</span>
-                <span className="text-[16px] font-medium leading-[1.3]">{t.clients || 'оформление'}</span>
+                <span className="text-[34px] font-bold leading-[1.3]">{t.statsTime || '15мин'}</span>
+                <span className="text-[16px] font-medium leading-[1.3]">{t.statsTimeLabel || 'оформление'}</span>
               </div>
             </div>
             {/* Card 2 - 24/7 */}
@@ -250,8 +250,8 @@ export default function Hero({ locale, dict }: HeroProps) {
                 </div>
               </div>
               <div className="flex flex-col text-[#E6CFE3]">
-                <span className="text-[34px] font-bold leading-[1.3]">24/7</span>
-                <span className="text-[16px] font-medium leading-[1.3]">{t.support || 'поддержка'}</span>
+                <span className="text-[34px] font-bold leading-[1.3]">{t.statsSupport || '24/7'}</span>
+                <span className="text-[16px] font-medium leading-[1.3]">{t.statsSupportLabel || 'поддержка'}</span>
               </div>
             </div>
             {/* Card 3 - $50K */}
@@ -262,8 +262,8 @@ export default function Hero({ locale, dict }: HeroProps) {
                 </div>
               </div>
               <div className="flex flex-col text-[#E6CFE3]">
-                <span className="text-[34px] font-bold leading-[1.3]">$50K</span>
-                <span className="text-[16px] font-medium leading-[1.3]">{t.coverage || 'покрытие'}</span>
+                <span className="text-[34px] font-bold leading-[1.3]">{t.statsCoverage || '$50K'}</span>
+                <span className="text-[16px] font-medium leading-[1.3]">{t.statsCoverageLabel || 'покрытие'}</span>
               </div>
             </div>
           </div>
