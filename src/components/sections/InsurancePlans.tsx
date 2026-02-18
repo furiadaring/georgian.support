@@ -468,7 +468,7 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
             <div className="animate-spin h-12 w-12 border-b-2 border-[#DE643B]" style={{ borderRadius: '50%' }}></div>
           </div>
         ) : (
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'stretch', gap: 20 }}>
           {plans.map((plan) => {
             const translation = getPlanTranslation(plan);
             const features = plan.features || [];
@@ -479,6 +479,7 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
                 key={plan.id}
                 style={{
                   flex: '1 1 0',
+                  minWidth: 0,
                   display: 'flex',
                   flexDirection: 'column',
                   borderRadius: plan.isFavorite ? 16 : 12,
@@ -487,26 +488,32 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
                   backgroundColor: '#FAFAFA',
                 }}
               >
-                {/* Favorite Badge */}
-                {plan.isFavorite && (
-                  <div style={{ textAlign: 'center', color: '#FAFAFA', fontWeight: 600, fontSize: 12, backgroundColor: '#2D1D38', padding: '4px 8px', lineHeight: 1.3 }}>
-                    {labels.recommend}
-                  </div>
-                )}
+                {/* Favorite Badge - fixed height placeholder */}
+                <div style={{ height: plan.isFavorite ? 'auto' : 0, minHeight: plan.isFavorite ? 24 : 0 }}>
+                  {plan.isFavorite && (
+                    <div style={{ textAlign: 'center', color: '#FAFAFA', fontWeight: 600, fontSize: 12, backgroundColor: '#2D1D38', padding: '4px 8px', lineHeight: 1.3 }}>
+                      {labels.recommend}
+                    </div>
+                  )}
+                </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 20, padding: '10px 15px 20px 15px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 20, padding: '10px 15px 20px 15px', flex: 1 }}>
                   {/* SECTION 1: Title block */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 15, width: '100%' }}>
-                    {/* Name + Subtitle + Legal badge */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-                      <h3 style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.3, color: '#2D1D38' }}>
-                        {translation.name}
-                      </h3>
-                      <p style={{ fontSize: 12, fontWeight: 600, lineHeight: 1.3, color: '#2D1D38', height: 50 }}>
-                        {translation.subtitle}
-                      </p>
+                    {/* Name - single line, fixed height */}
+                    <h3 style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.2, color: '#2D1D38', height: 26, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                      {translation.name}
+                    </h3>
+                    
+                    {/* Subtitle - 2 lines max, fixed height */}
+                    <p style={{ fontSize: 12, fontWeight: 600, lineHeight: 1.4, color: '#2D1D38', height: 34, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const }}>
+                      {translation.subtitle}
+                    </p>
+                    
+                    {/* Legal badge - fixed height placeholder */}
+                    <div style={{ height: 24, display: 'flex', alignItems: 'center' }}>
                       {plan.isLegalCompliant && (
-                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, backgroundColor: '#F4EFF3', borderRadius: 1000, paddingLeft: 8, paddingRight: 10, paddingTop: 5, paddingBottom: 5, alignSelf: 'flex-start' }}>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, backgroundColor: '#F4EFF3', borderRadius: 1000, paddingLeft: 8, paddingRight: 10, paddingTop: 5, paddingBottom: 5 }}>
                           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
                             <path d="M4 7L6 9L10 5" stroke="#DE643B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
@@ -514,25 +521,32 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
                         </div>
                       )}
                     </div>
-                    {/* Price */}
+
+                    {/* Price section - fixed heights */}
                     <div style={{ display: 'flex', flexDirection: 'column', fontWeight: 600 }}>
-                      {plan.originalPrice && (
-                        <span style={{ fontSize: 12, color: '#ABA2A5', textDecoration: 'line-through', lineHeight: 1.3 }}>{plan.originalPrice} GEL</span>
-                      )}
-                      <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-                        <span style={{ fontSize: 26, fontWeight: 600, lineHeight: 1.3, color: '#2D1D38' }}>{plan.price} GEL</span>
+                      {/* Original price - fixed height */}
+                      <div style={{ height: 16 }}>
+                        {plan.originalPrice && (
+                          <span style={{ fontSize: 12, color: '#ABA2A5', textDecoration: 'line-through', lineHeight: 1.3 }}>{plan.originalPrice} GEL</span>
+                        )}
+                      </div>
+                      {/* Current price */}
+                      <div style={{ display: 'flex', gap: 5, alignItems: 'baseline' }}>
+                        <span style={{ fontSize: 26, fontWeight: 600, lineHeight: 1.3, color: '#2D1D38' }}>{plan.price}</span>
+                        <span style={{ fontSize: 16, fontWeight: 600, lineHeight: 1.3, color: '#2D1D38' }}>GEL</span>
                         <span style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.3, color: '#ABA2A5' }}>/{getPeriodLabel(plan)}</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* SECTION 2: Buttons */}
+                  {/* SECTION 2: Buttons - fixed heights */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 15, alignItems: 'center' }}>
                     <button
                       onClick={() => setOrderPlan({ id: plan.id, slug: plan.slug, name: translation.name, price: plan.price, period: plan.period })}
                       className="cursor-pointer"
                       style={{
                         width: '100%',
+                        height: 40,
                         padding: '10px 30px',
                         border: plan.isFavorite ? 'none' : '1px solid #DE643B',
                         backgroundColor: plan.isFavorite ? '#DE643B' : 'transparent',
@@ -545,21 +559,24 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
                     >
                       {labels.order}
                     </button>
-                    {hasDetails && (
-                      <button
-                        onClick={() => setSelectedPlan(plan)}
-                        className="cursor-pointer"
-                        style={{ fontSize: 12, fontWeight: 600, padding: 0, background: 'transparent', border: 'none', color: '#ABA2A5', textDecoration: 'underline', lineHeight: 1.3 }}
-                      >
-                        {labels.moreDetails}
-                      </button>
-                    )}
+                    {/* More details - fixed height */}
+                    <div style={{ height: 20 }}>
+                      {hasDetails && (
+                        <button
+                          onClick={() => setSelectedPlan(plan)}
+                          className="cursor-pointer"
+                          style={{ fontSize: 12, fontWeight: 600, padding: 0, background: 'transparent', border: 'none', color: '#ABA2A5', textDecoration: 'underline', lineHeight: 1.3 }}
+                        >
+                          {labels.moreDetails}
+                        </button>
+                      )}
+                    </div>
                   </div>
 
-                  {/* SECTION 3: Features */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6, borderTop: '1px solid #E5E5E5', paddingTop: 12 }}>
+                  {/* SECTION 3: Features - takes remaining space */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6, borderTop: '1px solid #E5E5E5', paddingTop: 12, flex: 1 }}>
                     {features.length > 0 ? (
-                      features.map((feature) => (
+                      features.slice(0, 6).map((feature) => (
                         <div key={feature.id} style={{ display: 'flex', alignItems: 'flex-start', gap: 5 }}>
                           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, marginTop: 1 }}>
                             <path d="M3.5 7L5.5 9L10.5 4" stroke="#DE643B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
