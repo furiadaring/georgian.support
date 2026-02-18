@@ -204,9 +204,10 @@ export async function POST(request: NextRequest) {
         
         const visionData = await visionResponse.json();
         console.log("Vision API response status:", visionResponse.status);
+        console.log("Vision API full response:", JSON.stringify(visionData));
         
         if (visionData.error) {
-          console.error("Vision API error:", visionData.error);
+          console.error("Vision API error:", JSON.stringify(visionData.error));
         }
         
         const text = visionData.responses?.[0]?.fullTextAnnotation?.text || "";
