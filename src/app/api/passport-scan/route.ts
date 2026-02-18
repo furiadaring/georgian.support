@@ -175,12 +175,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
+    console.log("Passport scan request received, file size:", file.size);
+
     // Convert file to base64 for OCR services
     const bytes = await file.arrayBuffer();
     const base64 = Buffer.from(bytes).toString("base64");
     
     // Try Google Cloud Vision API if configured
     const GOOGLE_VISION_API_KEY = process.env.GOOGLE_VISION_API_KEY;
+    
+    console.log("GOOGLE_VISION_API_KEY configured:", !!GOOGLE_VISION_API_KEY, "key length:", GOOGLE_VISION_API_KEY?.length || 0);
     
     if (GOOGLE_VISION_API_KEY) {
       try {
