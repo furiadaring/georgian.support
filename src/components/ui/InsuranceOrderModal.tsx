@@ -1128,7 +1128,7 @@ export default function InsuranceOrderModal({
 
             {/* Price Summary */}
             <div className="bg-white border border-[#E5E5E5] px-5 py-4 flex items-center justify-between" style={{ marginBottom: 20 }}>
-              <span className="text-base font-medium text-[#2D1D38]">{t.policyPrice || "Цена полиса"}
+              <span className="text-base font-medium text-[#2D1D38]">{t.policyPrice || "Цена полиса"}</span>
               <span className="font-bold text-2xl text-[#DE643B]">{calculatedPrice} GEL</span>
             </div>
 
