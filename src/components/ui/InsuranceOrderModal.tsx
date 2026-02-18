@@ -768,7 +768,7 @@ export default function InsuranceOrderModal({
           <input type="hidden" name="subid" id="kt_subid" value="" />
           
           {/* Passport Upload */}
-          <div className="bg-[#FAFAFA] border border-[#E5E5E5] p-4 mb-6">
+          <div className="bg-[#FAFAFA] border border-[#E5E5E5] p-4" style={{ marginBottom: 20 }}>
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" id="passport-upload" />
             
             {!passportPreview ? (
@@ -813,7 +813,7 @@ export default function InsuranceOrderModal({
           </div>
 
           {/* Period Section */}
-          <div className="bg-white border border-[#E5E5E5] p-5 mb-5">
+          <div className="bg-white border border-[#E5E5E5] p-5" style={{ marginBottom: 20 }}>
             <h3 className="text-base font-bold text-[#2D1D38] mb-4">
               1. {t.policyDetails || "Детали полиса"}
             </h3>
@@ -919,7 +919,7 @@ export default function InsuranceOrderModal({
           </div>
 
           {/* Customer Details */}
-          <div className="bg-white border border-[#E5E5E5] p-5 mb-5">
+          <div className="bg-white border border-[#E5E5E5] p-5" style={{ marginBottom: 20 }}>
             <h3 className="text-base font-bold text-[#2D1D38] mb-4">
               2. {t.customerDetails || "Данные клиента"}
             </h3>
@@ -1049,7 +1049,7 @@ export default function InsuranceOrderModal({
           </div>
 
           {/* Price Section */}
-          <div className="bg-white border border-[#E5E5E5] p-5 mb-5">
+          <div className="bg-white border border-[#E5E5E5] p-5" style={{ marginBottom: 20 }}>
             <h3 className="text-base font-bold text-[#2D1D38] mb-3">
               3. {t.policyPrice || "Цена полиса"}
             </h3>
@@ -1066,7 +1066,7 @@ export default function InsuranceOrderModal({
 
           {/* Status Messages */}
           {submitStatus === "success" && (
-            <div className="bg-green-50 text-green-700 text-base px-5 py-4 flex items-center gap-3 border border-green-200 mb-5">
+            <div className="bg-green-50 text-green-700 text-base px-5 py-4 flex items-center gap-3 border border-green-200" style={{ marginBottom: 20 }}>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
@@ -1075,7 +1075,7 @@ export default function InsuranceOrderModal({
           )}
           
           {submitStatus === "error" && (
-            <div className="bg-red-50 text-red-700 text-base px-5 py-4 border border-red-200 mb-5">
+            <div className="bg-red-50 text-red-700 text-base px-5 py-4 border border-red-200" style={{ marginBottom: 20 }}>
               {t.error || "Ошибка. Попробуйте снова."}
             </div>
           )}
@@ -1116,7 +1116,7 @@ export default function InsuranceOrderModal({
         {/* Payment Selection Step */}
         {currentStep === "payment" && (
           <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-5 lg:px-8 py-5 bg-[#F4F3EE]">
-            <div className="text-center mb-6">
+            <div className="text-center" style={{ marginBottom: 20 }}>
               <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -1127,8 +1127,8 @@ export default function InsuranceOrderModal({
             </div>
 
             {/* Price Summary */}
-            <div className="bg-white border border-[#E5E5E5] px-5 py-4 flex items-center justify-between mb-6">
-              <span className="text-base font-medium text-[#2D1D38]">{t.policyPrice || "Цена полиса"}</span>
+            <div className="bg-white border border-[#E5E5E5] px-5 py-4 flex items-center justify-between" style={{ marginBottom: 20 }}>
+              <span className="text-base font-medium text-[#2D1D38]">{t.policyPrice || "Цена полиса"}
               <span className="font-bold text-2xl text-[#DE643B]">{calculatedPrice} GEL</span>
             </div>
 
