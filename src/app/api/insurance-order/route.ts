@@ -163,9 +163,28 @@ export async function POST(request: NextRequest) {
   let orderData: Record<string, unknown> = {};
   let savedOrderId: string | null = null;
 
+  console.log("[Insurance Order] Request received", {
+    contentType: request.headers.get("content-type"),
+    url: request.url,
+  });
+
   try {
     // Handle FormData for file uploads
-    const formData = await request.formData();
+    let formData: FormData;
+    try {
+      formData = await request.formData();
+      console.log("[Insurance Order] FormData parsed successfully");
+    } catch (formDataError) {
+      console.error("[Insurance Order] FormData parse error:", formDataError);
+      return NextResponse.json(
+        { 
+          error: "Failed to parse form data", 
+          details: formDataError instanceof Error ? formDataError.message : "Unknown parse error",
+          contentType: request.headers.get("content-type")
+        },
+        { status: 400 }
+      );
+    }
 
     const planId = formData.get("planId") as string;
     const planName = formData.get("planName") as string;
