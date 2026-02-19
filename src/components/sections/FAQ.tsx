@@ -137,7 +137,7 @@ export default function FAQ({ locale, dict }: FAQProps) {
               href={CONTACT.whatsapp}
               target="_blank"
               onClick={() => trackKeitaro('whatsapp')}
-              className="inline-flex items-center justify-center gap-1.25 bg-whatsapp text-[#FAFAFA] rounded-full px-4 py-3 min-w-46.25 hover:opacity-90 transition-opacity duration-300"
+              className="btn-wa inline-flex items-center justify-center gap-1.25 bg-whatsapp text-[#FAFAFA] rounded-full px-4 py-3 min-w-46.25 hover:opacity-90 transition-opacity duration-300"
             >
               <svg className="size-7.5 shrink-0" viewBox="0 0 30 30" fill="none">
                 <path d="M22.2 7.8C20.8 6.4 18.9 5.6 16.9 5.6C12.7 5.6 9.2 9.1 9.2 13.3C9.2 14.7 9.6 16.1 10.3 17.3L9.1 21.5L13.4 20.3C14.6 20.9 15.7 21.3 16.9 21.3C21.1 21.3 24.6 17.8 24.6 13.6C24.6 11.5 23.6 9.5 22.2 7.8Z" fill="white"/>
@@ -150,7 +150,7 @@ export default function FAQ({ locale, dict }: FAQProps) {
               href={CONTACT.telegram}
               target="_blank"
               onClick={() => trackKeitaro('telegram')}
-              className="inline-flex items-center justify-center gap-1.25 bg-telegram text-[#FAFAFA] rounded-full px-4 py-3 min-w-46.25 hover:opacity-90 transition-opacity duration-300"
+              className="btn-tg inline-flex items-center justify-center gap-1.25 bg-telegram text-[#FAFAFA] rounded-full px-4 py-3 min-w-46.25 hover:opacity-90 transition-opacity duration-300"
             >
               <svg className="size-7.5 shrink-0" viewBox="0 0 30 30" fill="none">
                 <path d="M21.8 9.2L19.4 20.8C19.4 20.8 19.1 21.6 18.2 21.2L13.3 17.5L11.5 16.6L8.1 15.5C8.1 15.5 7.5 15.3 7.5 14.8C7.5 14.3 8.1 14.1 8.1 14.1L20.8 9.2C20.8 9.2 21.8 8.8 21.8 9.2Z" fill="white"/>

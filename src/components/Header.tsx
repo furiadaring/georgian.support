@@ -169,7 +169,7 @@ export default function Header({ locale, dict, darkText = false }: HeaderProps) 
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackKeitaro('whatsapp')}
-                className="flex items-center justify-center w-[30px] h-[30px] transition-all duration-300"
+                className="btn-wa flex items-center justify-center w-[30px] h-[30px] transition-all duration-300"
                 aria-label="WhatsApp"
               >
                 <svg className="w-[30px] h-[30px]" viewBox="0 0 30 30" fill="none">
@@ -182,7 +182,7 @@ export default function Header({ locale, dict, darkText = false }: HeaderProps) 
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackKeitaro('telegram')}
-                className="flex items-center justify-center w-[30px] h-[30px] transition-all duration-300"
+                className="btn-tg flex items-center justify-center w-[30px] h-[30px] transition-all duration-300"
                 aria-label="Telegram"
               >
                 <svg className="w-[30px] h-[30px]" viewBox="0 0 30 30" fill="none">
@@ -352,7 +352,7 @@ export default function Header({ locale, dict, darkText = false }: HeaderProps) 
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => { trackKeitaro('whatsapp'); setIsMenuOpen(false); }}
-                  className="flex items-center justify-center w-[46px] h-[46px]"
+                  className="btn-wa flex items-center justify-center w-[46px] h-[46px]"
                   aria-label="WhatsApp"
                 >
                   <svg className="w-[46px] h-[46px]" viewBox="0 0 46 46" fill="none">
@@ -365,7 +365,7 @@ export default function Header({ locale, dict, darkText = false }: HeaderProps) 
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => { trackKeitaro('telegram'); setIsMenuOpen(false); }}
-                  className="flex items-center justify-center w-[46px] h-[46px]"
+                  className="btn-tg flex items-center justify-center w-[46px] h-[46px]"
                   aria-label="Telegram"
                 >
                   <svg className="w-[46px] h-[46px]" viewBox="0 0 46 46" fill="none">

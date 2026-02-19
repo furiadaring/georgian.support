@@ -123,7 +123,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
               <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-5 w-full lg:w-auto">
                 <button
                   onClick={() => trackAndOpenLink(CONTACT.whatsapp, 'whatsapp')}
-                  className="inline-flex items-center justify-center gap-[5px] font-medium transition-all hover:opacity-90 w-full lg:w-[230px] cursor-pointer border-none"
+                  className="btn-wa inline-flex items-center justify-center gap-[5px] font-medium transition-all hover:opacity-90 w-full lg:w-[230px] cursor-pointer border-none"
                   style={{ 
                     backgroundColor: '#60D669', 
                     color: '#FAFAFA', 
@@ -541,7 +541,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-[20px] w-full lg:w-auto">
               <button
                 onClick={() => trackAndOpenLink(CONTACT.whatsapp, 'whatsapp')}
-                className="inline-flex items-center justify-center gap-[5px] font-medium transition-all hover:opacity-90 w-full lg:w-[185px] cursor-pointer border-none"
+                className="btn-wa inline-flex items-center justify-center gap-[5px] font-medium transition-all hover:opacity-90 w-full lg:w-[185px] cursor-pointer border-none"
                 style={{ 
                   backgroundColor: '#60D669', 
                   color: '#FAFAFA', 
@@ -558,7 +558,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
               </button>
               <button
                 onClick={() => trackAndOpenLink(CONTACT.telegram, 'telegram')}
-                className="inline-flex items-center justify-center gap-[5px] font-medium transition-all hover:opacity-90 w-full lg:w-[185px] cursor-pointer border-none"
+                className="btn-tg inline-flex items-center justify-center gap-[5px] font-medium transition-all hover:opacity-90 w-full lg:w-[185px] cursor-pointer border-none"
                 style={{ 
                   backgroundColor: '#2AABEE', 
                   color: '#FAFAFA', 

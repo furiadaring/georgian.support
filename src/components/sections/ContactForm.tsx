@@ -130,7 +130,7 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
               href={CONTACT.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold text-[16px] rounded-full transition-all duration-300"
+              className="btn-wa inline-flex items-center bg-[#22c55e] hover:bg-[#16a34a] text-white font-semibold text-[16px] rounded-full transition-all duration-300"
               style={{ gap: 12, padding: '16px 32px' }}
             >
               <svg className="size-6" fill="currentColor" viewBox="0 0 24 24">
@@ -231,7 +231,7 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
                   href={CONTACT.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center bg-whatsapp text-[#FAFAFA] font-semibold text-[14px] rounded-full hover:opacity-90 transition-opacity duration-300"
+                  className="btn-wa w-full flex items-center justify-center bg-whatsapp text-[#FAFAFA] font-semibold text-[14px] rounded-full hover:opacity-90 transition-opacity duration-300"
                   style={{ gap: 15, padding: '12px 15px' }}
                 >
                   <svg className="size-6 shrink-0" viewBox="0 0 30 30" fill="none">
@@ -243,7 +243,7 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
                   href={CONTACT.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center bg-telegram text-[#FAFAFA] font-semibold text-[14px] rounded-full hover:opacity-90 transition-opacity duration-300"
+                  className="btn-tg w-full flex items-center justify-center bg-telegram text-[#FAFAFA] font-semibold text-[14px] rounded-full hover:opacity-90 transition-opacity duration-300"
                   style={{ gap: 15, padding: '12px 15px' }}
                 >
                   <svg className="size-6 shrink-0" viewBox="0 0 30 30" fill="none">

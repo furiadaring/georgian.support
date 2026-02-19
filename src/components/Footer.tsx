@@ -67,7 +67,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackKeitaro('whatsapp')}
-                  className="flex items-center justify-center bg-[#60D669] rounded-full w-full lg:w-[200px] hover:opacity-90 transition-opacity"
+                  className="btn-wa flex items-center justify-center bg-[#60D669] rounded-full w-full lg:w-[200px] hover:opacity-90 transition-opacity"
                   style={{ gap: 15, paddingLeft: 15, paddingRight: 15, paddingTop: 12, paddingBottom: 12 }}
                 >
                   <svg className="w-[24px] h-[24px] text-white shrink-0" fill="currentColor" viewBox="0 0 24 24">
@@ -80,7 +80,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackKeitaro('telegram')}
-                  className="flex items-center justify-center bg-[#2AABEE] rounded-full w-full lg:w-[200px] hover:opacity-90 transition-opacity"
+                  className="btn-tg flex items-center justify-center bg-[#2AABEE] rounded-full w-full lg:w-[200px] hover:opacity-90 transition-opacity"
                   style={{ gap: 15, paddingLeft: 15, paddingRight: 15, paddingTop: 12, paddingBottom: 12 }}
                 >
                   <svg className="w-[24px] h-[24px] text-white shrink-0" fill="currentColor" viewBox="0 0 24 24">
@@ -164,7 +164,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                       href={CONTACT.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-[40px] h-[40px] bg-[#F6F6CD] rounded-[8px] flex items-center justify-center hover:opacity-80 transition-opacity"
+                      className="btn-wa w-[40px] h-[40px] bg-[#F6F6CD] rounded-[8px] flex items-center justify-center hover:opacity-80 transition-opacity"
                       aria-label="WhatsApp"
                     >
                       <svg className="w-[24px] h-[24px]" viewBox="0 0 24 24" fill="none">
@@ -175,7 +175,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                       href={CONTACT.telegram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-[40px] h-[40px] bg-[#F6F6CD] rounded-[8px] flex items-center justify-center hover:opacity-80 transition-opacity"
+                      className="btn-tg w-[40px] h-[40px] bg-[#F6F6CD] rounded-[8px] flex items-center justify-center hover:opacity-80 transition-opacity"
                       aria-label="Telegram"
                     >
                       <svg className="w-[24px] h-[24px]" viewBox="0 0 24 24" fill="none">
