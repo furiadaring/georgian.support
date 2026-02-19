@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { CONTACT, INSURANCE_PLANS } from "@/lib/constants";
+import { reportKeitaroConversion } from "@/lib/attribution";
 import { type Locale, type Dictionary, isRtlLocale } from "@/lib/i18n";
 
 interface ContactFormProps {
@@ -67,6 +68,10 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
         lead_type: 'form',
       });
     }
+
+    // Track Keitaro conversion
+    reportKeitaroConversion(0, 'lead');
+
     setIsSubmitting(false);
   };
 

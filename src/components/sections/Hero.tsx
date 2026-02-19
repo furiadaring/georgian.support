@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, trackKeitaro } from "@/lib/constants";
 import { type Locale, type Dictionary, isRtlLocale } from "@/lib/i18n";
 
 interface HeroProps {
@@ -148,6 +148,7 @@ export default function Hero({ locale, dict }: HeroProps) {
                   <Link
                     href={CONTACT.whatsapp}
                     target="_blank"
+                    onClick={() => trackKeitaro('whatsapp')}
                     className="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center hover:opacity-80 transition-opacity"
                   >
                     <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -157,6 +158,7 @@ export default function Hero({ locale, dict }: HeroProps) {
                   <Link
                     href={CONTACT.telegram}
                     target="_blank"
+                    onClick={() => trackKeitaro('telegram')}
                     className="w-14 h-14 rounded-full bg-[#229ED9] flex items-center justify-center hover:opacity-80 transition-opacity"
                   >
                     <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -207,6 +209,7 @@ export default function Hero({ locale, dict }: HeroProps) {
             <Link
               href={CONTACT.whatsapp}
               target="_blank"
+              onClick={() => trackKeitaro('whatsapp')}
               className="w-[44px] h-[44px] rounded-full bg-[#25D366] flex items-center justify-center hover:opacity-80 transition-opacity"
             >
               <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -216,6 +219,7 @@ export default function Hero({ locale, dict }: HeroProps) {
             <Link
               href={CONTACT.telegram}
               target="_blank"
+              onClick={() => trackKeitaro('telegram')}
               className="w-[44px] h-[44px] rounded-full bg-[#229ED9] flex items-center justify-center hover:opacity-80 transition-opacity"
             >
               <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CONTACT, COMPANY } from "@/lib/constants";
+import { CONTACT, COMPANY, trackKeitaro } from "@/lib/constants";
 import { type Locale, type Dictionary, isRtlLocale } from "@/lib/i18n";
 
 interface FooterProps {
@@ -66,6 +66,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                   href={CONTACT.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackKeitaro('whatsapp')}
                   className="flex items-center justify-center bg-[#60D669] rounded-full w-full lg:w-[200px] hover:opacity-90 transition-opacity"
                   style={{ gap: 15, paddingLeft: 15, paddingRight: 15, paddingTop: 12, paddingBottom: 12 }}
                 >
@@ -78,6 +79,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                   href={CONTACT.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackKeitaro('telegram')}
                   className="flex items-center justify-center bg-[#2AABEE] rounded-full w-full lg:w-[200px] hover:opacity-90 transition-opacity"
                   style={{ gap: 15, paddingLeft: 15, paddingRight: 15, paddingTop: 12, paddingBottom: 12 }}
                 >
