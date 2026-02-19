@@ -362,7 +362,13 @@ function safeParseDate(dateStr: string): Date | null {
 }
 
 // Format raw input with auto-slashes (for dd/mm/yyyy format)
+// Only formats if it looks like the user is typing (pure digits or partial input)
 function formatDateInput(value: string, prevValue: string): string {
+  // If it already looks like a complete formatted date (dd/mm/yyyy), don't reformat
+  if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) {
+    return value;
+  }
+  
   // Remove all non-digits
   const digits = value.replace(/\D/g, '');
   
@@ -958,13 +964,13 @@ export default function InsuranceOrderModal({
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodStart: date ? formatLocalDate(date) : '' }))}
                     onChangeRaw={(e) => {
                       const target = (e?.target || e?.currentTarget) as HTMLInputElement | undefined;
-                      if (!target) return;
+                      if (!target?.value) return;
+                      // Skip if value is already formatted (selected from calendar)
+                      if (/^\d{2}\/\d{2}\/\d{4}$/.test(target.value)) return;
                       const formatted = formatDateInput(target.value, '');
-                      target.value = formatted;
+                      if (formatted !== target.value) target.value = formatted;
                       const parsed = parseDDMMYYYY(formatted);
-                      if (parsed) {
-                        setFormData(prev => ({ ...prev, periodStart: formatLocalDate(parsed) }));
-                      }
+                      if (parsed) setFormData(prev => ({ ...prev, periodStart: formatLocalDate(parsed) }));
                     }}
                     minDate={todayDate}
                     dateFormat="dd/MM/yyyy"
@@ -987,13 +993,13 @@ export default function InsuranceOrderModal({
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodEnd: date ? formatLocalDate(date) : '' }))}
                     onChangeRaw={(e) => {
                       const target = (e?.target || e?.currentTarget) as HTMLInputElement | undefined;
-                      if (!target) return;
+                      if (!target?.value) return;
+                      // Skip if value is already formatted (selected from calendar)
+                      if (/^\d{2}\/\d{2}\/\d{4}$/.test(target.value)) return;
                       const formatted = formatDateInput(target.value, '');
-                      target.value = formatted;
+                      if (formatted !== target.value) target.value = formatted;
                       const parsed = parseDDMMYYYY(formatted);
-                      if (parsed) {
-                        setFormData(prev => ({ ...prev, periodEnd: formatLocalDate(parsed) }));
-                      }
+                      if (parsed) setFormData(prev => ({ ...prev, periodEnd: formatLocalDate(parsed) }));
                     }}
                     minDate={minEndDate}
                     dateFormat="dd/MM/yyyy"
@@ -1037,13 +1043,13 @@ export default function InsuranceOrderModal({
                   onChange={(date: Date | null) => setFormData(prev => ({ ...prev, birthDate: date ? formatLocalDate(date) : '' }))}
                   onChangeRaw={(e) => {
                     const target = (e?.target || e?.currentTarget) as HTMLInputElement | undefined;
-                    if (!target) return;
+                    if (!target?.value) return;
+                    // Skip if value is already formatted (selected from calendar)
+                    if (/^\d{2}\/\d{2}\/\d{4}$/.test(target.value)) return;
                     const formatted = formatDateInput(target.value, '');
-                    target.value = formatted;
+                    if (formatted !== target.value) target.value = formatted;
                     const parsed = parseDDMMYYYY(formatted);
-                    if (parsed) {
-                      setFormData(prev => ({ ...prev, birthDate: formatLocalDate(parsed) }));
-                    }
+                    if (parsed) setFormData(prev => ({ ...prev, birthDate: formatLocalDate(parsed) }));
                   }}
                   maxDate={new Date()}
                   dateFormat="dd/MM/yyyy"
