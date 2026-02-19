@@ -890,8 +890,10 @@ export default function InsuranceOrderModal({
                     selected={safeParseDate(formData.periodStart)}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodStart: date ? formatLocalDate(date) : '' }))}
                     onChangeRaw={(e) => {
-                      const formatted = formatDateInput(e.target.value, '');
-                      e.target.value = formatted;
+                      const target = (e?.target || e?.currentTarget) as HTMLInputElement | undefined;
+                      if (!target) return;
+                      const formatted = formatDateInput(target.value, '');
+                      target.value = formatted;
                       const parsed = parseDDMMYYYY(formatted);
                       if (parsed) {
                         setFormData(prev => ({ ...prev, periodStart: formatLocalDate(parsed) }));
@@ -951,8 +953,10 @@ export default function InsuranceOrderModal({
                     selected={safeParseDate(formData.periodStart)}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodStart: date ? formatLocalDate(date) : '' }))}
                     onChangeRaw={(e) => {
-                      const formatted = formatDateInput(e.target.value, '');
-                      e.target.value = formatted;
+                      const target = (e?.target || e?.currentTarget) as HTMLInputElement | undefined;
+                      if (!target) return;
+                      const formatted = formatDateInput(target.value, '');
+                      target.value = formatted;
                       const parsed = parseDDMMYYYY(formatted);
                       if (parsed) {
                         setFormData(prev => ({ ...prev, periodStart: formatLocalDate(parsed) }));
@@ -978,8 +982,10 @@ export default function InsuranceOrderModal({
                     selected={safeParseDate(formData.periodEnd)}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodEnd: date ? formatLocalDate(date) : '' }))}
                     onChangeRaw={(e) => {
-                      const formatted = formatDateInput(e.target.value, '');
-                      e.target.value = formatted;
+                      const target = (e?.target || e?.currentTarget) as HTMLInputElement | undefined;
+                      if (!target) return;
+                      const formatted = formatDateInput(target.value, '');
+                      target.value = formatted;
                       const parsed = parseDDMMYYYY(formatted);
                       if (parsed) {
                         setFormData(prev => ({ ...prev, periodEnd: formatLocalDate(parsed) }));
@@ -1026,8 +1032,10 @@ export default function InsuranceOrderModal({
                   selected={safeParseDate(formData.birthDate)}
                   onChange={(date: Date | null) => setFormData(prev => ({ ...prev, birthDate: date ? formatLocalDate(date) : '' }))}
                   onChangeRaw={(e) => {
-                    const formatted = formatDateInput(e.target.value, '');
-                    e.target.value = formatted;
+                    const target = (e?.target || e?.currentTarget) as HTMLInputElement | undefined;
+                    if (!target) return;
+                    const formatted = formatDateInput(target.value, '');
+                    target.value = formatted;
                     const parsed = parseDDMMYYYY(formatted);
                     if (parsed) {
                       setFormData(prev => ({ ...prev, birthDate: formatLocalDate(parsed) }));
