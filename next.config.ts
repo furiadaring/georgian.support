@@ -63,7 +63,7 @@ const nextConfig: NextConfig = {
               "font-src 'self' https://fonts.gstatic.com data:",
               "img-src 'self' data: blob: https: http://localhost:3845",
               "connect-src 'self' https://www.google-analytics.com https://api.telegram.org https://www.google.com https://google.com https://googleads.g.doubleclick.net https://track.georgian.support https://*.google-analytics.com",
-              "frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net https://www.google.com",
+              "frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net https://www.google.com https://visitgeorgia.online",
               "frame-ancestors 'self'",
               "base-uri 'self'",
               "form-action 'self'",

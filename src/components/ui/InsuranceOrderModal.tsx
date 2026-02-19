@@ -449,10 +449,11 @@ export default function InsuranceOrderModal({
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [emailError, setEmailError] = useState<string | null>(null);
 
-  // Multi-step flow: form → payment → confirmation
-  const [currentStep, setCurrentStep] = useState<"form" | "payment" | "confirmation">("form");
+  // Multi-step flow: form → payment → card-payment/confirmation
+  const [currentStep, setCurrentStep] = useState<"form" | "payment" | "card-payment" | "confirmation">("form");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"bank" | "korona" | "card" | "crypto" | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
+  const [cardPaymentUrl, setCardPaymentUrl] = useState<string | null>(null);
 
   // Phone validation function
   const isPhoneValid = useCallback((phone: string) => {
@@ -753,10 +754,13 @@ export default function InsuranceOrderModal({
       }
     }
 
-    // For card payment, redirect to BOG payment at visitgeorgia.online
+    // For card payment, show card payment step with iframe
     if (method === "card" && orderId) {
-      const returnUrl = `${window.location.origin}/${locale}/payment/success`;
-      window.location.href = `https://visitgeorgia.online/${locale}/payment?order=${orderId}&return=${encodeURIComponent(returnUrl)}`;
+      const returnUrl = `${window.location.origin}/${locale}/payment/success?order=${orderId}`;
+      const cancelUrl = `${window.location.origin}/${locale}/payment/cancel?order=${orderId}`;
+      setCardPaymentUrl(`https://visitgeorgia.online/${locale}/payment?order=${orderId}&return=${encodeURIComponent(returnUrl)}&cancel=${encodeURIComponent(cancelUrl)}&embed=1`);
+      setSelectedPaymentMethod(method);
+      setCurrentStep("card-payment");
       return;
     }
 
@@ -1344,9 +1348,88 @@ export default function InsuranceOrderModal({
           </div>
         )}
 
+        {/* Card Payment Step - Embedded BOG Payment */}
+        {currentStep === "card-payment" && (
+          <div className="flex flex-col h-[calc(95vh-140px)] bg-[#F4F3EE]">
+            {/* Header with back button */}
+            <div className="px-5 py-4 border-b border-[#E5E5E5] flex items-center gap-4">
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentStep("payment");
+                  setCardPaymentUrl(null);
+                }}
+                className="p-2 hover:bg-[#E5E5E5] rounded-full transition-colors"
+              >
+                <svg className="w-5 h-5 text-[#2D1D38]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <div className="flex-1">
+                <h3 className="font-bold text-[#2D1D38]">{(t as Record<string, string>).cardPayment || "Card Payment"}</h3>
+                <p className="text-sm text-[#ABA2A5]">{calculatedPrice} GEL</p>
+              </div>
+              <div className="flex gap-1.5">
+                <div className="bg-blue-50 border border-blue-200 px-2 py-0.5">
+                  <span className="text-blue-700 font-bold text-xs">VISA</span>
+                </div>
+                <div className="bg-orange-50 border border-orange-200 px-2 py-0.5 flex items-center gap-0.5">
+                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-400 rounded-full -ml-1.5"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Payment iframe */}
+            <div className="flex-1 relative">
+              {cardPaymentUrl && (
+                <iframe
+                  src={cardPaymentUrl}
+                  className="w-full h-full border-0"
+                  allow="payment"
+                  title="Card Payment"
+                />
+              )}
+              {/* Loading overlay - shows briefly while iframe loads */}
+              <div className="absolute inset-0 bg-white flex items-center justify-center pointer-events-none opacity-0 transition-opacity" id="payment-loading">
+                <div className="text-center">
+                  <div className="w-12 h-12 border-4 border-[#DE643B] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                  <p className="text-[#ABA2A5]">{(t as Record<string, string>).loadingPayment || "Loading payment form..."}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer with alternative option */}
+            <div className="px-5 py-4 border-t border-[#E5E5E5] bg-white">
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentStep("payment");
+                  setCardPaymentUrl(null);
+                }}
+                className="w-full py-3 text-[#ABA2A5] text-sm hover:text-[#2D1D38] transition-colors"
+              >
+                ← {(t as Record<string, string>).chooseAnotherMethod || "Choose another payment method"}
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Confirmation Step */}
         {currentStep === "confirmation" && (
           <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-[#F4F3EE]">
+            {/* Back button */}
+            <button
+              type="button"
+              onClick={() => setCurrentStep("payment")}
+              className="flex items-center gap-2 text-[#ABA2A5] hover:text-[#2D1D38] transition-colors mb-4"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <span className="text-sm">{(t as Record<string, string>).changePaymentMethod || "Change payment method"}</span>
+            </button>
+
             {/* Bank Transfer Confirmation */}
             {selectedPaymentMethod === "bank" && (
               <div className="flex flex-col gap-6">
