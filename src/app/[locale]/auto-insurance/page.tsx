@@ -116,7 +116,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                 className="font-medium text-center text-[14px] lg:text-[16px] text-[#776667]"
                 style={{ lineHeight: '1.3', maxWidth: '500px' }}
               >
-                {t?.subtitle || "Обязательное страхование гражданской ответственности для иностранных автомобилей при въезде в Грузию"}
+                {t?.subtitle || "Mandatory civil liability insurance for foreign vehicles entering Georgia"}
               </p>
 
               {/* CTA Buttons */}
@@ -171,13 +171,13 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                   className="font-bold text-[24px] lg:text-[34px] text-[#2D1D38]"
                   style={{ lineHeight: '1.3' }}
                 >
-                  {insurancePage?.autoInsurance?.features?.mandatory || "Обязательно"}
+                  {insurancePage?.autoInsurance?.features?.mandatory || "Mandatory"}
                 </h3>
                 <p 
                   className="font-medium text-[14px] lg:text-[16px] text-[#2D1D38]"
                   style={{ lineHeight: '1.3' }}
                 >
-                  {insurancePage?.autoInsurance?.features?.mandatoryDesc || "Требуется для всех иностранных автомобилей при въезде в Грузию"}
+                  {insurancePage?.autoInsurance?.features?.mandatoryDesc || "Required for all foreign vehicles entering Georgia"}
                 </p>
               </div>
               
@@ -190,13 +190,13 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                   className="font-bold text-[24px] lg:text-[34px] text-[#FAFAFA]"
                   style={{ lineHeight: '1.3' }}
                 >
-                  {insurancePage?.autoInsurance?.features?.coverage || "Покрытие ущерба"}
+                  {insurancePage?.autoInsurance?.features?.coverage || "Damage Coverage"}
                 </h3>
                 <p 
                   className="font-medium text-[14px] lg:text-[16px] text-[#FAFAFA]"
                   style={{ lineHeight: '1.3' }}
                 >
-                  {insurancePage?.autoInsurance?.features?.coverageDesc || "До 300,000 GEL за ущерб здоровью, до 50,000 GEL за имущество"}
+                  {insurancePage?.autoInsurance?.features?.coverageDesc || "Up to 300,000 GEL for health damage, up to 50,000 GEL for property"}
                 </p>
               </div>
               
@@ -209,13 +209,13 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                   className="font-bold text-[24px] lg:text-[34px] text-[#2D1D38]"
                   style={{ lineHeight: '1.3' }}
                 >
-                  {insurancePage?.autoInsurance?.features?.periods || "Гибкие периоды"}
+                  {insurancePage?.autoInsurance?.features?.periods || "Flexible Periods"}
                 </h3>
                 <p 
                   className="font-medium text-[14px] lg:text-[16px] text-[#2D1D38]"
                   style={{ lineHeight: '1.3' }}
                 >
-                  {insurancePage?.autoInsurance?.features?.periodsDesc || "15 дней, 30 дней, 90 дней или 1 год"}
+                  {insurancePage?.autoInsurance?.features?.periodsDesc || "15 days, 30 days, 90 days or 1 year"}
                 </p>
               </div>
             </div>
@@ -236,7 +236,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                 className="font-medium text-[14px] lg:text-[16px] text-[#ABA2A5]"
                 style={{ lineHeight: '1.3', maxWidth: '406px' }}
               >
-                {t?.pricingSubtitle || "Выберите период страхования в зависимости от длительности вашей поездки"}
+                {t?.pricingSubtitle || "Choose insurance period based on the length of your trip"}
               </p>
             </div>
 
