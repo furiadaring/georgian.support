@@ -9,6 +9,65 @@ export const CONTACT = {
   address: "28 Luka Asatiani street, Batumi, 6000, Georgia",
 } as const;
 
+// Keitaro tracking function - also saves lead to database
+export const trackKeitaro = (status: string) => {
+  if (typeof window === 'undefined') return;
+
+  // Use stored attribution data (captured on landing page) instead of current URL params
+  // URL params are lost after navigation, but attribution.ts persists them in sessionStorage
+  let attribution: {
+    subid: string; click_id: string; campaign: string; ad_source: string;
+    keyword: string; utm_source: string; utm_medium: string; utm_campaign: string;
+    utm_term: string; utm_content: string; landing_page: string; referrer: string;
+    source_domain: string;
+  } | null = null;
+
+  try {
+    const stored = sessionStorage.getItem("gs_attribution");
+    if (stored) {
+      attribution = JSON.parse(stored);
+    }
+  } catch {
+    // sessionStorage not available
+  }
+
+  // Fallback to URL params if no stored attribution
+  const urlParams = new URLSearchParams(window.location.search);
+  const subid = attribution?.subid || urlParams.get('subid') || urlParams.get('sub_id') || '';
+
+  // Send Keitaro postback
+  if (subid) {
+    fetch(`https://track.georgian.support/285150d/postback?subid=${subid}&status=${status}`).catch(() => {});
+    console.log('Keitaro postback sent:', status, subid);
+  }
+
+  // Save lead to database for WhatsApp/Telegram clicks
+  if (status === 'whatsapp' || status === 'telegram') {
+    const trackingData = {
+      lead_type: status,
+      source_domain: attribution?.source_domain || window.location.hostname,
+      subid: subid,
+      click_id: attribution?.click_id || urlParams.get("click_id") || urlParams.get("clickid") || "",
+      campaign: attribution?.campaign || urlParams.get("campaign") || urlParams.get("c") || "",
+      ad_source: attribution?.ad_source || urlParams.get("source") || urlParams.get("src") || "",
+      keyword: attribution?.keyword || urlParams.get("keyword") || urlParams.get("kw") || "",
+      landing_page: attribution?.landing_page || window.location.href,
+      referrer: attribution?.referrer || document.referrer || "",
+      utm_source: attribution?.utm_source || urlParams.get("utm_source") || "",
+      utm_medium: attribution?.utm_medium || urlParams.get("utm_medium") || "",
+      utm_campaign: attribution?.utm_campaign || urlParams.get("utm_campaign") || "",
+      utm_term: attribution?.utm_term || urlParams.get("utm_term") || "",
+      utm_content: attribution?.utm_content || urlParams.get("utm_content") || "",
+    };
+
+    fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(trackingData),
+    }).catch(() => {});
+  }
+};
+
 // Navigation Items
 export const NAV_ITEMS = [
   { label: "О нас", href: "#about" },

@@ -8,6 +8,7 @@ import "react-phone-input-2/lib/style.css";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { getAttribution, reportKeitaroConversion } from "@/lib/attribution";
 
 // Georgian cities
 const GEORGIAN_CITIES = [
@@ -627,12 +628,10 @@ export default function InsuranceOrderModal({
         submitData.append("sourceDomain", window.location.hostname);
       }
 
-      // Add tracking attribution data from VGLeads / Keitaro
+      // Add tracking attribution data from Keitaro
       try {
-        const attr = (window as any).VGLeads?.getAttribution?.() || {};
-        const subidInput = document.getElementById("kt_subid") as HTMLInputElement;
-        const subid = subidInput?.value || attr.subid || "";
-        if (subid) submitData.append("subid", subid);
+        const attr = getAttribution();
+        if (attr.subid) submitData.append("subid", attr.subid);
         if (attr.click_id) submitData.append("clickId", attr.click_id);
         if (attr.ad_source) submitData.append("adSource", attr.ad_source);
         if (attr.keyword) submitData.append("keyword", attr.keyword);
@@ -659,18 +658,8 @@ export default function InsuranceOrderModal({
           }
         }
 
-        // Track Keitaro conversion
-        if (typeof window !== 'undefined') {
-          try {
-            const KTracking = (window as unknown as { KTracking?: { reportConversion?: (params: { status: string }) => void } }).KTracking;
-            if (KTracking?.reportConversion) {
-              KTracking.reportConversion({ status: 'lead' });
-              console.log('Keitaro lead conversion sent');
-            }
-          } catch (e) {
-            console.error('Keitaro tracking error:', e);
-          }
-        }
+        // Track Keitaro conversion via SDK
+        reportKeitaroConversion(0, 'lead');
 
         // Go to payment selection step
         setCurrentStep("payment");
@@ -777,8 +766,6 @@ export default function InsuranceOrderModal({
         {/* Form Step */}
         {currentStep === "form" && (
         <form onSubmit={handleSubmit} className="overflow-y-auto max-h-[calc(95vh-140px)] px-5 lg:px-8 py-5 bg-[#F4F3EE]">
-          {/* Hidden subid field for tracking */}
-          <input type="hidden" name="subid" id="kt_subid" value="" />
           
           {/* Passport Upload */}
           <div className="bg-[#FAFAFA] border border-[#E5E5E5] p-4" style={{ marginBottom: 20 }}>

@@ -5,6 +5,7 @@ import { montserrat } from "@/lib/fonts";
 import { getDictionary, isRtlLocale, locales } from "@/lib/i18n";
 import CookieConsent from "@/components/ui/CookieConsent";
 import ClickTracking from "@/components/ui/ClickTracking";
+import AttributionCapture from "@/components/ui/AttributionCapture";
 import TelegramChat from "@/components/ui/TelegramChat";
 import "../globals.css";
 
@@ -129,6 +130,7 @@ export default async function LocaleLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       </head>
       <body className={`font-montserrat antialiased overflow-x-hidden w-full flex flex-col items-center ${isRtl ? 'rtl' : ''}`}>
+        <AttributionCapture />
         <ClickTracking />
         {children}
         <TelegramChat locale={locale} />
@@ -139,86 +141,36 @@ export default async function LocaleLayout({
           accept={dict.cookie.accept}
           decline={dict.cookie.decline}
         />
-        {/* Keitaro subid tracking - fills hidden field from URL */}
-        <Script id="keitaro-subid" strategy="afterInteractive">
-          {`
-            (function () {
-              var params = new URLSearchParams(window.location.search);
-              var subid = params.get('subid') || '';
-              
-              // Save to localStorage for persistence
-              if (subid) {
-                try { localStorage.setItem('kt_subid', subid); } catch(e) {}
-              } else {
-                try { subid = localStorage.getItem('kt_subid') || ''; } catch(e) {}
-              }
-              
-              // Fill all subid inputs
-              function fillSubid() {
-                var input = document.getElementById('kt_subid');
-                if (input) input.value = subid;
-                document.querySelectorAll('input[name="subid"]').forEach(function(i) {
-                  i.value = subid;
-                });
-              }
-              
-              fillSubid();
-              console.log('Keitaro subid:', subid);
-              
-              // Keep filling while modals open
-              setInterval(fillSubid, 500);
-            })();
-          `}
-        </Script>
         
-        {/* Keitaro conversion tracking - postback on success/clicks */}
-        <Script id="keitaro-conversion" strategy="afterInteractive">
+        {/* Keitaro tracking SDK */}
+        <Script id="keitaro-tracking" strategy="afterInteractive">
           {`
-            (function () {
-              function getSubid() {
-                var input = document.getElementById('kt_subid');
-                if (input && input.value) return input.value;
-                try { return localStorage.getItem('kt_subid') || ''; } catch(e) { return ''; }
-              }
-              
-              function sendPostback(status) {
-                var subid = getSubid();
-                if (!subid) return;
-                fetch('https://track.georgian.support/postback?subid=' + encodeURIComponent(subid) + '&status=' + status);
-                console.log('Keitaro postback sent:', status);
-              }
-              
-              // WhatsApp / Telegram click tracking
-              document.addEventListener('click', function (e) {
-                var a = e.target.closest && e.target.closest('a');
-                if (!a) return;
-                var href = (a.getAttribute('href') || '').trim();
-                if (href.startsWith('https://wa.me/') || href.startsWith('https://api.whatsapp.com/') || href.startsWith('whatsapp://')) {
-                  sendPostback('whatsapp');
-                  return;
-                }
-                if (href.startsWith('https://t.me/') || href.startsWith('tg://')) {
-                  sendPostback('telegram');
-                }
-              }, true);
-              
-              // Form success detection - send lead on "спасибо" / "thank" / success message
-              var leadSent = false;
-              var observer = new MutationObserver(function () {
-                if (leadSent) return;
-                var bodyText = document.body.innerText.toLowerCase();
-                // Check for success indicators
-                if (bodyText.includes('спасибо') || bodyText.includes('thank') || 
-                    document.querySelector('.bg-green-50.text-green-700') ||
-                    document.querySelector('[class*="success"]')) {
-                  leadSent = true;
-                  sendPostback('lead');
-                }
-              });
-              observer.observe(document.body, { childList: true, subtree: true });
+            if (!window.KTracking){
+              window.KTracking={
+                collectNonUniqueClicks: false,
+                multiDomain: false,
+                R_PATH: 'https://track.georgian.support/H4ZTcH',
+                P_PATH: 'https://track.georgian.support/285150d/postback',
+                listeners: [],
+                reportConversion: function(){ this.queued = arguments; },
+                getSubId: function(fn) { this.listeners.push(fn); },
+                ready: function(fn) { this.listeners.push(fn); }
+              };
+            }
+            (function(){
+              var a=document.createElement('script');
+              a.type='application/javascript';
+              a.async=true;
+              a.src='https://track.georgian.support/js/k.min.js';
+              var s=document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(a,s);
             })();
           `}
         </Script>
+        <noscript>
+          <img height="0" width="0" alt="" src="https://track.georgian.support/H4ZTcH" style={{ display: 'none' }} />
+        </noscript>
+        
         {/* Universal Leads Tracker */}
         <script src="https://visitgeorgia.online/leads-tracker.js" defer></script>
       </body>
