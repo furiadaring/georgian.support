@@ -167,6 +167,33 @@ export default async function LocaleLayout({
             })();
           `}
         </Script>
+
+        {/* Centralized social button tracking via Keitaro */}
+        <Script id="social-tracking" strategy="afterInteractive">
+          {`
+            (function(){
+              document.addEventListener('click', function(e){
+                var btn = e.target.closest('.btn-wa, .btn-tg');
+                if (!btn) return;
+                var type = btn.classList.contains('btn-wa') ? 'whatsapp' : 'telegram';
+                var href = btn.getAttribute('href');
+                if (!href) return;
+
+                e.preventDefault();
+                if (window.KTracking && window.KTracking.ready) {
+                  window.KTracking.ready(function(){
+                    window.KTracking.reportConversion(0, type);
+                  });
+                }
+                setTimeout(function(){
+                  var target = (btn.getAttribute('target') || '').toLowerCase();
+                  if (target === '_blank') window.open(href, '_blank');
+                  else window.location.href = href;
+                }, 250);
+              }, true);
+            })();
+          `}
+        </Script>
         <noscript>
           <img height="0" width="0" alt="" src="https://track.georgian.support/H4ZTcH" style={{ display: 'none' }} />
         </noscript>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { type Locale, type Dictionary, isRtlLocale } from "@/lib/i18n";
-import { CONTACT, trackKeitaro } from "@/lib/constants";
+import { CONTACT } from "@/lib/constants";
 
 interface FAQProps {
   locale: Locale;
@@ -136,7 +136,6 @@ export default function FAQ({ locale, dict }: FAQProps) {
             <Link
               href={CONTACT.whatsapp}
               target="_blank"
-              onClick={() => trackKeitaro('whatsapp')}
               className="btn-wa inline-flex items-center justify-center gap-1.25 bg-whatsapp text-[#FAFAFA] rounded-full px-4 py-3 min-w-46.25 hover:opacity-90 transition-opacity duration-300"
             >
               <svg className="size-7.5 shrink-0" viewBox="0 0 30 30" fill="none">
@@ -149,7 +148,6 @@ export default function FAQ({ locale, dict }: FAQProps) {
             <Link
               href={CONTACT.telegram}
               target="_blank"
-              onClick={() => trackKeitaro('telegram')}
               className="btn-tg inline-flex items-center justify-center gap-1.25 bg-telegram text-[#FAFAFA] rounded-full px-4 py-3 min-w-46.25 hover:opacity-90 transition-opacity duration-300"
             >
               <svg className="size-7.5 shrink-0" viewBox="0 0 30 30" fill="none">

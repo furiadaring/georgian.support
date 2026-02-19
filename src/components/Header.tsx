@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { CONTACT, trackKeitaro } from "@/lib/constants";
+import { CONTACT } from "@/lib/constants";
 import { type Locale, type Dictionary } from "@/lib/i18n";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
@@ -168,7 +168,6 @@ export default function Header({ locale, dict, darkText = false }: HeaderProps) 
                 href={CONTACT.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackKeitaro('whatsapp')}
                 className="btn-wa flex items-center justify-center w-[30px] h-[30px] transition-all duration-300"
                 aria-label="WhatsApp"
               >
@@ -181,7 +180,6 @@ export default function Header({ locale, dict, darkText = false }: HeaderProps) 
                 href={CONTACT.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackKeitaro('telegram')}
                 className="btn-tg flex items-center justify-center w-[30px] h-[30px] transition-all duration-300"
                 aria-label="Telegram"
               >
@@ -351,7 +349,7 @@ export default function Header({ locale, dict, darkText = false }: HeaderProps) 
                   href={CONTACT.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => { trackKeitaro('whatsapp'); setIsMenuOpen(false); }}
+                  onClick={() => setIsMenuOpen(false)}
                   className="btn-wa flex items-center justify-center w-[46px] h-[46px]"
                   aria-label="WhatsApp"
                 >
@@ -364,7 +362,7 @@ export default function Header({ locale, dict, darkText = false }: HeaderProps) 
                   href={CONTACT.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => { trackKeitaro('telegram'); setIsMenuOpen(false); }}
+                  onClick={() => setIsMenuOpen(false)}
                   className="btn-tg flex items-center justify-center w-[46px] h-[46px]"
                   aria-label="Telegram"
                 >

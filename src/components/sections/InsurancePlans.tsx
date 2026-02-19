@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { CONTACT, trackKeitaro } from "@/lib/constants";
+import { CONTACT } from "@/lib/constants";
 import { type Locale, type Dictionary } from "@/lib/i18n";
 import InsuranceOrderModal from "@/components/ui/InsuranceOrderModal";
 
@@ -623,7 +623,6 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
           <Link
             href={CONTACT.whatsapp}
             target="_blank"
-            onClick={() => trackKeitaro('whatsapp')}
             className="btn-wa"
             style={{ display: 'flex', alignItems: 'center', flexShrink: 0, fontWeight: 500, color: '#FAFAFA', backgroundColor: '#DE643B', borderRadius: 1000, paddingLeft: 30, paddingRight: 5, paddingTop: 5, paddingBottom: 5, fontSize: 18, gap: 20, textDecoration: 'none', lineHeight: 1.3 }}
           >
@@ -802,7 +801,6 @@ function InsurancePlansContent({ locale, dict }: InsurancePlansProps) {
           <Link
             href={CONTACT.whatsapp}
             target="_blank"
-            onClick={() => trackKeitaro('whatsapp')}
             className="btn-wa"
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, color: '#FAFAFA', backgroundColor: '#DE643B', borderRadius: 1000, paddingLeft: 30, paddingRight: 5, paddingTop: 5, paddingBottom: 5, fontSize: 18, gap: 20, textDecoration: 'none', width: '100%', lineHeight: 1.3 }}
           >
