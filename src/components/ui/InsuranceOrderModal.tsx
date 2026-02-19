@@ -455,11 +455,10 @@ export default function InsuranceOrderModal({
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [emailError, setEmailError] = useState<string | null>(null);
 
-  // Multi-step flow: form → payment → card-payment/confirmation
-  const [currentStep, setCurrentStep] = useState<"form" | "payment" | "card-payment" | "confirmation">("form");
+  // Multi-step flow: form → payment → confirmation
+  const [currentStep, setCurrentStep] = useState<"form" | "payment" | "confirmation">("form");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"bank" | "korona" | "card" | "crypto" | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
-  const [cardPaymentUrl, setCardPaymentUrl] = useState<string | null>(null);
 
   // Phone validation function
   const isPhoneValid = useCallback((phone: string) => {
@@ -760,13 +759,13 @@ export default function InsuranceOrderModal({
       }
     }
 
-    // For card payment, show card payment step with iframe
+    // For card payment, open payment page in new tab (bank pages block iframe embedding)
     if (method === "card" && orderId) {
       const returnUrl = `${window.location.origin}/${locale}/payment/success?order=${orderId}`;
       const cancelUrl = `${window.location.origin}/${locale}/payment/cancel?order=${orderId}`;
-      setCardPaymentUrl(`https://visitgeorgia.online/${locale}/payment?order=${orderId}&return=${encodeURIComponent(returnUrl)}&cancel=${encodeURIComponent(cancelUrl)}&embed=1`);
-      setSelectedPaymentMethod(method);
-      setCurrentStep("card-payment");
+      const paymentUrl = `https://visitgeorgia.online/${locale}/payment?order=${orderId}&return=${encodeURIComponent(returnUrl)}&cancel=${encodeURIComponent(cancelUrl)}`;
+      window.open(paymentUrl, '_blank');
+      onClose();
       return;
     }
 
@@ -1228,14 +1227,14 @@ export default function InsuranceOrderModal({
         {/* Payment Selection Step */}
         {currentStep === "payment" && (
           <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-5 lg:px-8 py-5 bg-[#F4F3EE]">
-            <div className="text-center" style={{ marginBottom: 20 }}>
-              <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+              <div style={{ width: '48px', height: '48px', backgroundColor: '#dcfce7', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                <svg style={{ width: '24px', height: '24px', color: '#16a34a' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-[#2D1D38] mb-2">{(t as Record<string, string>).orderReceived || "Order Received!"}</h3>
-              <p className="text-[#ABA2A5]">{(t as Record<string, string>).selectPaymentMethod || "Please select your payment method"}</p>
+              <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#2D1D38', marginBottom: '6px' }}>{(t as Record<string, string>).orderReceived || "Order Received!"}</h3>
+              <p style={{ color: '#ABA2A5', fontSize: '14px' }}>{(t as Record<string, string>).selectPaymentMethod || "Please select your payment method"}</p>
             </div>
 
             {/* Price Summary */}
@@ -1354,73 +1353,6 @@ export default function InsuranceOrderModal({
           </div>
         )}
 
-        {/* Card Payment Step - Embedded BOG Payment */}
-        {currentStep === "card-payment" && (
-          <div className="flex flex-col h-[calc(95vh-140px)] bg-[#F4F3EE]">
-            {/* Header with back button */}
-            <div className="px-5 py-4 border-b border-[#E5E5E5] flex items-center gap-4">
-              <button
-                type="button"
-                onClick={() => {
-                  setCurrentStep("payment");
-                  setCardPaymentUrl(null);
-                }}
-                className="p-2 hover:bg-[#E5E5E5] rounded-full transition-colors"
-              >
-                <svg className="w-5 h-5 text-[#2D1D38]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <div className="flex-1">
-                <h3 className="font-bold text-[#2D1D38]">{(t as Record<string, string>).cardPayment || "Card Payment"}</h3>
-                <p className="text-sm text-[#ABA2A5]">{calculatedPrice} GEL</p>
-              </div>
-              <div className="flex gap-1.5">
-                <div className="bg-blue-50 border border-blue-200 px-2 py-0.5">
-                  <span className="text-blue-700 font-bold text-xs">VISA</span>
-                </div>
-                <div className="bg-orange-50 border border-orange-200 px-2 py-0.5 flex items-center gap-0.5">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-400 rounded-full -ml-1.5"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Payment iframe */}
-            <div className="flex-1 relative">
-              {cardPaymentUrl && (
-                <iframe
-                  src={cardPaymentUrl}
-                  className="w-full h-full border-0"
-                  allow="payment"
-                  title="Card Payment"
-                />
-              )}
-              {/* Loading overlay - shows briefly while iframe loads */}
-              <div className="absolute inset-0 bg-white flex items-center justify-center pointer-events-none opacity-0 transition-opacity" id="payment-loading">
-                <div className="text-center">
-                  <div className="w-12 h-12 border-4 border-[#DE643B] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                  <p className="text-[#ABA2A5]">{(t as Record<string, string>).loadingPayment || "Loading payment form..."}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Footer with alternative option */}
-            <div className="px-5 py-4 border-t border-[#E5E5E5] bg-white">
-              <button
-                type="button"
-                onClick={() => {
-                  setCurrentStep("payment");
-                  setCardPaymentUrl(null);
-                }}
-                className="w-full py-3 text-[#ABA2A5] text-sm hover:text-[#2D1D38] transition-colors"
-              >
-                ← {(t as Record<string, string>).chooseAnotherMethod || "Choose another payment method"}
-              </button>
-            </div>
-          </div>
-        )}
-
         {/* Confirmation Step */}
         {currentStep === "confirmation" && (
           <div className="overflow-y-auto max-h-[calc(95vh-140px)] px-6 py-5 bg-[#F4F3EE]">
@@ -1438,15 +1370,15 @@ export default function InsuranceOrderModal({
 
             {/* Bank Transfer Confirmation */}
             {selectedPaymentMethod === "bank" && (
-              <div className="flex flex-col gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#DE643B]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ width: '48px', height: '48px', backgroundColor: 'rgba(222, 100, 59, 0.1)', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                    <svg style={{ width: '24px', height: '24px', color: '#DE643B' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-[#2D1D38] mb-2">{(t as Record<string, string>).bankTransferTitle || "Bank Transfer Details"}</h3>
-                  <p className="text-[#ABA2A5]">{(t as Record<string, string>).bankTransferInstructions || "Please transfer the amount to the following account"}</p>
+                  <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#2D1D38', marginBottom: '6px' }}>{(t as Record<string, string>).bankTransferTitle || "Bank Transfer Details"}</h3>
+                  <p style={{ color: '#ABA2A5', fontSize: '14px' }}>{(t as Record<string, string>).bankTransferInstructions || "Please transfer the amount to the following account"}</p>
                 </div>
 
                 {/* Price */}
@@ -1529,15 +1461,15 @@ export default function InsuranceOrderModal({
 
             {/* Korona Pay Confirmation */}
             {selectedPaymentMethod === "korona" && (
-              <div className="flex flex-col gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#DE643B]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-[#DE643B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ width: '48px', height: '48px', backgroundColor: 'rgba(222, 100, 59, 0.1)', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                    <svg style={{ width: '24px', height: '24px', color: '#DE643B' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold text-[#2D1D38] mb-2">{(t as Record<string, string>).koronaPayTitle || "Korona Pay Transfer"}</h3>
-                  <p className="text-[#ABA2A5]">{(t as Record<string, string>).koronaPayInstructions || "Our operator will contact you shortly"}</p>
+                  <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#2D1D38', marginBottom: '6px' }}>{(t as Record<string, string>).koronaPayTitle || "Korona Pay Transfer"}</h3>
+                  <p style={{ color: '#ABA2A5', fontSize: '14px' }}>{(t as Record<string, string>).koronaPayInstructions || "Our operator will contact you shortly"}</p>
                 </div>
 
                 {/* Price */}
@@ -1578,13 +1510,13 @@ export default function InsuranceOrderModal({
 
             {/* Crypto Payment Confirmation */}
             {selectedPaymentMethod === "crypto" && (
-              <div className="flex flex-col gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#DE643B]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl text-[#DE643B]">₿</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ width: '48px', height: '48px', backgroundColor: 'rgba(222, 100, 59, 0.1)', borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                    <span style={{ fontSize: '24px', color: '#DE643B' }}>₿</span>
                   </div>
-                  <h3 className="text-xl font-bold text-[#2D1D38] mb-2">{(t as Record<string, string>).cryptoPaymentTitle || "Crypto Payment (USDT TRC-20)"}</h3>
-                  <p className="text-[#ABA2A5]">{(t as Record<string, string>).cryptoPaymentInstructions || "Please transfer USDT to the following TRC-20 wallet address"}</p>
+                  <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: '#2D1D38', marginBottom: '6px' }}>{(t as Record<string, string>).cryptoPaymentTitle || "Crypto Payment (USDT TRC-20)"}</h3>
+                  <p style={{ color: '#ABA2A5', fontSize: '14px' }}>{(t as Record<string, string>).cryptoPaymentInstructions || "Please transfer USDT to the following TRC-20 wallet address"}</p>
                 </div>
 
                 {/* Price */}
