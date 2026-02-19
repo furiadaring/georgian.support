@@ -36,9 +36,12 @@ export const trackKeitaro = (status: string) => {
   const subid = attribution?.subid || urlParams.get('subid') || urlParams.get('sub_id') || '';
 
   // Send Keitaro postback
+  console.log('trackKeitaro called:', { status, subid, hasAttribution: !!attribution });
   if (subid) {
     fetch(`https://track.georgian.support/285150d/postback?subid=${subid}&status=${status}`).catch(() => {});
     console.log('Keitaro postback sent:', status, subid);
+  } else {
+    console.log('No subid found - visitor not from Keitaro campaign');
   }
 
   // Save lead to database for WhatsApp/Telegram clicks
