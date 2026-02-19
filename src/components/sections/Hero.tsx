@@ -94,20 +94,20 @@ export default function Hero({ locale, dict }: HeroProps) {
           <div className="flex flex-col gap-5">
             <StatCard 
               icon={<ClockIcon />} 
-              value={t.statsTime || "15мин"} 
-              label={t.statsTimeLabel || "оформление"} 
+              value={t.statsTime || "15min"} 
+              label={t.statsTimeLabel || "processing"} 
               shadowSide="left"
             />
             <StatCard 
               icon={<HeadsetIcon />} 
               value={t.statsSupport || "24/7"} 
-              label={t.statsSupportLabel || "поддержка"} 
+              label={t.statsSupportLabel || "support"} 
               shadowSide="none"
             />
             <StatCard 
               icon={<ShieldIcon />} 
               value={t.statsCoverage || "$50K"} 
-              label={t.statsCoverageLabel || "покрытие"} 
+              label={t.statsCoverageLabel || "coverage"} 
               shadowSide="right"
             />
           </div>
@@ -242,8 +242,8 @@ export default function Hero({ locale, dict }: HeroProps) {
                 </div>
               </div>
               <div className="flex flex-col text-[#E6CFE3]">
-                <span className="text-[34px] font-bold leading-[1.3]">{t.statsTime || '15мин'}</span>
-                <span className="text-[16px] font-medium leading-[1.3]">{t.statsTimeLabel || 'оформление'}</span>
+                <span className="text-[34px] font-bold leading-[1.3]">{t.statsTime || '15min'}</span>
+                <span className="text-[16px] font-medium leading-[1.3]">{t.statsTimeLabel || 'processing'}</span>
               </div>
             </div>
             {/* Card 2 - 24/7 */}
@@ -255,7 +255,7 @@ export default function Hero({ locale, dict }: HeroProps) {
               </div>
               <div className="flex flex-col text-[#E6CFE3]">
                 <span className="text-[34px] font-bold leading-[1.3]">{t.statsSupport || '24/7'}</span>
-                <span className="text-[16px] font-medium leading-[1.3]">{t.statsSupportLabel || 'поддержка'}</span>
+                <span className="text-[16px] font-medium leading-[1.3]">{t.statsSupportLabel || 'support'}</span>
               </div>
             </div>
             {/* Card 3 - $50K */}
@@ -267,7 +267,7 @@ export default function Hero({ locale, dict }: HeroProps) {
               </div>
               <div className="flex flex-col text-[#E6CFE3]">
                 <span className="text-[34px] font-bold leading-[1.3]">{t.statsCoverage || '$50K'}</span>
-                <span className="text-[16px] font-medium leading-[1.3]">{t.statsCoverageLabel || 'покрытие'}</span>
+                <span className="text-[16px] font-medium leading-[1.3]">{t.statsCoverageLabel || 'coverage'}</span>
               </div>
             </div>
           </div>

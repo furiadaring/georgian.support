@@ -121,9 +121,9 @@ export default function Advantages({ locale, dict }: AdvantagesProps) {
   ];
 
   const stats = [
-    { value: "5000+", label: "клиентов" },
-    { value: "3+", label: "года опыта" },
-    { value: "7", label: "языков" },
+    { value: "5000+", label: t.stats?.clients || "clients" },
+    { value: "3+", label: t.stats?.experience || "years of experience" },
+    { value: "7", label: t.stats?.languages || "languages" },
   ];
 
   return (

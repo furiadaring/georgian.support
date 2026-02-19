@@ -19,11 +19,26 @@
     "faqTitle": "Sıkça Sorulan Sorular",
     "faqSubtitle": "Gürcistan'da araç sigortası hakkında sık sorulan sorulara cevaplar",
     "faq": [
-      { "q": "Gürcistan'a girerken trafik sigortası zorunlu mu?", "a": "Evet, mali sorumluluk sigortası Gürcistan'a giren tüm yabancı araçlar için zorunludur." },
-      { "q": "Trafik sigortası nereden alınır?", "a": "Poliçe sınırda veya önceden online alınabilir. Size hızlı ve kuyruğa girmeden yardımcı olacağız." },
-      { "q": "Trafik sigortası neyi kapsar?", "a": "Sigorta üçüncü şahıslara verilen zararı kapsar: sağlık için 300.000 GEL'e, mal için 50.000 GEL'e kadar." },
-      { "q": "Ne kadar süreyle sigorta yaptırabilirim?", "a": "Mevcut dönemler: 15 gün, 30 gün, 90 gün veya 1 yıl. Seyahat sürenize göre seçin." },
-      { "q": "Trafik sigortası yaptırmazsam ne olur?", "a": "Geçerli trafik sigortası olmadan Gürcistan'a araçla giriş yapılamaz. Sınırda geri çevrilirsiniz." }
+      {
+        "q": "Gürcistan'a girerken trafik sigortası zorunlu mu?",
+        "a": "Evet, mali sorumluluk sigortası Gürcistan'a giren tüm yabancı araçlar için zorunludur."
+      },
+      {
+        "q": "Trafik sigortası nereden alınır?",
+        "a": "Poliçe sınırda veya önceden online alınabilir. Size hızlı ve kuyruğa girmeden yardımcı olacağız."
+      },
+      {
+        "q": "Trafik sigortası neyi kapsar?",
+        "a": "Sigorta üçüncü şahıslara verilen zararı kapsar: sağlık için 300.000 GEL'e, mal için 50.000 GEL'e kadar."
+      },
+      {
+        "q": "Ne kadar süreyle sigorta yaptırabilirim?",
+        "a": "Mevcut dönemler: 15 gün, 30 gün, 90 gün veya 1 yıl. Seyahat sürenize göre seçin."
+      },
+      {
+        "q": "Trafik sigortası yaptırmazsam ne olur?",
+        "a": "Geçerli trafik sigortası olmadan Gürcistan'a araçla giriş yapılamaz. Sınırda geri çevrilirsiniz."
+      }
     ],
     "contactTitle": "Sigorta yaptırmaya hazır mısınız?",
     "contactSubtitle": "Bizimle iletişime geçin ve poliçenizi dakikalar içinde alın"
@@ -92,7 +107,12 @@
         "title": "Doğrudan Ödeme",
         "description": "Kliniklere doğrudan ödeme yapıyoruz — cebinizden para çıkmaz"
       }
-    ]
+    ],
+    "stats": {
+      "clients": "müşteri",
+      "experience": "yıl deneyim",
+      "languages": "dil"
+    }
   },
   "insurance": {
     "label": "Sigorta programları",
@@ -158,136 +178,478 @@
       "visitor": {
         "description": "Gürcistan ziyaretiniz sırasında gönül rahatlığının tadını çıkarın. Ziyaretçi sigortası, konaklamanız sırasında ortaya çıkabilecek beklenmedik sağlık giderlerini karşılayacaktır. Imedi L'nin uzman ekibi size kapsamlı sigorta danışmanlığı sunarak en kaliteli hizmeti garanti edecektir. Ziyaretçi sağlık sigortasını çevrimiçi satın alın ve poliçenizi dakikalar içinde e-posta ile alın.",
         "coverage": [
-          { "icon": "phone", "title": "7/24 Telefon Desteği", "limit": "Sınırsız" },
-          { "icon": "emergency", "title": "Acil Tıbbi Yardım", "limit": "Sınırsız" },
-          { "icon": "outpatient", "title": "Acil Ayakta Tedavi Hizmetleri", "limit": "10.000 ₾" },
-          { "icon": "dental", "title": "Acil Diş Bakımı", "limit": "10.000 ₾" },
-          { "icon": "hospital", "title": "Hastalık Nedeniyle Acil Hastaneye Yatış", "limit": "6.500 ₾" },
-          { "icon": "repatriation", "title": "Geri Dönüş", "limit": "3.500 ₾" },
-          { "icon": "hospital", "title": "Kaza Nedeniyle Acil Hastaneye Yatış", "limit": "6.500 ₾" },
-          { "icon": "death", "title": "Kaza Sonucu Ölüm Teminatı", "limit": "1.000 ₾" },
-          { "icon": "aggregate", "title": "Toplam Sigorta Limiti", "limit": "30.000 ₾" }
+          {
+            "icon": "phone",
+            "title": "7/24 Telefon Desteği",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "emergency",
+            "title": "Acil Tıbbi Yardım",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Acil Ayakta Tedavi Hizmetleri",
+            "limit": "10.000 ₾"
+          },
+          {
+            "icon": "dental",
+            "title": "Acil Diş Bakımı",
+            "limit": "10.000 ₾"
+          },
+          {
+            "icon": "hospital",
+            "title": "Hastalık Nedeniyle Acil Hastaneye Yatış",
+            "limit": "6.500 ₾"
+          },
+          {
+            "icon": "repatriation",
+            "title": "Geri Dönüş",
+            "limit": "3.500 ₾"
+          },
+          {
+            "icon": "hospital",
+            "title": "Kaza Nedeniyle Acil Hastaneye Yatış",
+            "limit": "6.500 ₾"
+          },
+          {
+            "icon": "death",
+            "title": "Kaza Sonucu Ölüm Teminatı",
+            "limit": "1.000 ₾"
+          },
+          {
+            "icon": "aggregate",
+            "title": "Toplam Sigorta Limiti",
+            "limit": "30.000 ₾"
+          }
         ],
         "faq": [
-          { "question": "Bu sigortayı kimler satın alabilir?", "answer": "Sigorta, 70 yaşın altında Gürcistan'da bulunan yabancı uyruklu ve vatansız turistler için tasarlanmıştır." },
-          { "question": "Sigorta neyi kapsar?", "answer": "Sigorta, bireysel sigorta dönemi boyunca acil tıbbi masrafları ve kaza sonucu ölümü kapsar." },
-          { "question": "Muafiyet nedir ve nasıl çalışır?", "answer": "Muafiyet, sigorta tazminatından düşülen ve sigortalı tarafından ödenen miktardır. Muafiyet vaka başına 100 GEL'dir ve sigorta kartı kapsamındaki tüm hizmetlere uygulanır (7/24 yardım hattı, geri dönüş ve acil tıbbi yardım hariç)." },
-          { "question": "Sigorta olayı durumunda ne yapmalısınız?", "answer": "Derhal uygun sağlık kuruluşuyla ve 7/24 yardım hattı 032 292 22 22 ile iletişime geçmelisiniz. Hizmet almak için lütfen sigorta poliçenizi ibraz edin." },
-          { "question": "Tıbbi hizmetlerde indirimler nasıl alınır?", "answer": "İndirim almak için sigortalının 24 saat çağrı merkezini araması, genel pratisyen hekim randevusu alması gerekir; hekim sorunu belirleyecek ve sigortacı tarafından belirlenen klinik için indirim kuponu düzenleyecektir." }
+          {
+            "question": "Bu sigortayı kimler satın alabilir?",
+            "answer": "Sigorta, 70 yaşın altında Gürcistan'da bulunan yabancı uyruklu ve vatansız turistler için tasarlanmıştır."
+          },
+          {
+            "question": "Sigorta neyi kapsar?",
+            "answer": "Sigorta, bireysel sigorta dönemi boyunca acil tıbbi masrafları ve kaza sonucu ölümü kapsar."
+          },
+          {
+            "question": "Muafiyet nedir ve nasıl çalışır?",
+            "answer": "Muafiyet, sigorta tazminatından düşülen ve sigortalı tarafından ödenen miktardır. Muafiyet vaka başına 100 GEL'dir ve sigorta kartı kapsamındaki tüm hizmetlere uygulanır (7/24 yardım hattı, geri dönüş ve acil tıbbi yardım hariç)."
+          },
+          {
+            "question": "Sigorta olayı durumunda ne yapmalısınız?",
+            "answer": "Derhal uygun sağlık kuruluşuyla ve 7/24 yardım hattı 032 292 22 22 ile iletişime geçmelisiniz. Hizmet almak için lütfen sigorta poliçenizi ibraz edin."
+          },
+          {
+            "question": "Tıbbi hizmetlerde indirimler nasıl alınır?",
+            "answer": "İndirim almak için sigortalının 24 saat çağrı merkezini araması, genel pratisyen hekim randevusu alması gerekir; hekim sorunu belirleyecek ve sigortacı tarafından belirlenen klinik için indirim kuponu düzenleyecektir."
+          }
         ]
       },
       "standard": {
         "description": "3 aya kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için EMERGENCY STANDARD sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
         "coverage": [
-          { "icon": "phone", "title": "24 saat telefon danışmanlığı", "limit": "Sınırsız" },
-          { "icon": "emergency", "title": "Ambulans hizmeti", "limit": "Sınırsız" },
-          { "icon": "doctor", "title": "Kişisel doktor hizmeti", "limit": "Sınırsız" },
-          { "icon": "hospital", "title": "Acil hastaneye yatış (kaza)", "limit": "5.000 ₾ (%60)" },
-          { "icon": "outpatient", "title": "Acil ayakta tedavi hizmeti", "limit": "300 ₾ (%50)" },
-          { "icon": "dental", "title": "Acil Diş Bakımı", "limit": "10.000 ₾" }
+          {
+            "icon": "phone",
+            "title": "24 saat telefon danışmanlığı",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "emergency",
+            "title": "Ambulans hizmeti",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "doctor",
+            "title": "Kişisel doktor hizmeti",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "hospital",
+            "title": "Acil hastaneye yatış (kaza)",
+            "limit": "5.000 ₾ (%60)"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Acil ayakta tedavi hizmeti",
+            "limit": "300 ₾ (%50)"
+          },
+          {
+            "icon": "dental",
+            "title": "Acil Diş Bakımı",
+            "limit": "10.000 ₾"
+          }
         ],
         "faq": [
-          { "question": "Kimler sigortalanabilir?", "answer": "Yalnızca 1-69 yaş arası yabancı uyruklu vatandaşlar bu sözleşme kapsamında sigortalanabilir." },
-          { "question": "Sigorta hangi bölgede geçerli?", "answer": "Sigorta Gürcistan topraklarında geçerlidir (işgal altındaki bölgeler hariç)." },
-          { "question": "Bekleme süresi nedir?", "answer": "Bekleme süresi, sigorta başlangıç tarihinden itibaren hesaplanan ve bu süre zarfında masrafların karşılanmadığı dönemdir." },
-          { "question": "Geri ödeme başvurusu nasıl yapılır?", "answer": "Geri ödeme belgelerinin sunulması için son tarih, tıbbi hizmet ödemesinden itibaren 15 gündür. Geri ödeme nakit olmayan ödeme ile yapılır." },
-          { "question": "Sigorta neyi kapsamaz?", "answer": "Kapsanmayanlar: sigorta başlamadan önceki olaylar, çağrı merkezi bildirimi olmadan tedavi, psikiyatrik hastalıklar, alternatif tıp, protez ve implantlar, alkol/uyuşturucu kullanımı sonuçları." }
+          {
+            "question": "Kimler sigortalanabilir?",
+            "answer": "Yalnızca 1-69 yaş arası yabancı uyruklu vatandaşlar bu sözleşme kapsamında sigortalanabilir."
+          },
+          {
+            "question": "Sigorta hangi bölgede geçerli?",
+            "answer": "Sigorta Gürcistan topraklarında geçerlidir (işgal altındaki bölgeler hariç)."
+          },
+          {
+            "question": "Bekleme süresi nedir?",
+            "answer": "Bekleme süresi, sigorta başlangıç tarihinden itibaren hesaplanan ve bu süre zarfında masrafların karşılanmadığı dönemdir."
+          },
+          {
+            "question": "Geri ödeme başvurusu nasıl yapılır?",
+            "answer": "Geri ödeme belgelerinin sunulması için son tarih, tıbbi hizmet ödemesinden itibaren 15 gündür. Geri ödeme nakit olmayan ödeme ile yapılır."
+          },
+          {
+            "question": "Sigorta neyi kapsamaz?",
+            "answer": "Kapsanmayanlar: sigorta başlamadan önceki olaylar, çağrı merkezi bildirimi olmadan tedavi, psikiyatrik hastalıklar, alternatif tıp, protez ve implantlar, alkol/uyuşturucu kullanımı sonuçları."
+          }
         ]
       },
       "optimum": {
         "description": "6 aya kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için EMERGENCY EXTENDED sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
         "coverage": [
-          { "icon": "phone", "title": "24 saat telefon danışmanlığı", "limit": "Sınırsız" },
-          { "icon": "emergency", "title": "Ambulans hizmeti", "limit": "Sınırsız" },
-          { "icon": "doctor", "title": "Kişisel doktor hizmeti", "limit": "Sınırsız" },
-          { "icon": "hospital", "title": "Acil hastaneye yatış (kaza)", "limit": "5.000 ₾ (%60)" },
-          { "icon": "outpatient", "title": "Acil ayakta tedavi hizmeti", "limit": "300 ₾ (%50)" },
-          { "icon": "dental", "title": "Acil Diş Bakımı", "limit": "10.000 ₾" }
+          {
+            "icon": "phone",
+            "title": "24 saat telefon danışmanlığı",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "emergency",
+            "title": "Ambulans hizmeti",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "doctor",
+            "title": "Kişisel doktor hizmeti",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "hospital",
+            "title": "Acil hastaneye yatış (kaza)",
+            "limit": "5.000 ₾ (%60)"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Acil ayakta tedavi hizmeti",
+            "limit": "300 ₾ (%50)"
+          },
+          {
+            "icon": "dental",
+            "title": "Acil Diş Bakımı",
+            "limit": "10.000 ₾"
+          }
         ],
         "faq": [
-          { "question": "Kimler sigortalanabilir?", "answer": "Yalnızca 1-69 yaş arası yabancı uyruklu vatandaşlar bu sözleşme kapsamında sigortalanabilir." },
-          { "question": "Sigorta hangi bölgede geçerli?", "answer": "Sigorta Gürcistan topraklarında geçerlidir (işgal altındaki bölgeler hariç)." },
-          { "question": "Bekleme süresi nedir?", "answer": "Bekleme süresi, sigorta başlangıç tarihinden itibaren hesaplanan ve bu süre zarfında masrafların karşılanmadığı dönemdir." },
-          { "question": "Geri ödeme başvurusu nasıl yapılır?", "answer": "Geri ödeme belgelerinin sunulması için son tarih, tıbbi hizmet ödemesinden itibaren 15 gündür. Geri ödeme nakit olmayan ödeme ile yapılır." },
-          { "question": "Sigorta neyi kapsamaz?", "answer": "Kapsanmayanlar: sigorta başlamadan önceki olaylar, çağrı merkezi bildirimi olmadan tedavi, psikiyatrik hastalıklar, alternatif tıp, protez ve implantlar, alkol/uyuşturucu kullanımı sonuçları." }
+          {
+            "question": "Kimler sigortalanabilir?",
+            "answer": "Yalnızca 1-69 yaş arası yabancı uyruklu vatandaşlar bu sözleşme kapsamında sigortalanabilir."
+          },
+          {
+            "question": "Sigorta hangi bölgede geçerli?",
+            "answer": "Sigorta Gürcistan topraklarında geçerlidir (işgal altındaki bölgeler hariç)."
+          },
+          {
+            "question": "Bekleme süresi nedir?",
+            "answer": "Bekleme süresi, sigorta başlangıç tarihinden itibaren hesaplanan ve bu süre zarfında masrafların karşılanmadığı dönemdir."
+          },
+          {
+            "question": "Geri ödeme başvurusu nasıl yapılır?",
+            "answer": "Geri ödeme belgelerinin sunulması için son tarih, tıbbi hizmet ödemesinden itibaren 15 gündür. Geri ödeme nakit olmayan ödeme ile yapılır."
+          },
+          {
+            "question": "Sigorta neyi kapsamaz?",
+            "answer": "Kapsanmayanlar: sigorta başlamadan önceki olaylar, çağrı merkezi bildirimi olmadan tedavi, psikiyatrik hastalıklar, alternatif tıp, protez ve implantlar, alkol/uyuşturucu kullanımı sonuçları."
+          }
         ]
       },
       "premium": {
         "description": "1 yıla kadar Gürcistan'da kalan yabancı uyruklu vatandaşlar için EMERGENCY FLEXI sigorta programı. 7/24 destek, acil tıbbi yardım ve kaza nedeniyle hastaneye yatışı içerir.",
         "coverage": [
-          { "icon": "phone", "title": "24 saat telefon danışmanlığı", "limit": "Sınırsız" },
-          { "icon": "emergency", "title": "Ambulans hizmeti", "limit": "Sınırsız" },
-          { "icon": "doctor", "title": "Kişisel doktor hizmeti", "limit": "Sınırsız" },
-          { "icon": "hospital", "title": "Acil hastaneye yatış (kaza)", "limit": "5.000 ₾ (%60)" },
-          { "icon": "outpatient", "title": "Acil ayakta tedavi hizmeti", "limit": "300 ₾ (%50)" },
-          { "icon": "dental", "title": "Acil Diş Bakımı", "limit": "10.000 ₾" }
+          {
+            "icon": "phone",
+            "title": "24 saat telefon danışmanlığı",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "emergency",
+            "title": "Ambulans hizmeti",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "doctor",
+            "title": "Kişisel doktor hizmeti",
+            "limit": "Sınırsız"
+          },
+          {
+            "icon": "hospital",
+            "title": "Acil hastaneye yatış (kaza)",
+            "limit": "5.000 ₾ (%60)"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Acil ayakta tedavi hizmeti",
+            "limit": "300 ₾ (%50)"
+          },
+          {
+            "icon": "dental",
+            "title": "Acil Diş Bakımı",
+            "limit": "10.000 ₾"
+          }
         ],
         "faq": [
-          { "question": "Kimler sigortalanabilir?", "answer": "Yalnızca 1-69 yaş arası yabancı uyruklu vatandaşlar bu sözleşme kapsamında sigortalanabilir." },
-          { "question": "Sigorta hangi bölgede geçerli?", "answer": "Sigorta Gürcistan topraklarında geçerlidir (işgal altındaki bölgeler hariç)." },
-          { "question": "Bekleme süresi nedir?", "answer": "Bekleme süresi, sigorta başlangıç tarihinden itibaren hesaplanan ve bu süre zarfında masrafların karşılanmadığı dönemdir." },
-          { "question": "Geri ödeme başvurusu nasıl yapılır?", "answer": "Geri ödeme belgelerinin sunulması için son tarih, tıbbi hizmet ödemesinden itibaren 15 gündür. Geri ödeme nakit olmayan ödeme ile yapılır." },
-          { "question": "Sigorta neyi kapsamaz?", "answer": "Kapsanmayanlar: sigorta başlamadan önceki olaylar, çağrı merkezi bildirimi olmadan tedavi, psikiyatrik hastalıklar, alternatif tıp, protez ve implantlar, alkol/uyuşturucu kullanımı sonuçları." }
+          {
+            "question": "Kimler sigortalanabilir?",
+            "answer": "Yalnızca 1-69 yaş arası yabancı uyruklu vatandaşlar bu sözleşme kapsamında sigortalanabilir."
+          },
+          {
+            "question": "Sigorta hangi bölgede geçerli?",
+            "answer": "Sigorta Gürcistan topraklarında geçerlidir (işgal altındaki bölgeler hariç)."
+          },
+          {
+            "question": "Bekleme süresi nedir?",
+            "answer": "Bekleme süresi, sigorta başlangıç tarihinden itibaren hesaplanan ve bu süre zarfında masrafların karşılanmadığı dönemdir."
+          },
+          {
+            "question": "Geri ödeme başvurusu nasıl yapılır?",
+            "answer": "Geri ödeme belgelerinin sunulması için son tarih, tıbbi hizmet ödemesinden itibaren 15 gündür. Geri ödeme nakit olmayan ödeme ile yapılır."
+          },
+          {
+            "question": "Sigorta neyi kapsamaz?",
+            "answer": "Kapsanmayanlar: sigorta başlamadan önceki olaylar, çağrı merkezi bildirimi olmadan tedavi, psikiyatrik hastalıklar, alternatif tıp, protez ve implantlar, alkol/uyuşturucu kullanımı sonuçları."
+          }
         ]
       },
       "uno-active": {
         "description": "Gürcistan'da uzun süreli konaklama için MEDICAL STANDARD sağlık sigortası. Aile hekimi hizmetleri, acil ve planlı hastane yatışı, ayakta tedavi ve diş hizmetlerini kapsayan kapsamlı teminat.",
         "coverage": [
-          { "icon": "phone", "title": "7/24 telefon danışmanlığı", "limit": "%100 — Limitsiz" },
-          { "icon": "doctor", "title": "Aile hekimi hizmetleri", "limit": "%100 — Limitsiz" },
-          { "icon": "emergency", "title": "Acil tıbbi yardım", "limit": "%100 — Limitsiz" },
-          { "icon": "hospital", "title": "Acil hastane yatışı", "limit": "%100 — 5.000 GEL" },
-          { "icon": "hospital", "title": "Planlı hastane yatışı (12 ay bekleme)", "limit": "%80 — 4.000 GEL" },
-          { "icon": "hospital", "title": "Partner kliniklerde gündüz hastanesi (12 ay)", "limit": "%50 — 4.000 GEL" },
-          { "icon": "maternity", "title": "Partner klinikte gebelik takibi", "limit": "%50 — 500 GEL" },
-          { "icon": "outpatient", "title": "Acil ayakta tedavi", "limit": "%100 — Limitsiz" },
-          { "icon": "outpatient", "title": "Planlı ayakta tedavi (belirli klinik)", "limit": "%60 — 800 GEL" },
-          { "icon": "outpatient", "title": "Planlı ayakta tedavi (partner klinikler)", "limit": "%50 — 800 GEL" },
-          { "icon": "medications", "title": "GPC-Pharmadepot'ta ilaçlar", "limit": "%50 — 800 GEL" },
-          { "icon": "preventive", "title": "Koruyucu sağlık taramaları", "limit": "%100 — Dönem başına 1x" },
-          { "icon": "dental", "title": "Acil diş hizmetleri", "limit": "%100 — 500 GEL" },
-          { "icon": "dental", "title": "Planlı diş (ana klinikler)", "limit": "%30 — 300 GEL" },
-          { "icon": "dental", "title": "İmplant (SGS, İsviçre)", "limit": "%60 — 1.500 GEL" },
-          { "icon": "dental", "title": "Planlı diş (ek klinikler)", "limit": "%50 — Limitsiz" },
-          { "icon": "dental", "title": "Dental BT, ortopantomogram", "limit": "%40 — 500 GEL" },
-          { "icon": "dental", "title": "Ortopedi ve ortodonti", "limit": "%10-60 indirim" }
+          {
+            "icon": "phone",
+            "title": "7/24 telefon danışmanlığı",
+            "limit": "%100 — Limitsiz"
+          },
+          {
+            "icon": "doctor",
+            "title": "Aile hekimi hizmetleri",
+            "limit": "%100 — Limitsiz"
+          },
+          {
+            "icon": "emergency",
+            "title": "Acil tıbbi yardım",
+            "limit": "%100 — Limitsiz"
+          },
+          {
+            "icon": "hospital",
+            "title": "Acil hastane yatışı",
+            "limit": "%100 — 5.000 GEL"
+          },
+          {
+            "icon": "hospital",
+            "title": "Planlı hastane yatışı (12 ay bekleme)",
+            "limit": "%80 — 4.000 GEL"
+          },
+          {
+            "icon": "hospital",
+            "title": "Partner kliniklerde gündüz hastanesi (12 ay)",
+            "limit": "%50 — 4.000 GEL"
+          },
+          {
+            "icon": "maternity",
+            "title": "Partner klinikte gebelik takibi",
+            "limit": "%50 — 500 GEL"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Acil ayakta tedavi",
+            "limit": "%100 — Limitsiz"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Planlı ayakta tedavi (belirli klinik)",
+            "limit": "%60 — 800 GEL"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Planlı ayakta tedavi (partner klinikler)",
+            "limit": "%50 — 800 GEL"
+          },
+          {
+            "icon": "medications",
+            "title": "GPC-Pharmadepot'ta ilaçlar",
+            "limit": "%50 — 800 GEL"
+          },
+          {
+            "icon": "preventive",
+            "title": "Koruyucu sağlık taramaları",
+            "limit": "%100 — Dönem başına 1x"
+          },
+          {
+            "icon": "dental",
+            "title": "Acil diş hizmetleri",
+            "limit": "%100 — 500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Planlı diş (ana klinikler)",
+            "limit": "%30 — 300 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "İmplant (SGS, İsviçre)",
+            "limit": "%60 — 1.500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Planlı diş (ek klinikler)",
+            "limit": "%50 — Limitsiz"
+          },
+          {
+            "icon": "dental",
+            "title": "Dental BT, ortopantomogram",
+            "limit": "%40 — 500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Ortopedi ve ortodonti",
+            "limit": "%10-60 indirim"
+          }
         ],
         "faq": [
-          { "question": "MEDICAL STANDARD'i kimler satın alabilir?", "answer": "MEDICAL STANDARD, Gürcistan'da uzun süreli kalmayı planlayan turistler, göçmenler ve herkes için uygundur, 0-64 yaş arası." },
-          { "question": "Bekleme süresi nedir?", "answer": "Planlı hastane yatışı ve gündüz hastanesi için — 12 ay. Acil hizmetler için — bekleme süresi yoktur." },
-          { "question": "Gebelik kapsanıyor mu?", "answer": "Evet, gebelik takibi partner kliniklerde doktor yönlendirmesiyle %50 oranında 500 GEL limite kadar kapsanır." },
-          { "question": "Hangi diş hizmetleri dahil?", "answer": "Acil diş %100 (500 GEL), planlı %30 (300 GEL), SGS implant %60 (1500 GEL), BT %40 (500 GEL)." },
-          { "question": "İlaçlar kapsanıyor mu?", "answer": "Evet, GPC-Pharmadepot eczane ağında ilaçlar %50 oranında 800 GEL limite kadar kapsanır." }
+          {
+            "question": "MEDICAL STANDARD'i kimler satın alabilir?",
+            "answer": "MEDICAL STANDARD, Gürcistan'da uzun süreli kalmayı planlayan turistler, göçmenler ve herkes için uygundur, 0-64 yaş arası."
+          },
+          {
+            "question": "Bekleme süresi nedir?",
+            "answer": "Planlı hastane yatışı ve gündüz hastanesi için — 12 ay. Acil hizmetler için — bekleme süresi yoktur."
+          },
+          {
+            "question": "Gebelik kapsanıyor mu?",
+            "answer": "Evet, gebelik takibi partner kliniklerde doktor yönlendirmesiyle %50 oranında 500 GEL limite kadar kapsanır."
+          },
+          {
+            "question": "Hangi diş hizmetleri dahil?",
+            "answer": "Acil diş %100 (500 GEL), planlı %30 (300 GEL), SGS implant %60 (1500 GEL), BT %40 (500 GEL)."
+          },
+          {
+            "question": "İlaçlar kapsanıyor mu?",
+            "answer": "Evet, GPC-Pharmadepot eczane ağında ilaçlar %50 oranında 800 GEL limite kadar kapsanır."
+          }
         ]
       },
       "uno-active-plus": {
         "description": "Gürcistan'da uzun süreli konaklama için MEDICAL FLEXI genişletilmiş sağlık sigortası. Hastane yatışı için artırılmış limitler, genişletilmiş diş hizmetleri ve ek avantajlar.",
         "coverage": [
-          { "icon": "phone", "title": "7/24 telefon danışmanlığı", "limit": "%100 — Limitsiz" },
-          { "icon": "doctor", "title": "Aile hekimi hizmetleri", "limit": "%100 — Limitsiz" },
-          { "icon": "emergency", "title": "Acil tıbbi yardım", "limit": "%100 — Limitsiz" },
-          { "icon": "hospital", "title": "Acil hastane yatışı", "limit": "%100 — 10.000 GEL" },
-          { "icon": "hospital", "title": "Planlı hastane yatışı (12 ay bekleme)", "limit": "%100 — 8.000 GEL" },
-          { "icon": "hospital", "title": "Partner kliniklerde gündüz hastanesi (12 ay)", "limit": "%60 — 8.000 GEL" },
-          { "icon": "maternity", "title": "Partner klinikte gebelik takibi", "limit": "%50 — 800 GEL" },
-          { "icon": "outpatient", "title": "Acil ayakta tedavi", "limit": "%100 — Limitsiz" },
-          { "icon": "outpatient", "title": "Planlı ayakta tedavi (belirli klinik)", "limit": "%70 — 1.500 GEL" },
-          { "icon": "outpatient", "title": "Planlı ayakta tedavi (partner klinikler)", "limit": "%60 — 1.500 GEL" },
-          { "icon": "medications", "title": "GPC-Pharmadepot'ta ilaçlar", "limit": "%55 — 1.500 GEL" },
-          { "icon": "preventive", "title": "Koruyucu sağlık taramaları", "limit": "%100 — Dönem başına 1x" },
-          { "icon": "dental", "title": "Acil diş hizmetleri", "limit": "%100 — Limitsiz" },
-          { "icon": "dental", "title": "Planlı diş (ana klinikler)", "limit": "%60 — 1.500 GEL" },
-          { "icon": "dental", "title": "İmplant (SGS, İsviçre)", "limit": "%60 — 1.500 GEL" },
-          { "icon": "dental", "title": "Planlı diş (ek klinikler)", "limit": "%50 — Limitsiz" },
-          { "icon": "dental", "title": "Dental BT, ortopantomogram", "limit": "%40 — 500 GEL" },
-          { "icon": "dental", "title": "Ortopedi ve ortodonti", "limit": "%10-60 indirim" }
+          {
+            "icon": "phone",
+            "title": "7/24 telefon danışmanlığı",
+            "limit": "%100 — Limitsiz"
+          },
+          {
+            "icon": "doctor",
+            "title": "Aile hekimi hizmetleri",
+            "limit": "%100 — Limitsiz"
+          },
+          {
+            "icon": "emergency",
+            "title": "Acil tıbbi yardım",
+            "limit": "%100 — Limitsiz"
+          },
+          {
+            "icon": "hospital",
+            "title": "Acil hastane yatışı",
+            "limit": "%100 — 10.000 GEL"
+          },
+          {
+            "icon": "hospital",
+            "title": "Planlı hastane yatışı (12 ay bekleme)",
+            "limit": "%100 — 8.000 GEL"
+          },
+          {
+            "icon": "hospital",
+            "title": "Partner kliniklerde gündüz hastanesi (12 ay)",
+            "limit": "%60 — 8.000 GEL"
+          },
+          {
+            "icon": "maternity",
+            "title": "Partner klinikte gebelik takibi",
+            "limit": "%50 — 800 GEL"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Acil ayakta tedavi",
+            "limit": "%100 — Limitsiz"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Planlı ayakta tedavi (belirli klinik)",
+            "limit": "%70 — 1.500 GEL"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Planlı ayakta tedavi (partner klinikler)",
+            "limit": "%60 — 1.500 GEL"
+          },
+          {
+            "icon": "medications",
+            "title": "GPC-Pharmadepot'ta ilaçlar",
+            "limit": "%55 — 1.500 GEL"
+          },
+          {
+            "icon": "preventive",
+            "title": "Koruyucu sağlık taramaları",
+            "limit": "%100 — Dönem başına 1x"
+          },
+          {
+            "icon": "dental",
+            "title": "Acil diş hizmetleri",
+            "limit": "%100 — Limitsiz"
+          },
+          {
+            "icon": "dental",
+            "title": "Planlı diş (ana klinikler)",
+            "limit": "%60 — 1.500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "İmplant (SGS, İsviçre)",
+            "limit": "%60 — 1.500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Planlı diş (ek klinikler)",
+            "limit": "%50 — Limitsiz"
+          },
+          {
+            "icon": "dental",
+            "title": "Dental BT, ortopantomogram",
+            "limit": "%40 — 500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Ortopedi ve ortodonti",
+            "limit": "%10-60 indirim"
+          }
         ],
         "faq": [
-          { "question": "MEDICAL STANDARD'den farkı nedir?", "answer": "MEDICAL FLEXI daha yüksek limitlere sahip: hastane 10.000 GEL'e kadar (5.000 yerine), planlı %100/8.000 GEL (%80/4.000 yerine), ayakta tedavi 1.500 GEL'e kadar." },
-          { "question": "Bekleme süresi nedir?", "answer": "Planlı hastane yatışı ve gündüz hastanesi için — 12 ay. Acil hizmetler için — bekleme süresi yoktur." },
-          { "question": "Gebelik kapsanıyor mu?", "answer": "Evet, gebelik takibi partner kliniklerde doktor yönlendirmesiyle %50 oranında 800 GEL limite kadar kapsanır." },
-          { "question": "Hangi diş hizmetleri dahil?", "answer": "Acil diş %100 limitsiz, planlı %60 (1500 GEL), SGS implant %60 (1500 GEL), BT %40 (500 GEL)." },
-          { "question": "İlaçlar kapsanıyor mu?", "answer": "Evet, GPC-Pharmadepot eczane ağında ilaçlar %55 oranında 1500 GEL limite kadar kapsanır." }
+          {
+            "question": "MEDICAL STANDARD'den farkı nedir?",
+            "answer": "MEDICAL FLEXI daha yüksek limitlere sahip: hastane 10.000 GEL'e kadar (5.000 yerine), planlı %100/8.000 GEL (%80/4.000 yerine), ayakta tedavi 1.500 GEL'e kadar."
+          },
+          {
+            "question": "Bekleme süresi nedir?",
+            "answer": "Planlı hastane yatışı ve gündüz hastanesi için — 12 ay. Acil hizmetler için — bekleme süresi yoktur."
+          },
+          {
+            "question": "Gebelik kapsanıyor mu?",
+            "answer": "Evet, gebelik takibi partner kliniklerde doktor yönlendirmesiyle %50 oranında 800 GEL limite kadar kapsanır."
+          },
+          {
+            "question": "Hangi diş hizmetleri dahil?",
+            "answer": "Acil diş %100 limitsiz, planlı %60 (1500 GEL), SGS implant %60 (1500 GEL), BT %40 (500 GEL)."
+          },
+          {
+            "question": "İlaçlar kapsanıyor mu?",
+            "answer": "Evet, GPC-Pharmadepot eczane ağında ilaçlar %55 oranında 1500 GEL limite kadar kapsanır."
+          }
         ]
       }
     }
@@ -389,9 +751,18 @@
     "titleHighlight": "İndirim Kazan!",
     "description": "Arkadaşlarınızı getirin ve sigortanızda indirim kazanın. Yeterince arkadaş getirin — sigortanız ücretsiz olsun!",
     "steps": [
-      { "title": "Arkadaş Davet Et", "description": "Arkadaşlarınıza sigortamızdan bahsedin, başvuru sırasında adınızı belirtsinler" },
-      { "title": "Sigorta Satın Alırlar", "description": "Arkadaşınız sigorta satın aldığında, referansı kayıt altına alırız" },
-      { "title": "İndirim Kazan", "description": "İndirimi arkadaşlarla birlikte kayıt olurken hemen kullanın veya gelecekte yenileme/yükseltme için saklayın" }
+      {
+        "title": "Arkadaş Davet Et",
+        "description": "Arkadaşlarınıza sigortamızdan bahsedin, başvuru sırasında adınızı belirtsinler"
+      },
+      {
+        "title": "Sigorta Satın Alırlar",
+        "description": "Arkadaşınız sigorta satın aldığında, referansı kayıt altına alırız"
+      },
+      {
+        "title": "İndirim Kazan",
+        "description": "İndirimi arkadaşlarla birlikte kayıt olurken hemen kullanın veya gelecekte yenileme/yükseltme için saklayın"
+      }
     ],
     "planPrice": "Fiyat",
     "discountPerReferral": "Referans başına indirim",
@@ -411,7 +782,7 @@
     "navigation": "Navigasyon",
     "insurancePlans": "Sigorta Planları",
     "contacts": "İletişim",
-    "address": "Adres",
+    "address": "28 Luka Asatiani Caddesi,<br />Batum, 6000, Gürcistan",
     "phoneWhatsapp": "Telefon / WhatsApp",
     "workHours": "Çalışma Saatleri",
     "workHoursValue": "Pzt-Cmt  10:00 - 19:00",
@@ -564,7 +935,8 @@
     }
   },
   "common": {
-    "backToHome": "Ana Sayfaya Dön"
+    "backToHome": "Ana Sayfaya Dön",
+    "home": "Ana Sayfa"
   },
   "insurancePage": {
     "meta": {
@@ -582,7 +954,8 @@
     "help": {
       "title": "Karar veremiyor musunuz?",
       "description": "Uzmanlarımız ihtiyaçlarınıza en uygun sigorta planını seçmenize yardımcı olacaktır.",
-      "button": "WhatsApp'tan Yazın"    },
+      "button": "WhatsApp'tan Yazın"
+    },
     "autoInsurance": {
       "label": "OTO SİGORTA",
       "title": "Zorunlu",
@@ -701,7 +1074,15 @@
     "orderConfirmed": "Sipariş Onaylandı",
     "koronaPayContactNote": "Operatörümüz Korona Pay havale bilgilerini vermek için sizinle WhatsApp veya Telegram üzerinden iletişime geçecektir.",
     "note": "Not",
-    "koronaPayNote": "Lütfen verdiğiniz telefon numarasında WhatsApp veya Telegram'ın erişilebilir olduğundan emin olun."
+    "koronaPayNote": "Lütfen verdiğiniz telefon numarasında WhatsApp veya Telegram'ın erişilebilir olduğundan emin olun.",
+    "privacyConsent": "Butona tıklayarak gizlilik politikasını kabul etmiş olursunuz",
+    "changePaymentMethod": "Ödeme yöntemini değiştir",
+    "otherBankNote": "Bank of Georgia dışında bir bankadan ödeme yapıyorsanız, lütfen ödeme onayını WhatsApp, Telegram veya e-posta ile gönderin.",
+    "cryptoPayment": "Kripto (USDT TRC-20)",
+    "cryptoPaymentDesc": "Tron ağında USDT ile ödeme",
+    "cryptoPaymentTitle": "Kripto Ödeme (USDT TRC-20)",
+    "cryptoPaymentInstructions": "Lütfen USDT'yi aşağıdaki TRC-20 cüzdan adresine aktarın",
+    "cryptoPaymentNote": "Yalnızca TRC-20 ağında USDT gönderin. Başka token göndermek veya yanlış ağ kullanmak fonların kaybına yol açar.",
+    "walletAddress": "TRC-20 Cüzdan Adresi"
   }
 }
-

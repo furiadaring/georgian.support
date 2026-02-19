@@ -2,7 +2,8 @@
   "meta": {
     "title": "Georgian Support | Insurance for Every Need Foreigners Have in Georgia",
     "description": "Health, travel & auto insurance for tourists and expats in Georgia. Fast online processing, coverage up to $50,000, 24/7 support."
-  },  "autoInsurancePage": {
+  },
+  "autoInsurancePage": {
     "meta": {
       "title": "MTPL Auto Insurance | Georgian Support",
       "description": "Mandatory third-party liability insurance (MTPL) for foreign vehicles in Georgia. Quick online processing, affordable prices."
@@ -18,15 +19,31 @@
     "faqTitle": "Frequently Asked Questions",
     "faqSubtitle": "Answers to common questions about auto insurance in Georgia",
     "faq": [
-      { "q": "Is MTPL mandatory when entering Georgia?", "a": "Yes, third-party liability insurance is mandatory for all foreign vehicles entering Georgia." },
-      { "q": "Where can I get MTPL insurance?", "a": "You can get the policy at the border or in advance online. We'll help you get insurance quickly without queues." },
-      { "q": "What does MTPL insurance cover?", "a": "The insurance covers damage to third parties: up to 300,000 GEL for health damage and up to 50,000 GEL for property damage." },
-      { "q": "For how long can I get insurance?", "a": "Available periods: 15 days, 30 days, 90 days, or 1 year. Choose based on your trip duration." },
-      { "q": "What happens if I don't get MTPL?", "a": "Without a valid MTPL policy, you cannot enter Georgia by car. You will be turned away at the border." }
+      {
+        "q": "Is MTPL mandatory when entering Georgia?",
+        "a": "Yes, third-party liability insurance is mandatory for all foreign vehicles entering Georgia."
+      },
+      {
+        "q": "Where can I get MTPL insurance?",
+        "a": "You can get the policy at the border or in advance online. We'll help you get insurance quickly without queues."
+      },
+      {
+        "q": "What does MTPL insurance cover?",
+        "a": "The insurance covers damage to third parties: up to 300,000 GEL for health damage and up to 50,000 GEL for property damage."
+      },
+      {
+        "q": "For how long can I get insurance?",
+        "a": "Available periods: 15 days, 30 days, 90 days, or 1 year. Choose based on your trip duration."
+      },
+      {
+        "q": "What happens if I don't get MTPL?",
+        "a": "Without a valid MTPL policy, you cannot enter Georgia by car. You will be turned away at the border."
+      }
     ],
     "contactTitle": "Ready to get insured?",
     "contactSubtitle": "Contact us and get your policy in minutes"
-  },  "header": {
+  },
+  "header": {
     "about": "About",
     "insurance": "Insurance",
     "referral": "Referrals",
@@ -90,7 +107,12 @@
         "title": "Direct Billing",
         "description": "We pay clinics directly — no out-of-pocket expenses for you"
       }
-    ]
+    ],
+    "stats": {
+      "clients": "clients",
+      "experience": "years of experience",
+      "languages": "languages"
+    }
   },
   "insurance": {
     "label": "Insurance programs",
@@ -156,136 +178,478 @@
       "visitor": {
         "description": "DAILY INSURANCE - Enjoy peace of mind during your visit to Georgia. This insurance covers unexpected health-related expenses that can arise during your stay. Our expert team provides comprehensive insurance consultations, guaranteeing top-quality service. Buy health insurance online and receive your policy via email within minutes.",
         "coverage": [
-          { "icon": "phone", "title": "24/7 Phone Support", "limit": "Unlimited" },
-          { "icon": "emergency", "title": "Emergency Medical Assistance", "limit": "Unlimited" },
-          { "icon": "outpatient", "title": "Emergency Outpatient Services", "limit": "10,000 ₾" },
-          { "icon": "dental", "title": "Emergency Dental Care", "limit": "10,000 ₾" },
-          { "icon": "hospital", "title": "Emergency Hospitalization due to Illness", "limit": "6,500 ₾" },
-          { "icon": "repatriation", "title": "Repatriation", "limit": "3,500 ₾" },
-          { "icon": "hospital", "title": "Emergency Hospitalization due to Accident", "limit": "6,500 ₾" },
-          { "icon": "death", "title": "Accidental Death Coverage", "limit": "1,000 ₾" },
-          { "icon": "aggregate", "title": "Aggregate Insurance Limit", "limit": "30,000 ₾" }
+          {
+            "icon": "phone",
+            "title": "24/7 Phone Support",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "emergency",
+            "title": "Emergency Medical Assistance",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Emergency Outpatient Services",
+            "limit": "10,000 ₾"
+          },
+          {
+            "icon": "dental",
+            "title": "Emergency Dental Care",
+            "limit": "10,000 ₾"
+          },
+          {
+            "icon": "hospital",
+            "title": "Emergency Hospitalization due to Illness",
+            "limit": "6,500 ₾"
+          },
+          {
+            "icon": "repatriation",
+            "title": "Repatriation",
+            "limit": "3,500 ₾"
+          },
+          {
+            "icon": "hospital",
+            "title": "Emergency Hospitalization due to Accident",
+            "limit": "6,500 ₾"
+          },
+          {
+            "icon": "death",
+            "title": "Accidental Death Coverage",
+            "limit": "1,000 ₾"
+          },
+          {
+            "icon": "aggregate",
+            "title": "Aggregate Insurance Limit",
+            "limit": "30,000 ₾"
+          }
         ],
         "faq": [
-          { "question": "Who is eligible to purchase this insurance?", "answer": "The insurance is intended for foreign citizens and stateless tourists under the age of 70 staying in Georgia." },
-          { "question": "What does the insurance cover?", "answer": "The insurance covers emergency medical expenses and accidental death occurring during the individual insurance period." },
-          { "question": "What is a deductible and how does it work?", "answer": "A deductible is the amount deducted from the insurance reimbursement and paid by the insured person. The deductible is 100 GEL per case and applies to all services covered by the insurance card (except the 24/7 hotline, repatriation, and emergency medical assistance)." },
-          { "question": "What should you do in case of an insurance event?", "answer": "You must immediately contact the appropriate medical provider and the 24/7 hotline 032 292 22 22. To receive the service please present your insurance policy." },
-          { "question": "How to receive discounts on medical services?", "answer": "To receive discounts, the insured person must contact the 24-hour call center, schedule a visit with a general practitioner, who will identify the issue and issue a discount voucher for the designated provider clinic specified by the insurer." }
+          {
+            "question": "Who is eligible to purchase this insurance?",
+            "answer": "The insurance is intended for foreign citizens and stateless tourists under the age of 70 staying in Georgia."
+          },
+          {
+            "question": "What does the insurance cover?",
+            "answer": "The insurance covers emergency medical expenses and accidental death occurring during the individual insurance period."
+          },
+          {
+            "question": "What is a deductible and how does it work?",
+            "answer": "A deductible is the amount deducted from the insurance reimbursement and paid by the insured person. The deductible is 100 GEL per case and applies to all services covered by the insurance card (except the 24/7 hotline, repatriation, and emergency medical assistance)."
+          },
+          {
+            "question": "What should you do in case of an insurance event?",
+            "answer": "You must immediately contact the appropriate medical provider and the 24/7 hotline 032 292 22 22. To receive the service please present your insurance policy."
+          },
+          {
+            "question": "How to receive discounts on medical services?",
+            "answer": "To receive discounts, the insured person must contact the 24-hour call center, schedule a visit with a general practitioner, who will identify the issue and issue a discount voucher for the designated provider clinic specified by the insurer."
+          }
         ]
       },
       "standard": {
         "description": "EMERGENCY STANDARD insurance program for foreign citizens staying in Georgia for up to 3 months. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
         "coverage": [
-          { "icon": "phone", "title": "24-hour phone consultation", "limit": "Unlimited" },
-          { "icon": "emergency", "title": "Ambulance medical service", "limit": "Unlimited" },
-          { "icon": "doctor", "title": "Personal doctor service", "limit": "Unlimited" },
-          { "icon": "hospital", "title": "Urgent hospital service (accident)", "limit": "5,000 ₾ (60%)" },
-          { "icon": "outpatient", "title": "Urgent outpatient service", "limit": "300 ₾ (50%)" },
-          { "icon": "dental", "title": "Emergency Dental Care", "limit": "10,000 ₾" }
+          {
+            "icon": "phone",
+            "title": "24-hour phone consultation",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "emergency",
+            "title": "Ambulance medical service",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "doctor",
+            "title": "Personal doctor service",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "hospital",
+            "title": "Urgent hospital service (accident)",
+            "limit": "5,000 ₾ (60%)"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Urgent outpatient service",
+            "limit": "300 ₾ (50%)"
+          },
+          {
+            "icon": "dental",
+            "title": "Emergency Dental Care",
+            "limit": "10,000 ₾"
+          }
         ],
         "faq": [
-          { "question": "Who can be insured?", "answer": "Only citizens of foreign countries aged 1 to 69 can be insured under this agreement." },
-          { "question": "What territory does the insurance cover?", "answer": "The insurance is valid in the territory of Georgia (except occupied territories)." },
-          { "question": "What is the waiting period?", "answer": "The waiting period is counted from the start date of insurance, during which expenses will not be reimbursed." },
-          { "question": "How to submit a reimbursement claim?", "answer": "The deadline for submitting reimbursement documents is 15 days from payment of medical services. Reimbursement is made via non-cash payment." },
-          { "question": "What is not covered by insurance?", "answer": "Not covered: events before insurance start, treatment without call center notification, psychiatric illnesses, alternative medicine, prostheses and implants, alcohol/drug abuse consequences." }
+          {
+            "question": "Who can be insured?",
+            "answer": "Only citizens of foreign countries aged 1 to 69 can be insured under this agreement."
+          },
+          {
+            "question": "What territory does the insurance cover?",
+            "answer": "The insurance is valid in the territory of Georgia (except occupied territories)."
+          },
+          {
+            "question": "What is the waiting period?",
+            "answer": "The waiting period is counted from the start date of insurance, during which expenses will not be reimbursed."
+          },
+          {
+            "question": "How to submit a reimbursement claim?",
+            "answer": "The deadline for submitting reimbursement documents is 15 days from payment of medical services. Reimbursement is made via non-cash payment."
+          },
+          {
+            "question": "What is not covered by insurance?",
+            "answer": "Not covered: events before insurance start, treatment without call center notification, psychiatric illnesses, alternative medicine, prostheses and implants, alcohol/drug abuse consequences."
+          }
         ]
       },
       "optimum": {
         "description": "EMERGENCY EXTENDED insurance program for foreign citizens staying in Georgia for up to 6 months. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
         "coverage": [
-          { "icon": "phone", "title": "24-hour phone consultation", "limit": "Unlimited" },
-          { "icon": "emergency", "title": "Ambulance medical service", "limit": "Unlimited" },
-          { "icon": "doctor", "title": "Personal doctor service", "limit": "Unlimited" },
-          { "icon": "hospital", "title": "Urgent hospital service (accident)", "limit": "5,000 ₾ (60%)" },
-          { "icon": "outpatient", "title": "Urgent outpatient service", "limit": "300 ₾ (50%)" },
-          { "icon": "dental", "title": "Emergency Dental Care", "limit": "10,000 ₾" }
+          {
+            "icon": "phone",
+            "title": "24-hour phone consultation",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "emergency",
+            "title": "Ambulance medical service",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "doctor",
+            "title": "Personal doctor service",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "hospital",
+            "title": "Urgent hospital service (accident)",
+            "limit": "5,000 ₾ (60%)"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Urgent outpatient service",
+            "limit": "300 ₾ (50%)"
+          },
+          {
+            "icon": "dental",
+            "title": "Emergency Dental Care",
+            "limit": "10,000 ₾"
+          }
         ],
         "faq": [
-          { "question": "Who can be insured?", "answer": "Only citizens of foreign countries aged 1 to 69 can be insured under this agreement." },
-          { "question": "What territory does the insurance cover?", "answer": "The insurance is valid in the territory of Georgia (except occupied territories)." },
-          { "question": "What is the waiting period?", "answer": "The waiting period is counted from the start date of insurance, during which expenses will not be reimbursed." },
-          { "question": "How to submit a reimbursement claim?", "answer": "The deadline for submitting reimbursement documents is 15 days from payment of medical services. Reimbursement is made via non-cash payment." },
-          { "question": "What is not covered by insurance?", "answer": "Not covered: events before insurance start, treatment without call center notification, psychiatric illnesses, alternative medicine, prostheses and implants, alcohol/drug abuse consequences." }
+          {
+            "question": "Who can be insured?",
+            "answer": "Only citizens of foreign countries aged 1 to 69 can be insured under this agreement."
+          },
+          {
+            "question": "What territory does the insurance cover?",
+            "answer": "The insurance is valid in the territory of Georgia (except occupied territories)."
+          },
+          {
+            "question": "What is the waiting period?",
+            "answer": "The waiting period is counted from the start date of insurance, during which expenses will not be reimbursed."
+          },
+          {
+            "question": "How to submit a reimbursement claim?",
+            "answer": "The deadline for submitting reimbursement documents is 15 days from payment of medical services. Reimbursement is made via non-cash payment."
+          },
+          {
+            "question": "What is not covered by insurance?",
+            "answer": "Not covered: events before insurance start, treatment without call center notification, psychiatric illnesses, alternative medicine, prostheses and implants, alcohol/drug abuse consequences."
+          }
         ]
       },
       "premium": {
         "description": "EMERGENCY FLEXI insurance program for foreign citizens staying in Georgia for up to 1 year. Includes 24/7 support, emergency medical assistance, and hospitalization due to accidents.",
         "coverage": [
-          { "icon": "phone", "title": "24-hour phone consultation", "limit": "Unlimited" },
-          { "icon": "emergency", "title": "Ambulance medical service", "limit": "Unlimited" },
-          { "icon": "doctor", "title": "Personal doctor service", "limit": "Unlimited" },
-          { "icon": "hospital", "title": "Urgent hospital service (accident)", "limit": "5,000 ₾ (60%)" },
-          { "icon": "outpatient", "title": "Urgent outpatient service", "limit": "300 ₾ (50%)" },
-          { "icon": "dental", "title": "Emergency Dental Care", "limit": "10,000 ₾" }
+          {
+            "icon": "phone",
+            "title": "24-hour phone consultation",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "emergency",
+            "title": "Ambulance medical service",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "doctor",
+            "title": "Personal doctor service",
+            "limit": "Unlimited"
+          },
+          {
+            "icon": "hospital",
+            "title": "Urgent hospital service (accident)",
+            "limit": "5,000 ₾ (60%)"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Urgent outpatient service",
+            "limit": "300 ₾ (50%)"
+          },
+          {
+            "icon": "dental",
+            "title": "Emergency Dental Care",
+            "limit": "10,000 ₾"
+          }
         ],
         "faq": [
-          { "question": "Who can be insured?", "answer": "Only citizens of foreign countries aged 1 to 69 can be insured under this agreement." },
-          { "question": "What territory does the insurance cover?", "answer": "The insurance is valid in the territory of Georgia (except occupied territories)." },
-          { "question": "What is the waiting period?", "answer": "The waiting period is counted from the start date of insurance, during which expenses will not be reimbursed." },
-          { "question": "How to submit a reimbursement claim?", "answer": "The deadline for submitting reimbursement documents is 15 days from payment of medical services. Reimbursement is made via non-cash payment." },
-          { "question": "What is not covered by insurance?", "answer": "Not covered: events before insurance start, treatment without call center notification, psychiatric illnesses, alternative medicine, prostheses and implants, alcohol/drug abuse consequences." }
+          {
+            "question": "Who can be insured?",
+            "answer": "Only citizens of foreign countries aged 1 to 69 can be insured under this agreement."
+          },
+          {
+            "question": "What territory does the insurance cover?",
+            "answer": "The insurance is valid in the territory of Georgia (except occupied territories)."
+          },
+          {
+            "question": "What is the waiting period?",
+            "answer": "The waiting period is counted from the start date of insurance, during which expenses will not be reimbursed."
+          },
+          {
+            "question": "How to submit a reimbursement claim?",
+            "answer": "The deadline for submitting reimbursement documents is 15 days from payment of medical services. Reimbursement is made via non-cash payment."
+          },
+          {
+            "question": "What is not covered by insurance?",
+            "answer": "Not covered: events before insurance start, treatment without call center notification, psychiatric illnesses, alternative medicine, prostheses and implants, alcohol/drug abuse consequences."
+          }
         ]
       },
       "uno-active": {
         "description": "MEDICAL STANDARD insurance for long-term stay in Georgia. Comprehensive coverage including family doctor services, emergency and planned hospital care, outpatient services and dental care.",
         "coverage": [
-          { "icon": "phone", "title": "24/7 phone consultation", "limit": "100% — Unlimited" },
-          { "icon": "doctor", "title": "Family doctor services", "limit": "100% — Unlimited" },
-          { "icon": "emergency", "title": "Emergency medical care", "limit": "100% — Unlimited" },
-          { "icon": "hospital", "title": "Emergency hospital care", "limit": "100% — 5,000 GEL" },
-          { "icon": "hospital", "title": "Planned hospital care (12 mo. wait)", "limit": "80% — 4,000 GEL" },
-          { "icon": "hospital", "title": "Day hospital at partner clinics (12 mo. wait)", "limit": "50% — 4,000 GEL" },
-          { "icon": "maternity", "title": "Pregnancy care at partner clinic", "limit": "50% — 500 GEL" },
-          { "icon": "outpatient", "title": "Emergency outpatient care", "limit": "100% — Unlimited" },
-          { "icon": "outpatient", "title": "Planned outpatient (specific clinic)", "limit": "60% — 800 GEL" },
-          { "icon": "outpatient", "title": "Planned outpatient (partner clinics)", "limit": "50% — 800 GEL" },
-          { "icon": "medications", "title": "Medications at GPC-Pharmadepot", "limit": "50% — 800 GEL" },
-          { "icon": "preventive", "title": "Preventive examinations", "limit": "100% — 1x per period" },
-          { "icon": "dental", "title": "Emergency dental care", "limit": "100% — 500 GEL" },
-          { "icon": "dental", "title": "Planned dental (main clinics)", "limit": "30% — 300 GEL" },
-          { "icon": "dental", "title": "Implants (SGS, Switzerland)", "limit": "60% — 1,500 GEL" },
-          { "icon": "dental", "title": "Planned dental (additional clinics)", "limit": "50% — Unlimited" },
-          { "icon": "dental", "title": "Dental CT, orthopantomogram", "limit": "40% — 500 GEL" },
-          { "icon": "dental", "title": "Orthopedic & orthodontic services", "limit": "10-60% discount" }
+          {
+            "icon": "phone",
+            "title": "24/7 phone consultation",
+            "limit": "100% — Unlimited"
+          },
+          {
+            "icon": "doctor",
+            "title": "Family doctor services",
+            "limit": "100% — Unlimited"
+          },
+          {
+            "icon": "emergency",
+            "title": "Emergency medical care",
+            "limit": "100% — Unlimited"
+          },
+          {
+            "icon": "hospital",
+            "title": "Emergency hospital care",
+            "limit": "100% — 5,000 GEL"
+          },
+          {
+            "icon": "hospital",
+            "title": "Planned hospital care (12 mo. wait)",
+            "limit": "80% — 4,000 GEL"
+          },
+          {
+            "icon": "hospital",
+            "title": "Day hospital at partner clinics (12 mo. wait)",
+            "limit": "50% — 4,000 GEL"
+          },
+          {
+            "icon": "maternity",
+            "title": "Pregnancy care at partner clinic",
+            "limit": "50% — 500 GEL"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Emergency outpatient care",
+            "limit": "100% — Unlimited"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Planned outpatient (specific clinic)",
+            "limit": "60% — 800 GEL"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Planned outpatient (partner clinics)",
+            "limit": "50% — 800 GEL"
+          },
+          {
+            "icon": "medications",
+            "title": "Medications at GPC-Pharmadepot",
+            "limit": "50% — 800 GEL"
+          },
+          {
+            "icon": "preventive",
+            "title": "Preventive examinations",
+            "limit": "100% — 1x per period"
+          },
+          {
+            "icon": "dental",
+            "title": "Emergency dental care",
+            "limit": "100% — 500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Planned dental (main clinics)",
+            "limit": "30% — 300 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Implants (SGS, Switzerland)",
+            "limit": "60% — 1,500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Planned dental (additional clinics)",
+            "limit": "50% — Unlimited"
+          },
+          {
+            "icon": "dental",
+            "title": "Dental CT, orthopantomogram",
+            "limit": "40% — 500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Orthopedic & orthodontic services",
+            "limit": "10-60% discount"
+          }
         ],
         "faq": [
-          { "question": "Who can purchase MEDICAL STANDARD?", "answer": "MEDICAL STANDARD is suitable for tourists, expats, and anyone planning a long-term stay in Georgia, aged 0 to 64 years." },
-          { "question": "What is the waiting period?", "answer": "For planned hospitalization and day hospital — 12 months. For emergency services — no waiting period." },
-          { "question": "Is pregnancy covered?", "answer": "Yes, pregnancy care is covered at 50% with 500 GEL limit at partner clinics by personal doctor referral." },
-          { "question": "What dental services are included?", "answer": "Emergency dental 100% (500 GEL), planned 30% (300 GEL), SGS implants 60% (1500 GEL), dental CT 40% (500 GEL)." },
-          { "question": "Is medication covered?", "answer": "Yes, medications at GPC-Pharmadepot pharmacy network are covered at 50% with 800 GEL limit." }
+          {
+            "question": "Who can purchase MEDICAL STANDARD?",
+            "answer": "MEDICAL STANDARD is suitable for tourists, expats, and anyone planning a long-term stay in Georgia, aged 0 to 64 years."
+          },
+          {
+            "question": "What is the waiting period?",
+            "answer": "For planned hospitalization and day hospital — 12 months. For emergency services — no waiting period."
+          },
+          {
+            "question": "Is pregnancy covered?",
+            "answer": "Yes, pregnancy care is covered at 50% with 500 GEL limit at partner clinics by personal doctor referral."
+          },
+          {
+            "question": "What dental services are included?",
+            "answer": "Emergency dental 100% (500 GEL), planned 30% (300 GEL), SGS implants 60% (1500 GEL), dental CT 40% (500 GEL)."
+          },
+          {
+            "question": "Is medication covered?",
+            "answer": "Yes, medications at GPC-Pharmadepot pharmacy network are covered at 50% with 800 GEL limit."
+          }
         ]
       },
       "uno-active-plus": {
         "description": "MEDICAL FLEXI enhanced medical insurance for long-term stay in Georgia. Extended coverage with higher limits for hospital care, expanded dental services and additional benefits.",
         "coverage": [
-          { "icon": "phone", "title": "24/7 phone consultation", "limit": "100% — Unlimited" },
-          { "icon": "doctor", "title": "Family doctor services", "limit": "100% — Unlimited" },
-          { "icon": "emergency", "title": "Emergency medical care", "limit": "100% — Unlimited" },
-          { "icon": "hospital", "title": "Emergency hospital care", "limit": "100% — 10,000 GEL" },
-          { "icon": "hospital", "title": "Planned hospital care (12 mo. wait)", "limit": "100% — 8,000 GEL" },
-          { "icon": "hospital", "title": "Day hospital at partner clinics (12 mo. wait)", "limit": "60% — 8,000 GEL" },
-          { "icon": "maternity", "title": "Pregnancy care at partner clinic", "limit": "50% — 800 GEL" },
-          { "icon": "outpatient", "title": "Emergency outpatient care", "limit": "100% — Unlimited" },
-          { "icon": "outpatient", "title": "Planned outpatient (specific clinic)", "limit": "70% — 1,500 GEL" },
-          { "icon": "outpatient", "title": "Planned outpatient (partner clinics)", "limit": "60% — 1,500 GEL" },
-          { "icon": "medications", "title": "Medications at GPC-Pharmadepot", "limit": "55% — 1,500 GEL" },
-          { "icon": "preventive", "title": "Preventive examinations", "limit": "100% — 1x per period" },
-          { "icon": "dental", "title": "Emergency dental care", "limit": "100% — Unlimited" },
-          { "icon": "dental", "title": "Planned dental (main clinics)", "limit": "60% — 1,500 GEL" },
-          { "icon": "dental", "title": "Implants (SGS, Switzerland)", "limit": "60% — 1,500 GEL" },
-          { "icon": "dental", "title": "Planned dental (additional clinics)", "limit": "50% — Unlimited" },
-          { "icon": "dental", "title": "Dental CT, orthopantomogram", "limit": "40% — 500 GEL" },
-          { "icon": "dental", "title": "Orthopedic & orthodontic services", "limit": "10-60% discount" }
+          {
+            "icon": "phone",
+            "title": "24/7 phone consultation",
+            "limit": "100% — Unlimited"
+          },
+          {
+            "icon": "doctor",
+            "title": "Family doctor services",
+            "limit": "100% — Unlimited"
+          },
+          {
+            "icon": "emergency",
+            "title": "Emergency medical care",
+            "limit": "100% — Unlimited"
+          },
+          {
+            "icon": "hospital",
+            "title": "Emergency hospital care",
+            "limit": "100% — 10,000 GEL"
+          },
+          {
+            "icon": "hospital",
+            "title": "Planned hospital care (12 mo. wait)",
+            "limit": "100% — 8,000 GEL"
+          },
+          {
+            "icon": "hospital",
+            "title": "Day hospital at partner clinics (12 mo. wait)",
+            "limit": "60% — 8,000 GEL"
+          },
+          {
+            "icon": "maternity",
+            "title": "Pregnancy care at partner clinic",
+            "limit": "50% — 800 GEL"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Emergency outpatient care",
+            "limit": "100% — Unlimited"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Planned outpatient (specific clinic)",
+            "limit": "70% — 1,500 GEL"
+          },
+          {
+            "icon": "outpatient",
+            "title": "Planned outpatient (partner clinics)",
+            "limit": "60% — 1,500 GEL"
+          },
+          {
+            "icon": "medications",
+            "title": "Medications at GPC-Pharmadepot",
+            "limit": "55% — 1,500 GEL"
+          },
+          {
+            "icon": "preventive",
+            "title": "Preventive examinations",
+            "limit": "100% — 1x per period"
+          },
+          {
+            "icon": "dental",
+            "title": "Emergency dental care",
+            "limit": "100% — Unlimited"
+          },
+          {
+            "icon": "dental",
+            "title": "Planned dental (main clinics)",
+            "limit": "60% — 1,500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Implants (SGS, Switzerland)",
+            "limit": "60% — 1,500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Planned dental (additional clinics)",
+            "limit": "50% — Unlimited"
+          },
+          {
+            "icon": "dental",
+            "title": "Dental CT, orthopantomogram",
+            "limit": "40% — 500 GEL"
+          },
+          {
+            "icon": "dental",
+            "title": "Orthopedic & orthodontic services",
+            "limit": "10-60% discount"
+          }
         ],
         "faq": [
-          { "question": "What is the difference from MEDICAL STANDARD?", "answer": "MEDICAL FLEXI has higher limits: hospital up to 10,000 GEL (vs 5,000), planned hospital 100%/8,000 GEL (vs 80%/4,000), outpatient up to 1,500 GEL." },
-          { "question": "What is the waiting period?", "answer": "For planned hospitalization and day hospital — 12 months. For emergency services — no waiting period." },
-          { "question": "Is pregnancy covered?", "answer": "Yes, pregnancy care is covered at 50% with 800 GEL limit at partner clinics by personal doctor referral." },
-          { "question": "What dental services are included?", "answer": "Emergency dental 100% unlimited, planned 60% (1500 GEL), SGS implants 60% (1500 GEL), dental CT 40% (500 GEL)." },
-          { "question": "Is medication covered?", "answer": "Yes, medications at GPC-Pharmadepot pharmacy network are covered at 55% with 1500 GEL limit." }
+          {
+            "question": "What is the difference from MEDICAL STANDARD?",
+            "answer": "MEDICAL FLEXI has higher limits: hospital up to 10,000 GEL (vs 5,000), planned hospital 100%/8,000 GEL (vs 80%/4,000), outpatient up to 1,500 GEL."
+          },
+          {
+            "question": "What is the waiting period?",
+            "answer": "For planned hospitalization and day hospital — 12 months. For emergency services — no waiting period."
+          },
+          {
+            "question": "Is pregnancy covered?",
+            "answer": "Yes, pregnancy care is covered at 50% with 800 GEL limit at partner clinics by personal doctor referral."
+          },
+          {
+            "question": "What dental services are included?",
+            "answer": "Emergency dental 100% unlimited, planned 60% (1500 GEL), SGS implants 60% (1500 GEL), dental CT 40% (500 GEL)."
+          },
+          {
+            "question": "Is medication covered?",
+            "answer": "Yes, medications at GPC-Pharmadepot pharmacy network are covered at 55% with 1500 GEL limit."
+          }
         ]
       }
     }
@@ -380,15 +744,25 @@
       "processingTime": "15 min",
       "support": "Support"
     }
-  },  "referral": {
+  },
+  "referral": {
     "label": "LOYALTY PROGRAM",
     "title": "Invite friends —",
     "titleHighlight": "get a discount!",
     "description": "Bring friends and get a discount on your insurance. Bring enough friends — get insurance for free!",
     "steps": [
-      { "title": "Invite a friend", "description": "Tell your friends about our insurance and mention your name when they apply" },
-      { "title": "They purchase insurance", "description": "When your friend buys insurance, we'll record the referral" },
-      { "title": "Get your discount", "description": "Use your discount immediately when signing up together or save it for future renewals/upgrades" }
+      {
+        "title": "Invite a friend",
+        "description": "Tell your friends about our insurance and mention your name when they apply"
+      },
+      {
+        "title": "They purchase insurance",
+        "description": "When your friend buys insurance, we'll record the referral"
+      },
+      {
+        "title": "Get your discount",
+        "description": "Use your discount immediately when signing up together or save it for future renewals/upgrades"
+      }
     ],
     "planPrice": "Price",
     "discountPerReferral": "Discount per referral",
@@ -402,12 +776,13 @@
     "contactUs": "Contact us",
     "shareTitle": "Share with friends",
     "shareText": "Get up to 300 GEL discount on insurance in Georgia! Georgian Support referral program."
-  },  "footer": {
+  },
+  "footer": {
     "description": "Medical insurance for tourists and expats in Georgia. Reliable protection at affordable prices.",
     "navigation": "Navigation",
     "insurancePlans": "Insurance Plans",
     "contacts": "Contacts",
-    "address": "Address",
+    "address": "28 Luka Asatiani street,<br />Batumi, 6000, Georgia",
     "phoneWhatsapp": "Phone / WhatsApp",
     "workHours": "Working Hours",
     "workHoursValue": "Mon-Sat  10:00 - 19:00",
@@ -560,7 +935,8 @@
     }
   },
   "common": {
-    "backToHome": "Back to Home"
+    "backToHome": "Back to Home",
+    "home": "Home"
   },
   "insurancePage": {
     "meta": {
@@ -698,7 +1074,15 @@
     "orderConfirmed": "Order Confirmed",
     "koronaPayContactNote": "Our operator will contact you via WhatsApp or Telegram to provide Korona Pay transfer details.",
     "note": "Note",
-    "koronaPayNote": "Please make sure your WhatsApp or Telegram is available on the phone number you provided."
+    "koronaPayNote": "Please make sure your WhatsApp or Telegram is available on the phone number you provided.",
+    "privacyConsent": "By clicking the button, you agree to our privacy policy",
+    "changePaymentMethod": "Change payment method",
+    "otherBankNote": "If you are paying from a bank other than Bank of Georgia, please send us the payment confirmation via WhatsApp, Telegram, or email so we can process your order faster.",
+    "cryptoPayment": "Crypto (USDT TRC-20)",
+    "cryptoPaymentDesc": "Pay with USDT on Tron network",
+    "cryptoPaymentTitle": "Crypto Payment (USDT TRC-20)",
+    "cryptoPaymentInstructions": "Please transfer USDT to the following TRC-20 wallet address",
+    "cryptoPaymentNote": "Send only USDT on the TRC-20 network. Sending other tokens or using wrong network will result in loss of funds. After payment, please send a screenshot of the transaction to our WhatsApp or Telegram.",
+    "walletAddress": "TRC-20 Wallet Address"
   }
 }
-

@@ -1218,7 +1218,7 @@ export default function InsuranceOrderModal({
               )}
             </button>
             <p className="text-xs text-[#ABA2A5] text-center lg:text-left">
-              Нажимая кнопку, вы соглашаетесь с<br className="lg:hidden" /> политикой конфиденциальности
+              {(t as Record<string, string>).privacyConsent || "By clicking the button, you agree to our privacy policy"}
             </p>
           </div>
         </form>

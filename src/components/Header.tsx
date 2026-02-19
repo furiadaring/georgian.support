@@ -19,9 +19,9 @@ export default function Header({ locale, dict, darkText = false }: HeaderProps) 
   const [isInsuranceDropdownOpen, setIsInsuranceDropdownOpen] = useState(false);
 
   const insuranceDropdownItems = [
-    { href: `/${locale}/insurance?category=main`, label: dict.header.insuranceDropdown?.borderEntry || 'Туристическая', icon: 'shield' },
-    { href: `/${locale}/insurance?category=longterm`, label: dict.header.insuranceDropdown?.fullMedical || 'Медицинская', icon: 'heart' },
-    { href: `/${locale}/auto-insurance`, label: dict.header.insuranceDropdown?.autoEntry || 'Автостраховка', icon: 'car' },
+    { href: `/${locale}/insurance?category=main`, label: dict.header.insuranceDropdown?.borderEntry || 'Travel Insurance', icon: 'shield' },
+    { href: `/${locale}/insurance?category=longterm`, label: dict.header.insuranceDropdown?.fullMedical || 'Medical Insurance', icon: 'heart' },
+    { href: `/${locale}/auto-insurance`, label: dict.header.insuranceDropdown?.autoEntry || 'Auto Insurance', icon: 'car' },
   ];
 
   const navItems = [

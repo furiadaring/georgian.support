@@ -9,44 +9,31 @@ import { useParams } from "next/navigation";
 import { useState, useCallback } from "react";
 import { getAttribution } from "@/lib/attribution";
 
-// Pricing data
+// Pricing data (only prices - names/descriptions come from translations)
 const PRICING = [
-  { id: "motorcycle", name: "Мотоцикл", desc: "объём двигателя > 50 см³", prices: [26, 46, 91, 280] },
-  { id: "car", name: "Легковой автомобиль", desc: "до 3500 кг, до 8 пассажиров", prices: [39, 65, 117, 384], highlight: true },
-  { id: "bus", name: "Автобус", desc: "более 8 пассажиров", prices: [59, 98, 182, 624] },
-  { id: "truck", name: "Грузовой автомобиль", desc: "более 3500 кг", prices: [78, 130, 221, 793] },
-  { id: "trailer", name: "Прицеп", desc: "любой тип", prices: [18, 33, 52, 189] },
-  { id: "agricultural", name: "Спецтехника", desc: "сельхоз и спецмашины", prices: [33, 59, 91, 325] },
-];
-
-// FAQ data
-const FAQ_DATA = [
-  { 
-    q: "Обязательно ли оформлять ОСАГО при въезде в Грузию?", 
-    a: "Да, страхование гражданской ответственности обязательно для всех иностранных транспортных средств, въезжающих на территорию Грузии." 
-  },
-  { 
-    q: "Где можно оформить полис ОСАГО?", 
-    a: "Полис можно оформить на границе или заранее онлайн. Мы поможем оформить страховку быстро и без очередей." 
-  },
-  { 
-    q: "Что покрывает страховка ОСАГО?", 
-    a: "Страховка покрывает ущерб, причинённый третьим лицам: до 300,000 GEL за вред здоровью и до 50,000 GEL за имущественный ущерб." 
-  },
-  { 
-    q: "На какой срок можно оформить страховку?", 
-    a: "Доступны периоды: 15 дней, 30 дней, 90 дней или 1 год. Выберите в зависимости от длительности поездки." 
-  },
-  { 
-    q: "Что будет если не оформить ОСАГО?", 
-    a: "Без действующего полиса ОСАГО въезд в Грузию на автомобиле невозможен. На границе вас развернут." 
-  },
+  { id: "motorcycle", prices: [26, 46, 91, 280] },
+  { id: "car", prices: [39, 65, 117, 384], highlight: true },
+  { id: "bus", prices: [59, 98, 182, 624] },
+  { id: "truck", prices: [78, 130, 221, 793] },
+  { id: "trailer", prices: [18, 33, 52, 189] },
+  { id: "agricultural", prices: [33, 59, 91, 325] },
 ];
 
 function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const t = dict.autoInsurancePage;
   const insurancePage = dict.insurancePage;
+  const autoIns = insurancePage.autoInsurance;
+  const vehicles = autoIns.vehicles;
+  const limits = autoIns.limits;
+  const table = autoIns.table;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Get vehicle name/description from translations
+  const getVehicleName = (id: string) => vehicles[id as keyof typeof vehicles] || id;
+  const getVehicleDesc = (id: string) => vehicles[`${id}Desc` as keyof typeof vehicles] || '';
+
+  // Period column headers
+  const periodHeaders = [`15 ${table.days}`, `30 ${table.days}`, `90 ${table.days}`, `1 ${table.year}`];
 
   // Track lead and open link - Hybrid approach: Keitaro SDK + our database
   const trackAndOpenLink = useCallback(async (url: string, channel: 'whatsapp' | 'telegram') => {
@@ -95,7 +82,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
             <div className="font-medium mb-5 lg:mb-10">
               <span className="text-[14px] lg:text-[16px] text-[#ABA2A5]" style={{ lineHeight: '1.3' }}>
                 <Link href={`/${locale}`} className="hover:opacity-80 transition-opacity">
-                  Главная
+                  {dict.common?.home || "Home"}
                 </Link>
               </span>
               <span className="text-[14px] lg:text-[16px] text-[#ABA2A5]" style={{ lineHeight: '1.3' }}> / </span>
@@ -114,14 +101,14 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                 className="font-medium text-center text-[16px] lg:text-[18px] text-[#ABA2A5]"
                 style={{ lineHeight: '1.3' }}
               >
-                Обязательное страхование
+                {t?.badge || "MANDATORY INSURANCE"}
               </p>
               
               {/* Main title */}
               <h1 
                 className="font-bold text-center text-[34px] lg:text-[55px] text-[#2D1D38] leading-[1.3] lg:leading-[0.9]"
               >
-                Автострахование ОСАГО
+                {t?.title || "Auto Insurance"} <span className="text-[#DE643B]">{t?.titleHighlight || "MTPL"}</span>
               </h1>
               
               {/* Description */}
@@ -148,7 +135,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                   <svg className="w-[30px] h-[30px]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
-                  Оформить ОСАГО
+                  {t?.ctaButton || "Get MTPL"}
                 </button>
                 <a
                   href="#pricing"
@@ -161,7 +148,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                     fontSize: '16px'
                   }}
                 >
-                  Смотреть тарифы
+                  {t?.seePrices || "See Prices"}
                   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -243,7 +230,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
               <h2 
                 className="font-bold text-[34px] lg:text-[55px] text-[#2D1D38] leading-[1.3] lg:leading-[0.9] mb-4 lg:mb-5"
               >
-                <span className="text-[#DE643B]">Тарифы</span> по категориям транспорта
+                <span className="text-[#DE643B]">{t?.pricingTitle || "Rates by Vehicle Category"}</span>
               </h2>
               <p 
                 className="font-medium text-[14px] lg:text-[16px] text-[#ABA2A5]"
@@ -260,7 +247,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                 className="font-bold text-[18px] lg:text-[22px] text-[#2D1D38] mb-4 lg:mb-5"
                 style={{ lineHeight: '1.3' }}
               >
-                Тарифы ОСАГО по категориям транспорта
+                {autoIns.pricingTitle}
               </h3>
 
               {/* Mobile: Category Cards */}
@@ -276,15 +263,15 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                         className="font-medium text-[16px]"
                         style={{ color: vehicle.highlight ? '#DE643B' : '#2D1D38', lineHeight: '1.3' }}
                       >
-                        {vehicle.name}
+                        {getVehicleName(vehicle.id)}
                       </div>
                       <div className="font-normal text-[14px] text-[#ABA2A5]" style={{ lineHeight: '1.3' }}>
-                        {vehicle.desc}
+                        {getVehicleDesc(vehicle.id)}
                       </div>
                     </div>
                     {/* Price Rows */}
                     <div className="flex flex-col">
-                      {['15 дней', '30 дней', '90 дней', '1 год'].map((period, i) => (
+                      {periodHeaders.map((period, i) => (
                         <div 
                           key={period}
                           className={`flex items-center justify-between px-4 py-3 ${i < 3 ? 'border-b border-[#F4EFF3]' : ''}`}
@@ -313,20 +300,13 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                     className="flex items-center gap-5 bg-[#F4EFF3] px-[15px] py-5"
                   >
                     <div className="font-medium text-[18px] text-[#2D1D38] w-[405px]" style={{ lineHeight: '1.3' }}>
-                      Транспортное средство
+                      {table.vehicle}
                     </div>
-                    <div className="font-medium text-[18px] text-[#2D1D38] w-[200px]" style={{ lineHeight: '1.3' }}>
-                      15 дней
-                    </div>
-                    <div className="font-medium text-[18px] text-[#2D1D38] w-[200px]" style={{ lineHeight: '1.3' }}>
-                      30 дней
-                    </div>
-                    <div className="font-medium text-[18px] text-[#2D1D38] w-[200px]" style={{ lineHeight: '1.3' }}>
-                      90 дней
-                    </div>
-                    <div className="font-medium text-[18px] text-[#2D1D38] w-[200px]" style={{ lineHeight: '1.3' }}>
-                      1 год
-                    </div>
+                    {periodHeaders.map((period) => (
+                      <div key={period} className="font-medium text-[18px] text-[#2D1D38] w-[200px]" style={{ lineHeight: '1.3' }}>
+                        {period}
+                      </div>
+                    ))}
                   </div>
 
                   {/* Table Rows */}
@@ -343,10 +323,10 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                             lineHeight: '1.3' 
                           }}
                         >
-                          {vehicle.name}
+                          {getVehicleName(vehicle.id)}
                         </div>
                         <div className="font-semibold text-[14px] text-[#ABA2A5]" style={{ lineHeight: '1.3' }}>
-                          {vehicle.desc}
+                          {getVehicleDesc(vehicle.id)}
                         </div>
                       </div>
                       {vehicle.prices.map((price, i) => (
@@ -378,12 +358,12 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                     className="font-bold text-[18px] lg:text-[34px] text-[#2D1D38]"
                     style={{ lineHeight: '1.3' }}
                   >
-                    Здоровье и жизнь
+                    {limits.health}
                   </h3>
                   <div className="flex flex-col gap-2 lg:gap-0 w-full">
                     <div className="flex items-center justify-between w-full py-2 lg:py-0 border-b border-[#F4EFF3] lg:border-0">
                       <span className="font-normal text-[14px] lg:text-[16px] lg:font-medium text-[#2D1D38]" style={{ lineHeight: '1.3' }}>
-                        На 1-го пострадавшего
+                        {limits.healthPerPerson}
                       </span>
                       <span className="font-medium text-[14px] lg:text-[22px] lg:font-bold text-[#2D1D38]" style={{ lineHeight: '1.3' }}>
                         30,000 GEL
@@ -391,7 +371,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                     </div>
                     <div className="flex items-center justify-between w-full py-2 lg:py-0">
                       <span className="font-normal text-[14px] lg:text-[16px] lg:font-medium text-[#2D1D38]" style={{ lineHeight: '1.3' }}>
-                        Общий лимит на случай
+                        {limits.healthTotal}
                       </span>
                       <span className="font-medium text-[14px] lg:text-[22px] lg:font-bold text-[#2D1D38]" style={{ lineHeight: '1.3' }}>
                         300,000 GEL
@@ -410,12 +390,12 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                     className="font-bold text-[18px] lg:text-[34px] text-[#2D1D38]"
                     style={{ lineHeight: '1.3' }}
                   >
-                    Имущество
+                    {limits.property}
                   </h3>
                   <div className="flex flex-col gap-2 lg:gap-0 w-full">
                     <div className="flex items-center justify-between w-full py-2 lg:py-0 border-b border-[#F4EFF3] lg:border-0">
                       <span className="font-normal text-[14px] lg:text-[16px] lg:font-medium text-[#2D1D38]" style={{ lineHeight: '1.3' }}>
-                        На 1-го пострадавшего
+                        {limits.propertyPerPerson}
                       </span>
                       <span className="font-medium text-[14px] lg:text-[22px] lg:font-bold text-[#2D1D38]" style={{ lineHeight: '1.3' }}>
                         25,000 GEL
@@ -423,7 +403,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                     </div>
                     <div className="flex items-center justify-between w-full py-2 lg:py-0">
                       <span className="font-normal text-[14px] lg:text-[16px] lg:font-medium text-[#2D1D38]" style={{ lineHeight: '1.3' }}>
-                        Общий лимит на случай
+                        {limits.propertyTotal}
                       </span>
                       <span className="font-medium text-[14px] lg:text-[22px] lg:font-bold text-[#2D1D38]" style={{ lineHeight: '1.3' }}>
                         50,000 GEL
@@ -446,18 +426,18 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
                   <h2 
                     className="font-bold text-[28px] lg:text-[55px] text-[#2D1D38] leading-[1.2] lg:leading-[0.9]"
                   >
-                    Часто задаваемые вопросы
+                    {t?.faqTitle || "Frequently Asked Questions"}
                   </h2>
                   <p 
                     className="font-normal text-[14px] lg:text-[18px] lg:font-medium text-[#ABA2A5]"
                     style={{ lineHeight: '1.4' }}
                   >
-                    Ответы на популярные вопросы об автостраховании в Грузии
+                    {t?.faqSubtitle || "Answers to common questions about auto insurance in Georgia"}
                   </p>
                 </div>
 
                 <div className="flex flex-col gap-0 w-full lg:w-[640px]">
-                  {(t?.faq || FAQ_DATA).map((item: { q: string; a: string }, index: number) => (
+                  {(t?.faq || []).map((item: { q: string; a: string }, index: number) => (
                     <div 
                       key={index}
                       className="cursor-pointer w-full border-b border-[#E5E5E5] py-4 lg:py-5"
@@ -517,7 +497,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
               >
                 <img 
                   src="/images/faq-consultation.jpg" 
-                  alt="Консультация по страхованию"
+                  alt={t?.faqTitle || "FAQ"}
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
@@ -548,13 +528,13 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
               <h2 
                 className="font-bold text-[34px] lg:text-[55px] leading-[1.3] lg:leading-[0.9]"
               >
-                Готовы оформить страховку?
+                {t?.contactTitle || "Ready to get insured?"}
               </h2>
               <p 
                 className="font-medium text-[14px] lg:text-[18px]"
                 style={{ lineHeight: '1.3' }}
               >
-                Свяжитесь с нами и получите полис за несколько минут
+                {t?.contactSubtitle || "Contact us and get your policy in minutes"}
               </p>
             </div>
 

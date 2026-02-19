@@ -129,13 +129,13 @@ export default function Footer({ locale, dict }: FooterProps) {
                 <p className="text-[16px] lg:text-[18px] font-medium leading-[1.3] text-[#ABA2A5]">{t.insurancePlans}</p>
                 <nav className="flex flex-col" style={{ gap: 10 }}>
                   <Link href={`/${locale}/insurance?category=main`} className="text-[14px] lg:text-[16px] font-semibold lg:font-medium leading-[1.3] text-[#F4F3EE] hover:text-[#DE643B] transition-colors">
-                    {dict.header.insuranceDropdown?.borderEntry || "Border Entry"}
+                    {dict.header.insuranceDropdown?.borderEntry || "Travel Insurance"}
                   </Link>
                   <Link href={`/${locale}/insurance?category=longterm`} className="text-[14px] lg:text-[16px] font-semibold lg:font-medium leading-[1.3] text-[#F4F3EE] hover:text-[#DE643B] transition-colors">
-                    {dict.header.insuranceDropdown?.fullMedical || "Full Medical"}
+                    {dict.header.insuranceDropdown?.fullMedical || "Medical Insurance"}
                   </Link>
                   <Link href={`/${locale}/auto-insurance`} className="text-[14px] lg:text-[16px] font-semibold lg:font-medium leading-[1.3] text-[#F4F3EE] hover:text-[#DE643B] transition-colors">
-                    {dict.header.insuranceDropdown?.autoEntry || "Auto Entry"}
+                    {dict.header.insuranceDropdown?.autoEntry || "Auto Insurance"}
                   </Link>
                 </nav>
               </div>
@@ -217,7 +217,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
                     </svg>
-                    <span className="text-[16px] font-medium leading-[1.3] text-[#F4F3EE]">28 Luka Asatiani street,<br />Batumi, 6000, Georgia</span>
+                    <span className="text-[16px] font-medium leading-[1.3] text-[#F4F3EE]" dangerouslySetInnerHTML={{ __html: dict.footer?.address || "28 Luka Asatiani street,<br />Batumi, 6000, Georgia" }} />
                   </div>
                 </div>
               </div>
