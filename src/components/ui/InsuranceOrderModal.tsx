@@ -659,6 +659,19 @@ export default function InsuranceOrderModal({
           }
         }
 
+        // Track Keitaro conversion
+        if (typeof window !== 'undefined') {
+          try {
+            const KTracking = (window as unknown as { KTracking?: { reportConversion?: (params: { status: string }) => void } }).KTracking;
+            if (KTracking?.reportConversion) {
+              KTracking.reportConversion({ status: 'lead' });
+              console.log('Keitaro lead conversion sent');
+            }
+          } catch (e) {
+            console.error('Keitaro tracking error:', e);
+          }
+        }
+
         // Go to payment selection step
         setCurrentStep("payment");
       } else {
