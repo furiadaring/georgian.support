@@ -58,15 +58,37 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
     window.open(`${CONTACT.whatsapp}?text=${message}`, "_blank");
     setSubmitted(true);
 
-    // Send lead to central CRM
-    if (typeof window !== 'undefined' && (window as any).VGLeads) {
-      (window as any).VGLeads.send({
-        name: formData.name,
-        phone: formData.phone,
-        message: formData.message || '',
-        plan_interest: formData.insuranceType,
-        lead_type: 'form',
+    // Send lead to /api/leads
+    try {
+      const attribution = sessionStorage.getItem('gs_attribution');
+      const parsedAttribution = attribution ? JSON.parse(attribution) : {};
+      
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          lead_type: 'contact_form',
+          source_domain: window.location.hostname,
+          name: formData.name,
+          phone: formData.phone,
+          message: formData.message || '',
+          plan_interest: formData.insuranceType,
+          subid: parsedAttribution.subid || '',
+          click_id: parsedAttribution.click_id || '',
+          campaign: parsedAttribution.campaign || '',
+          ad_source: parsedAttribution.ad_source || '',
+          keyword: parsedAttribution.keyword || '',
+          landing_page: parsedAttribution.landing_page || window.location.href,
+          referrer: parsedAttribution.referrer || document.referrer,
+          utm_source: parsedAttribution.utm_source || '',
+          utm_medium: parsedAttribution.utm_medium || '',
+          utm_campaign: parsedAttribution.utm_campaign || '',
+          utm_term: parsedAttribution.utm_term || '',
+          utm_content: parsedAttribution.utm_content || '',
+        }),
       });
+    } catch (e) {
+      console.error('Failed to save lead:', e);
     }
 
     // Track Keitaro conversion

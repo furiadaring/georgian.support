@@ -170,9 +170,6 @@ export default async function LocaleLayout({
         <noscript>
           <img height="0" width="0" alt="" src="https://track.georgian.support/H4ZTcH" style={{ display: 'none' }} />
         </noscript>
-        
-        {/* Universal Leads Tracker */}
-        <script src="https://visitgeorgia.online/leads-tracker.js" defer></script>
       </body>
     </html>
   );
