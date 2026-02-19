@@ -7,7 +7,7 @@ import { CONTACT } from "@/lib/constants";
 import { getDictionary, type Locale, type Dictionary } from "@/lib/i18n";
 import { useParams } from "next/navigation";
 import { useState, useCallback } from "react";
-import { getAttribution, reportKeitaroConversion } from "@/lib/attribution";
+import { getAttribution } from "@/lib/attribution";
 
 // Pricing data
 const PRICING = [
@@ -48,21 +48,25 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
   const insurancePage = dict.insurancePage;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  // Track lead and open link
+  // Track lead and open link - Hybrid approach: Keitaro SDK + our database
   const trackAndOpenLink = useCallback(async (url: string, channel: 'whatsapp' | 'telegram') => {
+    // 1. Official Keitaro SDK (reliable, waits for SDK ready)
+    if (typeof window !== 'undefined' && (window as { KTracking?: { ready: (fn: () => void) => void; reportConversion: (p: number, s: string) => void } }).KTracking) {
+      (window as { KTracking: { ready: (fn: () => void) => void; reportConversion: (p: number, s: string) => void } }).KTracking.ready(() => {
+        (window as { KTracking: { reportConversion: (p: number, s: string) => void } }).KTracking.reportConversion(0, channel);
+      });
+    }
+
+    // 2. Save to our database for CRM
     try {
       const attr = getAttribution();
-      await fetch('/api/leads', {
+      fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: '',
-          phone: '',
-          email: '',
-          lead_type: 'click',
+          lead_type: channel,
           plan_interest: 'Auto Insurance (OSAGO)',
           source_domain: typeof window !== 'undefined' ? window.location.hostname : '',
-          channel: channel,
           subid: attr.subid || '',
           click_id: attr.click_id || '',
           ad_source: attr.ad_source || '',
@@ -73,8 +77,7 @@ function AutoInsurancePageContent({ locale, dict }: { locale: Locale; dict: Dict
           utm_term: attr.utm_term || '',
           utm_content: attr.utm_content || '',
         }),
-      });
-      reportKeitaroConversion(0, 'click');
+      }).catch(() => {});
     } catch (e) {
       console.error('Lead tracking error:', e);
     }

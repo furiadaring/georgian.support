@@ -9,47 +9,43 @@ export const CONTACT = {
   address: "28 Luka Asatiani street, Batumi, 6000, Georgia",
 } as const;
 
-// Keitaro tracking function - also saves lead to database
+// Hybrid Keitaro tracking: Official SDK + our database
 export const trackKeitaro = (status: string) => {
   if (typeof window === 'undefined') return;
 
-  // Use stored attribution data (captured on landing page) instead of current URL params
-  // URL params are lost after navigation, but attribution.ts persists them in sessionStorage
-  let attribution: {
-    subid: string; click_id: string; campaign: string; ad_source: string;
-    keyword: string; utm_source: string; utm_medium: string; utm_campaign: string;
-    utm_term: string; utm_content: string; landing_page: string; referrer: string;
-    source_domain: string;
-  } | null = null;
-
-  try {
-    const stored = sessionStorage.getItem("gs_attribution");
-    if (stored) {
-      attribution = JSON.parse(stored);
-    }
-  } catch {
-    // sessionStorage not available
+  // 1. Use official Keitaro SDK (reliable, handles subid automatically)
+  if (window.KTracking) {
+    window.KTracking.ready(() => {
+      window.KTracking!.reportConversion(0, status);
+      console.log('Keitaro SDK conversion reported:', status);
+    });
   }
 
-  // Fallback to URL params if no stored attribution
-  const urlParams = new URLSearchParams(window.location.search);
-  const subid = attribution?.subid || urlParams.get('subid') || urlParams.get('sub_id') || '';
-
-  // Send Keitaro postback
-  console.log('trackKeitaro called:', { status, subid, hasAttribution: !!attribution });
-  if (subid) {
-    fetch(`https://track.georgian.support/285150d/postback?subid=${subid}&status=${status}`).catch(() => {});
-    console.log('Keitaro postback sent:', status, subid);
-  } else {
-    console.log('No subid found - visitor not from Keitaro campaign');
-  }
-
-  // Save lead to database for WhatsApp/Telegram clicks
+  // 2. Save to our database for CRM/analytics
   if (status === 'whatsapp' || status === 'telegram') {
+    // Get stored attribution data
+    let attribution: {
+      subid: string; click_id: string; campaign: string; ad_source: string;
+      keyword: string; utm_source: string; utm_medium: string; utm_campaign: string;
+      utm_term: string; utm_content: string; landing_page: string; referrer: string;
+      source_domain: string;
+    } | null = null;
+
+    try {
+      const stored = sessionStorage.getItem("gs_attribution");
+      if (stored) {
+        attribution = JSON.parse(stored);
+      }
+    } catch {
+      // sessionStorage not available
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+
     const trackingData = {
       lead_type: status,
       source_domain: attribution?.source_domain || window.location.hostname,
-      subid: subid,
+      subid: attribution?.subid || urlParams.get('subid') || urlParams.get('sub_id') || '',
       click_id: attribution?.click_id || urlParams.get("click_id") || urlParams.get("clickid") || "",
       campaign: attribution?.campaign || urlParams.get("campaign") || urlParams.get("c") || "",
       ad_source: attribution?.ad_source || urlParams.get("source") || urlParams.get("src") || "",

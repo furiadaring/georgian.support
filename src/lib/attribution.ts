@@ -21,6 +21,7 @@
 interface KTrackingGlobal {
   getSubId: (fn: (subId: string) => void) => void;
   reportConversion: (payout: number, status: string) => void;
+  ready: (fn: () => void) => void;
   listeners: Array<(subId: string) => void>;
   queued?: unknown;
 }
