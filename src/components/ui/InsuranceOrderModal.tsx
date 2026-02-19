@@ -348,6 +348,68 @@ function formatLocalDate(date: Date): string {
   return `${year}-${month}-${day}`;
 }
 
+// Safely parse a date string (YYYY-MM-DD) - returns null if invalid
+function safeParseDate(dateStr: string): Date | null {
+  if (!dateStr || dateStr.length < 10) return null;
+  try {
+    const date = new Date(dateStr);
+    // Check if date is valid
+    if (isNaN(date.getTime())) return null;
+    return date;
+  } catch {
+    return null;
+  }
+}
+
+// Format raw input with auto-slashes (for dd/mm/yyyy format)
+function formatDateInput(value: string, prevValue: string): string {
+  // Remove all non-digits
+  const digits = value.replace(/\D/g, '');
+  
+  // Limit to 8 digits (ddmmyyyy)
+  const limited = digits.slice(0, 8);
+  
+  // Format with slashes
+  let formatted = '';
+  if (limited.length > 0) {
+    formatted = limited.slice(0, 2);
+  }
+  if (limited.length > 2) {
+    formatted += '/' + limited.slice(2, 4);
+  }
+  if (limited.length > 4) {
+    formatted += '/' + limited.slice(4, 8);
+  }
+  
+  return formatted;
+}
+
+// Parse dd/mm/yyyy string to Date object
+function parseDDMMYYYY(dateStr: string): Date | null {
+  if (!dateStr) return null;
+  const parts = dateStr.split('/');
+  if (parts.length !== 3) return null;
+  
+  const day = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10);
+  const year = parseInt(parts[2], 10);
+  
+  // Basic validation
+  if (isNaN(day) || isNaN(month) || isNaN(year)) return null;
+  if (day < 1 || day > 31) return null;
+  if (month < 1 || month > 12) return null;
+  if (year < 1900 || year > 2100) return null;
+  
+  const date = new Date(year, month - 1, day);
+  
+  // Verify the date is valid (handles things like Feb 30)
+  if (date.getDate() !== day || date.getMonth() !== month - 1 || date.getFullYear() !== year) {
+    return null;
+  }
+  
+  return date;
+}
+
 export default function InsuranceOrderModal({
   isOpen,
   onClose,
@@ -825,8 +887,16 @@ export default function InsuranceOrderModal({
                 <div>
                   <label className={labelClass}>{t.periodStart || "Начало периода"} <span className="text-[#DE643B]">*</span></label>
                   <DatePicker
-                    selected={formData.periodStart ? new Date(formData.periodStart) : null}
+                    selected={safeParseDate(formData.periodStart)}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodStart: date ? formatLocalDate(date) : '' }))}
+                    onChangeRaw={(e) => {
+                      const formatted = formatDateInput(e.target.value, '');
+                      e.target.value = formatted;
+                      const parsed = parseDDMMYYYY(formatted);
+                      if (parsed) {
+                        setFormData(prev => ({ ...prev, periodStart: formatLocalDate(parsed) }));
+                      }
+                    }}
                     minDate={todayDate}
                     dateFormat="dd/MM/yyyy"
                     placeholderText="дд/мм/гггг"
@@ -878,8 +948,16 @@ export default function InsuranceOrderModal({
                 <div>
                   <label className={labelClass}>{t.periodStart || "Начало периода"} <span className="text-[#DE643B]">*</span></label>
                   <DatePicker
-                    selected={formData.periodStart ? new Date(formData.periodStart) : null}
+                    selected={safeParseDate(formData.periodStart)}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodStart: date ? formatLocalDate(date) : '' }))}
+                    onChangeRaw={(e) => {
+                      const formatted = formatDateInput(e.target.value, '');
+                      e.target.value = formatted;
+                      const parsed = parseDDMMYYYY(formatted);
+                      if (parsed) {
+                        setFormData(prev => ({ ...prev, periodStart: formatLocalDate(parsed) }));
+                      }
+                    }}
                     minDate={todayDate}
                     dateFormat="dd/MM/yyyy"
                     placeholderText="дд/мм/гггг"
@@ -897,8 +975,16 @@ export default function InsuranceOrderModal({
                 <div>
                   <label className={labelClass}>{t.periodEnd || "Конец периода"} <span className="text-[#DE643B]">*</span></label>
                   <DatePicker
-                    selected={formData.periodEnd ? new Date(formData.periodEnd) : null}
+                    selected={safeParseDate(formData.periodEnd)}
                     onChange={(date: Date | null) => setFormData(prev => ({ ...prev, periodEnd: date ? formatLocalDate(date) : '' }))}
+                    onChangeRaw={(e) => {
+                      const formatted = formatDateInput(e.target.value, '');
+                      e.target.value = formatted;
+                      const parsed = parseDDMMYYYY(formatted);
+                      if (parsed) {
+                        setFormData(prev => ({ ...prev, periodEnd: formatLocalDate(parsed) }));
+                      }
+                    }}
                     minDate={minEndDate}
                     dateFormat="dd/MM/yyyy"
                     placeholderText="дд/мм/гггг"
@@ -937,8 +1023,16 @@ export default function InsuranceOrderModal({
               <div>
                 <label className={labelClass}>{t.birthDate || "Дата рождения"} <span className="text-[#DE643B]">*</span></label>
                 <DatePicker
-                  selected={formData.birthDate ? new Date(formData.birthDate) : null}
+                  selected={safeParseDate(formData.birthDate)}
                   onChange={(date: Date | null) => setFormData(prev => ({ ...prev, birthDate: date ? formatLocalDate(date) : '' }))}
+                  onChangeRaw={(e) => {
+                    const formatted = formatDateInput(e.target.value, '');
+                    e.target.value = formatted;
+                    const parsed = parseDDMMYYYY(formatted);
+                    if (parsed) {
+                      setFormData(prev => ({ ...prev, birthDate: formatLocalDate(parsed) }));
+                    }
+                  }}
                   maxDate={new Date()}
                   dateFormat="dd/MM/yyyy"
                   placeholderText="дд/мм/гггг"
