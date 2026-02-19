@@ -832,9 +832,11 @@ function InsurancePageContent({ locale, dict }: { locale: Locale; dict: Dictiona
         <InsuranceOrderModal
           isOpen={!!orderPlan}
           onClose={() => setOrderPlan(null)}
+          planId={orderPlan.id}
           planName={orderPlan.name}
           planPrice={orderPlan.price}
           planPeriod={orderPlan.period}
+          initialPromocode={searchParams.get('promo') || undefined}
           locale={locale}
           dict={dict}
         />
