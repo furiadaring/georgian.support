@@ -172,24 +172,34 @@ export default async function LocaleLayout({
         <Script id="social-tracking" strategy="afterInteractive">
           {`
             (function(){
+              function send(type, cb){
+                KTracking.getSubId(function(subid){
+                  fetch("https://track.georgian.support/285150d/postback?subid="+encodeURIComponent(subid)+"&status="+encodeURIComponent(type)+"&revenue=0");
+                  cb();
+                });
+              }
+
               document.addEventListener('click', function(e){
-                var btn = e.target.closest('.btn-wa, .btn-tg');
-                if (!btn) return;
-                var type = btn.classList.contains('btn-wa') ? 'whatsapp' : 'telegram';
-                var href = btn.getAttribute('href');
-                if (!href) return;
+                var a = e.target.closest && e.target.closest('a');
+                if (!a) return;
+
+                var href = a.getAttribute('href') || '';
+                var isWA = /wa\\.me\\/|api\\.whatsapp\\.com\\/|web\\.whatsapp\\.com\\/|^whatsapp:\\/\\//i.test(href);
+                var isTG = /t\\.me\\/|telegram\\.me\\/|^tg:\\/\\//i.test(href);
+
+                if (!isWA && !isTG) return;
 
                 e.preventDefault();
-                if (window.KTracking && window.KTracking.ready) {
-                  window.KTracking.ready(function(){
-                    window.KTracking.reportConversion(0, type);
-                  });
-                }
-                setTimeout(function(){
-                  var target = (btn.getAttribute('target') || '').toLowerCase();
-                  if (target === '_blank') window.open(href, '_blank');
-                  else window.location.href = href;
-                }, 250);
+                var url = a.href;
+                var type = isWA ? 'whatsapp' : 'telegram';
+
+                send(type, function(){
+                  setTimeout(function(){
+                    var target = (a.getAttribute('target') || '').toLowerCase();
+                    if (target === '_blank') window.open(url, '_blank');
+                    else window.location.href = url;
+                  }, 300);
+                });
               }, true);
             })();
           `}
