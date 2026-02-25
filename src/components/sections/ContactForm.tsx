@@ -1,9 +1,19 @@
 "use client";
 
-import { useState, FormEvent } from "react";
-import { CONTACT, INSURANCE_PLANS } from "@/lib/constants";
+import { useState, useEffect, FormEvent } from "react";
+import { CONTACT } from "@/lib/constants";
 import { reportKeitaroConversion } from "@/lib/attribution";
 import { type Locale, type Dictionary, isRtlLocale } from "@/lib/i18n";
+
+interface DBPlan {
+  slug: string;
+  name: string;
+  price: number;
+  period: string;
+  pricingType: string;
+  isFavorite: boolean;
+  translations: Record<string, { name: string; description: string }>;
+}
 
 interface ContactFormProps {
   locale: Locale;
@@ -19,25 +29,46 @@ export default function ContactForm({ locale, dict }: ContactFormProps) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [dbPlans, setDbPlans] = useState<DBPlan[]>([]);
 
   const t = dict.contact;
   const isRtl = isRtlLocale(locale);
 
-  const getPeriodText = (planId: string) => {
-    switch (planId) {
-      case "visitor": return dict.insurance.day;
-      case "standard": return dict.insurance.months3;
-      case "optimum": return dict.insurance.months6;
-      case "premium": return dict.insurance.year;
-      case "uno-active":
-      case "uno-active-plus": return dict.insurance.month;
+  // Fetch plans from DB
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const response = await fetch("/api/v2/plans", { cache: "no-store" });
+        if (response.ok) {
+          const data = await response.json();
+          setDbPlans(data.plans || []);
+        }
+      } catch (error) {
+        console.error("Failed to fetch plans for contact form:", error);
+      }
+    };
+    fetchPlans();
+  }, []);
+
+  const getPeriodText = (period: string) => {
+    switch (period) {
+      case "day": return dict.insurance.day;
+      case "months3": return dict.insurance.months3;
+      case "months6": return dict.insurance.months6;
+      case "year": return dict.insurance.year;
+      case "month": return dict.insurance.month;
       default: return "";
     }
   };
 
-  const planOptions = INSURANCE_PLANS.map(plan => ({
-    value: plan.id,
-    label: `${dict.insurance.plans[plan.id as keyof typeof dict.insurance.plans].name} — ${plan.price} GEL/${getPeriodText(plan.id)}${plan.popular ? ' ⭐' : ''}`
+  const getPlanName = (plan: DBPlan) => {
+    const translation = plan.translations[locale];
+    return translation?.name || plan.name;
+  };
+
+  const planOptions = dbPlans.map(plan => ({
+    value: plan.slug,
+    label: `${getPlanName(plan)} — ${plan.price} GEL/${getPeriodText(plan.period)}${plan.isFavorite ? ' ⭐' : ''}`
   }));
 
   const handleSubmit = async (e: FormEvent) => {
