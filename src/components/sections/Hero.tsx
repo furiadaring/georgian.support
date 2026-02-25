@@ -62,7 +62,7 @@ function HeadsetIcon() {
   );
 }
 
-// Shield icon for $50K
+// Shield icon for coverage
 function ShieldIcon() {
   return (
     <svg viewBox="0 0 50 50" fill="none" className="w-full h-full">
@@ -106,7 +106,7 @@ export default function Hero({ locale, dict }: HeroProps) {
             />
             <StatCard 
               icon={<ShieldIcon />} 
-              value={t.statsCoverage || "$50K"} 
+              value={t.statsCoverage || "30K"} 
               label={t.statsCoverageLabel || "coverage"} 
               shadowSide="right"
             />
@@ -254,7 +254,7 @@ export default function Hero({ locale, dict }: HeroProps) {
                 <span className="text-[16px] font-medium leading-[1.3]">{t.statsSupportLabel || 'support'}</span>
               </div>
             </div>
-            {/* Card 3 - $50K */}
+            {/* Card 3 - 30K GEL */}
             <div className="flex items-center gap-4 bg-white/5 border border-[#E6CFE3] px-5 py-4">
               <div className="w-[50px] h-[50px] rounded-full border border-[#E6CFE3] flex items-center justify-center shrink-0">
                 <div className="w-6 h-6 text-[#E6CFE3]">
@@ -262,7 +262,7 @@ export default function Hero({ locale, dict }: HeroProps) {
                 </div>
               </div>
               <div className="flex flex-col text-[#E6CFE3]">
-                <span className="text-[34px] font-bold leading-[1.3]">{t.statsCoverage || '$50K'}</span>
+                <span className="text-[34px] font-bold leading-[1.3]">{t.statsCoverage || '30K'}</span>
                 <span className="text-[16px] font-medium leading-[1.3]">{t.statsCoverageLabel || 'coverage'}</span>
               </div>
             </div>

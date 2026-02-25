@@ -115,7 +115,7 @@ export default function Advantages({ locale, dict }: AdvantagesProps) {
 
   const cardConfigs = [
     { bgColor: "bg-[#DE643B]", textColor: "text-[#FAFAFA]", valueColor: "text-[#FAFAFA]", value: "15 мин" },
-    { bgColor: "bg-[#2D1D38]", textColor: "text-[#FAFAFA]", valueColor: "text-[#FAFAFA]", value: "$50K" },
+    { bgColor: "bg-[#2D1D38]", textColor: "text-[#FAFAFA]", valueColor: "text-[#FAFAFA]", value: "30K" },
     { bgColor: "bg-[#F6F6CD]", textColor: "text-[#2D1D38]", valueColor: "text-[#DE643B]", value: "24/7" },
     { bgColor: "bg-[#E6CFE3]", textColor: "text-[#2D1D38]", valueColor: "text-[#DE643B]", value: "98%" },
   ];

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Georgian Support | Gürcistan'daki Yabancıların Her İhtiyacı İçin Sigorta",
-    "description": "Gürcistan'da turistler ve göçmenler için sağlık, seyahat ve araç sigortası. Hızlı online işlem, 50.000$'a kadar teminat, 7/24 destek."
+    "description": "Gürcistan'da turistler ve göçmenler için sağlık, seyahat ve araç sigortası. Hızlı online işlem, 30,000 GEL'e kadar teminat, 7/24 destek."
   },
   "autoInsurancePage": {
     "meta": {
@@ -68,7 +68,7 @@
     "statsTimeLabel": "işleme",
     "statsSupport": "24/7",
     "statsSupportLabel": "destek",
-    "statsCoverage": "$50K",
+    "statsCoverage": "30K",
     "statsCoverageLabel": "kapsam",
     "clients": "Mutlu müşteri",
     "support": "Her zaman ulaşılabilir",
@@ -96,7 +96,7 @@
         "description": "Poliçe 15 dakikada hazır — ofis ziyareti veya evrak işi yok"
       },
       {
-        "title": "50.000$'a Kadar Teminat",
+        "title": "30,000 GEL'e Kadar Teminat",
         "description": "Hastane yatışı, ameliyatlar, testler ve konsültasyonlar — hepsi dahil"
       },
       {
@@ -941,10 +941,10 @@
   "insurancePage": {
     "meta": {
       "title": "Sağlık Sigortası Planları | Georgian Support",
-      "description": "Gürcistan'da turistler ve göçmenler için sağlık sigortası. 50.000$'a kadar teminat, 15 dakikada online işlem, 7/24 destek."
+      "description": "Gürcistan'da turistler ve göçmenler için sağlık sigortası. 30,000 GEL'e kadar teminat, 15 dakikada online işlem, 7/24 destek."
     },
     "title": "Tüm Sigorta Planları",
-    "subtitle": "Gürcistan'daki konaklamanız için mükemmel sigortayı seçin. Turistler ve göçmenler için $50,000'a kadar kapsam.",
+    "subtitle": "Gürcistan'daki konaklamanız için mükemmel sigortayı seçin. Turistler ve göçmenler için 30,000 GEL'e kadar kapsam.",
     "categories": {
       "all": "Tüm Planlar",
       "main": "Seyahat Sigortası",
