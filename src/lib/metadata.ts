@@ -9,7 +9,7 @@ export const siteMetadata: Metadata = {
     template: "%s | Georgian Support",
   },
   description:
-    "Медицинская страховка в Грузии от 65 GEL/мес. Покрытие до 30,000 GEL, оформление онлайн за 15 минут. Реферальная программа: до 100 GEL скидка за каждого друга. Поддержка 24/7.",
+    "Медицинская страховка в Грузии от 65 GEL/мес. Покрытие до 30,000 GEL, оформление онлайн за 15 минут. Реферальная программа: до 50 GEL скидка за каждого друга. Поддержка 24/7.",
   keywords: [
     // Insurance keywords
     "страховка в Грузии",
@@ -56,7 +56,7 @@ export const siteMetadata: Metadata = {
     siteName: "Georgian Support",
     title: "Страховка в Грузии от 65 GEL/мес | Реферальная программа",
     description:
-      "Медицинская страховка для туристов и экспатов в Грузии. Покрытие до 30,000 GEL, поддержка 24/7. Приглашай друзей — получай до 100 GEL скидки!",
+      "Медицинская страховка для туристов и экспатов в Грузии. Покрытие до 30,000 GEL, поддержка 24/7. Приглашай друзей — получай до 50 GEL скидки за каждого!",
     images: [
       {
         url: `${baseUrl}/opengraph-image`,
@@ -69,7 +69,7 @@ export const siteMetadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Страховка в Грузии от 65 GEL/мес | Скидки за рефералов",
-    description: "Медицинская страховка для туристов и экспатов. Покрытие до 30,000 GEL. Реферальная программа: до 100 GEL за друга!",
+    description: "Медицинская страховка для туристов и экспатов. Покрытие до 30,000 GEL. Реферальная программа: до 50 GEL за друга!",
     images: [`${baseUrl}/twitter-image`],
   },
   robots: {
@@ -158,7 +158,7 @@ export const insuranceAgencySchema = {
   telephone: "+995-591-196-300",
   email: "info@georgian-legal.group",
   description: "Медицинская страховка для туристов и экспатов в Грузии",
-  priceRange: "65 - 300 GEL",
+  priceRange: "65 - 399 GEL",
   openingHours: "Mo-Su 00:00-23:59",
   areaServed: {
     "@type": "Country",
@@ -183,7 +183,7 @@ export const productSchemas = [
     offers: {
       "@type": "Offer",
       url: `${baseUrl}/#plans`,
-      price: "300",
+      price: "399",
       priceCurrency: "GEL",
       availability: "https://schema.org/InStock",
       priceValidUntil: "2026-12-31",
@@ -214,7 +214,7 @@ export const productSchemas = [
     offers: {
       "@type": "Offer",
       url: `${baseUrl}/#plans`,
-      price: "250",
+      price: "299",
       priceCurrency: "GEL",
       availability: "https://schema.org/InStock",
       priceValidUntil: "2026-12-31",
@@ -328,7 +328,7 @@ export const faqSchema = {
       name: "Как работает реферальная программа?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Приглашайте друзей и получайте скидки! За каждого приглашённого друга вы получаете $15 скидку на продление страховки. Друг также получает $15 скидку на первую покупку. Скидки накапливаются без ограничений.",
+        text: "Приглашайте друзей и получайте скидки! За каждого приглашённого друга вы получаете скидку до 50 GEL на продление страховки. Скидки накапливаются.",
       },
     },
     {
@@ -336,7 +336,7 @@ export const faqSchema = {
       name: "What is the referral bonus program?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Refer friends and earn discounts! For each friend you refer, you get a $15 discount on your renewal. Your friend also gets $15 off their first purchase. Discounts stack with no limits.",
+        text: "Refer friends and earn discounts! For each friend you refer, you get up to 50 GEL discount on your renewal. Discounts stack.",
       },
     },
     {
@@ -344,7 +344,7 @@ export const faqSchema = {
       name: "Сколько стоит страховка в Грузии?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Годовая страховка стоит $300 (с покрытием $50,000). Также доступен гибкий ежемесячный план за $85/месяц. С реферальной программой можно получить дополнительные скидки.",
+        text: "Годовая страховка стоит 399 GEL (с покрытием до 30,000 GEL). Также доступен гибкий ежемесячный план за 85 GEL/месяц. С реферальной программой можно получить дополнительные скидки.",
       },
     },
     {
@@ -352,7 +352,7 @@ export const faqSchema = {
       name: "How much does health insurance cost in Georgia?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Annual insurance costs $300 (with $50,000 coverage). A flexible monthly plan is also available at $85/month. With our referral program, you can earn additional discounts.",
+        text: "Annual insurance costs 399 GEL (with coverage up to 30,000 GEL). A flexible monthly plan is also available at 85 GEL/month. With our referral program, you can earn additional discounts.",
       },
     },
   ],
@@ -406,7 +406,7 @@ export const serviceSchema = {
           name: "PREMIUM — Annual Insurance",
           description: "Annual medical insurance for tourists and expats in Georgia. Coverage up to 30,000 GEL.",
         },
-        price: "300",
+        price: "399",
         priceCurrency: "GEL",
       },
       {
@@ -416,7 +416,7 @@ export const serviceSchema = {
           name: "OPTIMUM — 6-Month Insurance",
           description: "6-month medical insurance for foreigners living in Georgia.",
         },
-        price: "250",
+        price: "299",
         priceCurrency: "GEL",
       },
       {

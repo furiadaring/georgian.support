@@ -83,7 +83,7 @@
     "forTouristsShort": "For tourists",
     "referralBadge": "Refer a Friend — Get Discount!",
     "referralNew": "NEW",
-    "referralTeaser": "Up to 300 GEL off or free insurance for referrals"
+    "referralTeaser": "Up to 250 GEL discount on insurance for referrals"
   },
   "advantages": {
     "label": "OUR ADVANTAGES",
@@ -749,7 +749,7 @@
     "label": "LOYALTY PROGRAM",
     "title": "Invite friends —",
     "titleHighlight": "get a discount!",
-    "description": "Bring friends and get a discount on your insurance. Bring enough friends — get insurance for free!",
+    "description": "Bring friends and get a discount on your insurance. The more friends you bring, the bigger your discount!",
     "steps": [
       {
         "title": "Invite a friend",
@@ -769,13 +769,13 @@
     "maxReferrals": "Maximum referrals",
     "people": "people",
     "yourDiscount": "Your discount",
-    "freeInsurance": "Free insurance!",
+    "freeInsurance": "Maximum discount!",
     "example": "Example",
-    "exampleText": "Bring {max} friends and get {discount} GEL discount — your insurance will be free!",
+    "exampleText": "Bring {max} friends and get {discount} GEL discount on your insurance!",
     "cta": "Want to learn more about our loyalty program?",
     "contactUs": "Contact us",
     "shareTitle": "Share with friends",
-    "shareText": "Get up to 300 GEL discount on insurance in Georgia! Georgian Support referral program."
+    "shareText": "Get up to 250 GEL discount on insurance in Georgia! Georgian Support referral program."
   },
   "footer": {
     "description": "Medical insurance for tourists and expats in Georgia. Reliable protection at affordable prices.",

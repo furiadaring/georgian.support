@@ -83,7 +83,7 @@
     "forTouristsShort": "Turistler için",
     "referralBadge": "Arkadaş Davet Et — İndirim Kazan!",
     "referralNew": "YENİ",
-    "referralTeaser": "Referanslar için 300 GEL'e kadar indirim veya ücretsiz sigorta"
+    "referralTeaser": "Referanslar için 250 GEL'e kadar sigorta indirimi"
   },
   "advantages": {
     "label": "AVANTAJLARIMIZ",
@@ -749,7 +749,7 @@
     "label": "Sadakat Programı",
     "title": "Arkadaş Davet Et —",
     "titleHighlight": "İndirim Kazan!",
-    "description": "Arkadaşlarınızı getirin ve sigortanızda indirim kazanın. Yeterince arkadaş getirin — sigortanız ücretsiz olsun!",
+    "description": "Arkadaşlarınızı getirin ve sigortanızda indirim kazanın. Ne kadar çok arkadaş getirirseniz, indiriminiz o kadar büyük!",
     "steps": [
       {
         "title": "Arkadaş Davet Et",
@@ -769,13 +769,13 @@
     "maxReferrals": "Maksimum referans",
     "people": "kişi",
     "yourDiscount": "İndiriminiz",
-    "freeInsurance": "Ücretsiz sigorta!",
+    "freeInsurance": "Maksimum indirim!",
     "example": "Örnek",
-    "exampleText": "{max} arkadaş getirin ve {discount} GEL indirim kazanın — sigortanız ücretsiz!",
+    "exampleText": "{max} arkadaş getirin ve sigortanızda {discount} GEL indirim kazanın!",
     "cta": "Sadakat programı hakkında daha fazla bilgi mi istiyorsunuz?",
     "contactUs": "Bize Ulaşın",
     "shareTitle": "Arkadaşlarınızla paylaşın",
-    "shareText": "Gürcistan'da sigortada 300 GEL'e kadar indirim! Georgian Support yönlendirme programı."
+    "shareText": "Gürcistan'da sigortada 250 GEL'e kadar indirim! Georgian Support yönlendirme programı."
   },
   "footer": {
     "description": "Gürcistan'da turistler ve göçmenler için sağlık sigortası. Uygun fiyatlarla güvenilir koruma.",

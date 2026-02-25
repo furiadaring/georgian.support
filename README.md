@@ -73,8 +73,8 @@ Customers can earn discounts by referring friends:
 
 | Plan | Discount per Friend | Max Friends | Max Discount |
 |------|---------------------|-------------|--------------|
-| **OPTIMUM** | 50 GEL | 5 | 250 GEL (FREE) |
-| **PREMIUM** | 100 GEL | 3 | 300 GEL (FREE) |
+| **OPTIMUM** | 50 GEL | 5 | 250 GEL (pay only 49 GEL) |
+| **PREMIUM** | 100 GEL | 3 | 300 GEL (pay only 99 GEL) |
 
 **Features:**
 - Discounts can be used immediately or accumulated

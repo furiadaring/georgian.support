@@ -83,7 +83,7 @@
     "forTouristsShort": "לתיירים",
     "referralBadge": "הזמן חבר — קבל הנחה!",
     "referralNew": "חדש",
-    "referralTeaser": "עד 300 GEL הנחה או ביטוח חינם להפניות"
+    "referralTeaser": "עד 250 GEL הנחה על ביטוח להפניות"
   },
   "advantages": {
     "label": "היתרונות שלנו",
@@ -749,7 +749,7 @@
     "label": "תוכנית נאמנות",
     "title": "הזמן חברים —",
     "titleHighlight": "קבל הנחה!",
-    "description": "הביאו חברים וקבלו הנחה על הביטוח שלכם. הביאו מספיק חברים — קבלו ביטוח חינם!",
+    "description": "הביאו חברים וקבלו הנחה על הביטוח שלכם. ככל שתביאו יותר חברים — כך ההנחה גדולה יותר!",
     "steps": [
       {
         "title": "הזמן חבר",
@@ -769,13 +769,13 @@
     "maxReferrals": "מקסימום הפניות",
     "people": "אנשים",
     "yourDiscount": "ההנחה שלך",
-    "freeInsurance": "ביטוח חינם!",
+    "freeInsurance": "הנחה מקסימלית!",
     "example": "דוגמה",
-    "exampleText": "הביאו {max} חברים וקבלו הנחה של {discount} GEL — הביטוח שלכם יהיה חינם!",
+    "exampleText": "הביאו {max} חברים וקבלו הנחה של {discount} GEL על הביטוח!",
     "cta": "רוצים לדעת יותר על תוכנית הנאמנות?",
     "contactUs": "צרו קשר",
     "shareTitle": "שתפו עם חברים",
-    "shareText": "הנחה עד 300 GEL על ביטוח בגאורגיה! תוכנית הפניות Georgian Support."
+    "shareText": "הנחה עד 250 GEL על ביטוח בגאורגיה! תוכנית הפניות Georgian Support."
   },
   "footer": {
     "description": "ביטוח רפואי לתיירים ושוהים בגאורגיה. הגנה אמינה במחירים נגישים.",
