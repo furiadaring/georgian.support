@@ -51,7 +51,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                     <span className="text-[#FAFAFA]">Georgian</span>
                     <span className="bg-gradient-to-r from-[#FB2C36] to-[#E7000B] bg-clip-text" style={{ WebkitTextFillColor: "transparent" }}>Support</span>
                   </p>
-                  <span className="text-[14px] font-semibold leading-[1.3] text-[#F4F3EE]">by Legal Residency Group</span>
+                  <a href="https://georgian-legal.group" target="_blank" rel="noopener noreferrer" className="text-[14px] font-semibold leading-[1.3] text-[#F4F3EE] hover:underline">by Legal Residency Group</a>
                 </div>
               </Link>
 
@@ -92,7 +92,7 @@ export default function Footer({ locale, dict }: FooterProps) {
             {/* Legal disclaimer */}
             <p className="text-[12px] font-semibold leading-[1.3] text-[#ABA2A5]">
               {legalParts[0]}
-              <span className="text-[#DE643B]">Legal Residency Group</span>
+              <a href="https://georgian-legal.group" target="_blank" rel="noopener noreferrer" className="text-[#DE643B] hover:underline">Legal Residency Group</a>
               {legalParts[1]}
             </p>
           </div>
